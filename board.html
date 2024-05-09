@@ -6,20 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/side_menu.css">
+    <link rel="stylesheet" href="./css/board.css">
     <script src="./javascript/includeHTML.js"></script>
+    <script src="./javascript/board.js"></script>
 </head>
 
 <body onload="includeHTML()">
     <div class="flexbox">
         <div class="sideMenu" w3-include-html="./assets/templates/side_menu.html"></div>
         <div class="right-side">
-            <div class="right-side">
+
+            <div class="header">
+                <h1>Board</h1>
                 <div>
-                    <h1>Board</h1>
                     <input type="text">
                     <button>Add Task</button>
                 </div>
             </div>
+
+            <div class="canbanBoard">
+                <div class="fourth-size">
+                    <div class="spaceBetween">
+                        <p>To do</p>
+                        <img class="icon" src="./assets/img/addTask.png" alt="">
+                    </div>
+                    <div class="dragArea"></div>
+                </div>
+                <div class="fourth-size">
+                    <div class="spaceBetween">
+                        <p>In Progress</p>
+                        <img class="icon" src="./assets/img/addTask.png" alt="">
+                    </div>
+                    <div class="dragArea"></div>
+                </div>
+                <div class="fourth-size">
+                    <div class="spaceBetween">
+                        <p>Await Feedback</p>
+                        <img class="icon" src="./assets/img/addTask.png" alt="">
+                    </div>
+                    <div class="dragArea"></div>
+                </div>
+                <div class="fourth-size">
+                    <div class="spaceBetween">
+                        <p>Done</p>
+                        <img class="icon" src="./assets/img/addTask.png" alt="">
+                    </div>
+                    <div class="dragArea"></div>
+                </div>
+            </div>
+
         </div>
     </div>
 

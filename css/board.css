@@ -1,0 +1,29 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 79.5px 64px;
+}
+
+.canbanBoard{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 64px;
+}
+
+.fourth-size{
+    width: 20%;
+}
+
+.dragArea{
+height: 5000px;
+background-color: blue;
+}
+
+.spaceBetween{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
