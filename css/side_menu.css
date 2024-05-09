@@ -3,10 +3,24 @@
     margin: 0;
 }
 
+.flexbox{
+    display:flex;
+}
+
+.sideMenu{
+    width: 30%;
+     
+}
+
+.right-side{
+    width: 70%;
+}
+
 nav{
     background-color:  rgb(42, 54, 71);
     height: 100vh;
-    width: 100%; 
+    position: fixed;
+    width: 30%;
 }
 
 .center-x{
@@ -53,7 +67,4 @@ footer{
     flex-direction: column;
 }
 
-.sideMenu{
-    width: 30%;
-    position: fixed;
-}
+ 
