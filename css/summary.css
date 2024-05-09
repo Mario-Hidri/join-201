@@ -148,3 +148,30 @@
     gap: 13px;
     box-shadow: 0px 0px 4px 0px #0000001A;
 }
+
+.summary_greet_user{
+    width: 385px;
+    height: 136px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 547.5px;
+    left: 968px;
+    gap: 3px;
+}
+
+.summary_greet_user h1 {
+    margin-block: 0px;
+    font-size: 47px;
+    font-weight: 500;
+    color: #2A3647;
+    line-height: 56.4px;
+}
+
+.summary_greet_user h2 {
+    margin-block: 0px;
+    font-size: 64px;
+    font-weight: 700;
+    color: #29ABE2;
+    line-height: 76.8px;
+}
