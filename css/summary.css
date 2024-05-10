@@ -62,6 +62,40 @@
     align-items: center;
 }
 
+.summary_content_img_1{
+    background-color: rgb(42, 54, 71);
+    height: 69px;
+    width: 69px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: url('../assets/img/summary_user_img/edit.png');
+    object-fit:scale-down;
+}
+
+.summary_content_rows:hover .summary_content_img_1{
+    background-color: #FFFFFF;
+    content: url('../assets/img/summary_user_img/hover.png');
+}
+
+.summary_content_img_2{
+    background-color: rgb(42, 54, 71);
+    height: 69px;
+    width: 69px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: url('../assets/img/summary_user_img/Vector.png');
+    object-fit:scale-down;
+}
+
+.summary_content_rows:hover .summary_content_img_2{
+    background-color: #FFFFFF;
+    content: url('../assets/img/summary_user_img/Vector\ \(1\).png');
+}
+
 .summary_content_img img {
     max-width: 100%;
     max-height: 100%;
@@ -92,9 +126,15 @@
 
 .summary_content_rows:hover {
     background-color: #2A3647;
+    color: #FFFFFF;
     cursor: pointer;
     box-shadow: 0px 0px 4px 0px #0000001A;
     transform: scale(1.04) translate(-3px, -3px);
+}
+
+.summary_content_rows:hover p{
+    color: #FFFFFF;
+
 }
 
 .summary_content_rows_left:hover {
@@ -104,9 +144,6 @@
     transform: scale(1.04) translate(3px, -3px);
 }
 
-.summary_content_rows:hover .summary_content_img {
-    background-color: #FFFFFF;
-}
 
 .first_row {
     display: flex;
@@ -145,15 +182,15 @@
 }
 
 .summary_content_row_2:hover .summary_content_info p{
-    color: #D9D9D9;
+    color: #FFFFFF;
 }
 
 .summary_content_row_2:hover .summary_content_info {
-    color: #D9D9D9;
+    color: #FFFFFF;
 }
 
 .summary_content_row_2:hover .summary_content_info h3{
-    color: #D9D9D9;
+    color: #FFFFFF;
 }
 
 .summary_content_img_second_row {
@@ -200,35 +237,35 @@
     cursor: pointer;
     box-shadow: #0000001A;
     transform: scale(1.04) translate(4px, 0px);
-    color: #D9D9D9;
+    color: #FFFFFF;
 }
 
 .left:hover p{
-    color: #D9D9D9;
+    color: #FFFFFF;
 }
 
 .center:hover{
     background-color: #2A3647;
-    color: #D9D9D9;
+    color: #FFFFFF;
     cursor: pointer;
     box-shadow: #0000001A;
     transform: scale(1.05)
 }
 
 .center:hover p{
-    color: #D9D9D9;
+    color: #FFFFFF;
 }
 
 .right:hover{
     background-color: #2A3647;
-    color: #D9D9D9;
+    color: #FFFFFF;
     cursor: pointer;
     box-shadow: #0000001A;
     transform: scale(1.04) translate(-4px, 0px);
 }
 
 .right:hover p{
-    color: #D9D9D9;
+    color: #FFFFFF;
 }
 
 .summary_greet_user {
