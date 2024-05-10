@@ -2,7 +2,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 79.5px 64px;
+    padding: 79.5px 64px;
+    background-color: #F6F7F8;
 }
 
 .canbanBoard{
@@ -11,6 +12,7 @@
     justify-content: space-between;
     width: 100%;
     padding: 0 64px;
+    background-color: #F6F7F8;
 }
 
 .fourth-size{
