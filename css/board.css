@@ -2,8 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 79.5px 64px;
-    background-color: #F6F7F8;
+    padding: 134px 64px 32px  
 }
 
 .canbanBoard{
@@ -12,7 +11,6 @@
     justify-content: space-between;
     width: 100%;
     padding: 0 64px;
-    background-color: #F6F7F8;
 }
 
 .fourth-size{
@@ -29,3 +27,9 @@ background-color: blue;
     justify-content: space-between;
     align-items: center;
 }
+
+.backgroudColor{
+    background-color: #F6F7F8;
+}
+
+ 

@@ -1,0 +1,58 @@
+.column{
+    display:flex;
+    flex-direction: column;
+}
+
+.verticalLine{
+width: 1px;
+height:250px;
+background-color: #D1D1D1;
+}
+
+.input{
+    border: 1px solid #D1D1D1;
+    border-radius: 8px;
+    height: 24px;
+    width: 300px;
+}
+
+.textarea{
+    border: 1px solid #D1D1D1;
+    border-radius: 8px;
+    height: 120px;
+    width: 300px;
+}
+
+.positionInputFields{
+    display:flex;
+    justify-content: center;
+    gap:30px;
+}
+
+.distanceBetweenIput{
+     margin:10px;
+}
+
+.lowPriority{
+    background-color: #7AE229;
+}
+
+.mediumPriority{
+    background-color: #FFA800;
+}
+
+.urgentPriority{
+    background-color: #FF3D00;
+}
+
+.prioButton{
+    width: 84px;
+    height: 32px;
+    border: 0px;
+    border-radius: 10px;
+}
+
+.priorityImage{
+    width: 20px;
+    height: 14.5px; 
+}

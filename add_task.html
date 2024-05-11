@@ -6,30 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/side_menu.css">
-    <link rel="stylesheet" href="./css/board.css">
     <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/board.css">
+    <link rel="stylesheet" href="./css/addTask.css">
     <script src="./javascript/includeHTML.js"></script>
     <script src="./javascript/board.js"></script>
 </head>
 
 <body onload="includeHTML()">
+    <header class="spaceBetween" w3-include-html="./assets/templates/header.html"></header>
     <div class="flexbox">
         <div class="sideMenu" w3-include-html="./assets/templates/side_menu.html"></div>
-        <div class="right-side">
-
-
-            <header class="spaceBetween" w3-include-html="./assets/templates/header.html"></header>
-
+        <div class="right-side backgroudColor">
             <div class="header">
                 <h1>Add Task</h1>
             </div>
             <form action="">
+                <div class="positionInputFields">
+                    <div class="leftInput">
+                        <div class="column distanceBetweenIput">
+                            <label for="">Title</label>
+                            <input class="input" type="" placeholder="   Enter a Title">
+                        </div>
+                        <div class="column distanceBetweenIput">
+                            <label for="">Description</label>
+                            <textarea class="textarea" placeholder=" Enter a description"></textarea>
+                        </div>
+                        <div class="column distanceBetweenIput">
+                            <label for="">Assign to</label>
+                        </div>
+                    </div>
 
-                <input type="" placeholder="Enter a Title">
-                <input type="" placeholder="Enter a description">
+                    <div class="verticalLine"> </div>
 
+
+                    <div class="rightInput">
+                        <div class="column distanceBetweenIput">
+                            <label for="">date</label>
+                            <input class="input" type="date">
+                        </div>
+                        <div class="distanceBetweenIput">
+                            <button class="urgentPriority prioButton">Urgent<img class="priorityImage"
+                                    src="./assets/img/activeHighPriority.png" alt=""></button>
+                            <button class="mediumPriority prioButton">Medium  <img class="priorityImage"
+                                    src="./assets/img/activeMediumPriority.png" alt=""></button>
+                            <button class="lowPriority prioButton">Low <img class="priorityImage"
+                                    src="./assets/img/activeLowPriority.png" alt=""></button>
+                        </div>
+
+                        <div class="column distanceBetweenIput">
+                            <label for="">category</label>
+                            <select class="input" id="category" placeholder="   Select a category">
+                                <option>Technical Task</option>
+                                <option>User Story</option>
+                                <option>Design</option>
+                            </select>
+                        </div>
+
+                        <div class="column distanceBetweenIput">
+                            <input placeholder="   Add new subtask">
+                        </div>
+                    </div>
+                </div>
             </form>
 
+            <div> 
+            <p>This field is required</p>
+            <button>Clear</button>
+            <button>Create Task</button>
         </div>
+        </div>
+    </div>
 
 </html>

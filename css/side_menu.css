@@ -7,20 +7,16 @@
     display:flex;
 }
 
-.sideMenu{
-    width: 30%;
-     
-}
-
 .right-side{
-    width: 70%;
+    width: 100%;
+    margin-left: 232px;
 }
 
 nav{
     background-color:  rgb(42, 54, 71);
     height: 100vh;
     position: fixed;
-    width: 30%;
+    width: 232px;
 }
 
 .center-x{

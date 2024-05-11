@@ -1,6 +1,11 @@
  header{
     background-color: #FFFFFF;
     padding: 20px 40px;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 232px;
+
  }
  
  .help {
