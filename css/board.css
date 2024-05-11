@@ -28,6 +28,14 @@ background-color: blue;
     align-items: center;
 }
 
+.spaceBetweenBottom{
+    display:flex;
+    justify-content: space-between;
+    align-items:flex-start;
+}
+
+
+
 .backgroudColor{
     background-color: #F6F7F8;
 }

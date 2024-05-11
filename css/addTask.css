@@ -56,3 +56,10 @@ background-color: #D1D1D1;
     width: 20px;
     height: 14.5px; 
 }
+
+.positionButton{
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+margin: 40px 48px;
+}
