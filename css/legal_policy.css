@@ -1,0 +1,39 @@
+.container {
+    max-width: 1440px;
+    margin: auto;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+ol {
+    margin-bottom: 20px;
+}
+
+ol li {
+    margin-bottom: 10px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.back_to_main{
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+}
+
+.back_to_main a{
+    padding-left: 80px;
+}
