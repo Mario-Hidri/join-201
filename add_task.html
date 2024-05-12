@@ -26,11 +26,11 @@
                     <div class="leftInput">
                         <div class="column distanceBetweenIput">
                             <label for="">Title</label>
-                            <input class="input" type="" placeholder="   Enter a Title">
+                            <input id="title" class="input" type="" placeholder="   Enter a Title">
                         </div>
                         <div class="column distanceBetweenIput">
                             <label for="">Description</label>
-                            <textarea class="textarea" placeholder=" Enter a description"></textarea>
+                            <textarea id="description" class="textarea" placeholder=" Enter a description"></textarea>
                         </div>
                         <div class="column distanceBetweenIput">
                             <label for="">Assign to</label>
@@ -43,7 +43,7 @@
                     <div class="rightInput">
                         <div class="column distanceBetweenIput">
                             <label for="">date</label>
-                            <input class="input" type="date">
+                            <input id="date" class="input" type="date">
                         </div>
                         <div class="distanceBetweenIput">
                             <button class="urgentPriority prioButton">Urgent<img class="priorityImage"
@@ -56,7 +56,7 @@
 
                         <div class="column distanceBetweenIput">
                             <label for="">category</label>
-                            <select class="input" id="category" placeholder="   Select a category">
+                            <select id="category" class="input" id="category" placeholder="   Select a category">
                                 <option>Technical Task</option>
                                 <option>User Story</option>
                                 <option>Design</option>
@@ -64,7 +64,13 @@
                         </div>
 
                         <div class="column distanceBetweenIput">
-                            <input placeholder="   Add new subtask">
+                            <div class="fake-input">
+                                <input placeholder="   Add new subtask">
+                                <img src="./assets/img/addSubTask.png"/>
+                            </div>
+                            <div id="subtask" ondragenter="">
+
+                            </div>
                         </div>
                     </div>
                 </div>

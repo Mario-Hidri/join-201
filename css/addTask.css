@@ -63,3 +63,25 @@ justify-content: space-between;
 align-items: flex-end;
 margin: 40px 48px;
 }
+
+.fake-input{
+    position: relative;
+    border: 1px solid #D1D1D1;
+    border-radius: 8px;
+    height: 24px;
+    width: 300px;
+}
+.fake-input input {
+    width: 100%;
+    height: 100%;
+     box-sizing: border-box ;
+     border:none; 
+     background-color:#fff;
+     border-radius: 8px;
+    }
+.fake-input img { 
+    position: absolute; 
+     top: 4px;
+    right: 5px;
+    width: 16px;
+}
