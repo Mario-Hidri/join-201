@@ -1,13 +1,15 @@
- header{
-    background-color: #FFFFFF;
-    padding: 20px 40px;
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    left: 232px;
-
+ header {
+     background-color: #FFFFFF;
+     padding: 20px 40px;
+     position: fixed;
+     top: 0px;
+     right: 0px;
+     left: 232px;
+     box-shadow: 0px 4px 4px 0px #0000001A;
+     z-index: 1000;
+     height: 96px;
  }
- 
+
  .help {
      height: 32px;
  }
