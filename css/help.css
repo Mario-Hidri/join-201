@@ -45,6 +45,7 @@
 
 .container_legal_policy a {
     color: #007bff;
+    text-decoration: none;
 }
 
 .container_legal_policy a:hover {
