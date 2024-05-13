@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    background-color: #F6F7F8;
+}
+
+.contacts_list {
+    position: fixed;
+    padding: 32px 24px 32px 24px;
+    left: 232px;
+    width: 400px;
+    height: 1188px;
+    background-color: #FFFFFF;
+    top: 137px;
+    overflow-y: scroll;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 24px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #FFFFFF;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.contacts_list button {
+    background-color: #2A3647;
+    width: 352px;
+    height: 56px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 15px;
+    padding: 12px 0px 12px 0px;
+    border-radius: 10px;
+    border: 1px;
+    cursor: pointer;
+}
+
+.inside_the_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.inside_the_button img {
+    width: 29.33px;
+    height: 20.91px;
+}
+
+.inside_the_button h2 {
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 25.2px;
+    color: #FFFFFF;
+}
+
+.alphabetical_order {
+    padding: 17px 36px 17px 36px;
+    width: Fill (352px);
+    height: 58px;
+    gap: 8px;
+}
+
+.alphabetical_order h1 {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.seperator_order_contacts {
+    width: 352px;
+    border: 1px solid #D1D1D1
+}
+
+.image_container {
+    position: relative;
+    display: inline-block;
+    width: Fixed (352px);
+    height: 78px;
+    padding: 15px 24px 15px 24px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 35px;
+}
+
+.initials1 {
+    position: absolute;
+    top: 43px;
+    left: 31px;
+    color: white;
+    font-size: 14px;
+    font-weight: lighter;
+    margin-right: 5px;
+}
+
+.initials2 {
+    position: absolute;
+    top: 43px;
+    left: 47px;
+    color: white;
+    font-size: 14px;
+    font-weight: lighter;
+}
