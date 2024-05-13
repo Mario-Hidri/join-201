@@ -1,33 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log-In</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/log_in.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="./css/sign-up.css">
+    <title>Sign-Up</title>
 </head>
-
 <body>
     <div class="log-in-header">
         <img class="logo" src="./assets/img/log_in_img/Capa 1.svg" alt="">
-
-        <div class="sign-up">
-            <p>
-                Not a Join user ?
-            </p>
-            <button>
-                <a href="./sign_up.html">Sign Up</a>
-            </button>
         </div>
     </div>
 
+
     <div class="log-in-window">
+        <a class="arrow-to-log-in-page" href="./log_in.html">
+            <img  src="./assets/img/sign_up_img/arrow-left-line.svg" alt="">
+        </a>
         <div class="login-text">
             <p>
-                Log in
+                Sign up
             </p>
             <div class="separator">
 
@@ -35,6 +27,12 @@
         </div>
 
         <div class="login-input-container">
+            <form action="" class="flex-container">
+                <div class="input-with-img">
+                    <input placeholder="Name" class="input1" type="text">
+                    <img src="./assets/img/sign_up_img/person.svg" alt="Bild" class="input-img">
+                </div>
+            </form>
             <form action="" class="flex-container">
                 <div class="input-with-img">
                     <input placeholder="Email" class="input1" type="text">
@@ -47,10 +45,16 @@
                     <img src="./assets/img/log_in_img/lock.svg" alt="Bild" class="input-img">
                 </div>
             </form>
+            <form action="" class="flex-container">
+                <div class="input-with-img">
+                    <input placeholder="Confirm Password" class="input1" type="text">
+                    <img src="./assets/img/log_in_img/lock.svg" alt="Bild" class="input-img">
+                </div>
+            </form>
         </div>
 
         <div class="remember-checkbox-container">
-            <label class="container">Remember me
+            <label class="container">I accept the <a class="privacy-sign-up" href="">Privacy policy</a>
                 <input type="checkbox" checked="checked">
                 <span class="checkmark"></span>
               </label>
@@ -58,10 +62,7 @@
 
         <div class="log-in-container">
             <button class="log-in-button">
-                Log in
-            </button>
-            <button class="log-in-guest-button">
-                Guest Log in
+                Sign up
             </button>
         </div>
     </div>
@@ -79,5 +80,4 @@
         </div>
     </div>
 </body>
-
 </html>
