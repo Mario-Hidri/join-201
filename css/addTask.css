@@ -71,6 +71,7 @@ margin: 40px 48px;
     height: 24px;
     width: 300px;
 }
+
 .fake-input input {
     width: 100%;
     height: 100%;
@@ -79,6 +80,7 @@ margin: 40px 48px;
      background-color:#fff;
      border-radius: 8px;
     }
+
 .fake-input img { 
     position: absolute; 
      top: 4px;

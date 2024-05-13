@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./css/addTask.css">
     <script src="./javascript/includeHTML.js"></script>
     <script src="./javascript/board.js"></script>
+    <script src="./javascript/addTask.js"></script>
 </head>
 
 <body onload="includeHTML()">
@@ -21,7 +22,7 @@
             <div class="header">
                 <h1>Add Task</h1>
             </div>
-            <form action="">
+            <form onsubmit="">
                 <div class="positionInputFields">
                     <div class="leftInput">
                         <div class="column distanceBetweenIput">
@@ -46,11 +47,11 @@
                             <input id="date" class="input" type="date">
                         </div>
                         <div class="distanceBetweenIput">
-                            <button class="urgentPriority prioButton">Urgent<img class="priorityImage"
+                            <button  onclick="changePrioToUrgent()" class="urgentPriority prioButton">Urgent<img id="urgent" class="priorityImage"
                                     src="./assets/img/activeHighPriority.png" alt=""></button>
-                            <button class="mediumPriority prioButton">Medium <img class="priorityImage"
+                            <button onclick="changePrioToMedium()" class="mediumPriority prioButton">Medium <img id="medium" class="priorityImage"
                                     src="./assets/img/activeMediumPriority.png" alt=""></button>
-                            <button class="lowPriority prioButton">Low <img class="priorityImage"
+                            <button onclick="changePrioToLow()" class="lowPriority prioButton">Low <img id="low" class="priorityImage"
                                     src="./assets/img/activeLowPriority.png" alt=""></button>
                         </div>
 
@@ -65,12 +66,12 @@
 
                         <div class="column distanceBetweenIput">
                             <div class="fake-input">
-                                <input placeholder="   Add new subtask">
-                                <img src="./assets/img/addSubTask.png"/>
+                                <input id="subtask" placeholder="   Add new subtask">
+                                <img onclick="addSubTask()" src="./assets/img/addSubTask.png"/>
                             </div>
-                            <div id="subtask" ondragenter="">
+                            <ul id="addSubTask">
 
-                            </div>
+                            </ul>
                         </div>
                     </div>
                 </div>
