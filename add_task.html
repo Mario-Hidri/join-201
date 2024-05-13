@@ -22,7 +22,7 @@
             <div class="header">
                 <h1>Add Task</h1>
             </div>
-            <form action=""></form>
+           
             <form onsubmit="addTask()" action="./board.html">
                 <div class="positionInputFields">
                     <div class="leftInput">
@@ -48,13 +48,13 @@
                             <input id="date" class="input" type="date">
                         </div>
                         <div class="distanceBetweenIput">
-                            <button onclick="changePrioToUrgent()" class="urgentPriority prioButton">Urgent<img
+                            <button type="button" onclick="changePrioToUrgent()" class="urgentPriority prioButton">Urgent<img
                                     id="urgent" class="priorityImage" src="./assets/img/activeHighPriority.png"
                                     alt=""></button>
-                            <button onclick="changePrioToMedium()" class="mediumPriority prioButton">Medium <img
+                            <button type="button" onclick="changePrioToMedium()" class="prioButton">Medium <img
                                     id="medium" class="priorityImage" src="./assets/img/activeMediumPriority.png"
                                     alt=""></button>
-                            <button onclick="changePrioToLow()" class="lowPriority prioButton">Low <img id="low"
+                            <button type="button" onclick="changePrioToLow()" class="prioButton">Low <img id="low"
                                     class="priorityImage" src="./assets/img/activeLowPriority.png" alt=""></button>
                         </div>
 
