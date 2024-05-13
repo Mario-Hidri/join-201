@@ -22,7 +22,8 @@
             <div class="header">
                 <h1>Add Task</h1>
             </div>
-            <form onsubmit="">
+            <form action=""></form>
+            <form onsubmit="addTask()" action="./board.html">
                 <div class="positionInputFields">
                     <div class="leftInput">
                         <div class="column distanceBetweenIput">
@@ -47,12 +48,14 @@
                             <input id="date" class="input" type="date">
                         </div>
                         <div class="distanceBetweenIput">
-                            <button  onclick="changePrioToUrgent()" class="urgentPriority prioButton">Urgent<img id="urgent" class="priorityImage"
-                                    src="./assets/img/activeHighPriority.png" alt=""></button>
-                            <button onclick="changePrioToMedium()" class="mediumPriority prioButton">Medium <img id="medium" class="priorityImage"
-                                    src="./assets/img/activeMediumPriority.png" alt=""></button>
-                            <button onclick="changePrioToLow()" class="lowPriority prioButton">Low <img id="low" class="priorityImage"
-                                    src="./assets/img/activeLowPriority.png" alt=""></button>
+                            <button onclick="changePrioToUrgent()" class="urgentPriority prioButton">Urgent<img
+                                    id="urgent" class="priorityImage" src="./assets/img/activeHighPriority.png"
+                                    alt=""></button>
+                            <button onclick="changePrioToMedium()" class="mediumPriority prioButton">Medium <img
+                                    id="medium" class="priorityImage" src="./assets/img/activeMediumPriority.png"
+                                    alt=""></button>
+                            <button onclick="changePrioToLow()" class="lowPriority prioButton">Low <img id="low"
+                                    class="priorityImage" src="./assets/img/activeLowPriority.png" alt=""></button>
                         </div>
 
                         <div class="column distanceBetweenIput">
@@ -67,7 +70,7 @@
                         <div class="column distanceBetweenIput">
                             <div class="fake-input">
                                 <input id="subtask" placeholder="   Add new subtask">
-                                <img onclick="addSubTask()" src="./assets/img/addSubTask.png"/>
+                                <img onclick="addSubTask()" src="./assets/img/addSubTask.png" />
                             </div>
                             <ul id="addSubTask">
 
@@ -75,15 +78,16 @@
                         </div>
                     </div>
                 </div>
-            </form>
 
-            <div class="positionButton">
-                <p>This field is required</p>
-                <div>
-                    <button>Clear</button>
-                    <button>Create Task</button>
+
+                <div class="positionButton">
+                    <p>This field is required</p>
+                    <div>
+                        <button>Clear</button>
+                        <button type="submit">Create Task</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 

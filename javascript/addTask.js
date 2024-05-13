@@ -29,7 +29,7 @@ function loadTask() {
     for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i];
         let board = task["board"];
-        let titel = task["titel"];
+        let title = task["title"];
         let description = task["description"];
         let date = task["date"];
         let category = task["category"];
@@ -40,7 +40,7 @@ function loadTask() {
     
         <div class="card">
         <img src="./assets/img/${category}" alt="">
-        <h3>${titel}</h3>
+        <h3>${title}</h3>
         <p>${description}</p>
         </div>
     `;
