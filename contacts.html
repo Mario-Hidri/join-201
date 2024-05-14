@@ -4,24 +4,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Join</title>
+    <link rel="stylesheet" href="./css/board.css">
+    <link rel="stylesheet" href="./css/contacts.css">
     <link rel="stylesheet" href="./css/side_menu.css">
     <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./css/board.css">
-    <link rel="stylesheet" href="./css/addTask.css">
     <script src="./javascript/includeHTML.js"></script>
     <script src="./javascript/board.js"></script>
+    <script src="./javascript/add_contact.js"></script>
 </head>
 
 <body onload="includeHTML()">
+
     <header class="spaceBetween" w3-include-html="./assets/templates/header.html"></header>
-    <div class="flexbox">
-        <div class="sideMenu" w3-include-html="./assets/templates/side_menu.html"></div>
-        <div class="right-side backgroudColor">
-        
-            
-            
+
+    <nav class="sideMenu" w3-include-html="./assets/templates/side_menu.html"></nav>
+
+    <section class="contacts_list">
+        <button onclick="showPage()" id="showPageButton">
+            <div class="inside_the_button">
+                <h2>Add New contact</h2>
+                <img src="./assets/img/contacts_img/person_add.png" alt="">
+            </div>
+        </button>
+
+        <div class="alphabetical_order">
+            <h1>A</h1>
         </div>
-    </div>
+        <div class="seperator_order_contacts"></div>
+
+        <div class="image_container">
+            <div>
+                <img src="./assets/img/contacts_img/Ellipse 5.png" alt="Profile Picture">
+                <div class="initials1">A</div>
+                <div class="initials2">M</div>
+            </div>
+            <div>
+                <h1>Anton Mayer</h1>
+                <a href="mailto:antonm@gmail.com">antonm@gmail.com</a>
+            </div>
+        </div>
+
+        <div class="image_container">
+            <div>
+                <img src="./assets/img/contacts_img/Ellipse 5.png" alt="Profile Picture">
+                <div class="initials1">A</div>
+                <div class="initials2">J</div>
+            </div>
+            <div>
+                <h1>Anja Schulz</h1>
+                <a href="mailto:schulz@hotmail.com">schulz@hotmail.com</a>
+            </div>
+        </div>
+
+        <div class="alphabetical_order">
+            <h1>B</h1>
+        </div>
+        <div class="seperator_order_contacts"></div>
+    </section>
+
+
+    <section id="slidingPage" class="hidden">
+        <div onclick="hidePage()"  class="close_button">
+            <img src="./assets/img/contacts_img/close.svg" alt="Schließen">
+        </div>
+        <div class="contact_content_left">
+            <img src="./assets/img/joinLogo.png" alt="">
+            <h1>Add Contact</h1>
+            <p>Tasks are better with a team!</p>
+        </div>
+        <div class="center_image">
+            <img src="./assets/img/contacts_img/person.png" alt="Person">
+        </div>
+        <div class="add_contact_input_fields">
+            <form action="" class="flex_container">
+                <div class="input_with_img">
+                    <input placeholder="Name" class="input_1" type="text">
+                    <img src="./assets/img/contacts_img/person.svg" alt="Bild" class="input_img">
+                </div>
+            </form>
+            <form action="" class="flex_container">
+                <div class="input_with_img">
+                    <input placeholder="Email" class="input_1" type="text">
+                    <img src="./assets/img/log_in_img/mail.svg" alt="Bild" class="input_img">
+                </div>
+            </form>
+            <form action="" class="flex_container">
+                <div class="input_with_img">
+                    <input placeholder="Phone" class="input_1" type="text">
+                    <img src="./assets/img/contacts_img/call.svg" alt="Bild" class="input_img">
+                </div>
+            </form>
+            <div class="form_buttons">
+                <button class="cancel_button">
+                    <p>Cancel</p> <img src="./assets/img/contacts_img/close.svg" alt="">
+                </button>
+                <button class="add_button">
+                    <p>Create Contact</p> <img src="./assets/img/contacts_img/check.svg" alt="">
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+
+</body>
 
 </html>
