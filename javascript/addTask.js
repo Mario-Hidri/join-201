@@ -5,14 +5,14 @@ function addTask() {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
     let date = document.getElementById('date');
-    let priority;
     let category = document.getElementById('category');
     // let subtask = document.getElementById();
     if(category.value =="User Story"){
-        category="userStory.png";
-    }else{
+        category="userStory.png"
+    }else {
         category="technicalTask.png";
     }
+
     let task = {
         "title": title.value,
         "description": description.value,
@@ -22,7 +22,7 @@ function addTask() {
         "board": "toDo"
     }
     tasks.push(task);
-    loadTask();
+     
 }
 
 function loadTask() {
@@ -44,9 +44,7 @@ function loadTask() {
         <p>${description}</p>
         </div>
     `;
-        if(category=="User Story"){
-
-        }
+         
 
     }
 }
@@ -63,19 +61,19 @@ function addSubTask() {
 }
 
 function changePrioToUrgent() {
-    document.getElementById("urgent").scr = "./assets/img/activeHighPriority.png";
-    document.getElementById("medium").scr = "./assets/img/MediumPriority.png";
-    document.getElementById("low").scr = "./assets/img/lowPriority.png";
-    document.getElementById("urgent").parentElement.classList.add('urgentPriority');
+    document.getElementById('urgent').src = './assets/img/activeHighPriority.png';
+    document.getElementById('medium').src = './assets/img/mediumPriority.png';
+    document.getElementById('low').src = './assets/img/lowPriority.png';
+    document.getElementById('urgent').parentElement.classList.add('urgentPriority');
     document.getElementById("medium").parentElement.classList.remove('mediumPriority');
-    document.getElementById("low").parentElement.classList.remove('lowPriority');
+    document.getElementById('low').parentElement.classList.remove('lowPriority');
     prio = "urgent";
 }
 
 function changePrioToMedium() {
-    document.getElementById("urgent").scr = "./assets/img/HighPriority.png";
-    document.getElementById("medium").scr = "./assets/img/activeMediumPriority.png";
-    document.getElementById("low").scr = "./assets/img/lowPriority.png";
+    document.getElementById("urgent").src = './assets/img/highPriority.png';
+    document.getElementById("medium").src ='./assets/img/activeMediumPriority.png';
+    document.getElementById("low").src = './assets/img/lowPriority.png';
     document.getElementById("urgent").parentElement.classList.remove('urgentPriority');
     document.getElementById("medium").parentElement.classList.add('mediumPriority');
     document.getElementById("low").parentElement.classList.remove('lowPriority');
@@ -84,9 +82,9 @@ function changePrioToMedium() {
 }
 
 function changePrioToLow() {
-    document.getElementById("urgent").scr = "./assets/img/HighPriority.png";
-    document.getElementById("medium").scr = "./assets/img/MediumPriority.png";
-    document.getElementById("low").scr = "./assets/img/activeLowPriority.png";
+    document.getElementById("urgent").src = './assets/img/HighPriority.png';
+    document.getElementById("medium").src = './assets/img/MediumPriority.png';
+    document.getElementById("low").src = './assets/img/activeLowPriority.png';
     document.getElementById("urgent").parentElement.classList.remove('urgentPriority');
     document.getElementById("medium").parentElement.classList.remove('mediumPriority');
     document.getElementById("low").parentElement.classList.add('lowPriority');

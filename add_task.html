@@ -23,7 +23,7 @@
                 <h1>Add Task</h1>
             </div>
            
-            <form onsubmit="addTask()" action="./board.html">
+            <form onsubmit="addTask();" action="./board.html">
                 <div class="positionInputFields">
                     <div class="leftInput">
                         <div class="column distanceBetweenIput">
@@ -52,10 +52,10 @@
                                     id="urgent" class="priorityImage" src="./assets/img/activeHighPriority.png"
                                     alt=""></button>
                             <button type="button" onclick="changePrioToMedium()" class="prioButton">Medium <img
-                                    id="medium" class="priorityImage" src="./assets/img/activeMediumPriority.png"
+                                    id="medium" class="priorityImage" src="./assets/img/MediumPriority.png"
                                     alt=""></button>
                             <button type="button" onclick="changePrioToLow()" class="prioButton">Low <img id="low"
-                                    class="priorityImage" src="./assets/img/activeLowPriority.png" alt=""></button>
+                                    class="priorityImage" src="./assets/img/LowPriority.png" alt=""></button>
                         </div>
 
                         <div class="column distanceBetweenIput">
@@ -83,7 +83,7 @@
                 <div class="positionButton">
                     <p>This field is required</p>
                     <div>
-                        <button>Clear</button>
+                        <button type="reset">Clear</button>
                         <button type="submit">Create Task</button>
                     </div>
                 </div>
