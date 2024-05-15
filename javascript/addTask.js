@@ -74,9 +74,13 @@ function loadTask() {
         let subtask = task["subtask"];
 
 
+        document.getElementById('toDo').innerHTML = '';
+        document.getElementById('inProgress').innerHTML = '';
+        document.getElementById('awaitFeedback').innerHTML = '';
+        document.getElementById('done').innerHTML = '';
+
         document.getElementById(`${board}`).innerHTML += `
-    
-        <div class="card">
+        <div draggable="true" ondragstart="startDragging(${i})" class="card">
         <img class="category" src="./assets/img/${category}" alt="">
         <h3>${title}</h3>
         <p>${description}</p>
@@ -86,6 +90,16 @@ function loadTask() {
 
     }
 }
+
+  
+
+
+
+
+
+
+
+
 
 function loadTaskHTML() {
 

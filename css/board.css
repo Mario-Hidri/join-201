@@ -19,7 +19,6 @@
 
 .dragArea {
     height: 5000px;
-    background-color: blue;
 }
 
 .spaceBetween {
@@ -42,14 +41,19 @@
 
 .card {
     width: 100%;
-    color: #FFFFFF;
+    background-color: #FFFFFF;
     border:1px gray solid ;
     border-radius: 10px;
     margin:10px 0;
-    box-shadow: 0px 10px 10px 0px rgba(69, 203, 248, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 24px;
+    box-sizing: border-box;
+
 }
 
 .category {
     width: 50%;
-    margin-left: 5px;
 }

@@ -14,7 +14,7 @@
 </head>
 
 <body onload="initBoardSite()">
-
+ 
     <header class="spaceBetween" w3-include-html="./assets/templates/header.html"></header>
 
     <div class="flexbox">
@@ -34,28 +34,28 @@
                         <p>To do</p>
                         <img class="icon" src="./assets/img/addTask.png" alt="">
                     </div>
-                    <div id="toDo" class="dragArea"></div>
+                    <div id="toDo" class="dragArea" ondrop="moveTo(id='toDo')" ondragover="allowDrop(event)"></div>
                 </div>
                 <div class="fourth-size">
                     <div class="spaceBetween">
                         <p>In Progress</p>
                         <img class="icon" src="./assets/img/addTask.png" alt="">
                     </div>
-                    <div id="inProgress" class="dragArea"></div>
+                    <div id="inProgress" class="dragArea" ondrop="moveTo(id='inProgress')" ondragover="allowDrop(event)"></div>
                 </div>
                 <div class="fourth-size">
                     <div class="spaceBetween">
                         <p>Await Feedback</p>
                         <img class="icon" src="./assets/img/addTask.png" alt="">
                     </div>
-                    <div id="awaitFeedback" class="dragArea"></div>
+                    <div id="awaitFeedback" class="dragArea" ondrop="moveTo(id='awaitFeedback')" ondragover="allowDrop(event)"></div>
                 </div>
                 <div class="fourth-size">
                     <div class="spaceBetween">
                         <p>Done</p>
                         <img class="icon" src="./assets/img/addTask.png" alt="">
                     </div>
-                    <div id="done" class="dragArea"></div>
+                    <div id="done" class="dragArea" ondrop="moveTo(id='done')" ondragover="allowDrop(event)"></div>
                 </div>
             </div>
 

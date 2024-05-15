@@ -1,13 +1,19 @@
+let currentDraggedElement;
+
+ 
+  
+function startDragging(id) {
+    currentDraggedElement = id;
+}
+
 function allowDrop(ev) {
-    ev.preventDefault();
-  }
-  
-  function startDragging(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-  }
-  
-  function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-  }
+  ev.preventDefault();
+}
+
+   function moveTo(id){
+  tasks[currentDraggedElement]['board'] = id;
+  loadTask();
+   
+ }
+
+   
