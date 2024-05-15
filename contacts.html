@@ -14,7 +14,7 @@
     <script src="./javascript/add_contact.js"></script>
 </head>
 
-<body onload="includeHTML()">
+<body onload="init()">
 
     <header class="spaceBetween" w3-include-html="./assets/templates/header.html"></header>
 
@@ -65,7 +65,7 @@
 
 
     <section id="slidingPage" class="hidden">
-        <div onclick="hidePage()"  class="close_button">
+        <div onclick="hidePage()" class="close_button">
             <img src="./assets/img/contacts_img/close.svg" alt="Schließen">
         </div>
         <div class="contact_content_left">
@@ -79,27 +79,27 @@
         <div class="add_contact_input_fields">
             <form action="" class="flex_container">
                 <div class="input_with_img">
-                    <input placeholder="Name" class="input_1" type="text">
+                    <input id="add_contact_name" placeholder="Name" class="input_1" type="text">
                     <img src="./assets/img/contacts_img/person.svg" alt="Bild" class="input_img">
                 </div>
             </form>
             <form action="" class="flex_container">
                 <div class="input_with_img">
-                    <input placeholder="Email" class="input_1" type="text">
+                    <input id="add_contact_email" placeholder="Email" class="input_1" type="text">
                     <img src="./assets/img/log_in_img/mail.svg" alt="Bild" class="input_img">
                 </div>
             </form>
             <form action="" class="flex_container">
                 <div class="input_with_img">
-                    <input placeholder="Phone" class="input_1" type="text">
+                    <input id="add_contact_phone" placeholder="Phone" class="input_1" type="text">
                     <img src="./assets/img/contacts_img/call.svg" alt="Bild" class="input_img">
                 </div>
             </form>
             <div class="form_buttons">
-                <button class="cancel_button">
+                <button onclick="hidePage()" class="cancel_button">
                     <p>Cancel</p> <img src="./assets/img/contacts_img/close.svg" alt="">
                 </button>
-                <button class="add_button">
+                <button onclick="addContact()" class="add_button">
                     <p>Create Contact</p> <img src="./assets/img/contacts_img/check.svg" alt="">
                 </button>
             </div>
