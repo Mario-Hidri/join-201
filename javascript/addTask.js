@@ -51,19 +51,20 @@ async function saveTasksInFirebase() {
 
 async function loadTasksFromFirebase(){
     let response =  await fetch(url);
+
     tasks = await response.json();
-
-    
-    if(tasks){
-    for (let index = 0; index < tasks.length; index++) {
-        const element = tasks[index];
-        console.log(element);
-    }
+    if(tasks[0] == null){
+        tasks =[];
+    } 
 }
 
-}
+
 
 function loadTask() {
+    document.getElementById('toDo').innerHTML = '';
+    document.getElementById('inProgress').innerHTML = '';
+    document.getElementById('awaitFeedback').innerHTML = '';
+    document.getElementById('done').innerHTML = '';
     for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i];
         let board = task["board"];
@@ -74,10 +75,7 @@ function loadTask() {
         let subtask = task["subtask"];
 
 
-        document.getElementById('toDo').innerHTML = '';
-        document.getElementById('inProgress').innerHTML = '';
-        document.getElementById('awaitFeedback').innerHTML = '';
-        document.getElementById('done').innerHTML = '';
+        
 
         document.getElementById(`${board}`).innerHTML += `
         <div draggable="true" ondragstart="startDragging(${i})" class="card">
