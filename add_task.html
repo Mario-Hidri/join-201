@@ -14,7 +14,7 @@
     <script src="./javascript/addTask.js"></script>
 </head>
 
-<body onload="includeHTML()">
+<body onload="initAddTaskSite()">
     <header class="spaceBetween" w3-include-html="./assets/templates/header.html"></header>
     <div class="flexbox">
         <div class="sideMenu" w3-include-html="./assets/templates/side_menu.html"></div>
@@ -23,7 +23,7 @@
                 <h1>Add Task</h1>
             </div>
            
-            <form onsubmit="addTask();" action="./board.html">
+            <form onsubmit="addTask();" action="./board.html" >
                 <div class="positionInputFields">
                     <div class="leftInput">
                         <div class="column distanceBetweenIput">

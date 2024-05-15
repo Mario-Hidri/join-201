@@ -1,16 +1,29 @@
 let tasks = [];
 let subtasks = [];
 let prio = "urgent";
+let url = 'https://jointask-cedc0-default-rtdb.europe-west1.firebasedatabase.app/.json';
+ 
+function initAddTaskSite(){
+    includeHTML();
+    loadTasksFromFirebase();
+}
+
+async function initBoardSite(){
+    includeHTML();
+   await loadTasksFromFirebase();
+    loadTask()
+}
+
 function addTask() {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
     let date = document.getElementById('date');
     let category = document.getElementById('category');
     // let subtask = document.getElementById();
-    if(category.value =="User Story"){
-        category="userStory.png"
-    }else {
-        category="technicalTask.png";
+    if (category.value == "User Story") {
+        category = "userStory.png"
+    } else {
+        category = "technicalTask.png";
     }
 
     let task = {
@@ -22,7 +35,32 @@ function addTask() {
         "board": "toDo"
     }
     tasks.push(task);
-     
+    saveTasksInFirebase() ;
+}
+ 
+async function saveTasksInFirebase() {
+     await fetch(url , {
+        method:"PUT",
+        header: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(tasks)
+    });
+}
+
+
+async function loadTasksFromFirebase(){
+    let response =  await fetch(url);
+    tasks = await response.json();
+
+    
+    if(tasks){
+    for (let index = 0; index < tasks.length; index++) {
+        const element = tasks[index];
+        console.log(element);
+    }
+}
+
 }
 
 function loadTask() {
@@ -33,10 +71,10 @@ function loadTask() {
         let description = task["description"];
         let date = task["date"];
         let category = task["category"];
-        let  btask = task["subtask"];
+        let subtask = task["subtask"];
 
 
-        document.getElementById(`${board}`).innerHTML = `
+        document.getElementById(`${board}`).innerHTML += `
     
         <div class="card">
         <img src="./assets/img/${category}" alt="">
@@ -44,7 +82,7 @@ function loadTask() {
         <p>${description}</p>
         </div>
     `;
-         
+
 
     }
 }
@@ -72,7 +110,7 @@ function changePrioToUrgent() {
 
 function changePrioToMedium() {
     document.getElementById("urgent").src = './assets/img/highPriority.png';
-    document.getElementById("medium").src ='./assets/img/activeMediumPriority.png';
+    document.getElementById("medium").src = './assets/img/activeMediumPriority.png';
     document.getElementById("low").src = './assets/img/lowPriority.png';
     document.getElementById("urgent").parentElement.classList.remove('urgentPriority');
     document.getElementById("medium").parentElement.classList.add('mediumPriority');
