@@ -115,8 +115,6 @@ body {
     font-weight: lighter;
 }
 
-
-
 #slidingPage {
     position: fixed;
     width: 1212px;
@@ -147,12 +145,23 @@ body {
     top: 32px;
     right: 55px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.1s;
+}
+
+.close_button:hover {
+    background-color: #f0f0f0;
 }
 
 .close_button img {
     width: 13.15px;
     height: 13.15px;
 }
+
 
 .contact_content_left {
     display: flex;
@@ -213,6 +222,9 @@ body {
 
 .flex_container {
     display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 20px;
 }
 
 .input_with_img {

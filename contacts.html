@@ -65,7 +65,7 @@
 
 
     <section id="slidingPage" class="hidden">
-        <div onclick="hidePage()" class="close_button">
+        <div onclick="hidePage()"  class="close_button">
             <img src="./assets/img/contacts_img/close.svg" alt="Schließen">
         </div>
         <div class="contact_content_left">
@@ -77,37 +77,32 @@
             <img src="./assets/img/contacts_img/person.png" alt="Person">
         </div>
         <div class="add_contact_input_fields">
-            <form action="" class="flex_container">
+            <form id="contactForm" class="flex_container">
                 <div class="input_with_img">
-                    <input id="add_contact_name" placeholder="Name" class="input_1" type="text">
+                    <input id="add_contact_name" name="name" placeholder="Name" class="input_1" type="text" required minlength="2">
                     <img src="./assets/img/contacts_img/person.svg" alt="Bild" class="input_img">
                 </div>
-            </form>
-            <form action="" class="flex_container">
                 <div class="input_with_img">
-                    <input id="add_contact_email" placeholder="Email" class="input_1" type="text">
+                    <input id="add_contact_email" name="email" placeholder="Email" class="input_1" type="email" required>
                     <img src="./assets/img/log_in_img/mail.svg" alt="Bild" class="input_img">
                 </div>
-            </form>
-            <form action="" class="flex_container">
                 <div class="input_with_img">
-                    <input id="add_contact_phone" placeholder="Phone" class="input_1" type="text">
-                    <img src="./assets/img/contacts_img/call.svg" alt="Bild" class="input_img">
+                    <input id="add_contact_phone" name="phone" placeholder="Phone" class="input_1" type="tel" required>
+                    <img src="./assets/img/contacts_img/call.svg" alt="Phone Icon" class="input_img">
+                </div>                
+                <div class="form_buttons">
+                    <button type="button" onclick="hidePage()" class="cancel_button">
+                        <p>Cancel</p>
+                        <img src="./assets/img/contacts_img/close.svg" alt="">
+                    </button>
+                    <button onclick="addContact()" type="submit" class="add_button">
+                        <p>Create Contact</p>
+                        <img src="./assets/img/contacts_img/check.svg" alt="">
+                    </button>
                 </div>
             </form>
-            <div class="form_buttons">
-                <button onclick="hidePage()" class="cancel_button">
-                    <p>Cancel</p> <img src="./assets/img/contacts_img/close.svg" alt="">
-                </button>
-                <button onclick="addContact()" class="add_button">
-                    <p>Create Contact</p> <img src="./assets/img/contacts_img/check.svg" alt="">
-                </button>
-            </div>
         </div>
     </section>
-
-
-
 
 </body>
 
