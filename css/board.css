@@ -1,11 +1,11 @@
-.header{
+.header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 134px 64px 32px  
+    padding: 134px 64px 32px
 }
 
-.canbanBoard{
+.canbanBoard {
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -13,31 +13,43 @@
     padding: 0 64px;
 }
 
-.fourth-size{
+.fourth-size {
     width: 20%;
 }
 
-.dragArea{
-height: 5000px;
-background-color: blue;
+.dragArea {
+    height: 5000px;
+    background-color: blue;
 }
 
-.spaceBetween{
-    display:flex;
+.spaceBetween {
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.spaceBetweenBottom{
-    display:flex;
+.spaceBetweenBottom {
+    display: flex;
     justify-content: space-between;
-    align-items:flex-start;
+    align-items: flex-start;
 }
 
 
 
-.backgroudColor{
+.backgroudColor {
     background-color: #F6F7F8;
 }
 
- 
+.card {
+    width: 100%;
+    color: #FFFFFF;
+    border:1px gray solid ;
+    border-radius: 10px;
+    margin:10px 0;
+    box-shadow: 0px 10px 10px 0px rgba(69, 203, 248, 0.1);
+}
+
+.category {
+    width: 50%;
+    margin-left: 5px;
+}

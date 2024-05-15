@@ -77,7 +77,7 @@ function loadTask() {
         document.getElementById(`${board}`).innerHTML += `
     
         <div class="card">
-        <img src="./assets/img/${category}" alt="">
+        <img class="category" src="./assets/img/${category}" alt="">
         <h3>${title}</h3>
         <p>${description}</p>
         </div>
