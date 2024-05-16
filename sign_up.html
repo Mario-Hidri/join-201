@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/sign-up.css">
+    <script src="./javascript/log_in_script.js"></script>
     <title>Sign-Up</title>
 </head>
+
 <body>
     <div class="log-in-header">
         <img class="logo" src="./assets/img/log_in_img/Capa 1.svg" alt="">
-        </div>
+    </div>
     </div>
 
 
     <div class="log-in-window">
         <a class="arrow-to-log-in-page" href="./log_in.html">
-            <img  src="./assets/img/sign_up_img/arrow-left-line.svg" alt="">
+            <img src="./assets/img/sign_up_img/arrow-left-line.svg" alt="">
         </a>
         <div class="login-text">
             <p>
@@ -27,50 +30,58 @@
         </div>
 
         <div class="login-input-container">
-            <form action="" class="flex-container">
-                <div class="input-with-img">
-                    <input placeholder="Name" class="input1" type="text">
-                    <img src="./assets/img/sign_up_img/person.svg" alt="Bild" class="input-img">
+            <form id="signupForm" onsubmit="checkLogIn()" action="" class="flex-container">
+                <div class="input-container">
+                    <div class="input-with-img">
+                        <input onkeyup="removeErrorMessageOnNameInput()" id="inputNameSignUp" placeholder="Name" class="input1" required type="text">
+                        <img src="./assets/img/sign_up_img/person.svg" alt="Bild" class="input-img">
+                    </div>
                 </div>
-            </form>
-            <form action="" class="flex-container">
-                <div class="input-with-img">
-                    <input placeholder="Email" class="input1" type="text">
-                    <img src="./assets/img/log_in_img/mail.svg" alt="Bild" class="input-img">
+                
+
+                <div id="" class="input-container">
+                    <div class="input-with-img">
+                        <input onkeyup="removeErrorMessageOnEmailInput()" id="inputEmailSignUp" required type="email" placeholder="Email" class="input1" type="text">
+                        <img src="./assets/img/log_in_img/mail.svg" alt="Bild" class="input-img">
+                    </div>
                 </div>
-            </form>
-            <form action="" class="flex-container">
-                <div class="input-with-img">
-                    <input placeholder="Password" class="input1" type="text">
-                    <img src="./assets/img/log_in_img/lock.svg" alt="Bild" class="input-img">
+                
+                <div class="input-container">
+                    <div class="input-with-img">
+                        <input onkeyup="changeFirstPasswordImgSignUp(); removeErrorMessageOnPassword1Input();" id="firstPasswordSignUp" type="password" required placeholder="Password" class="input1" type="text">
+                        <img onclick="firstPasswordSignUpVisible()" id="firstPasswordLogInImg" src="./assets/img/log_in_img/lock.svg" alt="Bild" class="input-img">
+                    </div>
                 </div>
-            </form>
-            <form action="" class="flex-container">
-                <div class="input-with-img">
-                    <input placeholder="Confirm Password" class="input1" type="text">
-                    <img src="./assets/img/log_in_img/lock.svg" alt="Bild" class="input-img">
+                
+                <div class="input-container">
+                    <div class="input-with-img">
+                        <input onkeyup="changesecondPasswordImgSignUp(); removeErrorMessageOnPassword2Input(); " id="secondPasswordSignUp" type="password" required placeholder="Confirm Password" class="input1" type="text">
+                        <img onclick="secondPasswordSignUpVisible()" id="secondPasswordSignUpImg" src="./assets/img/log_in_img/lock.svg" alt="Bild" class="input-img">
+                    </div>
                 </div>
-            </form>
+                
+
         </div>
 
         <div class="remember-checkbox-container">
             <label class="container">I accept the <a class="privacy-sign-up" href="">Privacy policy</a>
-                <input type="checkbox" checked="checked">
+                <input type="checkbox" checked="">
                 <span class="checkmark"></span>
-              </label>
+            </label>
         </div>
 
         <div class="log-in-container">
-            <button class="log-in-button">
+            <button onclick="loadDataToFirebaseAndCheckPasswords(event)" class="log-in-button">
                 Sign up
             </button>
+            </form>
         </div>
     </div>
 
     <div class="privacy-links-container">
         <div>
             <a href="">
-                Privacy Policy 
+                Privacy Policy
             </a>
         </div>
         <div>
@@ -80,4 +91,5 @@
         </div>
     </div>
 </body>
+
 </html>

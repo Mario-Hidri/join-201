@@ -3,6 +3,29 @@ body {
     background: #F6F7F8;
 }
 
+.display-none {
+    display: none;
+}
+
+.cursorpointer {
+    cursor: pointer;
+}
+
+.error-message {
+    display: flex;
+    position: absolute;
+    font-size: 13px;
+    color: #FF8190;
+    left: 10px;
+    /* top: 2px; */
+    bottom: -17px;
+}
+
+.error-border {
+    border: 1px solid red !important;
+}
+
+
 .logo {
     margin-left: 67px;
     margin-top: 80px;
@@ -46,16 +69,11 @@ body {
     background-color: #29ABE2;
 }
 
-.login-input-container {
+.flex-container {
     display: flex;
     justify-content: center;
     flex-direction: column;
     gap: 20px;
-}
-
-.flex-container {
-    display: flex;
-
 }
 
 .input1 {
@@ -73,8 +91,15 @@ body {
     line-height: 24px;
 }
 
-.input-with-img {
+.input-container {
     position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-img {
+    display: flex;
+    align-items: center;
 }
 
 .input-with-img .input-img {

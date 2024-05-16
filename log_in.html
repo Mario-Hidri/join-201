@@ -7,7 +7,7 @@
     <title>Log-In</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/log_in.css">
-    <script src="script.js"></script>
+    <script src="./javascript/log_in_script.js"></script>
 </head>
 
 <body>
@@ -35,18 +35,17 @@
         </div>
 
         <div class="login-input-container">
-            <form action="" class="flex-container">
+            <form onsubmit="checkLogIn()" action="" class="flex-container">
                 <div class="input-with-img">
-                    <input placeholder="Email" class="input1" type="text">
+                    <input id="emailLogIn" required type="email" placeholder="Email" class="input1" type="text">
                     <img src="./assets/img/log_in_img/mail.svg" alt="Bild" class="input-img">
                 </div>
-            </form>
-            <form action="" class="flex-container">
+
+
                 <div class="input-with-img">
-                    <input placeholder="Password" class="input1" type="text">
-                    <img src="./assets/img/log_in_img/lock.svg" alt="Bild" class="input-img">
+                    <input onkeyup="changePasswordImgLogIn()" id="passwordLogIn" type="password" required placeholder="Password" class="input1" type="text">
+                    <img onclick="passwordLogInVisible()" id="passwordLogInImg" src="./assets/img/log_in_img/lock.svg" alt="Bild" class="input-img">
                 </div>
-            </form>
         </div>
 
         <div class="remember-checkbox-container">
@@ -57,9 +56,10 @@
         </div>
 
         <div class="log-in-container">
-            <button class="log-in-button">
+            <button onclick="checkLogIn()" class="log-in-button">
                 Log in
             </button>
+        </form>
             <button class="log-in-guest-button">
                 Guest Log in
             </button>
