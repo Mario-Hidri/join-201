@@ -46,6 +46,7 @@ async function saveTasksInFirebase() {
         },
         body: JSON.stringify(tasks)
     });
+    window.location.href = 'board.html'
 }
 
 

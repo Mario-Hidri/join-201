@@ -1,4 +1,4 @@
-<form onsubmit="addTask();" action="./board.html" >
+<form onsubmit="addTask(); return false" >
     <div class="positionInputFields">
         <div class="leftInput">
             <div class="column distanceBetweenIput">
@@ -58,7 +58,7 @@
     <div class="positionButton">
         <p>This field is required</p>
         <div>
-            <button type="reset">Clear</button>
+            <button type="button">Cancel</button>
             <button type="submit">Create Task</button>
         </div>
     </div>
