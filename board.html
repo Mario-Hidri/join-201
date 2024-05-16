@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/side_menu.css">
     <link rel="stylesheet" href="./css/board.css">
+    <link rel="stylesheet" href="./css/addTask.css">
     <link rel="stylesheet" href="./css/header.css">
     <script src="./javascript/includeHTML.js"></script>
     <script src="./javascript/board.js"></script>
@@ -14,7 +15,7 @@
 </head>
 
 <body onload="initBoardSite()">
- 
+
     <header class="spaceBetween" w3-include-html="./assets/templates/header.html"></header>
 
     <div class="flexbox">
@@ -32,23 +33,25 @@
                 <div class="fourth-size">
                     <div class="spaceBetween">
                         <p>To do</p>
-                        <img class="icon" src="./assets/img/addTask.png" alt="">
+                        <img onclick="addTaskOnToDo()" class="icon" src="./assets/img/addTask.png" alt="">
                     </div>
                     <div id="toDo" class="dragArea" ondrop="moveTo(id='toDo')" ondragover="allowDrop(event)"></div>
                 </div>
                 <div class="fourth-size">
                     <div class="spaceBetween">
                         <p>In Progress</p>
-                        <img class="icon" src="./assets/img/addTask.png" alt="">
+                        <img onclick="addTaskOnInProgress()" class="icon" src="./assets/img/addTask.png" alt="">
                     </div>
-                    <div id="inProgress" class="dragArea" ondrop="moveTo(id='inProgress')" ondragover="allowDrop(event)"></div>
+                    <div id="inProgress" class="dragArea" ondrop="moveTo(id='inProgress')"
+                        ondragover="allowDrop(event)"></div>
                 </div>
                 <div class="fourth-size">
                     <div class="spaceBetween">
                         <p>Await Feedback</p>
-                        <img class="icon" src="./assets/img/addTask.png" alt="">
+                        <img onclick="addTaskOnAwaitFeedback()" class="icon" src="./assets/img/addTask.png" alt="">
                     </div>
-                    <div id="awaitFeedback" class="dragArea" ondrop="moveTo(id='awaitFeedback')" ondragover="allowDrop(event)"></div>
+                    <div id="awaitFeedback" class="dragArea" ondrop="moveTo(id='awaitFeedback')"
+                        ondragover="allowDrop(event)"></div>
                 </div>
                 <div class="fourth-size">
                     <div class="spaceBetween">
@@ -62,6 +65,8 @@
         </div>
     </div>
 
-</html>
+    <div class="d-noneAddTask" id="addTaskOnBoardSite">
+        <div class="containeraddTaskInBoardSize" w3-include-html="./assets/templates/newTask.html"></div>
+    </div>
 
- 
+</html>

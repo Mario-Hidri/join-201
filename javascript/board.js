@@ -1,7 +1,5 @@
 let currentDraggedElement;
 
- 
-  
 function startDragging(id) {
     currentDraggedElement = id;
 }
@@ -12,8 +10,20 @@ function allowDrop(ev) {
 
    function moveTo(id){
   tasks[currentDraggedElement]['board'] = id;
-  loadTask();
-   
+  loadTask(); 
  }
+
+ function addTaskOnToDo(){
+  document.getElementById('addTaskOnBoardSite').classList.remove('d-noneAddTask');
+ }
+
+ function addTaskOnInProgress(){
+  document.getElementById('addTaskOnBoardSite').classList.remove('d-noneAddTask');
+ }
+
+ function addTaskOnAwaitFeedback(){
+  document.getElementById('addTaskOnBoardSite').classList.remove('d-noneAddTask');
+ }
+  
 
    

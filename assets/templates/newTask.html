@@ -1,0 +1,65 @@
+<form onsubmit="addTask();" action="./board.html" >
+    <div class="positionInputFields">
+        <div class="leftInput">
+            <div class="column distanceBetweenIput">
+                <label for="">Title</label>
+                <input id="title" class="input" type="" placeholder="   Enter a Title">
+            </div>
+            <div class="column distanceBetweenIput">
+                <label for="">Description</label>
+                <textarea id="description" class="textarea" placeholder=" Enter a description"></textarea>
+            </div>
+            <div class="column distanceBetweenIput">
+                <label for="">Assign to</label>
+            </div>
+        </div>
+
+        <div class="verticalLine"> </div>
+
+
+        <div class="rightInput">
+            <div class="column distanceBetweenIput">
+                <label for="">date</label>
+                <input id="date" class="input" type="date">
+            </div>
+            <div class="distanceBetweenIput">
+                <button type="button" onclick="changePrioToUrgent()" class="urgentPriority prioButton">Urgent<img
+                        id="urgent" class="priorityImage" src="./assets/img/activeHighPriority.png"
+                        alt=""></button>
+                <button type="button" onclick="changePrioToMedium()" class="prioButton">Medium <img
+                        id="medium" class="priorityImage" src="./assets/img/MediumPriority.png"
+                        alt=""></button>
+                <button type="button" onclick="changePrioToLow()" class="prioButton">Low <img id="low"
+                        class="priorityImage" src="./assets/img/LowPriority.png" alt=""></button>
+            </div>
+
+            <div class="column distanceBetweenIput">
+                <label for="">category</label>
+                <select id="category" class="input" id="category" placeholder="   Select a category">
+                    <option>Technical Task</option>
+                    <option>User Story</option>
+                    <option>Design</option>
+                </select>
+            </div>
+
+            <div class="column distanceBetweenIput">
+                <div class="fake-input">
+                    <input id="subtask" placeholder="   Add new subtask">
+                    <img onclick="addSubTask()" src="./assets/img/addSubTask.png" />
+                </div>
+                <ul id="addSubTask">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="positionButton">
+        <p>This field is required</p>
+        <div>
+            <button type="reset">Clear</button>
+            <button type="submit">Create Task</button>
+        </div>
+    </div>
+</form>
