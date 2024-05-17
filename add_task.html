@@ -49,7 +49,7 @@
                         </div>
                         <div class="distanceBetweenIput">
                             <button type="button" onclick="changePrioToUrgent()" class="urgentPriority prioButton">Urgent<img
-                                    id="urgent" class="priorityImage" src="./assets/img/activeHighPriority.png"
+                                    id="urgent" class="priorityImage" src="./assets/img/activeUrgentPriority.png"
                                     alt=""></button>
                             <button type="button" onclick="changePrioToMedium()" class="prioButton">Medium <img
                                     id="medium" class="priorityImage" src="./assets/img/MediumPriority.png"
@@ -82,8 +82,8 @@
                 <div class="positionButton">
                     <p>This field is required</p>
                     <div>
-                        <button type="reset">Clear</button>
-                        <button type="submit">Create Task</button>
+                        <button onclick="resetSubTask()" type="reset">Clear</button>
+                        <button  type="submit">Create Task</button>
                     </div>
                 </div>
             </form>

@@ -17,6 +17,7 @@ function addTask() {
     let task =  assignTask(title,description,date,category);
     tasks.push(task);
     saveTasksInFirebase();
+    window.location.href = 'board.html';
 }
 
 function assignTask(title,description,date,category){
@@ -25,6 +26,7 @@ function assignTask(title,description,date,category){
         "description": description.value,
         "date": date.value,
         "category": category,
+        "priority":prio,
         "subtask": subtasks,
         "board": board
     };
@@ -47,7 +49,6 @@ async function saveTasksInFirebase() {
         },
         body: JSON.stringify(tasks)
     });
-    window.location.href = 'board.html'
 }
 
 async function loadTasksFromFirebase(){
@@ -58,41 +59,6 @@ async function loadTasksFromFirebase(){
     } 
 }
 
-function loadTasks() {
-    removeAllTask();
-    for (let i = 0; i < tasks.length; i++) {
-        loadTask(i);
-    }
-}
-
-function removeAllTask(){
-    document.getElementById('toDo').innerHTML = '';
-    document.getElementById('inProgress').innerHTML = '';
-    document.getElementById('awaitFeedback').innerHTML = '';
-    document.getElementById('done').innerHTML = '';
-}
-
-function loadTask(i){
-    const task = tasks[i];
-    let board = task["board"];
-    let title = task["title"];
-    let description = task["description"];
-    let date = task["date"];
-    let category = task["category"];
-    let subtask = task["subtask"];
-    document.getElementById(`${board}`).innerHTML += loadTaskHTML(i,title,description,category);
-}
-
-function loadTaskHTML(i,title,description,category) {
-      return `
-      <div onclick="openTaskDialog(${i})" draggable="true" ondragstart="startDragging(${i})" class="card">
-      <img class="category" src="./assets/img/${category}" alt="">
-      <h3>${title}</h3>
-      <p>${description}</p>
-      </div>
-  `;
-}
-
 function addSubTask() {
     let subtask = document.getElementById('subtask');
     subtasks.push(subtask.value);
@@ -100,8 +66,13 @@ function addSubTask() {
     subtask.value = '';
 }
 
+function resetSubTask(){
+    subtasks = [];
+    document.getElementById('addSubTask').innerHTML = "";
+}
+
 function changePrioToUrgent() {
-    document.getElementById('urgent').src = './assets/img/activeHighPriority.png';
+    document.getElementById('urgent').src = './assets/img/activeUrgentPriority.png';
     document.getElementById('medium').src = './assets/img/mediumPriority.png';
     document.getElementById('low').src = './assets/img/lowPriority.png';
     document.getElementById('urgent').parentElement.classList.add('urgentPriority');
@@ -111,7 +82,7 @@ function changePrioToUrgent() {
 }
 
 function changePrioToMedium() {
-    document.getElementById("urgent").src = './assets/img/highPriority.png';
+    document.getElementById("urgent").src = './assets/img/urgentPriority.png';
     document.getElementById("medium").src = './assets/img/activeMediumPriority.png';
     document.getElementById("low").src = './assets/img/lowPriority.png';
     document.getElementById("urgent").parentElement.classList.remove('urgentPriority');
@@ -122,7 +93,7 @@ function changePrioToMedium() {
 }
 
 function changePrioToLow() {
-    document.getElementById("urgent").src = './assets/img/HighPriority.png';
+    document.getElementById("urgent").src = './assets/img/urgentPriority.png';
     document.getElementById("medium").src = './assets/img/MediumPriority.png';
     document.getElementById("low").src = './assets/img/activeLowPriority.png';
     document.getElementById("urgent").parentElement.classList.remove('urgentPriority');
