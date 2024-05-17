@@ -58,7 +58,7 @@
     width: 50%;
 }
 
-#addTaskOnBoardSite{
+.taskOnBoardSite{
     position: fixed;
     left: 0;
     right: 0;
@@ -69,8 +69,9 @@
     align-items: center;
     z-index:99999999999;
     background-color: rgba(0,0,0,0.3);
-  
 }
+
+ 
 
 .d-noneAddTask{
     transform: translateX(100%);
@@ -82,5 +83,12 @@ height: 70%;
 background-color: #FFFFFF;
 padding: 30px;
 border-radius:8px;
+}
 
+.containerOpenTaskInBoardSize{
+width: 30%;
+height: 80%;
+background-color: #FFFFFF;
+padding: 30px;
+border-radius:8px;
 }

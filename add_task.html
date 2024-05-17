@@ -28,11 +28,11 @@
                     <div class="leftInput">
                         <div class="column distanceBetweenIput">
                             <label for="">Title</label>
-                            <input id="title" class="input" type="" placeholder="   Enter a Title">
+                            <input required id="title" class="input" type="" placeholder="   Enter a Title">
                         </div>
                         <div class="column distanceBetweenIput">
                             <label for="">Description</label>
-                            <textarea id="description" class="textarea" placeholder=" Enter a description"></textarea>
+                            <textarea required id="description" class="textarea" placeholder=" Enter a description"></textarea>
                         </div>
                         <div class="column distanceBetweenIput">
                             <label for="">Assign to</label>
@@ -45,7 +45,7 @@
                     <div class="rightInput">
                         <div class="column distanceBetweenIput">
                             <label for="">date</label>
-                            <input id="date" class="input" type="date">
+                            <input required id="date" class="input" type="date">
                         </div>
                         <div class="distanceBetweenIput">
                             <button type="button" onclick="changePrioToUrgent()" class="urgentPriority prioButton">Urgent<img
@@ -63,7 +63,6 @@
                             <select id="category" class="input" id="category" placeholder="   Select a category">
                                 <option>Technical Task</option>
                                 <option>User Story</option>
-                                <option>Design</option>
                             </select>
                         </div>
 

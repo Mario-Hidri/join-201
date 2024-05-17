@@ -9,36 +9,36 @@ function initAddTaskSite(){
     loadTasksFromFirebase();
 }
 
-async function initBoardSite(){
-    includeHTML();
-   await loadTasksFromFirebase();
-    loadTask()
-}
-
 function addTask() {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
     let date = document.getElementById('date');
-    let category = document.getElementById('category');
-    // let subtask = document.getElementById();
-    if (category.value == "User Story") {
-        category = "userStory.png"
-    } else {
-        category = "technicalTask.png";
-    }
+    let category =  assignCategory();
+    let task =  assignTask(title,description,date,category);
+    tasks.push(task);
+    saveTasksInFirebase();
+}
 
-    let task = {
+function assignTask(title,description,date,category){
+    return {
         "title": title.value,
         "description": description.value,
         "date": date.value,
         "category": category,
         "subtask": subtasks,
         "board": board
-    }
-    tasks.push(task);
-    saveTasksInFirebase() ;
+    };
 }
- 
+
+function assignCategory(){
+    let category = document.getElementById('category');
+    if (category.value == "User Story") {
+       return category = "userStory.png"
+    } else {
+       return category = "technicalTask.png";
+    }
+}
+
 async function saveTasksInFirebase() {
      await fetch(url , {
         method:"PUT",
@@ -50,59 +50,47 @@ async function saveTasksInFirebase() {
     window.location.href = 'board.html'
 }
 
-
 async function loadTasksFromFirebase(){
     let response =  await fetch(url);
-
     tasks = await response.json();
     if(tasks[0] == null){
         tasks =[];
     } 
 }
 
+function loadTasks() {
+    removeAllTask();
+    for (let i = 0; i < tasks.length; i++) {
+        loadTask(i);
+    }
+}
 
-
-function loadTask() {
+function removeAllTask(){
     document.getElementById('toDo').innerHTML = '';
     document.getElementById('inProgress').innerHTML = '';
     document.getElementById('awaitFeedback').innerHTML = '';
     document.getElementById('done').innerHTML = '';
-    for (let i = 0; i < tasks.length; i++) {
-        const task = tasks[i];
-        let board = task["board"];
-        let title = task["title"];
-        let description = task["description"];
-        let date = task["date"];
-        let category = task["category"];
-        let subtask = task["subtask"];
-
-
-        
-
-        document.getElementById(`${board}`).innerHTML += `
-        <div draggable="true" ondragstart="startDragging(${i})" class="card">
-        <img class="category" src="./assets/img/${category}" alt="">
-        <h3>${title}</h3>
-        <p>${description}</p>
-        </div>
-    `;
-
-
-    }
 }
 
-  
+function loadTask(i){
+    const task = tasks[i];
+    let board = task["board"];
+    let title = task["title"];
+    let description = task["description"];
+    let date = task["date"];
+    let category = task["category"];
+    let subtask = task["subtask"];
+    document.getElementById(`${board}`).innerHTML += loadTaskHTML(i,title,description,category);
+}
 
-
-
-
-
-
-
-
-
-function loadTaskHTML() {
-
+function loadTaskHTML(i,title,description,category) {
+      return `
+      <div onclick="openTaskDialog(${i})" draggable="true" ondragstart="startDragging(${i})" class="card">
+      <img class="category" src="./assets/img/${category}" alt="">
+      <h3>${title}</h3>
+      <p>${description}</p>
+      </div>
+  `;
 }
 
 function addSubTask() {

@@ -54,10 +54,7 @@
                         ondragover="allowDrop(event)"></div>
                 </div>
                 <div class="fourth-size">
-                    <div class="spaceBetween">
-                        <p>Done</p>
-                        <img class="icon" src="./assets/img/addTask.png" alt="">
-                    </div>
+                    <p>Done</p>
                     <div id="done" class="dragArea" ondrop="moveTo(id='done')" ondragover="allowDrop(event)"></div>
                 </div>
             </div>
@@ -65,8 +62,12 @@
         </div>
     </div>
 
-    <div class="d-noneAddTask" id="addTaskOnBoardSite">
-        <div class="containeraddTaskInBoardSize" w3-include-html="./assets/templates/newTask.html"></div>
+    <div class="d-noneAddTask taskOnBoardSite" id="addTaskOnBoardSite">
+        <div class="containeraddTaskInBoardSize" w3-include-html="./assets/templates/addTask.html"></div>
+    </div>
+
+    <div class="d-noneAddTask taskOnBoardSite" id="openTaskOnBoardSite">
+        <div id="containerOpenTaskInBoardSize" class="containerOpenTaskInBoardSize"></div>
     </div>
 
 </html>
