@@ -8,9 +8,9 @@ body {
     padding: 32px 24px 32px 24px;
     left: 232px;
     width: 400px;
-    height: 1188px;
+    height: calc(100vh - 100px);
     background-color: #FFFFFF;
-    top: 137px;
+    top: 90px;
     overflow-y: scroll;
 }
 
@@ -84,8 +84,6 @@ body {
     border: 1px solid #D1D1D1;
     margin-bottom: 5px;
 }
-
-
 
 #slidingPage {
     position: fixed;
@@ -283,14 +281,20 @@ body {
     content: url('../assets/img/contacts_img/Vector\ \(1\).svg');
 }
 
-
-
-
-
 .contact_card {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+}
+
+.contact_card h1{
+    margin-block-start: 0.1em;
+    margin-block-end: 0.1em;
+}
+
+.contact_card a{
+    text-decoration: none;
+    color: #29ABE2;
 }
 
 .image_container {
@@ -329,6 +333,66 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.contact_card:hover{
+    background-color: rgb(242, 242, 242);
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.slogan{
+    display: flex;
+    position: absolute;
+    top: 206px;
+    left: 743px;
+    align-items: center;
+}
+
+.slogan_seperator{
+    width: 3px;
+    height: 59px;
+    background-color: #29ABE2;
+    margin-left: 18px;
+    margin-right: 18px;
+}
+
+.slogan h1 {
+    font-size: 61px;
+    line-height: 73.2px;
+    font-weight: 700;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.slogan p {
+    font-size: 27px;
+    line-height: 32.4px;
+    font-weight: 400;
+}
+
+.sliding_div{
+    position: fixed;
+    background-color: blue;
+    width: 461px;
+    height: 364px;
+    top: 311px;
+    left: 750px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* .image_container {
