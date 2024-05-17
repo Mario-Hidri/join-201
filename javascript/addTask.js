@@ -2,6 +2,7 @@ let tasks = [];
 let subtasks = [];
 let prio = "urgent";
 let url = 'https://jointask-cedc0-default-rtdb.europe-west1.firebasedatabase.app/.json';
+let board = "toDo";
  
 function initAddTaskSite(){
     includeHTML();
@@ -32,7 +33,7 @@ function addTask() {
         "date": date.value,
         "category": category,
         "subtask": subtasks,
-        "board": "toDo"
+        "board": board
     }
     tasks.push(task);
     saveTasksInFirebase() ;
