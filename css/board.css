@@ -92,3 +92,11 @@ background-color: #FFFFFF;
 padding: 30px;
 border-radius:8px;
 }
+
+.noTask{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    border: gray 2px dashed;
+    border-radius: 8px;
+}

@@ -25,6 +25,7 @@ function loadTasks() {
   for (let i = 0; i < tasks.length; i++) {
     loadTask(i);
   }
+  loadPlaceholderForSectionWithNoTask();
 }
 
 function removeAllTask() {
@@ -53,6 +54,32 @@ function loadTaskHTML(i, title, description, category) {
   <p>${description}</p>
   </div>
 `;
+}
+
+function loadPlaceholderForSectionWithNoTask() {
+  let toDoTask = tasks.filter(element => element['board'] == 'toDo');
+  let inProgressTask = tasks.filter(element => element['board'] == 'inProgress');
+  let awaitFeedbackTask = tasks.filter(element => element['board'] == 'awaitFeedback');
+  let doneTask = tasks.filter(element => element['board'] == 'done');
+  if (toDoTask.length == 0) {
+    document.getElementById('toDo').innerHTML = loadNoTaskPlaceholderHTML(' to Do');
+  }
+  if (inProgressTask.length == 0) {
+    document.getElementById('inProgress').innerHTML = loadNoTaskPlaceholderHTML(' in Progress');
+  }
+  if (awaitFeedbackTask.length == 0) {
+   document.getElementById('awaitFeedback').innerHTML = loadNoTaskPlaceholderHTML(' await Feedback');
+  }
+  if (doneTask.length == 0) {
+    document.getElementById('done').innerHTML = loadNoTaskPlaceholderHTML(' Done');
+  }
+}
+
+function loadNoTaskPlaceholderHTML(section){
+  return `<div class="noTask">
+
+        <span>  No tasks ${section}  </span>
+          </div>`
 }
 
 
@@ -89,15 +116,15 @@ function openTaskDialog(i) {
   let category = task["category"];
   let subtask = task["subtask"];
   let priority = task["priority"];
-  document.getElementById('containerOpenTaskInBoardSize').innerHTML = loadTaskDialogHTML(title,description,date,category,priority,i);
+  document.getElementById('containerOpenTaskInBoardSize').innerHTML = loadTaskDialogHTML(title, description, date, category, priority, i);
   document.getElementById('openTaskOnBoardSite').classList.remove('d-noneAddTask');
 }
 
-function loadTaskDialogHTML(title,description,date,category,priority,i){
-return `
+function loadTaskDialogHTML(title, description, date, category, priority, i) {
+  return `
 <div>
 <img class="category" src="./assets/img/${category}" alt="">
-<span>X <span>
+<span>x<span>
 </div>
 <h3>${title}</h3>
 <p>${description}</p>
@@ -134,8 +161,8 @@ return `
 `;
 }
 
-function deleteTask(i){
-  tasks.splice(i,1);
+function deleteTask(i) {
+  tasks.splice(i, 1);
   document.getElementById('openTaskOnBoardSite').classList.add('d-noneAddTask');
   loadTasks();
   saveTasksInFirebase();
