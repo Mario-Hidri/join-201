@@ -89,43 +89,54 @@ function openTaskDialog(i) {
   let category = task["category"];
   let subtask = task["subtask"];
   let priority = task["priority"];
-
-  document.getElementById('containerOpenTaskInBoardSize').innerHTML = `
-  <div>
-  <img class="category" src="./assets/img/${category}" alt="">
-  <span>X <span>
-  </div>
-  <h3>${title}</h3>
-  <p>${description}</p>
-  <table>
-  <tr>
-      <td>Due date:</td>
-      <td>${date}</td>
-  </tr>
-  <tr>
-      <td>Priority</td>
-      <td>${priority} <img src="./assets/img/${priority}Priority.png" alt=""></td>
-  </tr>
-  <tr>
-      <td>Assigned To:
-      <ul> 
-          <li>Name1</li>
-          <li>Name2</li>
-      </ul>
-      </td>
-  </tr>
-  <tr>
-      <td>Subtask:
-      <ul> 
-      <li>Name1</li>
-      <li>Name2</li>
-  </ul>
-      </td> 
-  </tr>
-</table>
-  `;
-
+  document.getElementById('containerOpenTaskInBoardSize').innerHTML = loadTaskDialogHTML(title,description,date,category,priority,i);
   document.getElementById('openTaskOnBoardSite').classList.remove('d-noneAddTask');
 }
 
+function loadTaskDialogHTML(title,description,date,category,priority,i){
+return `
+<div>
+<img class="category" src="./assets/img/${category}" alt="">
+<span>X <span>
+</div>
+<h3>${title}</h3>
+<p>${description}</p>
+<table>
+<tr>
+    <td>Due date:</td>
+    <td>${date}</td>
+</tr>
+<tr>
+    <td>Priority</td>
+    <td>${priority} <img src="./assets/img/${priority}Priority.png" alt=""></td>
+</tr>
+<tr>
+    <td>Assigned To:
+    <ul> 
+        <li>Name1</li>
+        <li>Name2</li>
+    </ul>
+    </td>
+</tr>
+<tr>
+    <td>Subtask:
+    <ul> 
+    <li>Name1</li>
+    <li>Name2</li>
+</ul>
+    </td> 
+</tr>
+</table>
+<div>
+<span onclick="deleteTask(${i})"><img src="./assets/img/deleteIcon.png" alt="">Delete<span> 
+<span><img src="./assets/img/editIcon.png" alt="">Edit<span>
+<div>
+`;
+}
 
+function deleteTask(i){
+  tasks.splice(i,1);
+  document.getElementById('openTaskOnBoardSite').classList.add('d-noneAddTask');
+  loadTasks();
+  saveTasksInFirebase();
+}
