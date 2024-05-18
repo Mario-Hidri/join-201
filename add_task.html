@@ -22,17 +22,17 @@
             <div class="header">
                 <h1>Add Task</h1>
             </div>
-           
-            <form onsubmit="addTask(); return false;" >
+
+            <form onsubmit="addTask(); return false;">
                 <div class="positionInputFields">
                     <div class="leftInput">
                         <div class="column distanceBetweenIput">
-                            <label for="">Title</label>
+                            <label for="">Title <span class="colorRed">*</span></label>
                             <input required id="title" class="input" type="" placeholder="   Enter a Title">
                         </div>
                         <div class="column distanceBetweenIput">
                             <label for="">Description</label>
-                            <textarea required id="description" class="textarea" placeholder=" Enter a description"></textarea>
+                            <textarea id="description" class="textarea" placeholder=" Enter a description"></textarea>
                         </div>
                         <div class="column distanceBetweenIput">
                             <label for="">Assign to</label>
@@ -44,29 +44,37 @@
 
                     <div class="rightInput">
                         <div class="column distanceBetweenIput">
-                            <label for="">date</label>
+                            <label for="">date<span class="colorRed">*</span></label>
                             <input required id="date" class="input" type="date">
                         </div>
                         <div class="distanceBetweenIput">
-                            <button type="button" onclick="changePrioToUrgent()" class="urgentPriority prioButton">Urgent<img
-                                    id="urgent" class="priorityImage" src="./assets/img/activeUrgentPriority.png"
-                                    alt=""></button>
-                            <button type="button" onclick="changePrioToMedium()" class="prioButton">Medium <img
-                                    id="medium" class="priorityImage" src="./assets/img/MediumPriority.png"
-                                    alt=""></button>
-                            <button type="button" onclick="changePrioToLow()" class="prioButton">Low <img id="low"
-                                    class="priorityImage" src="./assets/img/LowPriority.png" alt=""></button>
+                            <button type="button" onclick="changePrioToUrgent()"
+                                class="urgentPriority prioButton">
+                                <span>Urgent</span>
+                                <img id="urgent" class="priorityImage" src="./assets/img/activeUrgentPriority.png"
+                                    alt="">
+                            </button>
+                            <button type="button" onclick="changePrioToMedium()" class="distanceSmall prioButton">
+                                <span>Medium</span>
+                                <img id="medium" class="priorityImage" src="./assets/img/MediumPriority.png" alt="">
+                            </button>
+                            <button type="button" onclick="changePrioToLow()" class="distanceSmall prioButton">
+                                <span>Low</span>
+                                <img id="low" class="priorityImage" src="./assets/img/LowPriority.png" alt="">
+                            </button>
                         </div>
 
                         <div class="column distanceBetweenIput">
-                            <label for="">category</label>
-                            <select id="category" class="input" id="category" placeholder="   Select a category">
+                            <label for="">category<span class="colorRed">*</span></label>
+                            <select required id="category" class="input" id="category"
+                                placeholder="   Select a category">
                                 <option>Technical Task</option>
                                 <option>User Story</option>
                             </select>
                         </div>
 
                         <div class="column distanceBetweenIput">
+                            <label for="">Subtasks</label>
                             <div class="fake-input">
                                 <input id="subtask" placeholder="   Add new subtask">
                                 <img onclick="addSubTask()" src="./assets/img/addSubTask.png" />
@@ -80,10 +88,10 @@
 
 
                 <div class="positionButton">
-                    <p>This field is required</p>
+                    <p><span class="colorRed">* </span>This field is required</p>
                     <div>
-                        <button onclick="resetSubTask()" type="reset">Clear</button>
-                        <button  type="submit">Create Task</button>
+                        <button class="whiteButton" onclick="resetSubTask()" type="reset">Clear</button>
+                        <button type="submit" class="createButton">Create Task</button>
                     </div>
                 </div>
             </form>

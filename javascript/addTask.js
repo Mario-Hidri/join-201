@@ -62,8 +62,45 @@ async function loadTasksFromFirebase(){
 function addSubTask() {
     let subtask = document.getElementById('subtask');
     subtasks.push(subtask.value);
-    document.getElementById('addSubTask').innerHTML += `<li>${subtask.value}</li>`;
+    loadSubtasks();
     subtask.value = '';
+}
+
+function loadSubtasks(){
+    document.getElementById('addSubTask').innerHTML = '';
+    for (let i  = 0; i  <subtasks.length; i ++) {
+        const subtask = subtasks[i];
+        document.getElementById('addSubTask').innerHTML += loadSubtaskHTML(i,subtask);
+    }
+}
+
+function loadSubtaskHTML(i, subtask){
+    return `
+    <li id="hoverOnSubtask${i}" onmouseover="hoverOnSubtask(${i})" onmouseout="removeHoverOnSubtask(${i})">
+    <span>${subtask}</span>
+    </li>
+    `;
+}
+
+function hoverOnSubtask(i){
+document.getElementById(`hoverOnSubtask${i}`).innerHTML =`
+<span>${subtasks[i]}</span>
+<span> 
+ <img class="subtaskIcon" src="./assets/img/editIcon.png" alt="">
+ <img class="subtaskIcon" onclick="deleteSubtask(${i})" src="./assets/img/deleteIcon.png" alt="">
+ </span>
+`;
+}
+
+function removeHoverOnSubtask(i){
+    document.getElementById(`hoverOnSubtask${i}`).innerHTML =`  
+    <span>${subtasks[i]}</span>
+    `;
+}
+
+function deleteSubtask(i){
+subtasks.splice(i,1);
+loadSubtasks();
 }
 
 function resetSubTask(){

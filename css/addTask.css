@@ -34,15 +34,15 @@ background-color: #D1D1D1;
 }
 
 .lowPriority{
-    background-color: #7AE229;
+    background-color: #7AE229 !important;
 }
 
 .mediumPriority{
-    background-color: #FFA800;
+    background-color: #FFA800 !important;
 }
 
 .urgentPriority{
-    background-color: #FF3D00;
+    background-color: #FF3D00 !important;
 }
 
 .prioButton{
@@ -50,6 +50,11 @@ background-color: #D1D1D1;
     height: 32px;
     border: 0px;
     border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: white;
 }
 
 .priorityImage{
@@ -64,12 +69,20 @@ align-items: flex-end;
 margin: 40px 48px;
 }
 
+.subtaskIcon{
+    height: 10px;
+}
+
 .fake-input{
     position: relative;
     border: 1px solid #D1D1D1;
     border-radius: 8px;
     height: 24px;
     width: 300px;
+}
+
+.colorRed{
+    color: red;
 }
 
 .fake-input input {
@@ -86,4 +99,8 @@ margin: 40px 48px;
      top: 4px;
     right: 5px;
     width: 16px;
+}
+
+#description{
+    resize: none;
 }
