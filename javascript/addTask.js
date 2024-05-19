@@ -54,7 +54,7 @@ async function saveTasksInFirebase() {
 async function loadTasksFromFirebase(){
     let response =  await fetch(url);
     tasks = await response.json();
-    if(tasks[0] == null){
+    if(tasks == null){
         tasks =[];
     } 
 }
