@@ -54,7 +54,7 @@
 
 }
 
-.category {
+.categorySmallTask {
     width: 50%;
 }
 
@@ -86,6 +86,7 @@
 }
 
 .containerOpenTaskInBoardSize {
+    font-size: 20px;
     width: 30%;
     height: 80%;
     background-color: #FFFFFF;
@@ -120,4 +121,22 @@
     font-size: 21px;
     padding: 16px;
     border-radius: 8px;
+}
+
+.iconOnBigTask{
+    color: black;
+    height: 28px;
+}
+
+.categoryOnBigTask{
+    height: 32px;
+}
+
+.titleOnBigTask{
+    font-size: 61px;
+    font-weight: 700;
+}
+
+.priorityImgOnBigTask{
+    height: 12px;
 }

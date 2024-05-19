@@ -49,7 +49,7 @@ function loadTask(i) {
 function loadTaskHTML(i, title, description, category) {
   return `
   <div onclick="openTaskDialog(${i})" draggable="true" ondragstart="startDragging(${i})" class="card">
-  <img class="category" src="./assets/img/${category}" alt="">
+  <img class="categorySmallTask" src="./assets/img/${category}" alt="">
   <h3>${title}</h3>
   <p>${description}</p>
   </div>
@@ -68,16 +68,15 @@ function loadPlaceholderForSectionWithNoTask() {
     document.getElementById('inProgress').innerHTML = loadNoTaskPlaceholderHTML(' in Progress');
   }
   if (awaitFeedbackTask.length == 0) {
-   document.getElementById('awaitFeedback').innerHTML = loadNoTaskPlaceholderHTML(' await Feedback');
+    document.getElementById('awaitFeedback').innerHTML = loadNoTaskPlaceholderHTML(' await Feedback');
   }
   if (doneTask.length == 0) {
     document.getElementById('done').innerHTML = loadNoTaskPlaceholderHTML(' Done');
   }
 }
 
-function loadNoTaskPlaceholderHTML(section){
+function loadNoTaskPlaceholderHTML(section) {
   return `<div class="noTask">
-
         <span>  No tasks ${section}  </span>
           </div>`
 }
@@ -114,19 +113,20 @@ function openTaskDialog(i) {
   let description = task["description"];
   let date = task["date"].replace(/-/g, '/');
   let category = task["category"];
-  let subtask = task["subtask"];
   let priority = task["priority"];
   document.getElementById('containerOpenTaskInBoardSize').innerHTML = loadTaskDialogHTML(title, description, date, category, priority, i);
+  loadSubtasksOnBigTask(task);
   document.getElementById('openTaskOnBoardSite').classList.remove('d-noneAddTask');
 }
 
 function loadTaskDialogHTML(title, description, date, category, priority, i) {
   return `
-<div>
-<img class="category" src="./assets/img/${category}" alt="">
-<span>x<span>
+<div class="spaceBetween">
+<img class="categoryOnBigTask" src="./assets/img/${category}" alt="">
+<img class="iconOnBigTask" onclick="closeTask()" src="./assets/img/crossIcon.png" alt="">
 </div>
-<h3>${title}</h3>
+
+<h2 class="titleOnBigTask">${title}</h2>
 <p>${description}</p>
 <table>
 <tr>
@@ -134,8 +134,8 @@ function loadTaskDialogHTML(title, description, date, category, priority, i) {
     <td>${date}</td>
 </tr>
 <tr>
-    <td>Priority</td>
-    <td>${priority} <img src="./assets/img/${priority}Priority.png" alt=""></td>
+    <td>Priority:</td>
+    <td>${priority} <img class="priorityImgOnBigTask" src="./assets/img/${priority}Priority.png" alt=""></td>
 </tr>
 <tr>
     <td>Assigned To:
@@ -147,17 +147,29 @@ function loadTaskDialogHTML(title, description, date, category, priority, i) {
 </tr>
 <tr>
     <td>Subtask:
-    <ul> 
-    <li>Name1</li>
-    <li>Name2</li>
-</ul>
+    <ul id="loadSubtasksOnBigTask"></ul>
     </td> 
 </tr>
 </table>
 <div>
-<span onclick="deleteTask(${i})"><img src="./assets/img/deleteIcon.png" alt="">Delete<span> 
-<span><img src="./assets/img/editIcon.png" alt="">Edit<span>
+<span onclick="deleteTask(${i})"><img class="iconOnBigTask" src="./assets/img/deleteIcon.png" alt="">Delete</span> 
+<span onclick="editTask(${i})"><img class="iconOnBigTask" src="./assets/img/editIcon.png" alt="">Edit</span>
 <div>
+`;
+}
+
+function loadSubtasksOnBigTask(task) {
+  let subtasks = task["subtask"];
+  for (let j = 0; j < subtasks.length; j++) {
+    const subtask = subtasks[j];
+    document.getElementById('loadSubtasksOnBigTask').innerHTML += loadSubtaskOnBigTaskHTML(subtask);
+
+  }
+}
+
+function loadSubtaskOnBigTaskHTML(subtask){
+return`
+<li>${subtask}</li>
 `;
 }
 
@@ -166,4 +178,12 @@ function deleteTask(i) {
   document.getElementById('openTaskOnBoardSite').classList.add('d-noneAddTask');
   loadTasks();
   saveTasksInFirebase();
+}
+
+function closeTask() {
+  document.getElementById('openTaskOnBoardSite').classList.add('d-noneAddTask');
+}
+
+function editTask() {
+
 }
