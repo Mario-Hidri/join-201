@@ -21,7 +21,7 @@
     <nav class="sideMenu" w3-include-html="./assets/templates/side_menu.html"></nav>
 
     <section class="contacts_list">
-        <button onclick="showPage()" id="showPageButton">
+        <button onclick="showElement('slidingPage')" id="showPageButton">
             <div class="inside_the_button">
                 <h2>Add New contact</h2>
                 <img src="./assets/img/contacts_img/person_add.png" alt="">
@@ -32,152 +32,156 @@
             <h1>A</h1>
         </div>
         <div class="seperator_order_contacts"></div>
-        <div  class="contact_single" id="contacts_container_A"></div>
-        
+
+
+        <div class="contact_single" id="contacts_container_A"></div>
+
         <div class="alphabetical_order">
             <h1>B</h1>
         </div>
         <div class="seperator_order_contacts"></div>
-        <div  id="contacts_container_B"></div>
-        
+
+
+        <div id="contacts_container_B"></div>
+
         <div class="alphabetical_order">
             <h1>C</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_C"></div>
-        
+
         <div class="alphabetical_order">
             <h1>D</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_D"></div>
-        
+
         <div class="alphabetical_order">
             <h1>E</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_E"></div>
-        
+
         <div class="alphabetical_order">
             <h1>F</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_F"></div>
-        
+
         <div class="alphabetical_order">
             <h1>G</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_G"></div>
-        
+
         <div class="alphabetical_order">
             <h1>H</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_H"></div>
-        
+
         <div class="alphabetical_order">
             <h1>I</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_I"></div>
-        
+
         <div class="alphabetical_order">
             <h1>J</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_J"></div>
-        
+
         <div class="alphabetical_order">
             <h1>K</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_K"></div>
-        
+
         <div class="alphabetical_order">
             <h1>L</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_L"></div>
-        
+
         <div class="alphabetical_order">
             <h1>M</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_M"></div>
-        
+
         <div class="alphabetical_order">
             <h1>N</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_N"></div>
-        
+
         <div class="alphabetical_order">
             <h1>O</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_O"></div>
-        
+
         <div class="alphabetical_order">
             <h1>P</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_P"></div>
-        
+
         <div class="alphabetical_order">
             <h1>Q</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_Q"></div>
-        
+
         <div class="alphabetical_order">
             <h1>R</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_R"></div>
-        
+
         <div class="alphabetical_order">
             <h1>S</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_S"></div>
-        
+
         <div class="alphabetical_order">
             <h1>T</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_T"></div>
-        
+
         <div class="alphabetical_order">
             <h1>U</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_U"></div>
-        
+
         <div class="alphabetical_order">
             <h1>V</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_V"></div>
-        
+
         <div class="alphabetical_order">
             <h1>W</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_W"></div>
-        
+
         <div class="alphabetical_order">
             <h1>X</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_X"></div>
-        
+
         <div class="alphabetical_order">
             <h1>Y</h1>
         </div>
         <div class="seperator_order_contacts"></div>
         <div id="contacts_container_Y"></div>
-        
+
         <div class="alphabetical_order">
             <h1>Z</h1>
         </div>
@@ -192,15 +196,86 @@
         <p>Better with a team</p>
     </section>
 
-    <div id="editContactForm" class="hidden sliding_div">
-        <input id="edit_contact_name" placeholder="Name" type="text">
-        <input id="edit_contact_email" placeholder="Email" type="email">
-        <input id="edit_contact_phone" placeholder="Phone" type="text">
-        <button onclick="saveEditedContact()">Save</button>
-    </div>
+
+    <section id="editContactDisplay" class="hidden sliding_div">
+
+        <div class="display_edit_contact">
+            <div class="image_container_edit">
+                <img src="./assets/img/contacts_img/Ellipse 5.svg" alt="">
+            </div>
+            <div class="display_edit_contact_name">
+                <h1 id="edit_contact_name">xxxxx xxxx</h1>
+                <div class="display_edit_and_delete_buttons">
+
+                    <button onclick="showElement('slidingDiv')">
+                        <img src="./assets/img/contacts_img/edit.svg" alt="">
+                        <p>Edit</p>
+                    </button>
+                    <button>
+                        <img src="./assets/img/contacts_img/delete.svg" alt="">
+                        <p>delete</p>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="contact_informtaion">
+            <p>Contact Information</p>
+        </div>
+
+        <div class="edit_informations">
+            <h4>Email</h4>
+            <a id="edit_contact_email" href="emailto:xx">emailto@example.de</a>
+            <h4>Phone</h4>
+            <a id="edit_contact_phone" href="callto:">+0011223344</a>
+        </div>
+
+    </section>
+
+
+    <section id="slidingDiv" class="hidden">
+        <div onclick="hideElement('slidingDiv')" class="close_button">
+            <img src="./assets/img/contacts_img/close.svg" alt="Close">
+        </div>
+        <div class="contact_content_left">
+            <img src="./assets/img/joinLogo.png" alt="">
+            <h1>Edit Contact</h1>
+            <p>Make changes to your contact!</p>
+        </div>
+        <div class="add_contact_input_fields edit_contact_input_fields">
+            <form id="editContactForm" class="flex_container">
+                <div class="input_with_img">
+                    <input id="edit_contact_name_input" name="name" placeholder="Name" class="input_1" type="text" required minlength="2">
+                    <img src="./assets/img/contacts_img/person.svg" alt="Image" class="input_img">
+                </div>
+                <div class="input_with_img">
+                    <input id="edit_contact_email_input" name="email" placeholder="Email" class="input_1" type="email" required>
+                    <img src="./assets/img/log_in_img/mail.svg" alt="Image" class="input_img">
+                </div>
+                <div class="input_with_img">
+                    <input id="edit_contact_phone_input" name="phone" placeholder="Phone" class="input_1" type="tel" required>
+                    <img src="./assets/img/contacts_img/call.svg" alt="Phone Icon" class="input_img">
+                </div>
+                <div class="form_buttons">
+                    <button type="button" onclick="hideDiv()" class="cancel_button">
+                        <p>Cancel</p>
+                        <img src="./assets/img/contacts_img/close.svg" alt="">
+                    </button>
+                    <button onclick="saveEditedContact()" type="submit" class="add_button">
+                        <p>Save</p>
+                        <img src="./assets/img/contacts_img/check.svg" alt="">
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+    </section>
+
+
 
     <section id="slidingPage" class="hidden">
-        <div onclick="hidePage()" class="close_button">
+        <div onclick="hideElement('slidingPage')" class="close_button">
             <img src="./assets/img/contacts_img/close.svg" alt="Schließen">
         </div>
         <div class="contact_content_left">
@@ -228,7 +303,7 @@
                     <img src="./assets/img/contacts_img/call.svg" alt="Phone Icon" class="input_img">
                 </div>
                 <div class="form_buttons">
-                    <button type="button" onclick="hidePage()" class="cancel_button">
+                    <button type="button" onclick="hideElement('slidingPage')" class="cancel_button">
                         <p>Cancel</p>
                         <img src="./assets/img/contacts_img/close.svg" alt="">
                     </button>
@@ -240,8 +315,6 @@
             </form>
         </div>
     </section>
-
-
 
 </body>
 
