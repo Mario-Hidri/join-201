@@ -5,14 +5,13 @@ body {
 
 .contacts_list {
     position: fixed;
-    padding: 32px 24px 32px 24px;
+    padding: 32px 24px;
     left: 232px;
     width: 400px;
     height: calc(100vh - 100px);
     background-color: #FFFFFF;
     top: 90px;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow: auto;
 }
 
 ::-webkit-scrollbar {
@@ -36,7 +35,7 @@ body {
     justify-content: center;
     align-items: center;
     left: 15px;
-    padding: 12px 0px 12px 0px;
+    padding: 12px 0;
     border-radius: 10px;
     border: 1px;
     cursor: pointer;
@@ -70,7 +69,7 @@ body {
 }
 
 .alphabetical_order {
-    padding: 17px 36px 17px 36px;
+    padding: 17px 36px;
     width: 352px;
 }
 
@@ -142,10 +141,9 @@ body {
     background-color: #2A3647;
     width: 419px;
     height: 592px;
-    padding: 0px 48px 0px 48px;
+    padding: 0 48px;
     position: relative;
-    border-top-left-radius: 27px;
-    border-bottom-left-radius: 27px;
+    border-radius: 27px;
 }
 
 .contact_content_left img {
@@ -214,7 +212,7 @@ body {
     min-width: 380px;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
-    padding: 12px 21px 12px 21px;
+    padding: 12px 21px;
     line-height: 24px;
     font-size: 20px;
 }
@@ -231,9 +229,8 @@ body {
     margin-top: 20px;
 }
 
-.cancel_button {
-    background-color: #FFFFFF;
-    color: black;
+.cancel_button,
+.add_button {
     display: flex;
     width: 110px;
     height: 57px;
@@ -241,7 +238,6 @@ body {
     border-radius: 10px;
     cursor: pointer;
     gap: 5px;
-    display: flex;
     justify-content: center;
     align-items: center;
     font-size: 20px;
@@ -250,23 +246,16 @@ body {
     border: 2px solid;
 }
 
+.cancel_button {
+    background-color: #FFFFFF;
+    color: black;
+}
+
 .add_button {
     background-color: #2A3647;
     color: #FFFFFF;
-    display: flex;
     width: 214px;
-    height: 57px;
-    padding: 16px;
-    border-radius: 10px;
-    cursor: pointer;
-    gap: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 21px;
     font-weight: 700;
-    line-height: 25.2px;
-    border: none;
 }
 
 .add_button:hover {
@@ -285,14 +274,13 @@ body {
 .contact_card {
     display: flex;
     align-items: center;
-    padding: 15px 24px 15px 24px;
+    padding: 15px 24px;
     border-radius: 10px;
     width: 307px;
 }
 
 .contact_card h1 {
-    margin-block-start: 0.1em;
-    margin-block-end: 0.1em;
+    margin: 0.1em;
 }
 
 .contact_card a {
@@ -355,16 +343,14 @@ body {
     width: 3px;
     height: 59px;
     background-color: #29ABE2;
-    margin-left: 18px;
-    margin-right: 18px;
+    margin: 0 18px;
 }
 
 .slogan h1 {
     font-size: 61px;
     line-height: 73.2px;
     font-weight: 700;
-    margin-block-start: 0;
-    margin-block-end: 0;
+    margin: 0;
 }
 
 .slogan p {
@@ -392,9 +378,8 @@ body {
     flex-direction: column;
 }
 
-.display_edit_contact_name h1{
-    margin-block-end: 0;
-    margin-block-start: 0;
+.display_edit_contact_name h1 {
+    margin: 0;
     font-size: 47px;
     font-weight: 500;
     line-height: 56.4px;
@@ -406,7 +391,6 @@ body {
     height: 120px;
     width: 120px;
     background-size: cover;
-
 }
 
 .display_edit_and_delete_buttons {
@@ -429,7 +413,7 @@ body {
     cursor: pointer;
 }
 
-button img{
+button img {
     width: 18.28px;
     height: 18.25px;
 }
@@ -440,7 +424,7 @@ button p {
     line-height: 19.2px;
 }
 
-.contact_informtaion{
+.contact_informtaion {
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
@@ -452,7 +436,7 @@ button p {
     color: white;
 }
 
-#slidingDiv{
+#slidingDiv {
     position: fixed;
     width: 1212px;
     height: 592px;
@@ -472,57 +456,3 @@ button p {
 #slidingDiv.hide {
     transform: translateX(100%);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .image_container {
-    position: relative;
-    display: inline-block;
-    width: Fixed (352px);
-    height: 58px;
-    padding: 15px 24px 15px 24px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 35px;
-} */
-
-/* .image_container:hover{
-    background-color: rgb(242, 242, 242);
-    cursor: pointer;
-    border-radius: 10px;
-} */
-
-
-
-
-
-
-/* .initials1 {
-    position: absolute;
-    top: 43px;
-    left: 31px;
-    color: white;
-    font-size: 14px;
-    font-weight: lighter;
-    margin-right: 5px;
-}
-
-.initials2 {
-    position: absolute;
-    top: 43px;
-    left: 47px;
-    color: white;
-    font-size: 14px;
-    font-weight: lighter;
-} */
