@@ -2,6 +2,7 @@ let defaultContacts = [{ name: "Alice Adams", email: "alice.adams@example.com", 
 
 let allContacts = [];
 let lastSelectedContactIndex = null;
+let currentEditIndex = -1; 
 
 function addContact() {
     let name = document.getElementById('add_contact_name').value;
@@ -12,6 +13,15 @@ function addContact() {
     addContactToArray(contact);
     saveContactsToLocalStorage();
     renderContacts();
+}
+
+function deleteContact(currentEditIndex){
+    let position = currentEditIndex;
+    allContacts.splice(position, 1);
+  
+    saveContactsToLocalStorage();
+    renderContacts();
+    updateEditDisplay(contact);
 }
 
 function createContact(name, email, phone) {
@@ -104,10 +114,14 @@ function toggleContactSelection(index) {
 }
 
 function updateEditDisplay(contact) {
+
     document.getElementById('edit_contact_name').textContent = contact.name;
     document.getElementById('edit_contact_email').textContent = contact.email;
     document.getElementById('edit_contact_phone').textContent = contact.phone;
     document.getElementById('edit_contact_email').setAttribute('href', 'mailto:' + contact.email);
+    document.getElementById('edit_contact_name_input').value = contact.name;
+    document.getElementById('edit_contact_email_input').value = contact.email;
+    document.getElementById('edit_contact_phone_input').value = contact.phone;
 }
 
 function showEditDisplay() {
@@ -121,10 +135,12 @@ function populateEditDisplay(contact, index) {
     if (lastSelectedContactIndex === index) {
         editContactDisplay.classList.add('hidden');
         lastSelectedContactIndex = null;
+        currentEditIndex = -1;
     } else {
         updateEditDisplay(contact);
         showEditDisplay();
         lastSelectedContactIndex = index;
+        currentEditIndex = index;
     }
 }
 
@@ -150,7 +166,10 @@ function saveEditedContact() {
 }
 
 function updateContactAndRender(name, email, phone) {
-    allContacts[currentEditIndex] = createContact(name, email, phone);
+    allContacts[currentEditIndex]['name'] = name;
+    allContacts[currentEditIndex]['email'] = email;
+    allContacts[currentEditIndex]['phone'] = phone;
+
     saveContactsToLocalStorage();
     renderContacts();
     document.getElementById('editContactForm').classList.add('hidden');
