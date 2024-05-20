@@ -1,4 +1,8 @@
-// Function to add a new contact
+let defaultContacts = [{ name: "Alice Adams", email: "alice.adams@example.com", phone: "555-123-4567" }, { name: "Bob Baker", email: "bob.baker@example.com", phone: "555-234-5678" }, { name: "Charlie Carter", email: "charlie.carter@example.com", phone: "555-345-6789" }, { name: "David Davis", email: "david.davis@example.com", phone: "555-456-7890" }, { name: "Emily Evans", email: "emily.evans@example.com", phone: "555-567-8901" }, { name: "Frank Fisher", email: "frank.fisher@example.com", phone: "555-678-9012" }, { name: "Grace Garcia", email: "grace.garcia@example.com", phone: "555-789-0123" }, { name: "Henry Harris", email: "henry.harris@example.com", phone: "555-890-1234" }, { name: "Isabel Ingram", email: "isabel.ingram@example.com", phone: "555-901-2345" }, { name: "Jack Johnson", email: "jack.johnson@example.com", phone: "555-012-3456" }, { name: "Katherine King", email: "katherine.king@example.com", phone: "555-123-4567" }, { name: "Liam Lee", email: "liam.lee@example.com", phone: "555-234-5678" }, { name: "Mia Martinez", email: "mia.martinez@example.com", phone: "555-345-6789" }, { name: "Nathan Nelson", email: "nathan.nelson@example.com", phone: "555-456-7890" }, { name: "Olivia Olson", email: "olivia.olson@example.com", phone: "555-567-8901" }, { name: "Peter Parker", email: "peter.parker@example.com", phone: "555-678-9012" }, { name: "Quinn Quinn", email: "quinn.quinn@example.com", phone: "555-789-0123" }, { name: "Rachel Roberts", email: "rachel.roberts@example.com", phone: "555-890-1234" }, { name: "Samuel Smith", email: "samuel.smith@example.com", phone: "555-901-2345" }, { name: "Taylor Taylor", email: "taylor.taylor@example.com", phone: "555-012-3456" }, { name: "Uma Underwood", email: "uma.underwood@example.com", phone: "555-123-4567" }, { name: "Victor Vega", email: "victor.vega@example.com", phone: "555-234-5678" }, { name: "Wendy White", email: "wendy.white@example.com", phone: "555-345-6789" }, { name: "Xavier Xavier", email: "xavier.xavier@example.com", phone: "555-456-7890" }, { name: "Yvonne Young", email: "yvonne.young@example.com", phone: "555-567-8901" }, { name: "Zack Zimmerman", email: "zack.zimmerman@example.com", phone: "555-678-9012" }];
+let allContacts = [];
+let lastSelectedContactIndex = null;
+let currentEditIndex = -1; 
+
 function addContact() {
     let name = document.getElementById('add_contact_name').value;
     let email = document.getElementById('add_contact_email').value;
@@ -8,24 +12,21 @@ function addContact() {
     saveContactsToLocalStorage();
 }
 
-// Function to reset selected indexes
 function resetSelectedIndexes() {
     lastSelectedContactIndex = null;   
     currentEditIndex = -1;             
 }
 
-// Function to delete a contact
-function deleteContact(currentEditIndex) {
+function deleteContact(currentEditIndex){
     let position = currentEditIndex;
     allContacts.splice(position, 1);
-
+  
     saveContactsToLocalStorage();
     renderContacts();
     hideElement('editContactDisplay'); 
-    resetSelectedIndexes();           
+    resetSelectedIndexes(); 
 }
 
-// Function to create a contact object
 function createContact(name, email, phone) {
     return {
         name: name,
@@ -35,18 +36,15 @@ function createContact(name, email, phone) {
     };
 }
 
-// Function to add a contact to the contacts array
 function addContactToArray(contact) {
     allContacts.push(contact);
 }
 
-// Function to save contacts to local storage
 function saveContactsToLocalStorage() {
     let allContactsAsString = JSON.stringify(allContacts);
     localStorage.setItem('allContacts', allContactsAsString);
 }
 
-// Initialization function to load contacts from local storage
 function init() {
     let allContactsAsString = localStorage.getItem('allContacts');
     if (allContactsAsString) {
@@ -59,7 +57,6 @@ function init() {
     includeHTML();
 }
 
-// Function to hide an element by ID
 function hideElement(elementId) {
     let element = document.getElementById(elementId);
     element.classList.remove('show');
@@ -69,7 +66,6 @@ function hideElement(elementId) {
     }, 300);
 }
 
-// Function to show an element by ID
 function showElement(elementId) {
     let element = document.getElementById(elementId);
     element.classList.remove('hidden');
@@ -77,7 +73,6 @@ function showElement(elementId) {
     element.classList.add('show');
 }
 
-// Function to render all contacts
 function renderContacts() {
     clearContactsContainers();
     for (let i = 0; i < allContacts.length; i++) {
@@ -88,7 +83,6 @@ function renderContacts() {
     }
 }
 
-// Function to clear all contact containers
 function clearContactsContainers() {
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     for (let i = 0; i < alphabet.length; i++) {
@@ -100,7 +94,6 @@ function clearContactsContainers() {
     }
 }
 
-// Function to insert a contact into a container
 function insertContactIntoContainer(containerId, contact, index) {
     let container = document.getElementById(containerId);
     if (container) {
@@ -108,17 +101,14 @@ function insertContactIntoContainer(containerId, contact, index) {
     }
 }
 
-// Function to show the edit form
 function showEditForm() {
     document.getElementById('editContactForm').classList.remove('hidden');
 }
 
-// Function to show the edit display
 function showEditDisplay() {
     document.getElementById('editContactDisplay').classList.remove('hidden');
 }
 
-// Function to toggle contact selection
 function toggleContactSelection(index) {
     if (lastSelectedContactIndex !== null && lastSelectedContactIndex !== index) {
         document.getElementById('contact' + lastSelectedContactIndex).classList.remove('selected');
@@ -126,8 +116,8 @@ function toggleContactSelection(index) {
     document.getElementById('contact' + index).classList.toggle('selected');
 }
 
-// Function to update the edit display with contact details
 function updateEditDisplay(contact) {
+
     document.getElementById('edit_contact_name').textContent = contact.name;
     document.getElementById('edit_contact_email').textContent = contact.email;
     document.getElementById('edit_contact_phone').textContent = contact.phone;
@@ -137,7 +127,11 @@ function updateEditDisplay(contact) {
     document.getElementById('edit_contact_phone_input').value = contact.phone;
 }
 
-// Function to populate the edit display with contact details
+function showEditDisplay() {
+    let editContactDisplay = document.getElementById('editContactDisplay');
+    editContactDisplay.classList.remove('hidden');
+}
+
 function populateEditDisplay(contact, index) {
     toggleContactSelection(index);
     let editContactDisplay = document.getElementById('editContactDisplay');
@@ -152,7 +146,6 @@ function populateEditDisplay(contact, index) {
     }
 }
 
-// Function to create a contact card
 function createContactCard(contact, index) {
     let contactCard = document.createElement('div');
     contactCard.classList.add('contact_card');
@@ -164,32 +157,28 @@ function createContactCard(contact, index) {
     return contactCard;
 }
 
-// Function to save the edited contact details
 function saveEditedContact() {
     let name = document.getElementById('edit_contact_name_input').value;
     let email = document.getElementById('edit_contact_email_input').value;
     let phone = document.getElementById('edit_contact_phone_input').value;
 
     if (currentEditIndex >= 0) {
-        updateContactAndRender(name, email, phone);
+        updateContactAndRender(name, email, phone)
     }
 }
 
-// Function to update the contact and render the contact list
 function updateContactAndRender(name, email, phone) {
-    allContacts[currentEditIndex].name = name;
-    allContacts[currentEditIndex].email = email;
-    allContacts[currentEditIndex].phone = phone;
+    allContacts[currentEditIndex]['name'] = name;
+    allContacts[currentEditIndex]['email'] = email;
+    allContacts[currentEditIndex]['phone'] = phone;
 
     saveContactsToLocalStorage();
     renderContacts();
     document.getElementById('editContactForm').classList.add('hidden');
 }
 
-// Function to hide the editing form
 function hideEditing() {
     document.getElementById('editContactForm').classList.add('hidden');
 }
 
-// Initialize the application on window load
 window.onload = init;
