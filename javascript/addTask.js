@@ -9,14 +9,14 @@ function initAddTaskSite(){
     loadTasksFromFirebase();
 }
 
-function addTask() {
+async function addTask() {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
     let date = document.getElementById('date');
     let category =  assignCategory();
     let task =  assignTask(title,description,date,category);
     tasks.push(task);
-    saveTasksInFirebase();
+    await saveTasksInFirebase();
     window.location.href = 'board.html';
 }
 

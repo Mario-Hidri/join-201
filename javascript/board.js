@@ -14,10 +14,10 @@ function allowDrop(ev) {
   ev.preventDefault();
 }
 
-function moveTo(id) {
+async function moveTo(id) {
   tasks[currentDraggedElement]['board'] = id;
   loadTasks();
-  saveTasksInFirebase();
+ await saveTasksInFirebase();
 }
 
 function loadTasks() {
@@ -169,7 +169,7 @@ function loadSubtasksOnBigTask(task) {
 
 function loadSubtaskOnBigTaskHTML(subtask){
 return`
-<li>${subtask}</li>
+<li><input type="checkbox">${subtask}</li>
 `;
 }
 
