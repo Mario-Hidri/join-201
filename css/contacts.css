@@ -98,6 +98,7 @@ body {
     box-shadow: 0px 0px 8px 3px #00000040;
     transition: 0.3s ease-in-out;
 }
+
 .hidden {
     display: none;
 }
@@ -296,6 +297,7 @@ body {
     width: 42px;
     height: 42px;
     margin-right: 35px;
+    border-radius: 35px;
 }
 
 .image_container img {
@@ -390,10 +392,10 @@ body {
     flex-direction: row;
 }
 
-.image_container_edit img {
+.image_container_edit {
     height: 120px;
     width: 120px;
-    background-size: cover;
+    border-radius: 50%;
 }
 
 .display_edit_and_delete_buttons {
@@ -431,10 +433,22 @@ button p {
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
+    padding-top: 48px;
 }
 
 .contact_card.selected {
     background-color: #2A3647;
     border-radius: 5px;
     color: white;
+}
+
+.edit_informations {
+    padding-top: 20px;
+    display: grid;
+    gap: 14px;
+}
+
+.edit_informations a {
+    text-decoration: none;
+    color: #29ABE2;
 }

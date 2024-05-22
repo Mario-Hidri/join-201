@@ -17,16 +17,6 @@ function resetSelectedIndexes() {
     currentEditIndex = -1;             
 }
 
-function deleteContact(currentEditIndex){
-    let position = currentEditIndex;
-    allContacts.splice(position, 1);
-  
-    saveContactsToLocalStorage();
-    renderContacts();
-    hideElement('editContactDisplay'); 
-    resetSelectedIndexes(); 
-}
-
 function createContact(name, email, phone) {
     return {
         name: name,
@@ -55,6 +45,17 @@ function init() {
     }
     renderContacts();
     includeHTML();
+}
+
+
+function deleteContact(currentEditIndex){
+    let position = currentEditIndex;
+    allContacts.splice(position, 1);
+  
+    saveContactsToLocalStorage();
+    renderContacts();
+    hideElement('editContactDisplay'); 
+    resetSelectedIndexes(); 
 }
 
 function hideElement(elementId) {
@@ -97,7 +98,7 @@ function clearContactsContainers() {
 function insertContactIntoContainer(containerId, contact, index) {
     let container = document.getElementById(containerId);
     if (container) {
-        container.innerHTML += generateContactHTML(contact, index);
+        container.innerHTML += generateContactHTML(contact, index, getRandomColor());
     }
 }
 
@@ -114,6 +115,18 @@ function toggleContactSelection(index) {
         document.getElementById('contact' + lastSelectedContactIndex).classList.remove('selected');
     }
     document.getElementById('contact' + index).classList.toggle('selected');
+}
+
+function hideEditDisplay() {
+    let editContactDisplay = document.getElementById('editContactDisplay');
+    editContactDisplay.classList.add('hidden');
+    resetSelectedIndexes();
+}
+
+function setColorfulDivBackgroundColor(index) {
+    let contactCard = document.getElementById(`contact${index}`);
+    let randomColor = contactCard.querySelector('.image_container').style.backgroundColor;
+    document.getElementById('colorfulDiv').style.backgroundColor = randomColor;
 }
 
 function updateEditDisplay(contact) {
@@ -134,17 +147,17 @@ function showEditDisplay() {
 
 function populateEditDisplay(contact, index) {
     toggleContactSelection(index);
-    let editContactDisplay = document.getElementById('editContactDisplay');
     if (lastSelectedContactIndex === index) {
-        editContactDisplay.classList.add('hidden');
-        resetSelectedIndexes();
+        hideEditDisplay();
     } else {
         updateEditDisplay(contact);
         showEditDisplay();
         lastSelectedContactIndex = index;
         currentEditIndex = index;
+        setColorfulDivBackgroundColor(index);
     }
 }
+
 
 function createContactCard(contact, index) {
     let contactCard = document.createElement('div');
