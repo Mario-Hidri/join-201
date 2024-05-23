@@ -128,29 +128,30 @@ function loadTaskDialogHTML(title, description, date, category, priority, i) {
 
 <h2 class="titleOnBigTask">${title}</h2>
 <p>${description}</p>
-<table>
-<tr>
-    <td>Due date:</td>
-    <td>${date}</td>
-</tr>
-<tr>
-    <td>Priority:</td>
-    <td>${priority} <img class="priorityImgOnBigTask" src="./assets/img/${priority}Priority.png" alt=""></td>
-</tr>
-<tr>
-    <td>Assigned To:
+ 
+    <div>
+    <span>Due date:</span>
+    <span>${date}</span>
+    </div>
+
+    <div>
+    <span>Priority:</span>
+    <span>${priority} <img class="priorityImgOnBigTask" src="./assets/img/${priority}Priority.png" alt=""></span>
+     </div>
+     
+    <div>Assigned To:
     <ul> 
         <li>Name1</li>
         <li>Name2</li>
     </ul>
-    </td>
-</tr>
-<tr>
-    <td>Subtask:
+    </div>
+ 
+ 
+    <div>
+    Subtask:
     <ul id="loadSubtasksOnBigTask"></ul>
-    </td> 
-</tr>
-</table>
+    </div> 
+ 
 <div>
 <span onclick="deleteTask(${i})"><img class="iconOnBigTask" src="./assets/img/deleteIcon.png" alt="">Delete</span> 
 <span onclick="editTask(${i})"><img class="iconOnBigTask" src="./assets/img/editIcon.png" alt="">Edit</span>
@@ -169,7 +170,7 @@ function loadSubtasksOnBigTask(task) {
 
 function loadSubtaskOnBigTaskHTML(subtask){
 return`
-<li><input type="checkbox">${subtask}</li>
+<li>${subtask}</li>
 `;
 }
 
