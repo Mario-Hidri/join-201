@@ -60,16 +60,18 @@ async function loadTasksFromFirebase() {
 }
 
 function addSubTask() {
-    let subtask = document.getElementById('subtask');
-    subtasks.push(subtask.value);
+    let subtask = {
+        "subtask":document.getElementById('subtask').value,
+        "done":false};
+    subtasks.push(subtask);
     loadSubtasks();
-    subtask.value = '';
+    document.getElementById('subtask').value = '';
 }
 
 function loadSubtasks() {
     document.getElementById('addSubTask').innerHTML = '';
     for (let i = 0; i < subtasks.length; i++) {
-        const subtask = subtasks[i];
+        const subtask = subtasks[i]['subtask'];
         document.getElementById('addSubTask').innerHTML += loadSubtaskHTML(i, subtask);
     }
 }
@@ -93,7 +95,7 @@ function deleteSubtask(i) {
 
 function editSubtask(i){
 document.getElementById(`subtask${i}`).innerHTML =`
-<input id="changeSubtask${i}" type="text" value="${subtasks[i]}">
+<input id="changeSubtask${i}" type="text" value="${subtasks[i]['subtask']}">
 <span> 
 <img class="subtaskIcon" onclick="deleteSubtask(${i})" src="./assets/img/deleteIcon.png" alt="">
 <img onclick="saveChangeSubtask(${i})" src="./assets/img/checkIcon.png" alt="">
@@ -102,7 +104,7 @@ document.getElementById(`subtask${i}`).innerHTML =`
 }
 
 function saveChangeSubtask(i){
-subtasks[i] = document.getElementById(`changeSubtask${i}`).value;
+subtasks[i]['subtask'] = document.getElementById(`changeSubtask${i}`).value;
 loadSubtasks();
 }
 
