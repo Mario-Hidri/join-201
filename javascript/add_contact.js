@@ -1,7 +1,7 @@
 let defaultContacts = [{ name: "Alice Adams", email: "alice.adams@example.com", phone: "555-123-4567" }, { name: "Bob Baker", email: "bob.baker@example.com", phone: "555-234-5678" }, { name: "Charlie Carter", email: "charlie.carter@example.com", phone: "555-345-6789" }, { name: "David Davis", email: "david.davis@example.com", phone: "555-456-7890" }, { name: "Emily Evans", email: "emily.evans@example.com", phone: "555-567-8901" }, { name: "Frank Fisher", email: "frank.fisher@example.com", phone: "555-678-9012" }, { name: "Grace Garcia", email: "grace.garcia@example.com", phone: "555-789-0123" }, { name: "Henry Harris", email: "henry.harris@example.com", phone: "555-890-1234" }, { name: "Isabel Ingram", email: "isabel.ingram@example.com", phone: "555-901-2345" }, { name: "Jack Johnson", email: "jack.johnson@example.com", phone: "555-012-3456" }, { name: "Katherine King", email: "katherine.king@example.com", phone: "555-123-4567" }, { name: "Liam Lee", email: "liam.lee@example.com", phone: "555-234-5678" }, { name: "Mia Martinez", email: "mia.martinez@example.com", phone: "555-345-6789" }, { name: "Nathan Nelson", email: "nathan.nelson@example.com", phone: "555-456-7890" }, { name: "Olivia Olson", email: "olivia.olson@example.com", phone: "555-567-8901" }, { name: "Peter Parker", email: "peter.parker@example.com", phone: "555-678-9012" }, { name: "Quinn Quinn", email: "quinn.quinn@example.com", phone: "555-789-0123" }, { name: "Rachel Roberts", email: "rachel.roberts@example.com", phone: "555-890-1234" }, { name: "Samuel Smith", email: "samuel.smith@example.com", phone: "555-901-2345" }, { name: "Taylor Taylor", email: "taylor.taylor@example.com", phone: "555-012-3456" }, { name: "Uma Underwood", email: "uma.underwood@example.com", phone: "555-123-4567" }, { name: "Victor Vega", email: "victor.vega@example.com", phone: "555-234-5678" }, { name: "Wendy White", email: "wendy.white@example.com", phone: "555-345-6789" }, { name: "Xavier Xavier", email: "xavier.xavier@example.com", phone: "555-456-7890" }, { name: "Yvonne Young", email: "yvonne.young@example.com", phone: "555-567-8901" }, { name: "Zack Zimmerman", email: "zack.zimmerman@example.com", phone: "555-678-9012" }];
 let allContacts = [];
 let lastSelectedContactIndex = null;
-let currentEditIndex = -1; 
+let currentEditIndex = -1;
 
 function addContact() {
     let name = document.getElementById('add_contact_name').value;
@@ -13,8 +13,8 @@ function addContact() {
 }
 
 function resetSelectedIndexes() {
-    lastSelectedContactIndex = null;   
-    currentEditIndex = -1;             
+    lastSelectedContactIndex = null;
+    currentEditIndex = -1;
 }
 
 function createContact(name, email, phone) {
@@ -47,15 +47,14 @@ function init() {
     includeHTML();
 }
 
-
-function deleteContact(currentEditIndex){
+function deleteContact(currentEditIndex) {
     let position = currentEditIndex;
     allContacts.splice(position, 1);
-  
+
     saveContactsToLocalStorage();
     renderContacts();
-    hideElement('editContactDisplay'); 
-    resetSelectedIndexes(); 
+    hideElement('editContactDisplay');
+    resetSelectedIndexes();
 }
 
 function hideElement(elementId) {
@@ -126,7 +125,14 @@ function hideEditDisplay() {
 function setColorfulDivBackgroundColor(index) {
     let contactCard = document.getElementById(`contact${index}`);
     let randomColor = contactCard.querySelector('.image_container').style.backgroundColor;
-    document.getElementById('colorfulDiv').style.backgroundColor = randomColor;
+    let contactName = allContacts[index].name;
+    let firstNameInitial = contactName.charAt(0);
+    let lastNameInitial = contactName.split(' ')[1]?.charAt(0) || '';
+
+    let colorfulDiv = document.getElementById('colorfulDiv');
+    colorfulDiv.style.backgroundColor = randomColor;
+
+    colorfulDiv.innerHTML = generateInitials(firstNameInitial, lastNameInitial);
 }
 
 function updateEditDisplay(contact) {
@@ -193,5 +199,20 @@ function updateContactAndRender(name, email, phone) {
 function hideEditing() {
     document.getElementById('editContactForm').classList.add('hidden');
 }
+
+// function showTempDiv() {
+//     let tempDiv = document.getElementById('tempDiv');
+//     tempDiv.classList.add('show-temp');
+
+//     setTimeout(function() {
+//         tempDiv.classList.remove('show-temp');
+//         tempDiv.classList.add('hide-temp');
+        
+//         setTimeout(function() {
+//             tempDiv.classList.remove('hide-temp');
+//         }, 500); 
+//     }, 2000); 
+// }
+
 
 window.onload = init;

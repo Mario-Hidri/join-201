@@ -35,3 +35,12 @@ function createContactCardContent(contact) {
             <a href="mailto:${contact.email}">${contact.email}</a>
         </div>`;
 }
+
+function generateInitials(firstNameInitial, lastNameInitial) {
+    return `
+        <div class="initials_edit">
+            <span class="initials3">${firstNameInitial}</span>
+            <span class="initials4">${lastNameInitial}</span>
+        </div>
+    `;
+}

@@ -10,7 +10,7 @@ body {
     width: 400px;
     height: calc(100vh - 100px);
     background-color: #FFFFFF;
-    top: 90px;
+    padding-top: 160px;
     overflow: auto;
 }
 
@@ -30,15 +30,27 @@ body {
     background-color: #2A3647;
     width: 352px;
     height: 56px;
-    position: relative;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    left: 15px;
+    left: 275px;
+    top: 106px;
     padding: 12px 0;
     border-radius: 10px;
     border: 1px;
     cursor: pointer;
+    z-index: 2999;
+}
+
+.backgroudn_color_top_list {
+    background-color: white;
+    height: 164px;
+    width: 436px;
+    position: fixed;
+    top: 0;
+    left: 234px;
+    z-index: 1;
 }
 
 .contacts_list button:hover {
@@ -159,12 +171,14 @@ body {
     font-size: 61px;
     font-weight: 700;
     line-height: 73.2px;
+    color: white;
 }
 
 .contact_content_left p {
     font-size: 27px;
     font-weight: 400;
     line-height: 32.4px;
+    color: white;
 }
 
 .center_image {
@@ -298,6 +312,8 @@ body {
     height: 42px;
     margin-right: 35px;
     border-radius: 35px;
+    border: 2px, solid;
+    border-color: white;
 }
 
 .image_container img {
@@ -396,6 +412,29 @@ body {
     height: 120px;
     width: 120px;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.initials_edit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.initials3,
+.initials4 {
+    font-size: 47px;
+    color: white;
+    line-height: 56.4px;
+    font-weight: 500;
+    margin: 2px;
 }
 
 .display_edit_and_delete_buttons {
@@ -452,3 +491,41 @@ button p {
     text-decoration: none;
     color: #29ABE2;
 }
+
+@keyframes slideIn {
+    0% { right: -100%; }
+    100% { right: 50%; }
+}
+
+@keyframes slideOut {
+    0% { right: 50%; }
+    100% { right: -100%; }
+}
+
+#tempDiv {
+    position: absolute;
+    top: 90%;
+    right: -100%; 
+    transform: translate(-50%, -50%);
+    background-color: #2A3647;
+    width: 326px;
+    height: 74px;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    display: flex;
+    animation-duration: 0.5s;
+}
+
+.show-temp {
+    animation-name: slideIn;
+    animation-fill-mode: forwards;
+}
+
+.hide-temp {
+    animation-name: slideOut;
+    animation-fill-mode: forwards;
+}
+
+
