@@ -61,8 +61,9 @@ async function loadTasksFromFirebase() {
 
 function addSubTask() {
     let subtask = {
-        "subtask":document.getElementById('subtask').value,
-        "done":false};
+        "subtask": document.getElementById('subtask').value,
+        "done": false
+    };
     subtasks.push(subtask);
     loadSubtasks();
     document.getElementById('subtask').value = '';
@@ -78,7 +79,7 @@ function loadSubtasks() {
 
 function loadSubtaskHTML(i, subtask) {
     return `
-    <div id="subtask${i}">
+    <div class="spaceBetweenSubtaskAndIcons" id="subtask${i}">
     <span>${subtask}</span>
     <span> 
      <img class="subtaskIcon" onclick="editSubtask(${i})" src="./assets/img/editIcon.png" alt="">
@@ -93,19 +94,19 @@ function deleteSubtask(i) {
     loadSubtasks();
 }
 
-function editSubtask(i){
-document.getElementById(`subtask${i}`).innerHTML =`
+function editSubtask(i) {
+    document.getElementById(`subtask${i}`).innerHTML = `
 <input id="changeSubtask${i}" type="text" value="${subtasks[i]['subtask']}">
 <span> 
 <img class="subtaskIcon" onclick="deleteSubtask(${i})" src="./assets/img/deleteIcon.png" alt="">
-<img onclick="saveChangeSubtask(${i})" src="./assets/img/checkIcon.png" alt="">
+<img class="subtaskIcon" onclick="saveChangeSubtask(${i})" src="./assets/img/checkIcon.png" alt="">
 </span>
 `;
 }
 
-function saveChangeSubtask(i){
-subtasks[i]['subtask'] = document.getElementById(`changeSubtask${i}`).value;
-loadSubtasks();
+function saveChangeSubtask(i) {
+    subtasks[i]['subtask'] = document.getElementById(`changeSubtask${i}`).value;
+    loadSubtasks();
 }
 
 function resetSubTask() {
@@ -144,3 +145,18 @@ function changePrioToLow() {
     prio = "low";
 }
 
+function showContacts() {
+    document.getElementById('addContact').innerHTML = '';
+    let search = document.getElementById('assignContact').value;
+    search = search.toLowerCase();
+    for (let i = 0; i < allContacts.length; i++) {
+
+        const contact = allContacts[i];
+        let name = contact['name'];
+        if (name.toLowerCase().includes(search)) {
+            document.getElementById('addContact').innerHTML += `
+            <div>${name}</div>
+        `;
+        }
+    }
+}

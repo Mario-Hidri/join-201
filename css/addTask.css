@@ -9,20 +9,6 @@ height:250px;
 background-color: #D1D1D1;
 }
 
-.input{
-    border: 1px solid #D1D1D1;
-    border-radius: 8px;
-    height: 24px;
-    width: 300px;
-}
-
-.textarea{
-    border: 1px solid #D1D1D1;
-    border-radius: 8px;
-    height: 120px;
-    width: 300px;
-}
-
 .positionInputFields{
     display:flex;
     justify-content: center;
@@ -62,6 +48,12 @@ background-color: #D1D1D1;
     height: 14.5px; 
 }
 
+.spaceBetweenSubtaskAndIcons {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 8px;
+}
+
 .positionButton{
 display: flex;
 justify-content: space-between;
@@ -74,11 +66,43 @@ margin: 40px 48px;
 }
 
 .fake-input{
-    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border: 1px solid #D1D1D1;
     border-radius: 8px;
     height: 24px;
     width: 300px;
+    background-color: white;
+}
+
+
+.fake-textarea{
+    border: 1px solid #D1D1D1;
+    border-radius: 8px;
+    height: 120px;
+    width: 300px;
+    background-color: #fff;
+}
+
+.textarea{
+    width: 90%;
+    height: 100%;
+    border: none;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-left: 8px;
+}
+
+.input{
+    border: 1px solid #D1D1D1;
+    border-radius: 8px;
+    height: 24px;
+    width: 300px;
+}
+
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: none; 
 }
 
 .colorRed{
@@ -86,19 +110,16 @@ margin: 40px 48px;
 }
 
 .fake-input input {
-    width: 100%;
+    width: 98%;
     height: 100%;
-     box-sizing: border-box ;
-     border:none; 
-     background-color:#fff;
-     border-radius: 8px;
+    border: none;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-left: 8px;
     }
-
-.fake-input img { 
-    position: absolute; 
-     top: 4px;
-    right: 5px;
-    width: 16px;
+ 
+.taskIcon{
+    height: 20px;
 }
 
 #description{

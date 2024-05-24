@@ -35,6 +35,16 @@ function saveContactsToLocalStorage() {
     localStorage.setItem('allContacts', allContactsAsString);
 }
 
+function initContactForaddTask(){
+    let allContactsAsString = localStorage.getItem('allContacts');
+    if (allContactsAsString) {
+        allContacts = JSON.parse(allContactsAsString) || [];
+    } else {
+        allContacts = defaultContacts;
+        saveContactsToLocalStorage();
+    }
+}
+
 function init() {
     let allContactsAsString = localStorage.getItem('allContacts');
     if (allContactsAsString) {
