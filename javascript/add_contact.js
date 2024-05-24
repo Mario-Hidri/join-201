@@ -22,7 +22,8 @@ function createContact(name, email, phone) {
         name: name,
         email: email,
         phone: phone,
-        createdAt: new Date().getTime()
+        createdAt: new Date().getTime(),
+        contactSelect:false
     };
 }
 
@@ -33,6 +34,16 @@ function addContactToArray(contact) {
 function saveContactsToLocalStorage() {
     let allContactsAsString = JSON.stringify(allContacts);
     localStorage.setItem('allContacts', allContactsAsString);
+}
+
+function initContactForaddTask(){
+    let allContactsAsString = localStorage.getItem('allContacts');
+    if (allContactsAsString) {
+        allContacts = JSON.parse(allContactsAsString) || [];
+    } else {
+        allContacts = defaultContacts;
+        saveContactsToLocalStorage();
+    }
 }
 
 function init() {

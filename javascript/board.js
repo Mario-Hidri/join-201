@@ -42,7 +42,6 @@ function loadTask(i) {
   let description = task["description"];
   let date = task["date"];
   let category = task["category"];
-  let subtask = task["subtask"];
   document.getElementById(`${board}`).innerHTML += loadTaskHTML(i, title, description, category);
 }
 
@@ -115,7 +114,7 @@ function openTaskDialog(i) {
   let category = task["category"];
   let priority = task["priority"];
   document.getElementById('containerOpenTaskInBoardSize').innerHTML = loadTaskDialogHTML(title, description, date, category, priority, i);
-  loadSubtasksOnBigTask(task);
+  loadSubtasksOnBigTask(i,task);
   document.getElementById('openTaskOnBoardSite').classList.remove('d-noneAddTask');
 }
 
@@ -128,29 +127,30 @@ function loadTaskDialogHTML(title, description, date, category, priority, i) {
 
 <h2 class="titleOnBigTask">${title}</h2>
 <p>${description}</p>
-<table>
-<tr>
-    <td>Due date:</td>
-    <td>${date}</td>
-</tr>
-<tr>
-    <td>Priority:</td>
-    <td>${priority} <img class="priorityImgOnBigTask" src="./assets/img/${priority}Priority.png" alt=""></td>
-</tr>
-<tr>
-    <td>Assigned To:
+ 
+    <div>
+    <span>Due date:</span>
+    <span>${date}</span>
+    </div>
+
+    <div>
+    <span>Priority:</span>
+    <span>${priority} <img class="priorityImgOnBigTask" src="./assets/img/${priority}Priority.png" alt=""></span>
+     </div>
+     
+    <div>Assigned To:
     <ul> 
         <li>Name1</li>
         <li>Name2</li>
     </ul>
-    </td>
-</tr>
-<tr>
-    <td>Subtask:
+    </div>
+ 
+ 
+    <div>
+    Subtask:
     <ul id="loadSubtasksOnBigTask"></ul>
-    </td> 
-</tr>
-</table>
+    </div> 
+ 
 <div>
 <span onclick="deleteTask(${i})"><img class="iconOnBigTask" src="./assets/img/deleteIcon.png" alt="">Delete</span> 
 <span onclick="editTask(${i})"><img class="iconOnBigTask" src="./assets/img/editIcon.png" alt="">Edit</span>
@@ -158,19 +158,37 @@ function loadTaskDialogHTML(title, description, date, category, priority, i) {
 `;
 }
 
-function loadSubtasksOnBigTask(task) {
+function loadSubtasksOnBigTask(taskNumber,task) {
   let subtasks = task["subtask"];
   for (let j = 0; j < subtasks.length; j++) {
-    const subtask = subtasks[j];
-    document.getElementById('loadSubtasksOnBigTask').innerHTML += loadSubtaskOnBigTaskHTML(subtask);
+    let subtask = subtasks[j];
+    let checkbox;
+    if(subtask["done"]){
+      checkbox = './assets/img/checkboxDone.png';
+    }else{
+      checkbox = './assets/img/checkboxToDo.png';
+    }
+
+    document.getElementById('loadSubtasksOnBigTask').innerHTML += loadSubtaskOnBigTaskHTML(taskNumber,j,subtask,checkbox);
 
   }
 }
 
-function loadSubtaskOnBigTaskHTML(subtask){
+function loadSubtaskOnBigTaskHTML(taskNumber,subtaskNumber,subtask,checkbox){
 return`
-<li><input type="checkbox">${subtask}</li>
+<li><img id="subtask${subtaskNumber}" onclick="changeCheckbox(${taskNumber},${subtaskNumber},${subtask["done"]})" class="iconOnBigTask" src="${checkbox}" alt="">${subtask["subtask"]}</li>
 `;
+}
+
+function changeCheckbox(taskNumber,subtaskNumber,subtask){ 
+  if(subtask){
+    tasks[taskNumber]["subtask"][subtaskNumber]["done"] =false;
+    document.getElementById(`subtask${subtaskNumber}`).src = './assets/img/checkboxToDo.png';
+}else{
+  tasks[taskNumber]["subtask"][subtaskNumber]["done"] =true;
+  document.getElementById(`subtask${subtaskNumber}`).src = './assets/img/checkboxDone.png';
+}
+saveTasksInFirebase();
 }
 
 function deleteTask(i) {
