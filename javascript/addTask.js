@@ -150,13 +150,37 @@ function showContacts() {
     let search = document.getElementById('assignContact').value;
     search = search.toLowerCase();
     for (let i = 0; i < allContacts.length; i++) {
-
         const contact = allContacts[i];
         let name = contact['name'];
+        let contactSelect = contact['contactSelect'];
         if (name.toLowerCase().includes(search)) {
-            document.getElementById('addContact').innerHTML += `
-            <div>${name}</div>
-        `;
+            if (contactSelect) {
+                document.getElementById('addContact').innerHTML += `
+                <div id="contact${i}" onclick="addContactToTask(${i})">${name}<img src="./assets/img/checkboxDone.png" alt=""></div>
+            `;
+            } else {
+                document.getElementById('addContact').innerHTML += `
+                <div id="contact${i}" onclick="addContactToTask(${i})">${name}<img src="./assets/img/checkboxToDo.png" alt=""></div>
+            `;
+            }
         }
     }
 }
+
+function addContactToTask(i) {
+    const contactSelect = allContacts[i]['contactSelect'];
+    let name = allContacts[i]['name'];
+    if (contactSelect) {
+        document.getElementById(`contact${i}`).innerHTML = `
+        ${name}<img src="./assets/img/checkboxToDo.png" alt="">
+    `;
+    allContacts[i]['contactSelect']=false;
+    } else {
+        document.getElementById(`contact${i}`).innerHTML = `
+        ${name}<img src="./assets/img/checkboxDone.png" alt="">
+    `;
+    allContacts[i]['contactSelect']=true;
+    }
+
+}
+

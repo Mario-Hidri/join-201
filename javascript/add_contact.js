@@ -22,7 +22,8 @@ function createContact(name, email, phone) {
         name: name,
         email: email,
         phone: phone,
-        createdAt: new Date().getTime()
+        createdAt: new Date().getTime(),
+        contactSelect:false
     };
 }
 
