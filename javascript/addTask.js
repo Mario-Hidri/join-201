@@ -3,6 +3,7 @@ let subtasks = [];
 let prio = "urgent";
 let url = 'https://jointask-cedc0-default-rtdb.europe-west1.firebasedatabase.app/.json';
 let board = "toDo";
+let authorityForTask =[];
 
 function initAddTaskSite() {
     includeHTML();
@@ -14,6 +15,7 @@ async function addTask() {
     let description = document.getElementById('description');
     let date = document.getElementById('date');
     let category = assignCategory();
+    addPersonToTask();
     let task = assignTask(title, description, date, category);
     tasks.push(task);
     await saveTasksInFirebase();
@@ -28,7 +30,8 @@ function assignTask(title, description, date, category) {
         "category": category,
         "priority": prio,
         "subtask": subtasks,
-        "board": board
+        "board": board,
+        "authorityForTask":authorityForTask
     };
 }
 
@@ -146,6 +149,7 @@ function changePrioToLow() {
 }
 
 function showContacts() {
+    addContactSection();
     document.getElementById('addContact').innerHTML = '';
     let search = document.getElementById('assignContact').value;
     search = search.toLowerCase();
@@ -156,11 +160,11 @@ function showContacts() {
         if (name.toLowerCase().includes(search)) {
             if (contactSelect) {
                 document.getElementById('addContact').innerHTML += `
-                <div id="contact${i}" onclick="addContactToTask(${i})">${name}<img src="./assets/img/checkboxDone.png" alt=""></div>
+                <div class="contact" id="contact${i}" onclick="addContactToTask(${i})">${name}<img class="checkboxAddContact" src="./assets/img/checkboxDone.png" alt=""></div>
             `;
             } else {
                 document.getElementById('addContact').innerHTML += `
-                <div id="contact${i}" onclick="addContactToTask(${i})">${name}<img src="./assets/img/checkboxToDo.png" alt=""></div>
+                <div class="contact" id="contact${i}" onclick="addContactToTask(${i})">${name}<img class="checkboxAddContact" src="./assets/img/checkboxToDo.png" alt=""></div>
             `;
             }
         }
@@ -172,15 +176,41 @@ function addContactToTask(i) {
     let name = allContacts[i]['name'];
     if (contactSelect) {
         document.getElementById(`contact${i}`).innerHTML = `
-        ${name}<img src="./assets/img/checkboxToDo.png" alt="">
+        ${name}<img class="checkboxAddContact" src="./assets/img/checkboxToDo.png" alt="">
     `;
+    document.getElementById(`contact${i}`).classList.remove('activContact');
     allContacts[i]['contactSelect']=false;
     } else {
         document.getElementById(`contact${i}`).innerHTML = `
-        ${name}<img src="./assets/img/checkboxDone.png" alt="">
+        ${name}<img class="checkboxAddContact" src="./assets/img/checkboxDone.png" alt="">
     `;
+    document.getElementById(`contact${i}`).classList.add('activContact');
     allContacts[i]['contactSelect']=true;
     }
 
+}
+
+function addPersonToTask(){
+    for (let i = 0; i < allContacts.length; i++) {
+        if(allContacts[i]['contactSelect'] == true){
+            let name = allContacts[i]['name'];
+            authorityForTask.push(name);
+        }
+    }
+}
+
+function removeAddContactSection(){
+    document.getElementById('contactSection').innerHTML =`
+    <img onclick="addContactSection()" class="taskIcon" src="./assets/img/removeExtensionIcon.png" alt="">
+    `;
+    document.getElementById('addContact').classList.add('d-none');
+}
+
+function addContactSection(){
+    document.getElementById('contactSection').innerHTML =`
+    <img onclick="removeAddContactSection()" class="taskIcon" src="./assets/img/extensionIcon.png" alt="">
+    `;
+    document.getElementById('addContact').classList.remove('d-none');
+    
 }
 

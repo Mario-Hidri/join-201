@@ -125,3 +125,32 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
 #description{
     resize: none;
 }
+
+.checkboxAddContact{
+    height: 24px;
+}
+
+.contact{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 8px;
+   
+}
+
+#addContact{
+    background-color: #fff;
+    border-radius: 8px;
+    max-height:240px ;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.activContact{
+    background-color: #293647;
+    border-radius: 8px;
+}
+
+.d-none{
+    display:none;
+}
