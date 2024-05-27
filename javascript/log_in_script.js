@@ -1,36 +1,36 @@
 const loginUrl = "https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/.json";
-
-
+const url =  "https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/LogInData";
 
 async function checkLogIn(event) {
     event.preventDefault(); // Verhindert das Standard-Formularverhalten
-    
     let email = document.getElementById('emailLogIn').value;
     let password = document.getElementById('passwordLogIn');
-    
-    
         let response = await fetch(loginUrl);
         if (!response.ok) throw new Error("Network response was not ok");
-        
         let data = await response.json();
         console.log("Fetched Data:", data); // Debugging: Überprüfen Sie die abgerufenen Daten
-
         if (data) {
             let users = Object.values(data).map(entry => entry[0]);
             console.log("Users Array:", users); // Debugging: Überprüfen Sie das Users-Array
-            
             let user = users.find(user => user.email === email && user.password === password.value);
             console.log("Found User:", user); // Debugging: Überprüfen Sie den gefundenen Benutzer
-
             if (user) {
-                window.location.href = './summary_user.html'; // Hauptseite der Website
+                activeuser.push(user);
+                saveLogInDataInFirebase();
+                setTimeout(() => {
+                    window.location.href = './summary_user.html';
+                }, 2000);
+                
+               
             } else if (!user){
                 passwordError(password);
             }
         }
-  
 }
 
+function guestLogIn() {
+    window.location.href = './summary_user.html'; // Hauptseite der Website
+}
 
 function passwordError(password) {
     // Überprüfen, ob bereits eine Fehlermeldung vorhanden ist

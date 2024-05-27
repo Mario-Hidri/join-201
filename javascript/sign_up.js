@@ -102,121 +102,93 @@ async function loadDataToFirebaseAndCheckPasswords(event) {
     } else if (password1 !== password2) {
         passwordMismatchTemplate(password1Input, password2Input);
     } else if (password1 === password2 && document.getElementById('errorMessageMismatchSignUp')) {
-        password1Input.classList.remove('error-border');
-        password2Input.classList.remove('error-border');
-        document.getElementById('errorMessageMismatchSignUp').remove();
+        removeErrorMessages(password1Input, password2Input);
     } else if (!document.getElementById('errorMessageMismatchSignUp')) {
         await getSignUpData();
-        signUpContainer.classList.remove('display-none');
-        setTimeout(() => {
-            signUpContainer.classList.add('move-up');
-        }, 10);
-         setTimeout(() => {
-            window.location.href = './log_in.html';
-        }, 2000);
+        finalSubmit(signUpContainer);
     }
 }
 
+function removeErrorMessages(password1Input, password2Input) {
+    password1Input.classList.remove('error-border');
+    password2Input.classList.remove('error-border');
+    document.getElementById('errorMessageMismatchSignUp').remove();
+}
+
+function finalSubmit(signUpContainer) {
+    signUpContainer.classList.remove('display-none');
+    setTimeout(() => {
+        signUpContainer.classList.add('move-up');
+    }, 10);
+    setTimeout(() => {
+        window.location.href = './log_in.html';
+    }, 2000);
+}
+
 function passwordMismatchTemplate(password1Input, password2Input) {
-    // Überprüfen, ob bereits eine Fehlermeldung vorhanden ist
     let errorMessage = password2Input.parentNode.querySelector('.error-message');
     if (!errorMessage) {
-        // Erstelle die benutzerdefinierte Fehlermeldung
         errorMessage = document.createElement('div');
         errorMessage.textContent = 'Ups! your password dont match';
         errorMessage.classList.add('error-message');
         errorMessage.id = 'errorMessageMismatchSignUp';
-        // Füge die Fehlermeldung dem übergeordneten Container hinzu
         password2Input.parentNode.appendChild(errorMessage);
     }
-
-    // Füge eine CSS-Klasse hinzu, um das Feld zu markieren
     password1Input.classList.add('error-border');
     password2Input.classList.add('error-border');
-
-    return; // Beendet die Funktion, ohne das Formular abzusenden
+    return;
 }
 
 function password1Template(password1Input) {
-    // Überprüfen, ob bereits eine Fehlermeldung vorhanden ist
     if (!password1Input.parentNode.querySelector('.error-message')) {
-        // Erstelle die benutzerdefinierte Fehlermeldung
         let errorMessage = document.createElement('div');
         errorMessage.textContent = 'Bitte Feld ausfüllen';
         errorMessage.classList.add('error-message');
         errorMessage.id = 'errorMessagePassword1SignUp';
-        // Füge die Fehlermeldung dem übergeordneten Container hinzu
         password1Input.parentNode.appendChild(errorMessage);
     }
-
-    // Füge eine CSS-Klasse hinzu, um das Feld zu markieren
     password1Input.classList.add('error-border');
-
-    return; // Beendet die Funktion, ohne das Formular abzusenden
+    return;
 }
 
 function password2Template(password2Input) {
-    // Überprüfen, ob bereits eine Fehlermeldung vorhanden ist
     if (!password2Input.parentNode.querySelector('.error-message')) {
-        // Erstelle die benutzerdefinierte Fehlermeldung
         let errorMessage = document.createElement('div');
         errorMessage.textContent = 'Bitte Feld ausfüllen';
         errorMessage.classList.add('error-message');
         errorMessage.id = 'errorMessagePassword2SignUp';
-        // Füge die Fehlermeldung dem übergeordneten Container hinzu
         password2Input.parentNode.appendChild(errorMessage);
     }
-
-    // Füge eine CSS-Klasse hinzu, um das Feld zu markieren
     password2Input.classList.add('error-border');
-
-    return; // Beendet die Funktion, ohne das Formular abzusenden
+    return; 
 }
 
 function checkEmailInputTemplate(emailInput) {
-    // Überprüfen, ob alle Felder ausgefüllt sind
     if (emailInput.value.trim() === '') {
-        // Überprüfen, ob bereits eine Fehlermeldung vorhanden ist
         if (!emailInput.parentNode.querySelector('.error-message')) {
-            // Erstelle die benutzerdefinierte Fehlermeldung
             let errorMessage = document.createElement('div');
             errorMessage.textContent = 'Bitte Email-Adresse eingeben!';
             errorMessage.classList.add('error-message');
             errorMessage.id = 'errorMessageEmailSignUp';
-            // Füge die Fehlermeldung dem übergeordneten Container hinzu
             emailInput.parentNode.appendChild(errorMessage);
         }
-
-        // Füge eine CSS-Klasse hinzu, um das Feld zu markieren
         emailInput.classList.add('error-border');
-
-        return; // Beendet die Funktion, ohne das Formular abzusenden
+        return;
     }
-
-    // Überprüfen, ob das E-Mail-Feld kein @-Zeichen enthält
     if (!emailInput.value.includes('@')) {
-        // Überprüfen, ob bereits eine Fehlermeldung vorhanden ist
         let errorMessage = emailInput.parentNode.querySelector('.error-message');
         if (errorMessage) {
-            // Falls bereits eine Fehlermeldung vorhanden ist, aktualisiere den Text
             errorMessage.textContent = 'Bitte @-Zeichen beachten!';
         } else {
-            // Erstelle die benutzerdefinierte Fehlermeldung
             errorMessage = document.createElement('div');
             errorMessage.textContent = 'Bitte @-Zeichen beachten!';
             errorMessage.classList.add('error-message');
             errorMessage.id = 'errorMessageEmailSignUp';
-            // Füge die Fehlermeldung dem übergeordneten Container hinzu
             emailInput.parentNode.appendChild(errorMessage);
         }
-
-        // Füge eine CSS-Klasse hinzu, um das Feld zu markieren
         emailInput.classList.add('error-border');
-
-        return; // Beendet die Funktion, ohne das Formular abzusenden
+        return;
     }
-
-    // Wenn alles in Ordnung ist, entferne die Fehlermeldung und die Markierung
     let errorMessage = emailInput.parentNode.querySelector('.error-message');
     if (errorMessage) {
         errorMessage.remove();
@@ -225,23 +197,16 @@ function checkEmailInputTemplate(emailInput) {
 }
 
 function checkNameInputTemplate(nameInput) {
-    // Überprüfen, ob alle Felder ausgefüllt sind
     if (nameInput.value.trim() === '') {
-        // Überprüfen, ob bereits eine Fehlermeldung vorhanden ist
         if (!nameInput.parentNode.querySelector('.error-message')) {
-            // Erstelle die benutzerdefinierte Fehlermeldung
             let nameErrorMessage = document.createElement('div');
             nameErrorMessage.textContent = 'Bitte Name eingeben !';
             nameErrorMessage.classList.add('error-message');
             nameErrorMessage.id = 'errorMessageNameSignUp';
-            // Füge die Fehlermeldung dem übergeordneten Container hinzu
             nameInput.parentNode.appendChild(nameErrorMessage);
         }
-
-        // Füge eine CSS-Klasse hinzu, um das Feld zu markieren
         nameInput.classList.add('error-border');
-
-        return; // Beendet die Funktion, ohne das Formular abzusenden
+        return;
     }
 }
 
@@ -261,12 +226,10 @@ function removeErrorMessageOnNameInput() {
 
 function restoreErrorMessageOnNameInput(input, errorMessage) {
     if (input.value.length <= 0 && !errorMessage) {
-        // Erstelle die Fehlermeldung nur, wenn sie nicht bereits existiert
         errorMessage = document.createElement('div');
         errorMessage.textContent = 'Bitte Name eingeben';
         errorMessage.classList.add('error-message');
         errorMessage.id = 'errorMessageNameSignUp';
-        // Füge die Fehlermeldung dem übergeordneten Container hinzu (z.B. dem div.input-container)
         let inputContainer = document.querySelector('.input-container');
         inputContainer.appendChild(errorMessage);
     }
@@ -288,12 +251,10 @@ function removeErrorMessageOnEmailInput() {
 
 function restoreErrorMessageOnEmailInput(input, errorMessage, container) {
     if (input.value.length <= 0 && !errorMessage) {
-        // Erstelle die Fehlermeldung nur, wenn sie nicht bereits existiert
         errorMessage = document.createElement('div');
         errorMessage.textContent = 'Bitte Email-Adresse eingeben !';
         errorMessage.classList.add('error-message');
         errorMessage.id = 'errorMessageEmailSignUp';
-        // Füge die Fehlermeldung dem übergeordneten Container hinzu (z.B. dem div.input-container)
         let inputContainer = document.querySelector('.input-container');
         container.appendChild(errorMessage);
     }
@@ -315,12 +276,10 @@ function removeErrorMessageOnPassword1Input() {
 
 function restoreErrorMessageOnPassword1Input(input, errorMessage, container) {
     if (input.value.length <= 0 && !errorMessage) {
-        // Erstelle die Fehlermeldung nur, wenn sie nicht bereits existiert
         errorMessage = document.createElement('div');
         errorMessage.textContent = 'Bitte Feld ausfüllen !';
         errorMessage.classList.add('error-message');
         errorMessage.id = 'errorMessagePassword1SignUp';
-        // Füge die Fehlermeldung dem übergeordneten Container hinzu (z.B. dem div.input-container)
         let inputContainer = document.querySelector('.input-container');
         container.appendChild(errorMessage);
     }
@@ -342,38 +301,30 @@ function removeErrorMessageOnPassword2Input() {
 
 function restoreErrorMessageOnPassword2Input(input, errorMessage) {
     if (input.value.length <= 0 && errorMessage) {
-        // Das Passwortfeld ist leer, aber es gibt eine Fehlermeldung,
-        // die nicht die Standardfehlermeldung ist, also entfernen wir sie
         if (errorMessage.textContent !== 'Bitte Feld ausfüllen !') {
             errorMessage.remove();
         }
-        // Erstelle die Standardfehlermeldung nur, wenn sie nicht bereits existiert
         if (!input.parentNode.querySelector('.error-message')) {
             errorMessage = document.createElement('div');
             errorMessage.textContent = 'Bitte Feld ausfüllen !';
             errorMessage.classList.add('error-message');
             errorMessage.id = 'errorMessagePassword2SignUp';
-            // Füge die Fehlermeldung dem übergeordneten Container hinzu
             let inputContainer = input.parentNode;
             inputContainer.appendChild(errorMessage);
         }
     } else {
-        // Das Passwortfeld ist nicht leer, entferne die Standardfehlermeldung, wenn vorhanden
         if (errorMessage && errorMessage.textContent === 'Bitte Feld ausfüllen !') {
             errorMessage.remove();
         }
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const checkbox = document.getElementById('privacyCheckbox');
     const button = document.getElementById('submit');
-
-    // Initial state check
     button.disabled = !checkbox.checked;
-
     // Event listener for checkbox state change
-    checkbox.addEventListener('change', function() {
+    checkbox.addEventListener('change', function () {
         button.disabled = !this.checked;
     });
 });
@@ -408,5 +359,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
     overlay.addEventListener("click", hidePopups);
 });
-
-

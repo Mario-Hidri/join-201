@@ -5,9 +5,9 @@ body {
 
 ::-webkit-scrollbar {
     width: 0px;
-  }
+}
 
-  .display-none {
+.display-none {
     display: none !important;
 }
 
@@ -26,13 +26,66 @@ body {
 }
 
 .logo {
-    margin-left: 67px;
-    margin-top: 80px;
+    width: 274px;
+    height: 334px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -167px;
+    margin-left: -137px;
+    z-index: 1000;
+    animation: logo-animation 500ms forwards 200ms;
+}
+
+
+@keyframes logo-animation {
+    from {
+        width: 274px;
+        height: 334px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -167px;
+        margin-left: -137px;
+        z-index: 999;
+    }
+
+    to {
+        position: absolute;
+        top: 80px;
+        left: 77px;
+        width: 100px;
+        height: 122px;
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+}
+
+.img-logo-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #F6F7F8;
+    z-index: 900;
+    animation: logo-animation-bg 1s forwards 500ms;
+}
+
+@keyframes logo-animation-bg {
+    from {
+        background-color: #F6F7F8;
+    }
+
+    to {
+        background-color: unset;
+        display: none;
+    }
 }
 
 .log-in-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 .sign-up {
@@ -375,4 +428,3 @@ body {
         height: 320px;
     }
 }
-

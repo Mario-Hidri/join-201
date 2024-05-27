@@ -8,11 +8,14 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/log_in.css">
     <script src="./javascript/log_in_script.js"></script>
+    <script src="./javascript/databank.js"></script>
 </head>
 
 <body>
     <div class="log-in-header">
+        <div class="img-logo-bg"></div>
         <img class="logo" src="./assets/img/log_in_img/Capa 1.svg" alt="">
+        
 
         <div class="sign-up">
             <p>
@@ -60,7 +63,7 @@
                 Log in
             </button>
         </form>
-            <button class="log-in-guest-button">
+            <button onclick="guestLogIn()" class="log-in-guest-button">
                 Guest Log in
             </button>
         </div>
