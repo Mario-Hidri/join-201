@@ -140,3 +140,14 @@
 .priorityImgOnBigTask{
     height: 12px;
 }
+
+#progressbar {
+    background-color: #F4F4F4;
+    border-radius: 8px;
+  }
+  
+  #progressbar>div {
+    background-color: #4489FF;
+    height: 8px;
+    border-radius: 8px;
+  }

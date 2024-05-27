@@ -17,7 +17,7 @@ function allowDrop(ev) {
 async function moveTo(id) {
   tasks[currentDraggedElement]['board'] = id;
   loadTasks();
- await saveTasksInFirebase();
+  await saveTasksInFirebase();
 }
 
 function loadTasks() {
@@ -40,18 +40,26 @@ function loadTask(i) {
   let board = task["board"];
   let title = task["title"];
   let description = task["description"];
-  let date = task["date"];
   let category = task["category"];
-  document.getElementById(`${board}`).innerHTML += loadTaskHTML(i, title, description, category);
+  let subtask = task["subtask"];
+  let subtaskCount = subtask.length;
+  let subtaskCountDone = (subtask.filter(t => t['done'] == true)).length;
+  let subtaskDoneInPercent = ((subtaskCountDone/subtaskCount)*100);
+  document.getElementById(`${board}`).innerHTML += loadTaskHTML(i, title, description, category, subtaskCount, subtaskCountDone, subtaskDoneInPercent);
 }
 
-function loadTaskHTML(i, title, description, category) {
+function loadTaskHTML(i, title, description, category, subtaskCount, subtaskCountDone,subtaskDoneInPercent) {
   return `
   <div onclick="openTaskDialog(${i})" draggable="true" ondragstart="startDragging(${i})" class="card">
   <img class="categorySmallTask" src="./assets/img/${category}" alt="">
   <h3>${title}</h3>
   <p>${description}</p>
+  <div id="progressbar">
+  <div style="width:${subtaskDoneInPercent}%"></div>
+</div>
+  <div>${subtaskCountDone}/${subtaskCount}<div>
   </div>
+  
 `;
 }
 
@@ -114,7 +122,7 @@ function openTaskDialog(i) {
   let category = task["category"];
   let priority = task["priority"];
   document.getElementById('containerOpenTaskInBoardSize').innerHTML = loadTaskDialogHTML(title, description, date, category, priority, i);
-  loadSubtasksOnBigTask(i,task);
+  loadSubtasksOnBigTask(i, task);
   document.getElementById('openTaskOnBoardSite').classList.remove('d-noneAddTask');
 }
 
@@ -148,7 +156,7 @@ function loadTaskDialogHTML(title, description, date, category, priority, i) {
  
     <div>
     Subtask:
-    <ul id="loadSubtasksOnBigTask"></ul>
+    <div id="loadSubtasksOnBigTask"></div>
     </div> 
  
 <div>
@@ -158,37 +166,37 @@ function loadTaskDialogHTML(title, description, date, category, priority, i) {
 `;
 }
 
-function loadSubtasksOnBigTask(taskNumber,task) {
+function loadSubtasksOnBigTask(taskNumber, task) {
   let subtasks = task["subtask"];
   for (let j = 0; j < subtasks.length; j++) {
     let subtask = subtasks[j];
     let checkbox;
-    if(subtask["done"]){
+    if (subtask["done"]) {
       checkbox = './assets/img/checkboxDone.png';
-    }else{
+    } else {
       checkbox = './assets/img/checkboxToDo.png';
     }
 
-    document.getElementById('loadSubtasksOnBigTask').innerHTML += loadSubtaskOnBigTaskHTML(taskNumber,j,subtask,checkbox);
+    document.getElementById('loadSubtasksOnBigTask').innerHTML += loadSubtaskOnBigTaskHTML(taskNumber, j, subtask, checkbox);
 
   }
 }
 
-function loadSubtaskOnBigTaskHTML(taskNumber,subtaskNumber,subtask,checkbox){
-return`
-<li><img id="subtask${subtaskNumber}" onclick="changeCheckbox(${taskNumber},${subtaskNumber},${subtask["done"]})" class="iconOnBigTask" src="${checkbox}" alt="">${subtask["subtask"]}</li>
+function loadSubtaskOnBigTaskHTML(taskNumber, subtaskNumber, subtask, checkbox) {
+  return `
+<div><img id="subtask${subtaskNumber}" onclick="changeCheckbox(${taskNumber},${subtaskNumber})" class="iconOnBigTask" src="${checkbox}" alt="">${subtask["subtask"]}</div>
 `;
 }
 
-function changeCheckbox(taskNumber,subtaskNumber,subtask){ 
-  if(subtask){
-    tasks[taskNumber]["subtask"][subtaskNumber]["done"] =false;
+function changeCheckbox(taskNumber, subtaskNumber) {
+  if (tasks[taskNumber]["subtask"][subtaskNumber]["done"] == true) {
+    tasks[taskNumber]["subtask"][subtaskNumber]["done"] = false;
     document.getElementById(`subtask${subtaskNumber}`).src = './assets/img/checkboxToDo.png';
-}else{
-  tasks[taskNumber]["subtask"][subtaskNumber]["done"] =true;
-  document.getElementById(`subtask${subtaskNumber}`).src = './assets/img/checkboxDone.png';
-}
-saveTasksInFirebase();
+  } else {
+    tasks[taskNumber]["subtask"][subtaskNumber]["done"] = true;
+    document.getElementById(`subtask${subtaskNumber}`).src = './assets/img/checkboxDone.png';
+  }
+  saveTasksInFirebase();
 }
 
 function deleteTask(i) {
