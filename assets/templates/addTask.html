@@ -1,16 +1,27 @@
-<form onsubmit="addTask(); return false" >
+<form onsubmit="addTask(); return false">
     <div class="positionInputFields">
         <div class="leftInput">
             <div class="column distanceBetweenIput">
-                <label for="">Title</label>
-                <input id="title" class="input" type="" placeholder="   Enter a Title">
+                <label for="title">Title<span class="colorRed">*</span></label>
+                <div class="fake-input">
+                    <input required id="title" type="text" placeholder="Enter a Title">
+                </div>
             </div>
             <div class="column distanceBetweenIput">
-                <label for="">Description</label>
-                <textarea id="description" class="textarea" placeholder=" Enter a description"></textarea>
+                <label for="description">Description</label>
+                <div class="fake-textarea">
+                    <textarea id="description" class="textarea" placeholder="Enter a description"></textarea>
+                </div>
             </div>
             <div class="column distanceBetweenIput">
-                <label for="">Assign to</label>
+                <label for="assignContact">Assign to</label>
+                <div class="fake-input">
+                    <input id="assignContact" oninput="showContacts()" placeholder="Select contacts to assign" type="text">
+                   <div id="contactSection" class="flexbox">  <img onclick="removeAddContactSection()" class="taskIcon" src="./assets/img/extensionIcon.png" alt=""></div>
+                </div>
+                <div id="addContact">
+
+                </div>
             </div>
         </div>
 
@@ -19,43 +30,51 @@
 
         <div class="rightInput">
             <div class="column distanceBetweenIput">
-                <label for="">date</label>
-                <input id="date" class="input" type="date">
+                <label for="date">date<span class="colorRed">*</span></label>
+                <div class="fake-input">
+                    <input required id="date" type="date">
+                </div>
             </div>
             <div class="distanceBetweenIput">
-                <button type="button" onclick="changePrioToUrgent()" class="urgentPriority prioButton">Urgent<img
-                        id="urgent" class="priorityImage" src="./assets/img/activeUrgentPriority.png"
-                        alt=""></button>
-                <button type="button" onclick="changePrioToMedium()" class="prioButton">Medium <img
-                        id="medium" class="priorityImage" src="./assets/img/MediumPriority.png"
-                        alt=""></button>
-                <button type="button" onclick="changePrioToLow()" class="prioButton">Low <img id="low"
-                        class="priorityImage" src="./assets/img/LowPriority.png" alt=""></button>
+                <button type="button" onclick="changePrioToUrgent()" class="urgentPriority prioButton">
+                    <span>Urgent</span>
+                    <img id="urgent" class="priorityImage" src="./assets/img/activeUrgentPriority.png"
+                        alt="">
+                </button>
+                <button type="button" onclick="changePrioToMedium()" class="distanceSmall prioButton">
+                    <span>Medium</span>
+                    <img id="medium" class="priorityImage" src="./assets/img/MediumPriority.png" alt="">
+                </button>
+                <button type="button" onclick="changePrioToLow()" class="distanceSmall prioButton">
+                    <span>Low</span>
+                    <img id="low" class="priorityImage" src="./assets/img/LowPriority.png" alt="">
+                </button>
             </div>
 
             <div class="column distanceBetweenIput">
-                <label for="">category</label>
-                <select id="category" class="input" id="category" placeholder="   Select a category">
+                <label for="category">category<span class="colorRed">*</span></label>
+                <select required id="category" class="input" id="category" placeholder="Select a category">
                     <option>Technical Task</option>
                     <option>User Story</option>
                 </select>
             </div>
- 
-            <div class="column distanceBetweenIput">
-                <div class="fake-input">
-                    <input id="subtask" placeholder="   Add new subtask">
-                    <img onclick="addSubTask()" src="./assets/img/addSubTask.png" />
-                </div>
-                <ul id="addSubTask">
 
-                </ul>
+            <div class="column distanceBetweenIput">
+                <label for="subtask">Subtasks</label>
+                <div class="fake-input">
+                    <input id="subtask" placeholder="Add new subtask">
+                    <img onclick="addSubTask()" class="taskIcon" src="./assets/img/addSubTask.png" />
+                </div>
+                <div id="addSubTask">
+
+                </div>
             </div>
         </div>
     </div>
 
 
     <div class="positionButton">
-        <p>This field is required</p>
+        <p><span class="colorRed">* </span>This field is required</p>
         <div>
             <button onclick="removeAddTaskDialog()" type="button">Cancel</button>
             <button type="submit">Create Task</button>
