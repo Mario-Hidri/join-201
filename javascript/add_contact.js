@@ -13,6 +13,13 @@ function addContact() {
     addContactToArray(contact);
     saveContactsToLocalStorage();
     renderContacts();
+
+    // Get the index of the newly added contact
+    let newContactIndex = allContacts.length - 1;
+
+    // Populate the edit display with the new contact
+    populateEditDisplay(contact, newContactIndex);
+
     showTempDiv();
     hideElement('slidingPage');
 }
