@@ -1,13 +1,14 @@
-let defaultContacts = [{ name: "Alice Adams", email: "alice.adams@example.com", phone: "555-123-4567" }, { name: "Bob Baker", email: "bob.baker@example.com", phone: "555-234-5678" }, { name: "Charlie Carter", email: "charlie.carter@example.com", phone: "555-345-6789" }, { name: "David Davis", email: "david.davis@example.com", phone: "555-456-7890" }, { name: "Emily Evans", email: "emily.evans@example.com", phone: "555-567-8901" }, { name: "Frank Fisher", email: "frank.fisher@example.com", phone: "555-678-9012" }, { name: "Grace Garcia", email: "grace.garcia@example.com", phone: "555-789-0123" }, { name: "Henry Harris", email: "henry.harris@example.com", phone: "555-890-1234" }, { name: "Isabel Ingram", email: "isabel.ingram@example.com", phone: "555-901-2345" }, { name: "Jack Johnson", email: "jack.johnson@example.com", phone: "555-012-3456" }, { name: "Katherine King", email: "katherine.king@example.com", phone: "555-123-4567" }, { name: "Liam Lee", email: "liam.lee@example.com", phone: "555-234-5678" }, { name: "Mia Martinez", email: "mia.martinez@example.com", phone: "555-345-6789" }, { name: "Nathan Nelson", email: "nathan.nelson@example.com", phone: "555-456-7890" }, { name: "Olivia Olson", email: "olivia.olson@example.com", phone: "555-567-8901" }, { name: "Peter Parker", email: "peter.parker@example.com", phone: "555-678-9012" }, { name: "Quinn Quinn", email: "quinn.quinn@example.com", phone: "555-789-0123" }, { name: "Rachel Roberts", email: "rachel.roberts@example.com", phone: "555-890-1234" }, { name: "Samuel Smith", email: "samuel.smith@example.com", phone: "555-901-2345" }, { name: "Taylor Taylor", email: "taylor.taylor@example.com", phone: "555-012-3456" }, { name: "Uma Underwood", email: "uma.underwood@example.com", phone: "555-123-4567" }, { name: "Victor Vega", email: "victor.vega@example.com", phone: "555-234-5678" }, { name: "Wendy White", email: "wendy.white@example.com", phone: "555-345-6789" }, { name: "Xavier Xavier", email: "xavier.xavier@example.com", phone: "555-456-7890" }, { name: "Yvonne Young", email: "yvonne.young@example.com", phone: "555-567-8901" }, { name: "Zack Zimmerman", email: "zack.zimmerman@example.com", phone: "555-678-9012" }];
+let defaultContacts = [{ name: "Alice Adams", email: "alice.adams@example.com", phone: "555-123-4567", color: "#FF6F61" }, { name: "Bob Baker", email: "bob.baker@example.com", phone: "555-234-5678", color: "#6B8E23" }, { name: "Charlie Carter", email: "charlie.carter@example.com", phone: "555-345-6789", color: "#4682B4" }, { name: "David Davis", email: "david.davis@example.com", phone: "555-456-7890", color: "#DA70D6" }, { name: "Emily Evans", email: "emily.evans@example.com", phone: "555-567-8901", color: "#FF6347" }, { name: "Fiona Fisher", email: "fiona.fisher@example.com", phone: "555-678-9012", color: "#40E0D0" }, { name: "George Green", email: "george.green@example.com", phone: "555-789-0123", color: "#FFD700" }, { name: "Hannah Harris", email: "hannah.harris@example.com", phone: "555-890-1234", color: "#FFA07A" }, { name: "Ian Irving", email: "ian.irving@example.com", phone: "555-901-2345", color: "#7FFFD4" }, { name: "Jackie Jackson", email: "jackie.jackson@example.com", phone: "555-012-3456", color: "#BA55D3" }, { name: "Kevin King", email: "kevin.king@example.com", phone: "555-123-4568", color: "#6495ED" }, { name: "Laura Lee", email: "laura.lee@example.com", phone: "555-234-5679", color: "#8A2BE2" }, { name: "Michael Moore", email: "michael.moore@example.com", phone: "555-345-6780", color: "#FF4500" }, { name: "Nancy Nelson", email: "nancy.nelson@example.com", phone: "555-456-7891", color: "#00CED1" }, { name: "Oliver Owens", email: "oliver.owens@example.com", phone: "555-567-8902", color: "#B0E0E6" }, { name: "Paul Peterson", email: "paul.peterson@example.com", phone: "555-678-9013", color: "#20B2AA" }, { name: "Quincy Quinn", email: "quincy.quinn@example.com", phone: "555-789-0124", color: "#FF69B4" }, { name: "Rachel Rogers", email: "rachel.rogers@example.com", phone: "555-890-1235", color: "#DC143C" }, { name: "Steve Smith", email: "steve.smith@example.com", phone: "555-901-2346", color: "#00FF7F" }, { name: "Tracy Thompson", email: "tracy.thompson@example.com", phone: "555-012-3457", color: "#8B4513" }, { name: "Uma Underwood", email: "uma.underwood@example.com", phone: "555-123-4569", color: "#7FFF00" }, { name: "Victor Vance", email: "victor.vance@example.com", phone: "555-234-5680", color: "#FF1493" }, { name: "Wendy White", email: "wendy.white@example.com", phone: "555-345-6781", color: "#1E90FF" }, { name: "Xander Xiong", email: "xander.xiong@example.com", phone: "555-456-7892", color: "#4B0082" }, { name: "Yara Young", email: "yara.young@example.com", phone: "555-567-8903", color: "#8FBC8F" }, { name: "Zachary Zimmerman", email: "zachary.zimmerman@example.com", phone: "555-678-9014", color: "#ADFF2F" }];
 let allContacts = [];
 let lastSelectedContactIndex = null;
 let currentEditIndex = -1;
+
 
 function addContact() {
     let name = document.getElementById('add_contact_name').value;
     let email = document.getElementById('add_contact_email').value;
     let phone = document.getElementById('add_contact_phone').value;
-    let contact = createContact(name, email, phone);
+    let contact = createContact(name, email, phone, getRandomColor());
 
     addContactToArray(contact);
     saveContactsToLocalStorage();
@@ -16,19 +17,19 @@ function addContact() {
     hideElement('slidingPage');
 }
 
-
 function resetSelectedIndexes() {
     lastSelectedContactIndex = null;
     currentEditIndex = -1;
 }
 
-function createContact(name, email, phone) {
+function createContact(name, email, phone, color) {
     return {
         name: name,
         email: email,
         phone: phone,
         createdAt: new Date().getTime(),
-        contactSelect: false
+        contactSelect: false,
+        color: color
     };
 }
 
@@ -125,7 +126,7 @@ function clearContactsContainers() {
 function insertContactIntoContainer(containerId, contact, index) {
     let container = document.getElementById(containerId);
     if (container) {
-        container.innerHTML += generateContactHTML(contact, index, getRandomColor());
+        container.innerHTML += generateContactHTML(contact, index, contact.color);
     }
 }
 
@@ -164,7 +165,6 @@ function setColorfulDivBackgroundColor(index) {
 }
 
 function updateEditDisplay(contact) {
-
     document.getElementById('edit_contact_name').textContent = contact.name;
     document.getElementById('edit_contact_email').textContent = contact.email;
     document.getElementById('edit_contact_phone').textContent = contact.phone;
@@ -191,7 +191,6 @@ function populateEditDisplay(contact, index) {
         setColorfulDivBackgroundColor(index);
     }
 }
-
 
 function createContactCard(contact, index) {
     let contactCard = document.createElement('div');
@@ -244,8 +243,5 @@ function showTempDiv() {
         }, 500); 
     }, 2000); 
 }
-
-
-
 
 window.onload = init;
