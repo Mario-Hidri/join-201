@@ -1,3 +1,7 @@
+ <div class="spaceBetween"> 
+<h1>Add Task</h1>
+<img class="" onclick="removeAddTaskDialog()" src="./assets/img/crossIcon.png" alt="">
+</div> 
 <form onsubmit="addTask(); return false">
     <div class="positionInputFields">
         <div class="leftInput">
@@ -76,8 +80,8 @@
     <div class="positionButton">
         <p><span class="colorRed">* </span>This field is required</p>
         <div>
-            <button onclick="removeAddTaskDialog()" type="button">Cancel</button>
-            <button type="submit">Create Task</button>
+            <button class="whiteButton" onclick="removeAddTaskDialog()" type="button">Cancel</button>
+            <button type="submit" class="createButton">Create Task</button>
         </div>
     </div>
 </form>
