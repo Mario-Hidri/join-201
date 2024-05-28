@@ -8,9 +8,14 @@ function addContact() {
     let email = document.getElementById('add_contact_email').value;
     let phone = document.getElementById('add_contact_phone').value;
     let contact = createContact(name, email, phone);
+
     addContactToArray(contact);
     saveContactsToLocalStorage();
+    renderContacts();
+    showTempDiv();
+    hideElement('slidingPage');
 }
+
 
 function resetSelectedIndexes() {
     lastSelectedContactIndex = null;
@@ -23,7 +28,7 @@ function createContact(name, email, phone) {
         email: email,
         phone: phone,
         createdAt: new Date().getTime(),
-        contactSelect:false
+        contactSelect: false
     };
 }
 
@@ -36,7 +41,7 @@ function saveContactsToLocalStorage() {
     localStorage.setItem('allContacts', allContactsAsString);
 }
 
-function initContactForaddTask(){
+function initContactForaddTask() {
     let allContactsAsString = localStorage.getItem('allContacts');
     if (allContactsAsString) {
         allContacts = JSON.parse(allContactsAsString) || [];
@@ -70,11 +75,23 @@ function deleteContact(currentEditIndex) {
 
 function hideElement(elementId) {
     let element = document.getElementById(elementId);
+
+    // Clear the input fields if the sliding page is being hidden
+    if (elementId === 'slidingPage') {
+        clearSlidingPageInputs();
+    }
+
     element.classList.remove('show');
     element.classList.add('hide');
     setTimeout(function () {
         element.classList.add('hidden');
     }, 300);
+}
+
+function clearSlidingPageInputs() {
+    document.getElementById('add_contact_name').value = '';
+    document.getElementById('add_contact_email').value = '';
+    document.getElementById('add_contact_phone').value = '';
 }
 
 function showElement(elementId) {
@@ -211,19 +228,24 @@ function hideEditing() {
     document.getElementById('editContactForm').classList.add('hidden');
 }
 
-// function showTempDiv() {
-//     let tempDiv = document.getElementById('tempDiv');
-//     tempDiv.classList.add('show-temp');
+function showTempDiv() {
+    let tempDiv = document.getElementById('tempDiv');
+    tempDiv.classList.remove('hidden');
 
-//     setTimeout(function() {
-//         tempDiv.classList.remove('show-temp');
-//         tempDiv.classList.add('hide-temp');
-        
-//         setTimeout(function() {
-//             tempDiv.classList.remove('hide-temp');
-//         }, 500); 
-//     }, 2000); 
-// }
+    tempDiv.classList.add('show-temp');
+
+    setTimeout(function () {
+        tempDiv.classList.remove('show-temp');
+        tempDiv.classList.add('hide-temp');
+
+        setTimeout(function () {
+            tempDiv.classList.remove('hide-temp');
+            tempDiv.classList.add('hidden'); 
+        }, 500); 
+    }, 2000); 
+}
+
+
 
 
 window.onload = init;

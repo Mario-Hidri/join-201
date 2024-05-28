@@ -1,6 +1,7 @@
 body {
     margin: 0;
     background-color: #F6F7F8;
+    overflow-x: hidden;
 }
 
 .contacts_list {
@@ -8,7 +9,7 @@ body {
     padding: 32px 24px;
     left: 232px;
     width: 400px;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 179px);
     background-color: #FFFFFF;
     padding-top: 160px;
     overflow: auto;
@@ -494,7 +495,7 @@ button p {
 
 @keyframes slideIn {
     0% { right: -100%; }
-    100% { right: 50%; }
+    100% { right: 10%; }
 }
 
 @keyframes slideOut {
@@ -502,7 +503,7 @@ button p {
     100% { right: -100%; }
 }
 
-#tempDiv {
+.tempDiv {
     position: absolute;
     top: 90%;
     right: -100%; 
@@ -516,16 +517,18 @@ button p {
     color: white;
     display: flex;
     animation-duration: 0.5s;
+    opacity: 0;
 }
 
 .show-temp {
     animation-name: slideIn;
     animation-fill-mode: forwards;
+    opacity: 1; 
 }
 
 .hide-temp {
     animation-name: slideOut;
     animation-fill-mode: forwards;
+    opacity: 0; 
 }
-
 

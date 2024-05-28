@@ -288,7 +288,7 @@
             <img src="./assets/img/contacts_img/person.png" alt="Person">
         </div>
         <div class="add_contact_input_fields">
-            <form id="contactForm" class="flex_container">
+            <form onsubmit="addContact(); return false" id="contactForm" class="flex_container">
                 <div class="input_with_img">
                     <input id="add_contact_name" name="name" placeholder="Name" class="input_1" type="text" required
                         minlength="2">
@@ -308,7 +308,7 @@
                         <p>Cancel</p>
                         <img src="./assets/img/contacts_img/close.svg" alt="">
                     </button>
-                    <button onclick="addContact()" type="submit" class="add_button">
+                    <button type="submit" class="add_button">
                         <p>Create Contact</p>
                         <img src="./assets/img/contacts_img/check.svg" alt="">
                     </button>
@@ -319,7 +319,7 @@
     </section>
 
     <section>
-        <div id="tempDiv">
+        <div id="tempDiv" class="tempDiv hidden">
             <h1>Contact succesfully created</h1>
         </div>
 
