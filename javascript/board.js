@@ -20,10 +20,22 @@ async function moveTo(id) {
   await saveTasksInFirebase();
 }
 
-function loadTasks() {
+function filter(){
+  let filter = document.getElementById('search').value;
+  filter = filter.toLowerCase();
+  loadTasks(filter);
+}
+
+function loadTasks(filter) {
   removeAllTask();
   for (let i = 0; i < tasks.length; i++) {
+    let title = tasks[i]["title"];
+    title = title.toLowerCase();
+    let description = tasks[i]["description"];
+    description = description.toLowerCase();
+    if(!filter || title.includes(filter)|| description.includes(filter)){ 
     loadTask(i);
+  }
   }
   loadPlaceholderForSectionWithNoTask();
 }
