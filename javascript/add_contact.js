@@ -59,7 +59,7 @@ function initContactForaddTask() {
     }
 }
 
-function init() {
+async function init() {
     let allContactsAsString = localStorage.getItem('allContacts');
     if (allContactsAsString) {
         allContacts = JSON.parse(allContactsAsString) || [];
@@ -68,7 +68,8 @@ function init() {
         saveContactsToLocalStorage();
     }
     renderContacts();
-    includeHTML();
+    await includeHTML();
+    loadActiveUserInitials();
 }
 
 function deleteContact(currentEditIndex) {

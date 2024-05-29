@@ -5,9 +5,10 @@ let url = 'https://jointask-cedc0-default-rtdb.europe-west1.firebasedatabase.app
 let board = "toDo";
 let authorityForTask =[];
 
-function initAddTaskSite() {
-    includeHTML();
+async function initAddTaskSite() {
+    await includeHTML();
     loadTasksFromFirebase();
+    loadActiveUserInitials();
 }
 
 async function addTask() {

@@ -2,6 +2,7 @@ async function start() {
     includeHTML();
     await loadLogInData();
     loadActiveUser();
+    loadActiveUserInitials();
 }
 
 const urlLogInData = "https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/LogInData.json";
@@ -38,9 +39,6 @@ async function loadLogInData() {
     }
 }
 
-
-
-
 function openLegalNotice() {
     window.open('/legal_notice.html', '_blank');
 }
@@ -51,14 +49,21 @@ function openPrivacyPolice() {
 
 function loadActiveUser() {
     const activeUser = JSON.parse(localStorage.getItem('activeUser'));
+    if (activeUser) {
+        const name = activeUser.data.name;
+        const user = document.getElementById('activeUser');
+        user.innerHTML = name;
+    } else {
+        console.error('No active user found in localStorage');
+    }
+}
 
+function loadActiveUserInitials() {
+    const activeUser = JSON.parse(localStorage.getItem('activeUser'));
     if (activeUser) {
         const name = activeUser.data.name;
         const initials = name.split(' ').map(word => word.charAt(0)).join('');
-        const user = document.getElementById('activeUser');
         const userProfil = document.getElementById('userInitials');
-
-        user.innerHTML = name;
         userProfil.innerHTML = initials;
     } else {
         console.error('No active user found in localStorage');

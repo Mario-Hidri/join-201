@@ -1,7 +1,8 @@
 let currentDraggedElement;
 
 async function initBoardSite() {
-  includeHTML();
+  await includeHTML();
+  loadActiveUserInitials();
   await loadTasksFromFirebase();
   loadTasks();
 }
