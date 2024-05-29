@@ -30,16 +30,17 @@ function filter(){
 function loadTasks(filter) {
   removeAllTask();
   for (let i = 0; i < tasks.length; i++) {
-    let title = tasks[i]["title"];
+    let title = tasks[i]["title"] || ''; // Default-Wert setzen, falls title undefined ist
     title = title.toLowerCase();
-    let description = tasks[i]["description"];
+    let description = tasks[i]["description"] || ''; // Default-Wert setzen, falls description undefined ist
     description = description.toLowerCase();
-    if(!filter || title.includes(filter)|| description.includes(filter)){ 
-    loadTask(i);
-  }
+    if (!filter || title.includes(filter) || description.includes(filter)) { 
+      loadTask(i);
+    }
   }
   loadPlaceholderForSectionWithNoTask();
 }
+
 
 function removeAllTask() {
   document.getElementById('toDo').innerHTML = '';
@@ -54,27 +55,27 @@ function loadTask(i) {
   let title = task["title"];
   let description = task["description"];
   let category = task["category"];
-  let subtask = task["subtask"];
+  let subtask = task["subtask"] || []; // Default-Wert setzen, falls subtask undefined ist
   let subtaskCount = subtask.length;
   let subtaskCountDone = (subtask.filter(t => t['done'] == true)).length;
-  let subtaskDoneInPercent = ((subtaskCountDone/subtaskCount)*100);
+  let subtaskDoneInPercent = subtaskCount > 0 ? ((subtaskCountDone / subtaskCount) * 100) : 0; // Vermeidung der Division durch 0
   document.getElementById(`${board}`).innerHTML += loadTaskHTML(i, title, description, category, subtaskCount, subtaskCountDone, subtaskDoneInPercent);
 }
 
-function loadTaskHTML(i, title, description, category, subtaskCount, subtaskCountDone,subtaskDoneInPercent) {
+function loadTaskHTML(i, title, description, category, subtaskCount, subtaskCountDone, subtaskDoneInPercent) {
   return `
   <div onclick="openTaskDialog(${i})" draggable="true" ondragstart="startDragging(${i})" class="card">
-  <img class="categorySmallTask" src="./assets/img/${category}" alt="">
-  <h3>${title}</h3>
-  <p>${description}</p>
-  <div id="progressbar">
-  <div style="width:${subtaskDoneInPercent}%"></div>
-</div>
-  <div>${subtaskCountDone}/${subtaskCount}<div>
+    <img class="categorySmallTask" src="./assets/img/${category}" alt="">
+    <h3>${title}</h3>
+    <p>${description}</p>
+    <div id="progressbar">
+      <div style="width:${subtaskDoneInPercent}%"></div>
+    </div>
+    <div>${subtaskCountDone}/${subtaskCount}</div>
   </div>
-  
-`;
+  `;
 }
+
 
 function loadPlaceholderForSectionWithNoTask() {
   let toDoTask = tasks.filter(element => element['board'] == 'toDo');
@@ -180,7 +181,8 @@ function loadTaskDialogHTML(title, description, date, category, priority, i) {
 }
 
 function loadSubtasksOnBigTask(taskNumber, task) {
-  let subtasks = task["subtask"];
+  let subtasks = task["subtask"] || []; // Default-Wert setzen, falls subtask undefined ist
+  document.getElementById('loadSubtasksOnBigTask').innerHTML = ''; // Sicherstellen, dass das Element leer ist, bevor Subtasks hinzugefügt werden
   for (let j = 0; j < subtasks.length; j++) {
     let subtask = subtasks[j];
     let checkbox;
@@ -191,9 +193,9 @@ function loadSubtasksOnBigTask(taskNumber, task) {
     }
 
     document.getElementById('loadSubtasksOnBigTask').innerHTML += loadSubtaskOnBigTaskHTML(taskNumber, j, subtask, checkbox);
-
   }
 }
+
 
 function loadSubtaskOnBigTaskHTML(taskNumber, subtaskNumber, subtask, checkbox) {
   return `
