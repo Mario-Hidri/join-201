@@ -1,5 +1,19 @@
+<script src="/javascript/summary_user.js"></script>
+
+
+
 <p>Kanban Project Management Tool</p>
 <div class="spaceBetween">
     <img class="help" src="./assets/img/helpIcon.png" alt="">
-    <img class="user" src="./assets/img/userLoginIcon1.png" alt="">
+    <div onclick="openSubMenu()" class="user">
+        <div class="userInitialsContainer">
+            <span class="userInitials" id="userInitials">MB</span>
+        </div>
+    </div>
+</div>
+
+<div id="submenucontainer" class="submenu display-none">
+    <button onclick="openLegalNotice()">Legal Notice</button>
+    <button onclick="openPrivacyPolice()">Privacy Police</button>
+    <button onclick="openLogIn()">Log Out</button>
 </div>

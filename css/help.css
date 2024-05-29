@@ -1,10 +1,7 @@
 .space_Between_Header {
-    background-color: #FFFFFF;
-    padding: 20px 40px;
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    left: 232px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .container_legal_policy {

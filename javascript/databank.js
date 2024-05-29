@@ -1,5 +1,6 @@
 const activeuser = [];
 
+
 async function saveLogInDataInFirebase() {
     await fetch(url + '.json', {
         method: "POST",
