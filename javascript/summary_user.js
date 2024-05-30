@@ -3,6 +3,13 @@ async function start() {
     await loadLogInData();
     loadActiveUser();
     loadActiveUserInitials();
+    await loadTasksFromFirebase();
+    loadNumberAllTasks();
+    loadNumberDoneTasks();
+    loadNumberProgressTasks();
+    loadNumberFeedbackTasks();
+    loadNumberPriorityTasks();
+    loadNearestDeadline();
 }
 
 const urlLogInData = "https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/LogInData.json";
@@ -97,9 +104,6 @@ function openLogIn() {
     }, 2000);
 }
 
-
-
-
 function openSubMenu() {
     let submenu = document.getElementById('submenucontainer');
     submenu.classList.remove('display-none');
@@ -119,3 +123,90 @@ function handleClickOutside(event) {
 }
 
 document.addEventListener('click', handleClickOutside);
+
+function loadNumberAllTasks() {
+    let numberForAllTasks = document.getElementById('allTasks');
+    let numberForAllTasksInBoard = document.getElementById('allTasksInBoard');
+    numberForAllTasks.innerHTML = tasks.length;
+    numberForAllTasksInBoard.innerHTML = tasks.length;
+}
+
+function loadNumberDoneTasks() {
+    // Zählt die Anzahl der Tasks im Board "done"
+    const doneTasksCount = tasks.filter(task => task.board === "done").length;
+    
+    // Findet das entsprechende HTML-Element und setzt den Inhalt
+    const doneTasksElement = document.getElementById('NumberDoneTasks');
+    if (doneTasksElement) {
+        doneTasksElement.innerHTML = doneTasksCount;
+    } else {
+        console.error('Element for done tasks count not found');
+    }
+}
+
+function loadNumberProgressTasks() {
+    // Zählt die Anzahl der Tasks im Board "inProgress"
+    const doneTasksCount = tasks.filter(task => task.board === "inProgress").length;
+    
+    // Findet das entsprechende HTML-Element und setzt den Inhalt
+    const doneTasksElement = document.getElementById('numberProgressTasks');
+    if (doneTasksElement) {
+        doneTasksElement.innerHTML = doneTasksCount;
+    } else {
+        console.error('Element for done tasks count not found');
+    }
+}
+
+function loadNumberFeedbackTasks() {
+    // Zählt die Anzahl der Tasks im Board "awaitFeedback"
+    const doneTasksCount = tasks.filter(task => task.board === "awaitFeedback").length;
+    
+    // Findet das entsprechende HTML-Element und setzt den Inhalt
+    const doneTasksElement = document.getElementById('numberFeedbackTasks');
+    if (doneTasksElement) {
+        doneTasksElement.innerHTML = doneTasksCount;
+    } else {
+        console.error('Element for done tasks count not found');
+    }
+}
+
+function loadNumberPriorityTasks() {
+    // Zählt die Anzahl der Tasks im priority "urgent"
+    const doneTasksCount = tasks.filter(task => task.priority === "urgent").length;
+    
+    // Findet das entsprechende HTML-Element und setzt den Inhalt
+    const doneTasksElement = document.getElementById('numberUrgentTasks');
+    if (doneTasksElement) {
+        doneTasksElement.innerHTML = doneTasksCount;
+    } else {
+        console.error('Element for done tasks count not found');
+    }
+}
+
+function loadNearestDeadline() {
+    const urgentTasks = tasks.filter(task => task.priority === "urgent");
+    
+    if (urgentTasks.length === 0) {
+        console.error('No urgent tasks found');
+        return;
+    }
+
+    // Findet das nächstliegende Datum
+    let nearestDate = urgentTasks
+        .map(task => new Date(task.date))
+        .sort((a, b) => a - b)[0];
+    
+    // Formatieren des Datums in ein lesbares Format (z.B. "October 16, 2024")
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const nearestDeadlineString = nearestDate.toLocaleDateString('en-US', options);
+    
+    // Findet das entsprechende HTML-Element und setzt den Inhalt
+    const nearestDeadlineElement = document.getElementById('nearestDeadline');
+    if (nearestDeadlineElement) {
+        nearestDeadlineElement.textContent = nearestDeadlineString;
+    } else {
+        console.error('Element for nearest deadline not found');
+    }
+}
+
+
