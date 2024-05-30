@@ -21,7 +21,7 @@ async function moveTo(id) {
   await saveTasksInFirebase();
 }
 
-function filter(){
+function filter() {
   let filter = document.getElementById('search').value;
   filter = filter.toLowerCase();
   loadTasks(filter);
@@ -34,7 +34,7 @@ function loadTasks(filter) {
     title = title.toLowerCase();
     let description = tasks[i]["description"] || ''; // Default-Wert setzen, falls description undefined ist
     description = description.toLowerCase();
-    if (!filter || title.includes(filter) || description.includes(filter)) { 
+    if (!filter || title.includes(filter) || description.includes(filter)) {
       loadTask(i);
     }
   }
@@ -55,14 +55,28 @@ function loadTask(i) {
   let title = task["title"];
   let description = task["description"];
   let category = task["category"];
+  let priority = task["priority"];
   let subtask = task["subtask"] || []; // Default-Wert setzen, falls subtask undefined ist
   let subtaskCount = subtask.length;
   let subtaskCountDone = (subtask.filter(t => t['done'] == true)).length;
   let subtaskDoneInPercent = subtaskCount > 0 ? ((subtaskCountDone / subtaskCount) * 100) : 0; // Vermeidung der Division durch 0
-  document.getElementById(`${board}`).innerHTML += loadTaskHTML(i, title, description, category, subtaskCount, subtaskCountDone, subtaskDoneInPercent);
+  document.getElementById(`${board}`).innerHTML += loadTaskHTML(i, title, description, category, subtaskCount, subtaskCountDone, subtaskDoneInPercent, priority);
+  let authority = task["authorityForTask"] || [];
+  for (let j = 0; j < authority.length; j++) {
+    const contact = authority[j];
+    const lastNameInitial = contact.split(' ')[1]?.charAt(0) || '';
+    document.getElementById(`authorityIcon${i}`).innerHTML +=`
+    <div class="authorityImageContainer" style="background-color: blue;">
+    <span class="initials1">${contact.charAt(0)}</span>
+    <span class="initials2">${lastNameInitial}</span>
+</div>
+    `;
+
+  }
+
 }
 
-function loadTaskHTML(i, title, description, category, subtaskCount, subtaskCountDone, subtaskDoneInPercent) {
+function loadTaskHTML(i, title, description, category, subtaskCount, subtaskCountDone, subtaskDoneInPercent, priority) {
   return `
   <div onclick="openTaskDialog(${i})" draggable="true" ondragstart="startDragging(${i})" class="card">
     <img class="categorySmallTask" src="./assets/img/${category}" alt="">
@@ -72,6 +86,10 @@ function loadTaskHTML(i, title, description, category, subtaskCount, subtaskCoun
       <div style="width:${subtaskDoneInPercent}%"></div>
     </div>
     <div>${subtaskCountDone}/${subtaskCount}</div>
+    <div>
+    <div class="authorityIcon" id="authorityIcon${i}"></div> 
+    <img class="priorityImgOnBigTask" src="./assets/img/${priority}Priority.png" alt="">
+    </div>
   </div>
   `;
 }
@@ -127,12 +145,13 @@ function removeAddTaskDialog() {
   subtasks = [];
   document.getElementById('addSubTask').innerHTML = "";
   document.getElementById('assignContact').value = "";
-  authorityForTask =[]; 
+  authorityForTask = [];
   for (let i = 0; i < allContacts.length; i++) {
     allContacts[i]['contactSelect'] = false;
-    
+
   }
-  document.getElementById('addContact').innerHTML = ""; 
+  document.getElementById('addContact').innerHTML = "";
+  document.getElementById('addContactIcon').innerHTML = '';
 }
 
 function openTaskDialog(i) {
@@ -145,6 +164,7 @@ function openTaskDialog(i) {
   document.getElementById('containerOpenTaskInBoardSize').innerHTML = loadTaskDialogHTML(title, description, date, category, priority, i);
   loadSubtasksOnBigTask(i, task);
   document.getElementById('openTaskOnBoardSite').classList.remove('d-noneAddTask');
+  loadContactsOnBigTask(i, task);
 }
 
 function loadTaskDialogHTML(title, description, date, category, priority, i) {
@@ -168,10 +188,9 @@ function loadTaskDialogHTML(title, description, date, category, priority, i) {
      </div>
      
     <div>Assigned To:
-    <ul> 
-        <li>Name1</li>
-        <li>Name2</li>
-    </ul>
+    <div id="contactAtBigTask"> 
+        
+    </div>
     </div>
  
  
@@ -185,6 +204,25 @@ function loadTaskDialogHTML(title, description, date, category, priority, i) {
 <span onclick="editTask(${i})"><img class="iconOnBigTask" src="./assets/img/editIcon.png" alt="">Edit</span>
 <div>
 `;
+}
+function loadContactsOnBigTask(taskNumber, task){
+  let authority = task["authorityForTask"] || [];
+  document.getElementById('contactAtBigTask').innerHTML = ''; 
+  for (let j = 0; j < authority.length; j++) {
+    const contact = authority[j];
+    const lastNameInitial = contact.split(' ')[1]?.charAt(0) || '';
+    document.getElementById(`contactAtBigTask`).innerHTML +=`
+    <div class="verticalCenter">
+    <div class="image_container" style="background-color: blue;">
+    <span class="initials1">${contact.charAt(0)}</span>
+    <span class="initials2">${lastNameInitial}</span>
+    </div>
+    <div>${contact}</div>
+    </div>
+    `;
+
+  }
+
 }
 
 function loadSubtasksOnBigTask(taskNumber, task) {
