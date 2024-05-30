@@ -126,6 +126,13 @@ function removeAddTaskDialog() {
   document.getElementById('subtask').value = "";
   subtasks = [];
   document.getElementById('addSubTask').innerHTML = "";
+  document.getElementById('assignContact').value = "";
+  authorityForTask =[]; 
+  for (let i = 0; i < allContacts.length; i++) {
+    allContacts[i]['contactSelect'] = false;
+    
+  }
+  document.getElementById('addContact').innerHTML = ""; 
 }
 
 function openTaskDialog(i) {
