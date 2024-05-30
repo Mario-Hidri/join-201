@@ -1,10 +1,10 @@
 const loginUrl = "https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/.json";
 const url = "https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/LogInData";
 
-const activeUser = {}; // Objekt zum Speichern der aktiven Benutzerdaten
+const activeUser = {};
 
 async function checkLogIn(event) {
-    event.preventDefault(); // Verhindert das Standard-Formularverhalten
+    event.preventDefault();
     let email = document.getElementById('emailLogIn').value;
     let password = document.getElementById('passwordLogIn').value;
 
@@ -41,53 +41,65 @@ function findUser(data, email, password) {
     return null;
 }
 
-function handleSuccessfulLogin(userEntry) {
-    const userKey = userEntry[0];
-    const userData = userEntry[1];
+async function handleSuccessfulLogin(userEntry) {
+    const [key, userData] = userEntry;
+    const userName = userData.name;
+    const userKey = await saveActiveUserInFirebase(userName);
+    const activeUser = { key: userKey, data: { name: userName } };
+    localStorage.setItem('activeUser', JSON.stringify(activeUser));
+    window.location.href = '/summary_user.html';
+}
 
-    localStorage.setItem('activeUser', JSON.stringify({ key: userKey, data: userData }));
-
-    saveLogInDataInFirebase();
-    setTimeout(() => {
-        window.location.href = './summary_user.html';
-    }, 2000);
+async function saveActiveUserInFirebase(name) {
+    try {
+        const response = await fetch('https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/LogInData.json', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name: name })
+        });
+        const data = await response.json();
+        return data.name;
+    } catch (error) {
+        console.error('Error saving active user in Firebase:', error);
+    }
 }
 
 function saveLogInDataInFirebase() {
-    // Hier fügen Sie den Code zum Speichern der Anmeldedaten in Firebase hinzu
+    // Code zum Speichern der Anmeldedaten in Firebase
 }
 
 function guestLogIn() {
-    window.location.href = './summary_user.html'; // Hauptseite der Website
+    const guestUser = { key: "guest", data: { name: "Guest" } };
+    localStorage.setItem('activeUser', JSON.stringify(guestUser));
+    window.location.href = './summary_user.html';
 }
+
 
 function passwordError(passwordField) {
     if (!passwordField.parentNode.querySelector('.error-message')) {
         let errorMessage = document.createElement('div');
-        errorMessage.textContent = 'Wrong Password Ups! Try again';
+        errorMessage.textContent = 'Wrong Password. Try again';
         errorMessage.classList.add('error-message');
         errorMessage.id = 'errorMessagePassword';
         passwordField.parentNode.appendChild(errorMessage);
     }
-
     passwordField.classList.add('error-border');
 }
 
-// Ändert das Bild beim Eintippen des Passworts
 function changePasswordImgLogIn() {
     let inputPassword = document.getElementById('passwordLogIn').value;
     let image = document.getElementById('passwordLogInImg');
     changePasswordImgTemplate(inputPassword, image);
 }
 
-// Macht das Passwortfeld sichtbar
 function passwordLogInVisible() {
     let image = document.getElementById('passwordLogInImg');
     let x = document.getElementById("passwordLogIn");
     passwordVisibleTemplate(x, image);
 }
 
-// Allgemeine Funktion zur Änderung des Passworts
 function passwordVisibleTemplate(x, image) {
     if (x.type === "password") {
         x.type = "text";
@@ -98,7 +110,6 @@ function passwordVisibleTemplate(x, image) {
     }
 }
 
-// Allgemeine Funktion zur Änderung des Passwortbilds
 function changePasswordImgTemplate(inputPassword, image) {
     if (inputPassword === "") {
         image.src = "./assets/img/log_in_img/lock.svg";

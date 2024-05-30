@@ -1,6 +1,5 @@
 const activeuser = [];
 
-
 async function saveLogInDataInFirebase() {
     await fetch(url + '.json', {
         method: "POST",
@@ -10,4 +9,3 @@ async function saveLogInDataInFirebase() {
         body: JSON.stringify(activeuser)
     });
 }
-
