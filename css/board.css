@@ -33,6 +33,12 @@
     align-items: flex-start;
 }
 
+.verticalCenter{
+    display:flex;
+    align-items: center;
+    gap: 10px;
+}
+
 
 
 .backgroudColor {
@@ -92,6 +98,7 @@
     background-color: #FFFFFF;
     padding: 30px;
     border-radius: 8px;
+    overflow-y: scroll;
 }
 
 .noTask {
@@ -151,3 +158,20 @@
     height: 8px;
     border-radius: 8px;
   }
+
+  .authorityImageContainer {
+    width: 32px;
+    height: 32px;
+    border-radius: 35px;
+    border: 2px, solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -8px;
+}
+
+.authorityIcon{
+    display:flex;
+}
+
+ 

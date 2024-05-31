@@ -14,6 +14,7 @@
     <script src="./javascript/board.js"></script>
     <script src="./javascript/databank.js"></script>
     <script src="./javascript/summary_user.js"></script>
+    <script src="./javascript/addTask.js"></script>
 </head>
 
 <body onload="start()">
@@ -37,7 +38,7 @@
                     <div class="summary_content_img_1">
                     </div>
                     <div class="summary_content_info">
-                        <h1>1</h1>
+                        <h1 id="allTasks"></h1>
                         <p>To-Do</p>
                     </div>
                 </div>
@@ -45,7 +46,7 @@
                     <div class="summary_content_img_2">
                     </div>
                     <div class="summary_content_info">
-                        <h1>1</h1>
+                        <h1 id="NumberDoneTasks">1</h1>
                         <p>Done</p>
                     </div>
                 </div>
@@ -56,36 +57,36 @@
                         <img src="./assets/img/summary_user_img/Prio alta.png" alt="">
                     </div>
                     <div class="summary_content_info">
-                        <h1>1</h1>
+                        <h1 id="numberUrgentTasks">1</h1>
                         <p>Urgent</p>
                     </div>
                 </div>
                 <div class="summary_content_info_seperator"></div>
                 <div class="summary_content_info">
-                    <h3>October 16, 2024</h3>
+                    <h3 id="nearestDeadline">October 16, 2024</h3>
                     <p>Upcoming deadline</p>
                 </div>
             </div>
 
             <div class="summary_content_row_3">
                 <div class="summary_content_rows_3 left">
-                    <h1>5</h1>
+                    <h1 id="allTasksInBoard"></h1>
                     <p>Task in <br>Board</p>
                 </div>
                 <div class="summary_content_rows_3 center">
-                    <h1>2</h1>
+                    <h1 id="numberProgressTasks">2</h1>
                     <p>Task in <br>Progress</p>
                 </div>
                 <div class="summary_content_rows_3 right">
-                    <h1>2</h1>
+                    <h1 id="numberFeedbackTasks">2</h1>
                     <p>Awaiting <br> Feedback</p>
                 </div>
             </div>
         </section>
 
         <section class="summary_greet_user">
-            <h1>Good Morning</h1>
-            <h2>Sofia Müller</h2>
+            <h1>Good Morning,</h1>
+            <h2 id="activeUser"></h2>
         </section>
 </body>
 

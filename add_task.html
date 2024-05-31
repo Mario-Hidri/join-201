@@ -13,9 +13,11 @@
     <script src="./javascript/board.js"></script>
     <script src="./javascript/addTask.js"></script>
     <script src="./javascript/add_contact.js"> </script>
+    <script src="./javascript/summary_user.js"></script>
+
 </head>
 
-<body onload="initAddTaskSite();initContactForaddTask()">
+<body onload="initAddTaskSite(); initContactForaddTask()">
     <header class="spaceBetween" w3-include-html="./assets/templates/header.html"></header>
     <div class="flexbox">
         <div class="sideMenu" w3-include-html="./assets/templates/side_menu.html"></div>
@@ -46,6 +48,9 @@
                                <div id="contactSection" class="flexbox">  <img onclick="removeAddContactSection()" class="taskIcon" src="./assets/img/extensionIcon.png" alt=""></div>
                             </div>
                             <div id="addContact">
+
+                            </div>
+                            <div id="addContactIcon">
 
                             </div>
                         </div>

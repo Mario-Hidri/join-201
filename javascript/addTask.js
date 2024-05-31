@@ -3,11 +3,12 @@ let subtasks = [];
 let prio = "urgent";
 let url = 'https://jointask-cedc0-default-rtdb.europe-west1.firebasedatabase.app/.json';
 let board = "toDo";
-let authorityForTask =[];
+let authorityForTask = [];
 
-function initAddTaskSite() {
-    includeHTML();
+async function initAddTaskSite() {
+    await includeHTML();
     loadTasksFromFirebase();
+    loadActiveUserInitials();
 }
 
 async function addTask() {
@@ -31,7 +32,7 @@ function assignTask(title, description, date, category) {
         "priority": prio,
         "subtask": subtasks,
         "board": board,
-        "authorityForTask":authorityForTask
+        "authorityForTask": authorityForTask
     };
 }
 
@@ -162,10 +163,12 @@ function showContacts() {
                 document.getElementById('addContact').innerHTML += `
                 <div class="contact" id="contact${i}" onclick="addContactToTask(${i})">${name}<img class="checkboxAddContact" src="./assets/img/checkboxDone.png" alt=""></div>
             `;
+            document.getElementById(`contact${i}`).classList.add('activContact');
             } else {
                 document.getElementById('addContact').innerHTML += `
                 <div class="contact" id="contact${i}" onclick="addContactToTask(${i})">${name}<img class="checkboxAddContact" src="./assets/img/checkboxToDo.png" alt=""></div>
             `;
+            document.getElementById(`contact${i}`).classList.remove('activContact');
             }
         }
     }
@@ -178,39 +181,54 @@ function addContactToTask(i) {
         document.getElementById(`contact${i}`).innerHTML = `
         ${name}<img class="checkboxAddContact" src="./assets/img/checkboxToDo.png" alt="">
     `;
-    document.getElementById(`contact${i}`).classList.remove('activContact');
-    allContacts[i]['contactSelect']=false;
+        document.getElementById(`contact${i}`).classList.remove('activContact');
+        allContacts[i]['contactSelect'] = false;
     } else {
         document.getElementById(`contact${i}`).innerHTML = `
         ${name}<img class="checkboxAddContact" src="./assets/img/checkboxDone.png" alt="">
     `;
-    document.getElementById(`contact${i}`).classList.add('activContact');
-    allContacts[i]['contactSelect']=true;
+        document.getElementById(`contact${i}`).classList.add('activContact');
+        allContacts[i]['contactSelect'] = true;
     }
 
 }
 
-function addPersonToTask(){
+function addPersonToTask() {
     for (let i = 0; i < allContacts.length; i++) {
-        if(allContacts[i]['contactSelect'] == true){
+        if (allContacts[i]['contactSelect'] == true) {
             let name = allContacts[i]['name'];
             authorityForTask.push(name);
         }
     }
 }
 
-function removeAddContactSection(){
-    document.getElementById('contactSection').innerHTML =`
+function removeAddContactSection() {
+    for (let i = 0; i < allContacts.length; i++) {
+        if(allContacts[i]['contactSelect'] == true){
+          let contact = allContacts[i];
+        const lastNameInitial = contact.name.split(' ')[1]?.charAt(0) || '';
+        document.getElementById('addContactIcon').innerHTML +=`
+        <div class="image_container" style="background-color: blue;">
+            <span class="initials1">${contact.name.charAt(0)}</span>
+            <span class="initials2">${lastNameInitial}</span>
+        </div>
+        `;
+    }
+    }
+     
+    document.getElementById('contactSection').innerHTML = `
     <img onclick="addContactSection()" class="taskIcon" src="./assets/img/removeExtensionIcon.png" alt="">
     `;
     document.getElementById('addContact').classList.add('d-none');
 }
 
-function addContactSection(){
-    document.getElementById('contactSection').innerHTML =`
+function addContactSection() {
+    document.getElementById('contactSection').innerHTML = `
     <img onclick="removeAddContactSection()" class="taskIcon" src="./assets/img/extensionIcon.png" alt="">
     `;
     document.getElementById('addContact').classList.remove('d-none');
-    
+    document.getElementById('addContactIcon').innerHTML ='';
+
+
 }
 

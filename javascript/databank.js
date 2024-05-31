@@ -9,4 +9,3 @@ async function saveLogInDataInFirebase() {
         body: JSON.stringify(activeuser)
     });
 }
-

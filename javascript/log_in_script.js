@@ -1,72 +1,105 @@
 const loginUrl = "https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/.json";
-const url =  "https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/LogInData";
+const url = "https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/LogInData";
+
+const activeUser = {};
 
 async function checkLogIn(event) {
-    event.preventDefault(); // Verhindert das Standard-Formularverhalten
+    event.preventDefault();
     let email = document.getElementById('emailLogIn').value;
-    let password = document.getElementById('passwordLogIn');
-        let response = await fetch(loginUrl);
-        if (!response.ok) throw new Error("Network response was not ok");
-        let data = await response.json();
-        console.log("Fetched Data:", data); // Debugging: Überprüfen Sie die abgerufenen Daten
-        if (data) {
-            let users = Object.values(data).map(entry => entry[0]);
-            console.log("Users Array:", users); // Debugging: Überprüfen Sie das Users-Array
-            let user = users.find(user => user.email === email && user.password === password.value);
-            console.log("Found User:", user); // Debugging: Überprüfen Sie den gefundenen Benutzer
-            if (user) {
-                activeuser.push(user);
-                saveLogInDataInFirebase();
-                setTimeout(() => {
-                    window.location.href = './summary_user.html';
-                }, 2000);
-                
-               
-            } else if (!user){
-                passwordError(password);
+    let password = document.getElementById('passwordLogIn').value;
+
+    try {
+        let data = await fetchUserData();
+        let userEntry = findUser(data, email, password);
+
+        if (userEntry) {
+            handleSuccessfulLogin(userEntry);
+        } else {
+            passwordError(document.getElementById('passwordLogIn'));
+        }
+    } catch (error) {
+        console.error("Error during login:", error);
+    }
+}
+
+async function fetchUserData() {
+    let response = await fetch(loginUrl);
+    if (!response.ok) throw new Error("Network response was not ok");
+    return await response.json();
+}
+
+function findUser(data, email, password) {
+    let users = Object.entries(data);
+
+    for (let [key, userDataArray] of users) {
+        for (let userData of userDataArray) {
+            if (userData.email === email && userData.password === password) {
+                return [key, userData];
             }
         }
+    }
+    return null;
+}
+
+async function handleSuccessfulLogin(userEntry) {
+    const [key, userData] = userEntry;
+    const userName = userData.name;
+    const userKey = await saveActiveUserInFirebase(userName);
+    const activeUser = { key: userKey, data: { name: userName } };
+    localStorage.setItem('activeUser', JSON.stringify(activeUser));
+    window.location.href = '/summary_user.html';
+}
+
+async function saveActiveUserInFirebase(name) {
+    try {
+        const response = await fetch('https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/LogInData.json', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name: name })
+        });
+        const data = await response.json();
+        return data.name;
+    } catch (error) {
+        console.error('Error saving active user in Firebase:', error);
+    }
+}
+
+function saveLogInDataInFirebase() {
+    // Code zum Speichern der Anmeldedaten in Firebase
 }
 
 function guestLogIn() {
-    window.location.href = './summary_user.html'; // Hauptseite der Website
+    const guestUser = { key: "guest", data: { name: "Guest" } };
+    localStorage.setItem('activeUser', JSON.stringify(guestUser));
+    window.location.href = './summary_user.html';
 }
 
-function passwordError(password) {
-    // Überprüfen, ob bereits eine Fehlermeldung vorhanden ist
-    if (!password.parentNode.querySelector('.error-message')) {
-        // Erstelle die benutzerdefinierte Fehlermeldung
+
+function passwordError(passwordField) {
+    if (!passwordField.parentNode.querySelector('.error-message')) {
         let errorMessage = document.createElement('div');
-        errorMessage.textContent = 'Wrong Password Ups! Try again';
+        errorMessage.textContent = 'Wrong Password. Try again';
         errorMessage.classList.add('error-message');
         errorMessage.id = 'errorMessagePassword';
-        // Füge die Fehlermeldung dem übergeordneten Container hinzu
-        password.parentNode.appendChild(errorMessage);
+        passwordField.parentNode.appendChild(errorMessage);
     }
-
-    // Füge eine CSS-Klasse hinzu, um das Feld zu markieren
-    password.classList.add('error-border');
-
-    return; // Beendet die Funktion, ohne das Formular abzusenden
+    passwordField.classList.add('error-border');
 }
 
-
-
-// Ändert das Bild beim Eintippen des Passworts
 function changePasswordImgLogIn() {
     let inputPassword = document.getElementById('passwordLogIn').value;
     let image = document.getElementById('passwordLogInImg');
     changePasswordImgTemplate(inputPassword, image);
 }
 
-// Macht das Passwortfeld sichtbar
 function passwordLogInVisible() {
     let image = document.getElementById('passwordLogInImg');
     let x = document.getElementById("passwordLogIn");
     passwordVisibleTemplate(x, image);
 }
 
-// Allgemeine Funktion zur Änderung des Passworts
 function passwordVisibleTemplate(x, image) {
     if (x.type === "password") {
         x.type = "text";
@@ -77,7 +110,6 @@ function passwordVisibleTemplate(x, image) {
     }
 }
 
-// Allgemeine Funktion zur Änderung des Passwortbilds
 function changePasswordImgTemplate(inputPassword, image) {
     if (inputPassword === "") {
         image.src = "./assets/img/log_in_img/lock.svg";
