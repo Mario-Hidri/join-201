@@ -61,7 +61,7 @@ body {
     }
 }
 
-.img-logo-bg{
+.img-logo-bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -372,7 +372,7 @@ body {
 .privacy-links-container {
     display: flex;
     justify-content: center;
-    margin: 20px;
+    margin-top: 20px;
 }
 
 .privacy-links-container div {
@@ -428,3 +428,212 @@ body {
         height: 320px;
     }
 }
+
+@media (max-width:800px) {
+    .privacy-links-container {
+        left: 48%;
+    }
+
+    .sign-up {
+        display: flex;
+        align-items: center;
+        gap: 35px;
+        position: absolute;
+        top: 92%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-top: 0px;
+        margin-right: 0px;
+    }
+}
+
+@media (max-width:620px) {
+    @keyframes logo-animation {
+        from {
+            width: 100px;
+            height: 120px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -167px;
+            margin-left: -137px;
+            z-index: 999;
+            src: "./assets/img/log_in_img/logosmallanimation.png";
+        }
+
+        to {
+            position: absolute;
+            top: 80px;
+            left: 77px;
+            width: 84px;
+            height: 98px;
+            margin-top: 0px;
+            margin-left: 0px;
+            src: "./assets/img/log_in_img/Capa 1.svg";
+        }
+    }
+    .log-in-window {
+        margin-top: 40px;
+        width: 310px;
+        height: 300px;
+        gap: 28px;
+    }
+    .log-in-container button {
+        padding: 12px 14px;
+    }
+    .privacy-links-container {
+        top: 93%;
+        width: 77%;
+    }
+    .sign-up {
+        top: 87%;
+    }
+}
+
+@media (max-width:560px) {
+    .log-in-window {
+        margin-top: 0px;
+        width: 240px;
+        height: 290px;
+        gap: 18px;
+    }
+    .login-text {
+        gap: 12px;
+    }
+    .log-in-container button {
+        padding: 12px 8px;
+        font-size: 18px;
+    }
+    .sign-up {
+        top: 86%;
+        width: 77%;
+        justify-content: center;
+    }
+}
+
+@media (max-width:500px) {
+    .log-in-window {
+        margin-top: 10px;
+        width: 205px;
+        height: 380px;
+        gap: 28px;
+    }
+    .log-in-window p {
+        font-size: 47px;
+    }
+    .input1 {
+        min-width: 320px;
+    }
+    .remember-checkbox-container {
+        min-width: 360px;
+    }
+    .log-in-container {
+        display: flex;
+        flex-direction: column;
+        gap: 21px;
+    }
+    .log-in-container button {
+        font-size: 16px;
+        padding: 12px 20px 12px 20px;
+    }
+    .sign-up {
+        top: 88%;
+        width: 77%;
+        justify-content: center;
+    }
+
+    @keyframes logo-animation {
+        from {
+            width: 100px;
+            height: 120px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -167px;
+            margin-left: -137px;
+            z-index: 999;
+            src: "./assets/img/log_in_img/logosmallanimation.png";
+        }
+
+        to {
+            position: absolute;
+            top: 37px;
+            left: 38px;
+            width: 64px;
+            height: 78px;
+            margin-top: 0px;
+            margin-left: 0px;
+            src: "./assets/img/log_in_img/Capa 1.svg";
+        }
+    }
+}
+
+@media (max-width:450px) {
+    .log-in-window {
+        margin-top: 10px;
+        width: 68px;
+        height: 380px;
+        gap: 28px;
+    }
+    .input1 {
+        min-width: 228px;
+    }
+    .remember-checkbox-container {
+        min-width: 260px;
+    }
+    .log-in-container button {
+        font-size: 16px;
+        padding: 12px 26px 12px 26px;
+        white-space: nowrap;
+    }
+    .sign-up p {
+        white-space: nowrap;
+    }
+    .sign-up button {
+        white-space: nowrap;
+    }
+    .privacy-links-container a:link {
+        white-space: nowrap;
+    }
+}
+
+@media (max-height:670px) {
+    .log-in-window {
+        margin-top: 0px;
+        width: 68px;
+        height: 345px;
+        gap: 22px;
+    }
+    .log-in-container {
+        gap: 14px;
+    }
+    .sign-up {
+        top: 91%;
+    }
+    @keyframes logo-animation {
+        from {
+            width: 100px;
+            height: 120px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -167px;
+            margin-left: -137px;
+            z-index: 999;
+            src: "./assets/img/log_in_img/logosmallanimation.png";
+        }
+
+        to {
+            position: absolute;
+            top: 22px;
+            left: 38px;
+            width: 64px;
+            height: 78px;
+            margin-top: 0px;
+            margin-left: 0px;
+            src: "./assets/img/log_in_img/Capa 1.svg";
+        }
+    }
+}
+
+
