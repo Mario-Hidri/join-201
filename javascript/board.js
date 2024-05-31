@@ -1,4 +1,5 @@
 let currentDraggedElement;
+ 
 
 async function initBoardSite() {
   await includeHTML();
@@ -65,7 +66,7 @@ function loadTask(i) {
   for (let j = 0; j < authority.length; j++) {
     const contact = authority[j];
     const lastNameInitial = contact.split(' ')[1]?.charAt(0) || '';
-    document.getElementById(`authorityIcon${i}`).innerHTML +=`
+    document.getElementById(`authorityIcon${i}`).innerHTML += `
     <div class="authorityImageContainer" style="background-color: blue;">
     <span class="initials1">${contact.charAt(0)}</span>
     <span class="initials2">${lastNameInitial}</span>
@@ -122,36 +123,36 @@ function loadNoTaskPlaceholderHTML(section) {
 
 
 function addTaskOnToDo() {
+  document.getElementById('addTaskOnBoardSite').innerHTML = `
+  <div class="containeraddTaskInBoardSize" w3-include-html="./assets/templates/addTask.html"></div>
+  `;
+  includeHTML();
   document.getElementById('addTaskOnBoardSite').classList.remove('d-noneAddTask');
   board = "toDo";
 }
 
 function addTaskOnInProgress() {
+  document.getElementById('addTaskOnBoardSite').innerHTML = `
+  <div class="containeraddTaskInBoardSize" w3-include-html="./assets/templates/addTask.html"></div>
+  `;
+  includeHTML();
   document.getElementById('addTaskOnBoardSite').classList.remove('d-noneAddTask');
   board = "inProgress";
 }
 
 function addTaskOnAwaitFeedback() {
+  document.getElementById('addTaskOnBoardSite').innerHTML = `
+  <div class="containeraddTaskInBoardSize" w3-include-html="./assets/templates/addTask.html"></div>
+  `;
+  includeHTML();
   document.getElementById('addTaskOnBoardSite').classList.remove('d-noneAddTask');
   board = "awaitFeedback";
 }
 
 function removeAddTaskDialog() {
   document.getElementById('addTaskOnBoardSite').classList.add('d-noneAddTask');
-  document.getElementById('title').value = "";
-  document.getElementById('description').value = "";
-  document.getElementById('date').value = "";
-  document.getElementById('subtask').value = "";
-  subtasks = [];
-  document.getElementById('addSubTask').innerHTML = "";
-  document.getElementById('assignContact').value = "";
-  authorityForTask = [];
-  for (let i = 0; i < allContacts.length; i++) {
-    allContacts[i]['contactSelect'] = false;
-
-  }
-  document.getElementById('addContact').innerHTML = "";
-  document.getElementById('addContactIcon').innerHTML = '';
+  document.getElementById('addTaskOnBoardSite').innerHTML = '';
+  reset();
 }
 
 function openTaskDialog(i) {
@@ -205,13 +206,13 @@ function loadTaskDialogHTML(title, description, date, category, priority, i) {
 <div>
 `;
 }
-function loadContactsOnBigTask(taskNumber, task){
+function loadContactsOnBigTask(taskNumber, task) {
   let authority = task["authorityForTask"] || [];
-  document.getElementById('contactAtBigTask').innerHTML = ''; 
+  document.getElementById('contactAtBigTask').innerHTML = '';
   for (let j = 0; j < authority.length; j++) {
     const contact = authority[j];
     const lastNameInitial = contact.split(' ')[1]?.charAt(0) || '';
-    document.getElementById(`contactAtBigTask`).innerHTML +=`
+    document.getElementById(`contactAtBigTask`).innerHTML += `
     <div class="verticalCenter">
     <div class="image_container" style="background-color: blue;">
     <span class="initials1">${contact.charAt(0)}</span>
@@ -268,8 +269,129 @@ function deleteTask(i) {
 
 function closeTask() {
   document.getElementById('openTaskOnBoardSite').classList.add('d-noneAddTask');
+  document.getElementById('containerOpenTaskInBoardSize').innerHTML ='';
 }
 
-function editTask() {
+function editTask(i) {
+  let task = tasks[i];
+  let title = task['title'];
+  let description = task['description'];
+  let date = task['date'];
+  let authority = task['authorityForTask'] || [];
+  
+  
 
+
+  document.getElementById('containerOpenTaskInBoardSize').innerHTML = `
+  <form onsubmit="changeTask(${i}); return false">
+    <label for="title">Title<span class="colorRed">*</span></label>
+      <div class="fake-input">
+        <input required id="title" type="text" value="${title}" placeholder="Enter a Title">
+      </div>
+    <label for="description">Description</label>
+      <div class="fake-textarea">
+          <textarea id="description" class="textarea" placeholder="Enter a description">${description}</textarea>
+      </div>
+      <label for="date">date<span class="colorRed">*</span></label>
+         <div class="fake-input">
+          <input required id="date" value="${date}" type="date">
+          </div>
+
+          <label for="priority">Priority</label>
+          <div id="priority" class="distanceBetweenIput"></div>
+
+          <label for="assignContact">Assign to</label>
+          <div class="fake-input">
+              <input id="assignContact" oninput="showContacts()" placeholder="Select contacts to assign" type="text">
+             <div id="contactSection" class="flexbox">  <img onclick="removeAddContactSection()" class="taskIcon" src="./assets/img/extensionIcon.png" alt=""></div>
+          </div>
+          <div id="addContact">
+
+          </div>
+          <div id="addContactIcon">
+
+          </div> 
+
+          <label for="subtask">Subtasks</label>
+                            <div class="fake-input">
+                                <input id="subtask" placeholder="Add new subtask">
+                                <img onclick="addSubTask()" class="taskIcon" src="./assets/img/addSubTask.png" />
+                            </div>
+                            <div id="addSubTask">
+
+                            </div>
+
+          
+             <button type="submit" class="createButton">OK</button>
+          
+          
+</form> 
+  `;
+  loadPriority(i, task);
+  subtasks = task['subtask']||[];
+  loadSubtasks();
+  
+
+  for (let i  = 0; i  < authority.length; i ++) {
+    const person = authority[i];
+    for (let j = 0; j < allContacts.length; j++) {
+      if(person == allContacts[j]['name']){
+        allContacts[j]['contactSelect'] = true;
+      }
+    }
+  }
+  removeAddContactSection();
+}
+
+function loadPriority(i, task) {
+  let priority = task['priority'];
+  document.getElementById('priority').innerHTML = loadPriorityUrgentHTML();
+  if (priority == 'medium') {
+     changePrioToMedium();
+  } else if(priority == 'low'){
+    changePrioToLow();
+  }
+}
+
+function loadPriorityUrgentHTML() {
+  return `
+  <div class="distanceBetweenIput">
+                            <button type="button" onclick="changePrioToUrgent()" class="urgentPriority prioButton">
+                                <span>Urgent</span>
+                                <img id="urgent" class="priorityImage" src="./assets/img/activeUrgentPriority.png"
+                                    alt="">
+                            </button>
+                            <button type="button" onclick="changePrioToMedium()" class="distanceSmall prioButton">
+                                <span>Medium</span>
+                                <img id="medium" class="priorityImage" src="./assets/img/MediumPriority.png" alt="">
+                            </button>
+                            <button type="button" onclick="changePrioToLow()" class="distanceSmall prioButton">
+                                <span>Low</span>
+                                <img id="low" class="priorityImage" src="./assets/img/LowPriority.png" alt="">
+                            </button>
+                        </div>
+  `;
+}
+
+function changeTask(i){
+  tasks[i]['title'] = document.getElementById('title').value;
+  tasks[i]['description'] = document.getElementById('description').value;
+  tasks[i]['date'] = document.getElementById('date').value;
+  tasks[i]['priority'] =  prio;
+  tasks[i]['subtask'] = subtasks;
+  addPersonToTask();
+  tasks[i]['authority'] = authorityForTask;
+  saveTasksInFirebase();
+  reset();
+  closeTask();
+}
+
+function reset(){
+  subtasks = [];
+  for (let i = 0; i < allContacts.length; i++) {
+    allContacts[i]['contactSelect'] = false;
+  }
+  prio = "urgent";
+  authorityForTask =[];
+  
 }

@@ -163,10 +163,12 @@ function showContacts() {
                 document.getElementById('addContact').innerHTML += `
                 <div class="contact" id="contact${i}" onclick="addContactToTask(${i})">${name}<img class="checkboxAddContact" src="./assets/img/checkboxDone.png" alt=""></div>
             `;
+            document.getElementById(`contact${i}`).classList.add('activContact');
             } else {
                 document.getElementById('addContact').innerHTML += `
                 <div class="contact" id="contact${i}" onclick="addContactToTask(${i})">${name}<img class="checkboxAddContact" src="./assets/img/checkboxToDo.png" alt=""></div>
             `;
+            document.getElementById(`contact${i}`).classList.remove('activContact');
             }
         }
     }

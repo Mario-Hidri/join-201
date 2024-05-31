@@ -98,6 +98,7 @@
     background-color: #FFFFFF;
     padding: 30px;
     border-radius: 8px;
+    overflow-y: scroll;
 }
 
 .noTask {
