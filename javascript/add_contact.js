@@ -17,7 +17,7 @@ function addContact() {
     // Get the index of the newly added contact
     let newContactIndex = allContacts.length - 1;
 
-    // Populate the edit display with the new contact
+    // Populate the edit display with the new contact that was just added
     populateEditDisplay(contact, newContactIndex);
 
     showTempDiv();
