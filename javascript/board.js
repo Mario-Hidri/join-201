@@ -380,7 +380,7 @@ function changeTask(i){
   tasks[i]['priority'] =  prio;
   tasks[i]['subtask'] = subtasks;
   addPersonToTask();
-  tasks[i]['authority'] = authorityForTask;
+  tasks[i]['authorityForTask'] = authorityForTask;
   saveTasksInFirebase();
   reset();
   closeTask();
