@@ -5,7 +5,7 @@ body {
 
 ::-webkit-scrollbar {
     width: 0px;
-  }
+}
 
 .display-none {
     display: none !important;
@@ -279,7 +279,7 @@ body {
     font-weight: 400;
     border: 1px solid #2A3647;
     background: #2A3647;
-    height: 74px;   
+    height: 74px;
     position: absolute;
     top: 96%;
     left: 50%;
@@ -293,7 +293,7 @@ body {
 }
 
 .sign-up-container.move-up {
-    top: 55%; 
+    top: 55%;
 }
 
 .privacy-links-container {
@@ -348,4 +348,117 @@ body {
     text-align: justify;
 }
 
+@media (max-width:1200px) {
+    .logo {
+        width: 100px;
+        height: 120px;
+    }
+    .log-in-window {
+        padding: 30px 68px 30px 68px;
+    }
+}
 
+@media (max-width:970px) {
+    .logo {
+        margin-left: 46px;
+        margin-top: 50px;
+        width: 95px;
+        height: 110px;
+    }
+}
+
+@media (max-width:900px) {
+    .arrow-to-log-in-page {
+        right: 220px;
+    }
+    .log-in-window {
+        padding: 30px 50px 30px 50px;
+    }
+    .log-in-window {
+        top: 58%;
+    }
+}
+
+@media (max-width:780px) {
+    .logo {
+        margin-left: 46px;
+        margin-top: 50px;
+        width: 75px;
+        height: 95px;
+    }
+}
+
+@media (max-width:644px) {
+    .privacy-links-container div {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width:560px) {
+    .log-in-window {
+        padding: 15px 30px 15px 30px;
+        top: 56%;
+    }
+    .input1 {
+        min-width: 320px;
+    }
+    .arrow-to-log-in-page {
+        right: 185px;
+    }
+}
+
+@media (max-width:505px) {
+    .remember-checkbox-container {
+        min-width: 250px;
+    }
+}
+
+@media (max-width:450px) {
+    .log-in-window {
+        padding: 5px 15px 10px 15px;
+        gap: 20px;
+    }
+    .arrow-to-log-in-page {
+        right: 152px;
+    }
+    .input1 {
+        min-width: 280px;
+    }
+}
+
+@media (max-width:390px) {
+    .logo {
+        margin-left: 37px;
+        margin-top: 38px;
+        width: 64px;
+        height: 78px;
+    }
+    .log-in-window {
+        top: 48%;
+    }
+    .input1 {
+        min-width: 235px;
+    }
+    .arrow-to-log-in-page {
+        right: 127px;
+    }
+    .log-in-window p {
+        font-size: 47px;
+    }
+}
+
+@media (max-height:700px) {
+    .log-in-window {
+        top: 54%;
+        gap: 16px;
+    }
+    .logo {
+        margin-left: 22px;
+        margin-top: 18px;
+        width: 56px;
+        height: 70px;
+    }
+    .privacy-links-container {
+        top: 94%;
+    }
+}
