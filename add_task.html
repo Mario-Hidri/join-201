@@ -38,17 +38,22 @@
                         <div class="column distanceBetweenIput">
                             <label for="description">Description</label>
                             <div class="fake-textarea">
-                                <textarea id="description" class="textarea" placeholder="Enter a description"></textarea>
+                                <textarea id="description" class="textarea"
+                                    placeholder="Enter a description"></textarea>
                             </div>
                         </div>
                         <div class="column distanceBetweenIput">
                             <label for="assignContact">Assign to</label>
                             <div class="fake-input">
-                                <input id="assignContact" oninput="showContacts()" placeholder="Select contacts to assign" type="text">
-                               <div id="contactSection" class="flexbox">  <img onclick="removeAddContactSection()" class="taskIcon" src="./assets/img/extensionIcon.png" alt=""></div>
+                                <input id="assignContact" oninput="showContacts()"
+                                    placeholder="Select contacts to assign" type="text">
+                                <div id="contactSection" class="flexbox"> <img onclick="removeAddContactSection()"
+                                        class="taskIcon" src="./assets/img/extensionIcon.png" alt=""></div>
                             </div>
-                            <div id="addContact">
+                            <div class="relative">
+                                <div class="absolute" id="addContact">
 
+                                </div>
                             </div>
                             <div id="addContactIcon">
 
@@ -103,7 +108,7 @@
                     </div>
                 </div>
 
- 
+
                 <div class="positionButton">
                     <p><span class="colorRed">* </span>This field is required</p>
                     <div>

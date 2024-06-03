@@ -305,9 +305,11 @@ function editTask(i) {
               <input id="assignContact" oninput="showContacts()" placeholder="Select contacts to assign" type="text">
              <div id="contactSection" class="flexbox">  <img onclick="removeAddContactSection()" class="taskIcon" src="./assets/img/extensionIcon.png" alt=""></div>
           </div>
+          
           <div id="addContact">
 
           </div>
+          
           <div id="addContactIcon">
 
           </div> 
