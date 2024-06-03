@@ -82,12 +82,12 @@ function loadTaskHTML(i, title, description, category, subtaskCount, subtaskCoun
   <div onclick="openTaskDialog(${i})" draggable="true" ondragstart="startDragging(${i})" class="card">
     <img class="categorySmallTask" src="./assets/img/${category}" alt="">
     <h3>${title}</h3>
-    <p>${description}</p>
+    <p class="openTaskParagraph">${description}</p>
     <div id="progressbar">
       <div style="width:${subtaskDoneInPercent}%"></div>
     </div>
-    <div>${subtaskCountDone}/${subtaskCount}</div>
-    <div>
+    <div class="subtaskText">${subtaskCountDone}/${subtaskCount}  Subtasks</div>
+    <div class="ContactsAndPriorityContainer">
     <div class="authorityIcon" id="authorityIcon${i}"></div> 
     <img class="priorityImgOnBigTask" src="./assets/img/${priority}Priority.png" alt="">
     </div>

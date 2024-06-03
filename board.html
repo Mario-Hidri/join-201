@@ -26,23 +26,30 @@
         <div class="right-side backgroudColor">
             <div class="header">
                 <h1>Board</h1>
-                <div>
-                    <input id="search" oninput="filter()" type="text">
-                    <button onclick="addTaskOnToDo()">Add Task</button>
+                <div class="searchbarcontainer">
+                    <div class="searchbarwrapper">
+                        <input class="searchbarinput" id="search" oninput="filter()" type="text" placeholder="Find Task">
+                        <div class="separator"></div>
+                        <img src="./assets/img/board_img/search (1).png" alt="Image" class="searchbarimage">
+                    </div>
+                    <button class="searchbarbutton" onclick="addTaskOnToDo()">
+                        Add Task
+                        <img class="plusbutton" src="./assets/img/board_img/add.png" alt="Button Image" class="buttonimage">
+                    </button>
                 </div>
             </div>
  
             <div class="canbanBoard">
                 <div class="fourth-size">
                     <div class="spaceBetween">
-                        <p>To do</p>
+                        <p class="toDoText">To do</p>
                         <img onclick="addTaskOnToDo()" class="icon" src="./assets/img/addTask.png" alt="">
                     </div>
                     <div id="toDo" class="dragArea" ondrop="moveTo(id='toDo')" ondragover="allowDrop(event)"></div>
                 </div>
                 <div class="fourth-size">
                     <div class="spaceBetween">
-                        <p>In Progress</p>
+                        <p class="inProgressText">In Progress</p>
                         <img onclick="addTaskOnInProgress()" class="icon" src="./assets/img/addTask.png" alt="">
                     </div>
                     <div id="inProgress" class="dragArea" ondrop="moveTo(id='inProgress')"
@@ -50,14 +57,14 @@
                 </div>
                 <div class="fourth-size">
                     <div class="spaceBetween">
-                        <p>Await Feedback</p>
+                        <p class="awaitFeedback">Await Feedback</p>
                         <img onclick="addTaskOnAwaitFeedback()" class="icon" src="./assets/img/addTask.png" alt="">
                     </div>
                     <div id="awaitFeedback" class="dragArea" ondrop="moveTo(id='awaitFeedback')"
                         ondragover="allowDrop(event)"></div>
                 </div>
                 <div class="fourth-size">
-                    <p>Done</p>
+                    <p class="doneText">Done</p>
                     <div id="done" class="dragArea" ondrop="moveTo(id='done')" ondragover="allowDrop(event)"></div>
                 </div>
             </div>

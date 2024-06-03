@@ -11,14 +11,15 @@
     justify-content: space-between;
     width: 100%;
     padding: 0 64px;
+    gap: 26px;
 }
 
 .fourth-size {
-    width: 20%;
+
 }
 
 .dragArea {
-    height: 5000px;
+    height: 96vh;
 }
 
 .spaceBetween {
@@ -46,22 +47,23 @@
 }
 
 .card {
-    width: 100%;
+    width: 240px;
     background-color: #FFFFFF;
     border: 1px gray solid;
-    border-radius: 10px;
+    border-radius: 24px;
     margin: 10px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 10px;
-    padding: 24px;
+    padding: 16px;
     box-sizing: border-box;
-
+    box-shadow: 0px 0px 10px 3px #00000014;
 }
 
 .categorySmallTask {
-    width: 50%;
+    width: 144px;
+    height: 27px;
 }
 
 .taskOnBoardSite {
@@ -105,8 +107,13 @@
     display: flex;
     justify-content: center;
     align-self: center;
-    border: gray 2px dashed;
-    border-radius: 8px;
+    border: gray 1px dashed;
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px 0px #00000029;
+    height: 48px;
+    width: 246px;
+    align-items: center;
+    margin-top: 10px;
 }
 
 .whiteButton {
@@ -145,7 +152,8 @@
 }
 
 .priorityImgOnBigTask{
-    height: 12px;
+    height: 6.7px;
+    width: 17px;
 }
 
 #progressbar {
@@ -172,6 +180,105 @@
 
 .authorityIcon{
     display:flex;
+}
+
+.searchbarcontainer {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Abstand zwischen den Elementen */
+}
+
+.searchbarwrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.searchbarinput {
+    min-width: 312px;
+    border-radius: 10px;
+    border: 1px solid #A8A8A8;
+    padding: 8px 16px;
+    padding-right: 50px; /* Platz für das Bild und den Separator */
+    box-sizing: border-box;
+}
+
+.searchbarinput::placeholder {
+    color: #D1D1D1;
+}
+
+.separator {
+    position: absolute;
+    right: 36px;
+    width: 1px;
+    height: 70%;
+    background-color: #D1D1D1;
+}
+
+.searchbarimage {
+    position: absolute;
+    right: 10px;
+    width: 18px;
+    height: 18px;
+}
+
+.searchbarbutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    padding: 7px 16px 7px 16px;
+    border-radius: 10px;
+    border: 1px solid #2A3647;
+    background: #2A3647;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.plusbutton {
+    width: 18.6px;
+    height: 18.6px;
+}
+
+.toDoText {
+    font-weight: 700;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.inProgressText {
+    font-weight: 700;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.awaitFeedback {
+    font-weight: 700;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.doneText {
+    font-weight: 700;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.openTaskParagraph {
+    color: #A8A8A8;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.subtaskText {
+    color: #000000;
+    font-size: 12px;
+}
+
+.ContactsAndPriorityContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
  

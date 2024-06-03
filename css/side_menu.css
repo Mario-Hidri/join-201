@@ -8,8 +8,8 @@
 }
 
 .right-side{
-    width: 100%;
     margin-left: 232px;
+    width: 115%;
 }
 
 nav{
@@ -37,8 +37,9 @@ nav{
 }
 
 .icon{
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
 }
 
 .link{
