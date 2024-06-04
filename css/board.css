@@ -2,8 +2,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 134px 64px 32px
+    height: 232px;
+    padding: 0px 45px 0px 55px;
 }
+
+.headerBoard {}
 
 .canbanBoard {
     box-sizing: border-box;
@@ -18,6 +21,12 @@
     height: 96vh;
 }
 
+.taskHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .spaceBetween {
     display: flex;
     justify-content: space-between;
@@ -30,20 +39,14 @@
     align-items: flex-start;
 }
 
-.verticalCenter{
-    display:flex;
+.verticalCenter {
+    display: flex;
     align-items: center;
     gap: 16px;
 }
 
 .fourth-size {
     min-width: 240px;
-}
-
-
-.backgroudColor {
-    background-color: #F6F7F8;
-    min-height: 140vh;
 }
 
 .card {
@@ -80,7 +83,7 @@
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-.dragArea{
+.dragArea {
     margin-top: 20px;
 }
 
@@ -147,21 +150,21 @@
     border-radius: 8px;
 }
 
-.iconOnBigTask{
+.iconOnBigTask {
     color: black;
     height: 28px;
 }
 
-.categoryOnBigTask{
+.categoryOnBigTask {
     height: 32px;
 }
 
-.titleOnBigTask{
+.titleOnBigTask {
     font-size: 61px;
     font-weight: 700;
 }
 
-.priorityImgOnBigTask{
+.priorityImgOnBigTask {
     width: 17px;
     height: 12px;
 }
@@ -169,15 +172,15 @@
 #progressbar {
     background-color: #F4F4F4;
     border-radius: 8px;
-  }
-  
-  #progressbar>div {
+}
+
+#progressbar>div {
     background-color: #4489FF;
     height: 8px;
     border-radius: 8px;
-  }
+}
 
-  .authorityImageContainer {
+.authorityImageContainer {
     width: 32px;
     height: 32px;
     border-radius: 35px;
@@ -188,14 +191,15 @@
     margin-left: -8px;
 }
 
-.authorityIcon{
-    display:flex;
+.authorityIcon {
+    display: flex;
 }
 
 .searchbarcontainer {
     display: flex;
     align-items: center;
-    gap: 10px; /* Abstand zwischen den Elementen */
+    gap: 10px;
+    /* Abstand zwischen den Elementen */
 }
 
 .searchbarwrapper {
@@ -209,7 +213,8 @@
     border-radius: 10px;
     border: 1px solid #A8A8A8;
     padding: 8px 16px;
-    padding-right: 50px; /* Platz für das Bild und den Separator */
+    padding-right: 50px;
+    /* Platz für das Bild und den Separator */
     box-sizing: border-box;
 }
 
@@ -273,7 +278,7 @@
 .awaitFeedback {
     font-size: 20px;
     font-weight: 700;
-}  
+}
 
 .doneText {
     font-size: 20px;
@@ -384,31 +389,46 @@
 }
 
 
-@media(max-width:956px){
-    .canbanBoard{
+@media(max-width:956px) {
+    .canbanBoard {
         flex-direction: column;
         justify-content: space-between;
         gap: 20px;
         width: 80%;
     }
 
-    .dragArea{
-    display: flex;
-    gap: 20px;
-    overflow: scroll;
-    scrollbar-width: none;
+    .dragArea {
+        display: flex;
+        gap: 20px;
+        overflow: scroll;
+        scrollbar-width: none;
+        height: 320px;
     }
 
     .fourth-size {
         width: 100%
     }
 
-    .card{
+    .card {
         min-width: 200px;
         width: 200px;
+        height: 300px;
+    }
+
+    .taskHeader {
+        gap: 20px;
+        justify-content: flex-start;
+    }
+
+    .headerBoard {
+        align-items: flex-start;
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    .noTask {
+        align-self: auto;
     }
 
 
 }
-
- 

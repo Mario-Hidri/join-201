@@ -24,7 +24,7 @@
     <div class="flexbox">
         <div w3-include-html="./assets/templates/side_menu.html"></div>
         <div class="right-side backgroudColor">
-            <div class="header">
+            <div class="headerBoard header">
                 <h1>Board</h1>
                 <div class="searchbarcontainer">
                     <div class="searchbarwrapper">
@@ -41,14 +41,14 @@
  
             <div class="canbanBoard">
                 <div class="fourth-size">
-                    <div class="spaceBetween">
+                    <div class="taskHeader">
                         <p class="toDoText">To do</p>
                         <img onclick="addTaskOnToDo()" class="icon" src="./assets/img/addTask.png" alt="">
                     </div>
                     <div id="toDo" class="dragArea" ondrop="moveTo(id='toDo')" ondragover="allowDrop(event)"></div>
                 </div>
                 <div class="fourth-size">
-                    <div class="spaceBetween">
+                    <div class="taskHeader">
                         <p class="inProgressText">In Progress</p>
                         <img onclick="addTaskOnInProgress()" class="icon" src="./assets/img/addTask.png" alt="">
                     </div>
@@ -56,7 +56,7 @@
                         ondragover="allowDrop(event)"></div>
                 </div>
                 <div class="fourth-size">
-                    <div class="spaceBetween">
+                    <div class="taskHeader">
                         <p class="awaitFeedback">Await Feedback</p>
                         <img onclick="addTaskOnAwaitFeedback()" class="icon" src="./assets/img/addTask.png" alt="">
                     </div>

@@ -228,7 +228,5 @@ function addContactSection() {
     `;
     document.getElementById('addContact').classList.remove('d-none');
     document.getElementById('addContactIcon').innerHTML ='';
-
-
 }
 

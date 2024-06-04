@@ -411,7 +411,7 @@ function changeTask(i) {
   reset();
   closeTask();
 }
-
+// Beschreibe diese Funktion hier:
 function reset() {
   subtasks = [];
   for (let i = 0; i < allContacts.length; i++) {
@@ -419,5 +419,4 @@ function reset() {
   }
   prio = "urgent";
   authorityForTask = [];
-
 }
