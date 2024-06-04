@@ -1,5 +1,5 @@
 let currentDraggedElement;
- 
+
 
 async function initBoardSite() {
   await includeHTML();
@@ -64,36 +64,62 @@ function loadTask(i) {
   document.getElementById(`${board}`).innerHTML += loadTaskHTML(i, title, description, category, subtaskCount, subtaskCountDone, subtaskDoneInPercent, priority);
   let authority = task["authorityForTask"] || [];
   for (let j = 0; j < authority.length; j++) {
-    const contact = authority[j];
-    const lastNameInitial = contact.split(' ')[1]?.charAt(0) || '';
-    document.getElementById(`authorityIcon${i}`).innerHTML += `
-    <div class="authorityImageContainer" style="background-color: blue;">
-    <span class="initials1">${contact.charAt(0)}</span>
-    <span class="initials2">${lastNameInitial}</span>
-</div>
-    `;
-
+      const contact = authority[j];
+      const lastNameInitial = contact.split(' ')[1]?.charAt(0) || '';
+      document.getElementById(`authorityIcon${i}`).innerHTML += `
+      <div class="authorityImageContainer" style="background-color: blue;">
+      <span class="initials1">${contact.charAt(0)}</span>
+      <span class="initials2">${lastNameInitial}</span>
+      </div>
+      `;
   }
+}
 
+function getCategorySize(category) {
+  switch(category) {
+      case "technicalTask.png":
+          return { width: '144px', height: '27px' };
+      case "userStory.png":
+          return { width: '113px', height: '27px' };
+      // Weitere Kategorien hier hinzufügen
+      default:
+          return { width: '144px', height: '27px' }; // Default-Größe
+  }
+}
+
+function getPrioritySize(priority) {
+  switch(priority) {
+      case 'urgent':
+          return { width: '17px', height: '12px' };
+      case 'medium':
+          return { width: '17px', height: '6.7px' };
+      case 'low':
+          return { width: '17px', height: '12px' };
+      default:
+          return { width: '17px', height: '12px' }; // Default-Größe
+  }
 }
 
 function loadTaskHTML(i, title, description, category, subtaskCount, subtaskCountDone, subtaskDoneInPercent, priority) {
-  return `
-  <div onclick="openTaskDialog(${i})" draggable="true" ondragstart="startDragging(${i})" class="card">
-    <img class="categorySmallTask" src="./assets/img/${category}" alt="">
-    <h3>${title}</h3>
-    <p>${description}</p>
-    <div id="progressbar">
-      <div style="width:${subtaskDoneInPercent}%"></div>
+    const { width: categoryWidth, height: categoryHeight } = getCategorySize(category);
+    const { width: priorityWidth, height: priorityHeight } = getPrioritySize(priority);
+    return `
+    <div onclick="openTaskDialog(${i})" draggable="true" ondragstart="startDragging(${i})" class="card">
+        <img class="categorySmallTask" src="./assets/img/${category}" alt="" style="width: ${categoryWidth}; height: ${categoryHeight};">
+        <h3>${title}</h3>
+        <p class="openTaskParagraph">${description}</p>
+        <div id="progressbar">
+            <div style="width:${subtaskDoneInPercent}%"></div>
+        </div>
+        <div class="subtaskText">${subtaskCountDone}/${subtaskCount}  Subtasks</div>
+        <div class="ContactsAndPriorityContainer">
+            <div class="authorityIcon" id="authorityIcon${i}"></div> 
+            <img class="priorityImgOnBigTask" src="./assets/img/${priority}Priority.png" alt="" style="width: ${priorityWidth}; height: ${priorityHeight};">
+        </div>
     </div>
-    <div>${subtaskCountDone}/${subtaskCount}</div>
-    <div>
-    <div class="authorityIcon" id="authorityIcon${i}"></div> 
-    <img class="priorityImgOnBigTask" src="./assets/img/${priority}Priority.png" alt="">
-    </div>
-  </div>
-  `;
+    `;
 }
+
 
 
 function loadPlaceholderForSectionWithNoTask() {
@@ -170,39 +196,40 @@ function openTaskDialog(i) {
 
 function loadTaskDialogHTML(title, description, date, category, priority, i) {
   return `
-<div class="spaceBetween">
+<div class="categoryandexitbuttoncontainer">
 <img class="categoryOnBigTask" src="./assets/img/${category}" alt="">
-<img class="iconOnBigTask" onclick="closeTask()" src="./assets/img/crossIcon.png" alt="">
+<img class="exitButtonBigTask" onclick="closeTask()" src="./assets/img/crossIcon.png" alt="">
 </div>
 
 <h2 class="titleOnBigTask">${title}</h2>
-<p>${description}</p>
+<p class="paragraphOnBigTask">${description}</p>
  
-    <div>
-    <span>Due date:</span>
+    <div class="dateBigTaskContainer">
+    <span class="spanDateBigTask">Due date:</span>
     <span>${date}</span>
     </div>
 
-    <div>
-    <span>Priority:</span>
-    <span>${priority} <img class="priorityImgOnBigTask" src="./assets/img/${priority}Priority.png" alt=""></span>
+    <div class="priorityBigTaskContainer">
+    <span class="spanBigTaskPriorityText">Priority:</span>
+    <span class="priorityBigTaskSmallContainer">${priority} <img class="priorityImgOnBigTask" src="./assets/img/${priority}Priority.png" alt=""></span>
      </div>
      
-    <div>Assigned To:
-    <div id="contactAtBigTask"> 
+    <div class="contactBigTaskContainer">
+    <span class="spanTextBigTask">Assigned To:</span>
+    <div class="contactsBigTask" id="contactAtBigTask"> 
         
     </div>
     </div>
  
  
-    <div>
-    Subtask:
-    <div id="loadSubtasksOnBigTask"></div>
+    <div class="subtaskBigTaskContainer">
+    <span class="subtaskTextBigTask">Subtask:</span>
+    <div class="subtaskcontactsContainer" id="loadSubtasksOnBigTask"></div>
     </div> 
  
-<div>
-<span onclick="deleteTask(${i})"><img class="iconOnBigTask" src="./assets/img/deleteIcon.png" alt="">Delete</span> 
-<span onclick="editTask(${i})"><img class="iconOnBigTask" src="./assets/img/editIcon.png" alt="">Edit</span>
+<div class="buttonsBigTaskContainer">
+<span class="buttonsGapBigTask" onclick="deleteTask(${i})"><img class="iconDeleteBigTask" src="./assets/img/deleteIcon.png" alt="">Delete</span> 
+<span class="buttonsGapBigTask" onclick="editTask(${i})"><img class="iconEditBigTask" src="./assets/img/editIcon.png" alt="">Edit</span>
 <div>
 `;
 }
@@ -269,7 +296,7 @@ function deleteTask(i) {
 
 function closeTask() {
   document.getElementById('openTaskOnBoardSite').classList.add('d-noneAddTask');
-  document.getElementById('containerOpenTaskInBoardSize').innerHTML ='';
+  document.getElementById('containerOpenTaskInBoardSize').innerHTML = '';
 }
 
 function editTask(i) {
@@ -278,9 +305,6 @@ function editTask(i) {
   let description = task['description'];
   let date = task['date'];
   let authority = task['authorityForTask'] || [];
-  
-  
-
 
   document.getElementById('containerOpenTaskInBoardSize').innerHTML = `
   <form onsubmit="changeTask(${i}); return false">
@@ -305,9 +329,11 @@ function editTask(i) {
               <input id="assignContact" oninput="showContacts()" placeholder="Select contacts to assign" type="text">
              <div id="contactSection" class="flexbox">  <img onclick="removeAddContactSection()" class="taskIcon" src="./assets/img/extensionIcon.png" alt=""></div>
           </div>
+          
           <div id="addContact">
 
           </div>
+          
           <div id="addContactIcon">
 
           </div> 
@@ -328,14 +354,14 @@ function editTask(i) {
 </form> 
   `;
   loadPriority(i, task);
-  subtasks = task['subtask']||[];
+  subtasks = task['subtask'] || [];
   loadSubtasks();
-  
 
-  for (let i  = 0; i  < authority.length; i ++) {
+
+  for (let i = 0; i < authority.length; i++) {
     const person = authority[i];
     for (let j = 0; j < allContacts.length; j++) {
-      if(person == allContacts[j]['name']){
+      if (person == allContacts[j]['name']) {
         allContacts[j]['contactSelect'] = true;
       }
     }
@@ -347,8 +373,8 @@ function loadPriority(i, task) {
   let priority = task['priority'];
   document.getElementById('priority').innerHTML = loadPriorityUrgentHTML();
   if (priority == 'medium') {
-     changePrioToMedium();
-  } else if(priority == 'low'){
+    changePrioToMedium();
+  } else if (priority == 'low') {
     changePrioToLow();
   }
 }
@@ -373,25 +399,25 @@ function loadPriorityUrgentHTML() {
   `;
 }
 
-function changeTask(i){
+function changeTask(i) {
   tasks[i]['title'] = document.getElementById('title').value;
   tasks[i]['description'] = document.getElementById('description').value;
   tasks[i]['date'] = document.getElementById('date').value;
-  tasks[i]['priority'] =  prio;
+  tasks[i]['priority'] = prio;
   tasks[i]['subtask'] = subtasks;
   addPersonToTask();
-  tasks[i]['authority'] = authorityForTask;
+  tasks[i]['authorityForTask'] = authorityForTask;
   saveTasksInFirebase();
   reset();
   closeTask();
 }
 
-function reset(){
+function reset() {
   subtasks = [];
   for (let i = 0; i < allContacts.length; i++) {
     allContacts[i]['contactSelect'] = false;
   }
   prio = "urgent";
-  authorityForTask =[];
-  
+  authorityForTask = [];
+
 }

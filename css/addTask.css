@@ -76,6 +76,14 @@ margin: 40px 48px;
     background-color: white;
 }
 
+.relative{
+position:relative;
+}
+
+.absolute{
+position:absolute;
+width: 100%;
+}
 
 .fake-textarea{
     border: 1px solid #D1D1D1;
@@ -174,4 +182,29 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
     font-size: 12px;
     color: white;
     font-weight: 400;
+}
+
+ 
+
+@media(max-width:956px){
+.verticalLine{
+    display: none;
+}
+
+.positionInputFields{
+flex-direction: column;
+gap: 0px;
+align-items: center;
+}
+
+.positionButton{
+    flex-direction: column; 
+    align-items: center;
+    gap:10px;
+}
+
+.header{
+    justify-content: center;
+}
+
 }
