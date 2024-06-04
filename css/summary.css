@@ -4,7 +4,7 @@
     align-items: center;
     gap: 30px;
     position: absolute;
-    top: 206px;
+    top: 145px;
     left: 328px;
 }
 
@@ -28,13 +28,22 @@
     margin-right: 18px;
 }
 
+.join_key_metrics_seperator_none{
+    display: none;
+    width: 102px;
+    height: 3px;
+    background-color: #29ABE2;
+    margin-top: 18px;
+    margin-right: 18px;
+}
+
 .summary_content {
     display: flex;
     flex-direction: column;
     width: 560px;
     height: 562px;
     position: absolute;
-    top: 335px;
+    top: 325px;
     left: 328px;
     gap: 10px;
 }
@@ -161,7 +170,6 @@
 
 .summary_content_row_2 {
     background-color: #FFFFFF;
-    height: 168px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -215,12 +223,11 @@
     display: flex;
     justify-content: space-between;
     gap: 13px;
-    padding-bottom: 40px;
+    padding-bottom: 30px;
 }
 
 .summary_content_rows_3 {
     background-color: #FFFFFF;
-    height: 168px;
     width: 168px;
     display: flex;
     justify-content: center;

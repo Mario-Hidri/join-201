@@ -1,0 +1,47 @@
+@media(max-width:1350px) {
+    .summary_greet_user {
+        display: none;
+    }
+}
+
+@media(max-width:952px) {
+    .join_key_metrics {
+        display: block;
+    }
+
+    .join_key_metrics_seperator {
+        display: none;
+    }
+
+    .join_key_metrics_seperator_none{
+        display: block;
+    }
+
+}
+
+@media(max-width:945px) {
+    .summary_content {
+        left: 300px;
+    }
+}
+
+@media(max-width:900px) {
+    .summary_content_rows {
+        width: 100px;
+        height: 100px;
+    }
+
+    .summary_content_row_2 {
+        width: 413px;
+    }
+
+    .summary_content_row_3 {
+        width: 449px;   
+    }
+}
+
+@media(max-width:860px) {
+
+}
+
+@media(max-width:835px) {}
