@@ -302,6 +302,7 @@ function deleteTask(i) {
 function closeTask() {
   document.getElementById('openTaskOnBoardSite').classList.add('d-noneAddTask');
   document.getElementById('containerOpenTaskInBoardSize').innerHTML = '';
+  loadTasks();
 }
 
 function editTask(i) {
@@ -312,6 +313,7 @@ function editTask(i) {
   let authority = task['authorityForTask'] || [];
 
   document.getElementById('containerOpenTaskInBoardSize').innerHTML = `
+  <img class="exitButtonBigTask" onclick="closeTask()" src="./assets/img/crossIcon.png" alt="">
   <form onsubmit="changeTask(${i}); return false">
     <label for="title">Title<span class="colorRed">*</span></label>
       <div class="fake-input">
