@@ -13,6 +13,7 @@
     width: 100%;
     padding: 0 64px;
     gap: 26px;
+    overflow: scroll;
 }
 
 .d-none{
