@@ -60,8 +60,11 @@ function loadTask(i) {
   let subtask = task["subtask"] || []; // Default-Wert setzen, falls subtask undefined ist
   let subtaskCount = subtask.length;
   let subtaskCountDone = (subtask.filter(t => t['done'] == true)).length;
-  let subtaskDoneInPercent = subtaskCount > 0 ? ((subtaskCountDone / subtaskCount) * 100) : 0; // Vermeidung der Division durch 0
+  let subtaskDoneInPercent =  ((subtaskCountDone / subtaskCount) * 100); // Vermeidung der Division durch 0
   document.getElementById(`${board}`).innerHTML += loadTaskHTML(i, title, description, category, subtaskCount, subtaskCountDone, subtaskDoneInPercent, priority);
+  if(subtaskCount==0){
+    document.getElementById(`subtasks${i}`).classList.add('d-none');
+  }
   let authority = task["authorityForTask"] || [];
   for (let j = 0; j < authority.length; j++) {
       const contact = authority[j];
@@ -108,10 +111,12 @@ function loadTaskHTML(i, title, description, category, subtaskCount, subtaskCoun
         <img class="categorySmallTask" src="./assets/img/${category}" alt="" style="width: ${categoryWidth}; height: ${categoryHeight};">
         <h3>${title}</h3>
         <p class="openTaskParagraph">${description}</p>
-        <div id="progressbar">
+        <div id="subtasks${i}">
+        <div  id="progressbar">
             <div style="width:${subtaskDoneInPercent}%"></div>
         </div>
         <div class="subtaskText">${subtaskCountDone}/${subtaskCount}  Subtasks</div>
+        </div>
         <div class="ContactsAndPriorityContainer">
             <div class="authorityIcon" id="authorityIcon${i}"></div> 
             <img class="priorityImgOnBigTask" src="./assets/img/${priority}Priority.png" alt="" style="width: ${priorityWidth}; height: ${priorityHeight};">

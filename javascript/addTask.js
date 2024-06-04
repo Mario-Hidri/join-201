@@ -158,37 +158,43 @@ function showContacts() {
         const contact = allContacts[i];
         let name = contact['name'];
         let contactSelect = contact['contactSelect'];
-        if (name.toLowerCase().includes(search)) {
-            if (contactSelect) {
-                document.getElementById('addContact').innerHTML += `
-                <div class="contact" id="contact${i}" onclick="addContactToTask(${i})">${name}<img class="checkboxAddContact" src="./assets/img/checkboxDone.png" alt=""></div>
-            `;
-            document.getElementById(`contact${i}`).classList.add('activContact');
-            } else {
-                document.getElementById('addContact').innerHTML += `
-                <div class="contact" id="contact${i}" onclick="addContactToTask(${i})">${name}<img class="checkboxAddContact" src="./assets/img/checkboxToDo.png" alt=""></div>
-            `;
-            document.getElementById(`contact${i}`).classList.remove('activContact');
-            }
+        filterContact(i, search, name, contactSelect);
+    }
+}
+
+function filterContact(i, search, name, contactSelect) {
+    if (name.toLowerCase().includes(search)) {
+        if (contactSelect) {
+            loadSelectedContact(i,name);
+        } else {
+            loadUnSelectedContact(i,name);
         }
     }
+}
+
+function loadSelectedContact(i,name) {
+    document.getElementById('addContact').innerHTML += `
+    <div class="contact" id="contact${i}" onclick="addContactToTask(${i})">${name}<img class="checkboxAddContact" src="./assets/img/checkboxDone.png" alt=""></div>
+     `;
+    document.getElementById(`contact${i}`).classList.add('activContact');
+}
+
+function loadUnSelectedContact(i,name) {
+    document.getElementById('addContact').innerHTML += `
+    <div class="contact" id="contact${i}" onclick="addContactToTask(${i})">${name}<img class="checkboxAddContact" src="./assets/img/checkboxToDo.png" alt=""></div>
+      `;
+    document.getElementById(`contact${i}`).classList.remove('activContact');
 }
 
 function addContactToTask(i) {
     const contactSelect = allContacts[i]['contactSelect'];
     let name = allContacts[i]['name'];
     if (contactSelect) {
-        document.getElementById(`contact${i}`).innerHTML = `
-        ${name}<img class="checkboxAddContact" src="./assets/img/checkboxToDo.png" alt="">
-    `;
-        document.getElementById(`contact${i}`).classList.remove('activContact');
         allContacts[i]['contactSelect'] = false;
+        showContacts();
     } else {
-        document.getElementById(`contact${i}`).innerHTML = `
-        ${name}<img class="checkboxAddContact" src="./assets/img/checkboxDone.png" alt="">
-    `;
-        document.getElementById(`contact${i}`).classList.add('activContact');
         allContacts[i]['contactSelect'] = true;
+        showContacts();
     }
 
 }
@@ -204,22 +210,21 @@ function addPersonToTask() {
 
 function removeAddContactSection() {
     for (let i = 0; i < allContacts.length; i++) {
-        if(allContacts[i]['contactSelect'] == true){
-          let contact = allContacts[i];
-        const lastNameInitial = contact.name.split(' ')[1]?.charAt(0) || '';
-        document.getElementById('addContactIcon').innerHTML +=`
-        <div class="image_container" style="background-color: blue;">
-            <span class="initials1">${contact.name.charAt(0)}</span>
-            <span class="initials2">${lastNameInitial}</span>
-        </div>
-        `;
+        if (allContacts[i]['contactSelect'] == true) {
+            let contact = allContacts[i];
+            const lastNameInitial = contact.name.split(' ')[1]?.charAt(0) || '';
+            document.getElementById('addContactIcon').innerHTML += loadIconForContacts(contact, lastNameInitial);
+            removeContactFilter();
+        }
     }
-    }
-     
-    document.getElementById('contactSection').innerHTML = `
-    <img onclick="addContactSection()" class="taskIcon" src="./assets/img/removeExtensionIcon.png" alt="">
-    `;
-    document.getElementById('addContact').classList.add('d-none');
+}
+
+function loadIconForContacts(contact, lastNameInitial) {
+    return ` <div class="image_container" style="background-color: blue;">
+    <span class="initials1">${contact.name.charAt(0)}</span>
+    <span class="initials2">${lastNameInitial}</span>
+</div>
+`;
 }
 
 function addContactSection() {
@@ -227,6 +232,12 @@ function addContactSection() {
     <img onclick="removeAddContactSection()" class="taskIcon" src="./assets/img/extensionIcon.png" alt="">
     `;
     document.getElementById('addContact').classList.remove('d-none');
-    document.getElementById('addContactIcon').innerHTML ='';
+    document.getElementById('addContactIcon').innerHTML = '';
 }
 
+function removeContactFilter() {
+    document.getElementById('contactSection').innerHTML = `
+    <img onclick="addContactSection()" class="taskIcon" src="./assets/img/removeExtensionIcon.png" alt="">
+    `;
+    document.getElementById('addContact').classList.add('d-none');
+}

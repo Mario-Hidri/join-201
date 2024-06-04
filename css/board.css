@@ -17,6 +17,10 @@
     gap: 26px;
 }
 
+.d-none{
+display:none;
+}
+
 .dragArea {
     height: 96vh;
 }
