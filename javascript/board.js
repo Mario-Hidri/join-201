@@ -196,39 +196,40 @@ function openTaskDialog(i) {
 
 function loadTaskDialogHTML(title, description, date, category, priority, i) {
   return `
-<div class="spaceBetween">
+<div class="categoryandexitbuttoncontainer">
 <img class="categoryOnBigTask" src="./assets/img/${category}" alt="">
-<img class="iconOnBigTask" onclick="closeTask()" src="./assets/img/crossIcon.png" alt="">
+<img class="exitButtonBigTask" onclick="closeTask()" src="./assets/img/crossIcon.png" alt="">
 </div>
 
 <h2 class="titleOnBigTask">${title}</h2>
-<p>${description}</p>
+<p class="paragraphOnBigTask">${description}</p>
  
-    <div>
-    <span>Due date:</span>
+    <div class="dateBigTaskContainer">
+    <span class="spanDateBigTask">Due date:</span>
     <span>${date}</span>
     </div>
 
-    <div>
-    <span>Priority:</span>
-    <span>${priority} <img class="priorityImgOnBigTask" src="./assets/img/${priority}Priority.png" alt=""></span>
+    <div class="priorityBigTaskContainer">
+    <span class="spanBigTaskPriorityText">Priority:</span>
+    <span class="priorityBigTaskSmallContainer">${priority} <img class="priorityImgOnBigTask" src="./assets/img/${priority}Priority.png" alt=""></span>
      </div>
      
-    <div>Assigned To:
-    <div id="contactAtBigTask"> 
+    <div class="contactBigTaskContainer">
+    <span class="spanTextBigTask">Assigned To:</span>
+    <div class="contactsBigTask" id="contactAtBigTask"> 
         
     </div>
     </div>
  
  
-    <div>
-    Subtask:
-    <div id="loadSubtasksOnBigTask"></div>
+    <div class="subtaskBigTaskContainer">
+    <span class="subtaskTextBigTask">Subtask:</span>
+    <div class="subtaskcontactsContainer" id="loadSubtasksOnBigTask"></div>
     </div> 
  
-<div>
-<span onclick="deleteTask(${i})"><img class="iconOnBigTask" src="./assets/img/deleteIcon.png" alt="">Delete</span> 
-<span onclick="editTask(${i})"><img class="iconOnBigTask" src="./assets/img/editIcon.png" alt="">Edit</span>
+<div class="buttonsBigTaskContainer">
+<span class="buttonsGapBigTask" onclick="deleteTask(${i})"><img class="iconDeleteBigTask" src="./assets/img/deleteIcon.png" alt="">Delete</span> 
+<span class="buttonsGapBigTask" onclick="editTask(${i})"><img class="iconEditBigTask" src="./assets/img/editIcon.png" alt="">Edit</span>
 <div>
 `;
 }
@@ -304,9 +305,6 @@ function editTask(i) {
   let description = task['description'];
   let date = task['date'];
   let authority = task['authorityForTask'] || [];
-
-
-
 
   document.getElementById('containerOpenTaskInBoardSize').innerHTML = `
   <form onsubmit="changeTask(${i}); return false">
