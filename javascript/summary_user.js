@@ -165,3 +165,42 @@ function loadNearestDeadline() {
         console.error('Element for nearest deadline not found');
     }
 }
+
+async function showWelcomeScreen() {
+    try {
+        const activeUser = JSON.parse(localStorage.getItem('activeUser'));
+        const hasShownWelcome = localStorage.getItem('hasShownWelcome');
+        let userName = activeUser && activeUser.data.name ? activeUser.data.name : "Guest";
+        document.getElementById('username').textContent = userName;
+
+        console.log('Active user:', activeUser);
+        console.log('Has shown welcome:', hasShownWelcome);
+        console.log('Window width:', window.innerWidth);
+
+        if (window.innerWidth <= 1350 && hasShownWelcome === 'false') {
+            console.log('Displaying welcome screen');
+            const welcomeScreen = document.getElementById('welcome-screen');
+            const summaryContent = document.querySelector('.right-side');
+            summaryContent.style.visibility = 'hidden'; // Temporarily hide the summary content
+
+            welcomeScreen.classList.add('active');
+
+            setTimeout(() => {
+                console.log('Hiding welcome screen');
+                welcomeScreen.classList.remove('active');
+                summaryContent.style.visibility = 'visible'; // Show the summary content
+            }, 3500); // 2.5s visible + 1s fade out
+
+            localStorage.setItem('hasShownWelcome', 'true');
+        } else {
+            document.querySelector('.right-side').style.visibility = 'visible';
+        }
+    } catch (error) {
+        console.error('Error in showWelcomeScreen:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    showWelcomeScreen();
+});
+

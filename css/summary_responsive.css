@@ -113,6 +113,7 @@
 
 }
 
+<<<<<<< HEAD
 @media(max-width:630px) {
     .link {
         padding: 8px 40px;
@@ -184,3 +185,7 @@
         height: 140px;
     }
 }
+=======
+@media(max-width:835px) {}
+
+>>>>>>> e29412867772597a241780bade8292cc99370010

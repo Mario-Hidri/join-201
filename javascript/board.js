@@ -60,19 +60,34 @@ function loadTask(i) {
   let subtask = task["subtask"] || []; // Default-Wert setzen, falls subtask undefined ist
   let subtaskCount = subtask.length;
   let subtaskCountDone = (subtask.filter(t => t['done'] == true)).length;
-  let subtaskDoneInPercent = subtaskCount > 0 ? ((subtaskCountDone / subtaskCount) * 100) : 0; // Vermeidung der Division durch 0
+  let subtaskDoneInPercent =  ((subtaskCountDone / subtaskCount) * 100); // Vermeidung der Division durch 0
   document.getElementById(`${board}`).innerHTML += loadTaskHTML(i, title, description, category, subtaskCount, subtaskCountDone, subtaskDoneInPercent, priority);
+  removeProgressBarIfNoSubtask(i,subtaskCount);
+  loadAuthority(i,task);
+}
+
+function  removeProgressBarIfNoSubtask(i,subtaskCount){
+  if(subtaskCount == 0){
+    document.getElementById(`subtasks${i}`).classList.add('d-none');
+  }
+}
+
+function loadAuthority(i, task){
   let authority = task["authorityForTask"] || [];
   for (let j = 0; j < authority.length; j++) {
       const contact = authority[j];
       const lastNameInitial = contact.split(' ')[1]?.charAt(0) || '';
-      document.getElementById(`authorityIcon${i}`).innerHTML += `
-      <div class="authorityImageContainer" style="background-color: blue;">
-      <span class="initials1">${contact.charAt(0)}</span>
-      <span class="initials2">${lastNameInitial}</span>
-      </div>
-      `;
+      document.getElementById(`authorityIcon${i}`).innerHTML += loadAuthorityHTML(contact,lastNameInitial);
   }
+}
+
+function loadAuthorityHTML(contact,lastNameInitial){
+  return `
+  <div class="authorityImageContainer" style="background-color: blue;">
+  <span class="initials1">${contact.charAt(0)}</span>
+  <span class="initials2">${lastNameInitial}</span>
+  </div>
+  `;
 }
 
 function getCategorySize(category) {
@@ -108,10 +123,12 @@ function loadTaskHTML(i, title, description, category, subtaskCount, subtaskCoun
         <img class="categorySmallTask" src="./assets/img/${category}" alt="" style="width: ${categoryWidth}; height: ${categoryHeight};">
         <h3>${title}</h3>
         <p class="openTaskParagraph">${description}</p>
-        <div id="progressbar">
+        <div id="subtasks${i}">
+        <div  id="progressbar">
             <div style="width:${subtaskDoneInPercent}%"></div>
         </div>
         <div class="subtaskText">${subtaskCountDone}/${subtaskCount}  Subtasks</div>
+        </div>
         <div class="ContactsAndPriorityContainer">
             <div class="authorityIcon" id="authorityIcon${i}"></div> 
             <img class="priorityImgOnBigTask" src="./assets/img/${priority}Priority.png" alt="" style="width: ${priorityWidth}; height: ${priorityHeight};">
@@ -123,19 +140,35 @@ function loadTaskHTML(i, title, description, category, subtaskCount, subtaskCoun
 
 
 function loadPlaceholderForSectionWithNoTask() {
+  loadPlaceholderForToDoSectionIfNoTask();
+  loadPlaceholderForInProgressSectionIfNoTask();
+  loadPlaceholderForAwaitFeedbackSectionIfNoTask();
+  loadPlaceholderForDoneSectionIfNoTask();
+}
+
+function loadPlaceholderForToDoSectionIfNoTask(){
   let toDoTask = tasks.filter(element => element['board'] == 'toDo');
-  let inProgressTask = tasks.filter(element => element['board'] == 'inProgress');
-  let awaitFeedbackTask = tasks.filter(element => element['board'] == 'awaitFeedback');
-  let doneTask = tasks.filter(element => element['board'] == 'done');
   if (toDoTask.length == 0) {
     document.getElementById('toDo').innerHTML = loadNoTaskPlaceholderHTML(' to Do');
   }
+}
+
+function loadPlaceholderForInProgressSectionIfNoTask(){
+  let inProgressTask = tasks.filter(element => element['board'] == 'inProgress');
   if (inProgressTask.length == 0) {
     document.getElementById('inProgress').innerHTML = loadNoTaskPlaceholderHTML(' in Progress');
   }
+}
+
+function loadPlaceholderForAwaitFeedbackSectionIfNoTask(){
+  let awaitFeedbackTask = tasks.filter(element => element['board'] == 'awaitFeedback');
   if (awaitFeedbackTask.length == 0) {
     document.getElementById('awaitFeedback').innerHTML = loadNoTaskPlaceholderHTML(' await Feedback');
   }
+}
+
+function loadPlaceholderForDoneSectionIfNoTask(){
+  let doneTask = tasks.filter(element => element['board'] == 'done');
   if (doneTask.length == 0) {
     document.getElementById('done').innerHTML = loadNoTaskPlaceholderHTML(' Done');
   }
@@ -190,7 +223,11 @@ function openTaskDialog(i) {
   let priority = task["priority"];
   document.getElementById('containerOpenTaskInBoardSize').innerHTML = loadTaskDialogHTML(title, description, date, category, priority, i);
   loadSubtasksOnBigTask(i, task);
-  document.getElementById('openTaskOnBoardSite').classList.remove('d-noneAddTask');
+  const taskContainer = document.getElementById('openTaskOnBoardSite');
+  taskContainer.classList.remove('d-noneAddTask');
+  const containerOpenTaskInBoardSize = document.getElementById('containerOpenTaskInBoardSize');
+  containerOpenTaskInBoardSize.classList.remove('slide-out');
+  containerOpenTaskInBoardSize.classList.add('slide-in');
   loadContactsOnBigTask(i, task);
 }
 
@@ -233,13 +270,20 @@ function loadTaskDialogHTML(title, description, date, category, priority, i) {
 <div>
 `;
 }
+
 function loadContactsOnBigTask(taskNumber, task) {
   let authority = task["authorityForTask"] || [];
   document.getElementById('contactAtBigTask').innerHTML = '';
   for (let j = 0; j < authority.length; j++) {
     const contact = authority[j];
     const lastNameInitial = contact.split(' ')[1]?.charAt(0) || '';
-    document.getElementById(`contactAtBigTask`).innerHTML += `
+    document.getElementById(`contactAtBigTask`).innerHTML +=  loadContactOnBigTaskHTML(contact, lastNameInitial);
+
+  }
+}
+
+function loadContactOnBigTaskHTML(contact, lastNameInitial){
+ return  `
     <div class="verticalCenter">
     <div class="image_container" style="background-color: blue;">
     <span class="initials1">${contact.charAt(0)}</span>
@@ -248,9 +292,6 @@ function loadContactsOnBigTask(taskNumber, task) {
     <div>${contact}</div>
     </div>
     `;
-
-  }
-
 }
 
 function loadSubtasksOnBigTask(taskNumber, task) {
@@ -258,17 +299,18 @@ function loadSubtasksOnBigTask(taskNumber, task) {
   document.getElementById('loadSubtasksOnBigTask').innerHTML = ''; // Sicherstellen, dass das Element leer ist, bevor Subtasks hinzugefügt werden
   for (let j = 0; j < subtasks.length; j++) {
     let subtask = subtasks[j];
-    let checkbox;
-    if (subtask["done"]) {
-      checkbox = './assets/img/checkboxDone.png';
-    } else {
-      checkbox = './assets/img/checkboxToDo.png';
-    }
-
+    let checkbox = assignCheckbox(subtask);
     document.getElementById('loadSubtasksOnBigTask').innerHTML += loadSubtaskOnBigTaskHTML(taskNumber, j, subtask, checkbox);
   }
 }
 
+function assignCheckbox(subtask){
+  if (subtask["done"]) {
+    return checkbox = './assets/img/checkboxDone.png';
+  } else {
+   return  checkbox = './assets/img/checkboxToDo.png';
+  }
+}
 
 function loadSubtaskOnBigTaskHTML(taskNumber, subtaskNumber, subtask, checkbox) {
   return `
@@ -295,18 +337,34 @@ function deleteTask(i) {
 }
 
 function closeTask() {
-  document.getElementById('openTaskOnBoardSite').classList.add('d-noneAddTask');
-  document.getElementById('containerOpenTaskInBoardSize').innerHTML = '';
+  const containerOpenTaskInBoardSize = document.getElementById('containerOpenTaskInBoardSize');
+  containerOpenTaskInBoardSize.classList.remove('slide-in');
+  containerOpenTaskInBoardSize.classList.add('slide-out');
+  
+  containerOpenTaskInBoardSize.addEventListener('animationend', () => {
+      document.getElementById('openTaskOnBoardSite').classList.add('d-noneAddTask');
+      containerOpenTaskInBoardSize.classList.remove('slide-out');
+      document.getElementById('containerOpenTaskInBoardSize').innerHTML = '';
+      loadTasks();
+  }, { once: true });
 }
 
 function editTask(i) {
   let task = tasks[i];
   let title = task['title'];
   let description = task['description'];
-  let date = task['date'];
-  let authority = task['authorityForTask'] || [];
+  let date = task['date']; 
+  document.getElementById('containerOpenTaskInBoardSize').innerHTML =  loadEditTaskHTML(i,title,description,date);
+  loadPriority(i, task);
+  subtasks = task['subtask'] || [];
+  loadSubtasks();
+  assignAuthority(task);
+  removeAddContactSection();
+}
 
-  document.getElementById('containerOpenTaskInBoardSize').innerHTML = `
+function loadEditTaskHTML(i,title,description,date){
+  return `
+  <img class="exitButtonBigTask" onclick="closeTask()" src="./assets/img/crossIcon.png" alt="">
   <form onsubmit="changeTask(${i}); return false">
     <label for="title">Title<span class="colorRed">*</span></label>
       <div class="fake-input">
@@ -348,16 +406,13 @@ function editTask(i) {
                             </div>
 
           
-             <button type="submit" class="createButton">OK</button>
-          
-          
+             <button type="submit" class="createButton">OK</button> 
 </form> 
   `;
-  loadPriority(i, task);
-  subtasks = task['subtask'] || [];
-  loadSubtasks();
+}
 
-
+function assignAuthority(){
+  let authority = task['authorityForTask'] || [];
   for (let i = 0; i < authority.length; i++) {
     const person = authority[i];
     for (let j = 0; j < allContacts.length; j++) {
@@ -366,7 +421,6 @@ function editTask(i) {
       }
     }
   }
-  removeAddContactSection();
 }
 
 function loadPriority(i, task) {
@@ -395,7 +449,7 @@ function loadPriorityUrgentHTML() {
                                 <span>Low</span>
                                 <img id="low" class="priorityImage" src="./assets/img/LowPriority.png" alt="">
                             </button>
-                        </div>
+  </div>
   `;
 }
 
@@ -411,13 +465,12 @@ function changeTask(i) {
   reset();
   closeTask();
 }
-
+// Beschreibe diese Funktion hier:
 function reset() {
   subtasks = [];
   for (let i = 0; i < allContacts.length; i++) {
     allContacts[i]['contactSelect'] = false;
   }
-  prio = "urgent";
+  prio = "medium";
   authorityForTask = [];
-
 }

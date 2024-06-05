@@ -47,6 +47,7 @@ async function handleSuccessfulLogin(userEntry) {
     const userKey = await saveActiveUserInFirebase(userName);
     const activeUser = { key: userKey, data: { name: userName } };
     localStorage.setItem('activeUser', JSON.stringify(activeUser));
+    localStorage.setItem('hasShownWelcome', 'false');  // Ensure to reset this flag on successful login
     window.location.href = '/summary_user.html';
 }
 
@@ -73,6 +74,7 @@ function saveLogInDataInFirebase() {
 function guestLogIn() {
     const guestUser = { key: "guest", data: { name: "Guest" } };
     localStorage.setItem('activeUser', JSON.stringify(guestUser));
+    localStorage.setItem('hasShownWelcome', 'false');  // Ensure to reset this flag on guest login
     window.location.href = './summary_user.html';
 }
 
