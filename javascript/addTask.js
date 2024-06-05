@@ -214,9 +214,9 @@ function removeAddContactSection() {
             let contact = allContacts[i];
             const lastNameInitial = contact.name.split(' ')[1]?.charAt(0) || '';
             document.getElementById('addContactIcon').innerHTML += loadIconForContacts(contact, lastNameInitial);
-            removeContactFilter();
         }
     }
+    removeContactFilter();
 }
 
 function loadIconForContacts(contact, lastNameInitial) {
@@ -237,7 +237,7 @@ function addContactSection() {
 
 function removeContactFilter() {
     document.getElementById('contactSection').innerHTML = `
-    <img onclick="addContactSection()" class="taskIcon" src="./assets/img/removeExtensionIcon.png" alt="">
+    <img onclick="showContacts()" class="taskIcon" src="./assets/img/removeExtensionIcon.png" alt="">
     `;
     document.getElementById('addContact').classList.add('d-none');
 }
