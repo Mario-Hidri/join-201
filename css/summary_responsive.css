@@ -127,12 +127,56 @@
 
 @media(max-width:550px) {
     .join_key_metrics {
-        left: 50px;
+        left: 36px;
         top: 115px;
     }
 
     .summary_content {
-        left: 75px;
-        top: 260px;
+        left: 36px;
+        top: 300px;
     }
+}
+
+@media(max-width:400px) {
+    .join_key_metrics {
+        left: 8px;
+    }
+
+    .summary_content {
+        left: 8px;
+    }
+}
+
+@media(max-width:320px) {
+    .summary_content_rows {
+        width: 48px;
+        height: 60px;
+    }
+
+    .first_row{
+        gap: 8px;
+    }
+
+    .summary_content_row_2 {
+        width: 293px;
+        gap: 16px;
+        height: 50px;
+    }
+
+    .summary_content_row_3 {
+        width: 340px;
+        padding-bottom: 0;
+        height: 114px;
+        gap: 8px;
+    }
+
+    .footer_links_mobile .link {
+        font-size: 14px;
+    }
+
+    .icon {
+        width: 21px;
+        height: 21px;
+    }
+
 }

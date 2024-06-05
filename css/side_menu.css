@@ -50,6 +50,10 @@ nav {
     color: #CDCDCD;
     padding: 8px 56px;
     text-decoration: none;
+
+
+    padding: 0px 10px;
+
 }
 
 .active-link {
@@ -86,15 +90,13 @@ footer {
     .logo_mobile {
         display: flex;
         position: absolute;
-        height: 100px;
-        width: 100px;
+        height: 80px;
+        width: 80px;
         left: 10px;
-        top: -89vh;
+        top: -88vh;
     }
 
-    .link {
-        padding: 8px 40px;
-    }
+
 
     .help {
         display: none;
@@ -118,7 +120,7 @@ footer {
         display: flex;
         justify-content: space-around;
         height: 80px;
-        width: auto;
+        width: 100vw;
         top: 89vh;
         z-index: 1999;
     }

@@ -77,15 +77,10 @@
         left: 206px;
     }
 
-    .nav {
-        width: 206px;
-    }
 }
 
 @media(max-width:630px) {
-    .link {
-        padding: 8px 40px;
-    }
+
 
     .help {
         display: none;
@@ -108,8 +103,8 @@
         position: relative;
         display: flex;
         justify-content: space-around;
+        width: 116vw;
         height: 80px;
-        width: auto;
         top: 89vh;
         z-index: 1999;
     }
