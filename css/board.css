@@ -13,6 +13,7 @@
     width: 100%;
     padding: 0 64px;
     gap: 26px;
+    overflow: scroll;
 }
 
 .d-none{
@@ -409,7 +410,6 @@ display:none;
         justify-content: space-between;
         gap: 20px;
         width: 80%;
-        overflow: scroll;
     }
 
     .dragArea {
