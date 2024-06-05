@@ -342,10 +342,17 @@ function editTask(i) {
   let task = tasks[i];
   let title = task['title'];
   let description = task['description'];
-  let date = task['date'];
-  let authority = task['authorityForTask'] || [];
+  let date = task['date']; 
+  document.getElementById('containerOpenTaskInBoardSize').innerHTML =  loadEditTaskHTML(i,title,description,date);
+  loadPriority(i, task);
+  subtasks = task['subtask'] || [];
+  loadSubtasks();
+  assignAuthority(task);
+  removeAddContactSection();
+}
 
-  document.getElementById('containerOpenTaskInBoardSize').innerHTML = `
+function loadEditTaskHTML(i,title,description,date){
+  return `
   <img class="exitButtonBigTask" onclick="closeTask()" src="./assets/img/crossIcon.png" alt="">
   <form onsubmit="changeTask(${i}); return false">
     <label for="title">Title<span class="colorRed">*</span></label>
@@ -388,16 +395,13 @@ function editTask(i) {
                             </div>
 
           
-             <button type="submit" class="createButton">OK</button>
-          
-          
+             <button type="submit" class="createButton">OK</button> 
 </form> 
   `;
-  loadPriority(i, task);
-  subtasks = task['subtask'] || [];
-  loadSubtasks();
+}
 
-
+function assignAuthority(){
+  let authority = task['authorityForTask'] || [];
   for (let i = 0; i < authority.length; i++) {
     const person = authority[i];
     for (let j = 0; j < allContacts.length; j++) {
@@ -406,7 +410,6 @@ function editTask(i) {
       }
     }
   }
-  removeAddContactSection();
 }
 
 function loadPriority(i, task) {
@@ -435,7 +438,7 @@ function loadPriorityUrgentHTML() {
                                 <span>Low</span>
                                 <img id="low" class="priorityImage" src="./assets/img/LowPriority.png" alt="">
                             </button>
-                        </div>
+  </div>
   `;
 }
 
