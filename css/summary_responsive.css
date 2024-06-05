@@ -51,30 +51,26 @@
     .join_key_metrics p {
         font-size: 16px;
     }
-
     .summary_content {
         left: 260px;
     }
-
-    .summary_content h1 {
+    .summary_content h1{
         font-size: 38px;
     }
-
-    .summary_content p {
+    .summary_content p{
         font-size: 14px;
     }
-
-    .summary_content_img_1 {
+    .summary_content_img_1{
         height: 50px;
         width: 50px;
     }
 
-    .summary_content_img_2 {
+    .summary_content_img_2{
         height: 50px;
         width: 50px;
     }
 
-    .summary_content_img_second_row {
+    .summary_content_img_second_row{
         height: 50px;
         width: 50px;
     }
@@ -93,7 +89,6 @@
         width: 329px;
         height: 121px;
     }
-
     .summary_content {
         left: 280px;
         width: 350px;
@@ -113,7 +108,6 @@
 
 }
 
-<<<<<<< HEAD
 @media(max-width:630px) {
     .link {
         padding: 8px 40px;
@@ -185,7 +179,3 @@
         height: 140px;
     }
 }
-=======
-@media(max-width:835px) {}
-
->>>>>>> e29412867772597a241780bade8292cc99370010
