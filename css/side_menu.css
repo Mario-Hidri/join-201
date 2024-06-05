@@ -66,6 +66,12 @@ footer {
     flex-direction: column;
 }
 
+.logo_mobile {
+    display: none;
+}
+
+
+
 @media(max-width:800px) {
     .header {
         left: 206px;
@@ -77,6 +83,15 @@ footer {
 }
 
 @media(max-width:630px) {
+    .logo_mobile {
+        display: flex;
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        left: 10px;
+        top: -89vh;
+    }
+
     .link {
         padding: 8px 40px;
     }
