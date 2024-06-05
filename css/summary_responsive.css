@@ -16,7 +16,6 @@
     .join_key_metrics_seperator_none {
         display: block;
     }
-
 }
 
 @media(max-width:945px) {
@@ -51,26 +50,30 @@
     .join_key_metrics p {
         font-size: 16px;
     }
+
     .summary_content {
         left: 260px;
     }
-    .summary_content h1{
+
+    .summary_content h1 {
         font-size: 38px;
     }
-    .summary_content p{
+
+    .summary_content p {
         font-size: 14px;
     }
-    .summary_content_img_1{
+
+    .summary_content_img_1 {
         height: 50px;
         width: 50px;
     }
 
-    .summary_content_img_2{
+    .summary_content_img_2 {
         height: 50px;
         width: 50px;
     }
 
-    .summary_content_img_second_row{
+    .summary_content_img_second_row {
         height: 50px;
         width: 50px;
     }
@@ -89,72 +92,14 @@
         width: 329px;
         height: 121px;
     }
+
     .summary_content {
         left: 280px;
         width: 350px;
     }
 }
 
-@media(max-width:800px) {
-
-    .header {
-        left: 206px;
-    }
-
-    .nav {
-        width: 206px;
-    }
-
-
-}
-
 @media(max-width:630px) {
-    .link {
-        padding: 8px 40px;
-    }
-
-    .help {
-        display: none;
-    }
-
-    header {
-        max-width: calc(798px - 40px);
-        left: 0px;
-    }
-
-    .header_p {
-        display: none;
-    }
-
-    .spaceBetween {
-        justify-content: flex-end;
-    }
-
-    nav {
-        display: flex;
-        justify-content: space-around;
-        height: 120px;
-        width: auto;
-        top: 100vh;
-    }
-
-    .footer_links_mobile {
-        display: flex;
-        align-items: center;
-    }
-
-    .center-y {
-        flex-direction: column;
-    }
-
-    nav footer {
-        display: none;
-    }
-
-    .center-x {
-        display: none;
-    }
-
     .summary_content {
         left: 104px;
         gap: 30px;
@@ -177,5 +122,17 @@
     .summary_content_row_3 {
         width: 406px;
         height: 140px;
+    }
+}
+
+@media(max-width:550px) {
+    .join_key_metrics {
+        left: 50px;
+        top: 115px;
+    }
+
+    .summary_content {
+        left: 75px;
+        top: 260px;
     }
 }
