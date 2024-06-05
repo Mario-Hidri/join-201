@@ -1,3 +1,8 @@
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
 .join_key_metrics {
     display: flex;
     justify-content: center;
@@ -349,4 +354,80 @@
     transform: scale(0.95);
     box-shadow: rgba(0, 0, 0, 0.92) 0px 13px 14px -8px;
     cursor: pointer;
+}
+
+/* Add this to summary.css */
+@media (max-width: 1350px) {
+    .welcome-screen {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        z-index: 1000;
+    }
+
+    .welcome-screen.active {
+        display: flex;
+        animation: fadeIn 0.5s forwards, fadeOut 1s 2.5s forwards;
+    }
+
+    .welcome-message {
+        font-size: 3em; /* Adjust size as needed */
+        margin: 0;
+        padding: 20px; /* Add padding for better visibility */
+    }
+
+    .username {
+        color: #29ABE2; /* Adjust color as needed */
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    /* Ensure the text remains centered and scales appropriately on smaller screens */
+    @media (max-width: 800px) {
+        .welcome-message {
+            font-size: 2em; /* Adjust size as needed for smaller screens */
+            padding: 10px;
+        }
+
+        .welcome-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: white;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 1000;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
