@@ -460,6 +460,6 @@ function reset() {
   for (let i = 0; i < allContacts.length; i++) {
     allContacts[i]['contactSelect'] = false;
   }
-  prio = "urgent";
+  prio = "medium";
   authorityForTask = [];
 }

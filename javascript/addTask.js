@@ -1,6 +1,6 @@
 let tasks = [];
 let subtasks = [];
-let prio = "urgent";
+let prio = "medium";
 let url = 'https://jointask-cedc0-default-rtdb.europe-west1.firebasedatabase.app/.json';
 let board = "toDo";
 let authorityForTask = [];
