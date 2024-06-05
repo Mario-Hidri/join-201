@@ -10,10 +10,9 @@
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    width: 100%;
     padding: 0 64px;
     gap: 26px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .d-none{
@@ -128,7 +127,39 @@ display:none;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    max-height: 86%;
+    height: 70%;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.slide-in {
+    animation-name: slideIn;
+}
+
+.slide-out {
+    animation-name: slideOut;
 }
 
 .noTask {
@@ -382,6 +413,7 @@ display:none;
     justify-content: flex-end;
     align-items: center;
     gap: 8px;
+    margin-top: auto;
 }
 
 .iconDeleteBigTask {
@@ -409,7 +441,7 @@ display:none;
         flex-direction: column;
         justify-content: space-between;
         gap: 20px;
-        width: 80%;
+        overflow-x: hidden;
     }
 
     .dragArea {
@@ -418,7 +450,7 @@ display:none;
         overflow: scroll;
         scrollbar-width: none;
         height: 320px;
-        padding-right: 20px; /* Fügt einen rechten Innenabstand hinzu */
+        padding-right: 35%;
     }
 
     .fourth-size {

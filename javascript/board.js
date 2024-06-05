@@ -223,7 +223,11 @@ function openTaskDialog(i) {
   let priority = task["priority"];
   document.getElementById('containerOpenTaskInBoardSize').innerHTML = loadTaskDialogHTML(title, description, date, category, priority, i);
   loadSubtasksOnBigTask(i, task);
-  document.getElementById('openTaskOnBoardSite').classList.remove('d-noneAddTask');
+  const taskContainer = document.getElementById('openTaskOnBoardSite');
+  taskContainer.classList.remove('d-noneAddTask');
+  const containerOpenTaskInBoardSize = document.getElementById('containerOpenTaskInBoardSize');
+  containerOpenTaskInBoardSize.classList.remove('slide-out');
+  containerOpenTaskInBoardSize.classList.add('slide-in');
   loadContactsOnBigTask(i, task);
 }
 
@@ -333,9 +337,16 @@ function deleteTask(i) {
 }
 
 function closeTask() {
-  document.getElementById('openTaskOnBoardSite').classList.add('d-noneAddTask');
-  document.getElementById('containerOpenTaskInBoardSize').innerHTML = '';
-  loadTasks();
+  const containerOpenTaskInBoardSize = document.getElementById('containerOpenTaskInBoardSize');
+  containerOpenTaskInBoardSize.classList.remove('slide-in');
+  containerOpenTaskInBoardSize.classList.add('slide-out');
+  
+  containerOpenTaskInBoardSize.addEventListener('animationend', () => {
+      document.getElementById('openTaskOnBoardSite').classList.add('d-noneAddTask');
+      containerOpenTaskInBoardSize.classList.remove('slide-out');
+      document.getElementById('containerOpenTaskInBoardSize').innerHTML = '';
+      loadTasks();
+  }, { once: true });
 }
 
 function editTask(i) {
