@@ -63,14 +63,20 @@
 
 @media(max-width:950px) {
     .container_legal_policy {
-        left: 244px;
+        left: 270px;
     }
 
 }
 
+@media(max-width:800px) {
+    .container_legal_policy {
+        left: 170px;
+    }
+}
+
 @media(max-width:630px) {
     .container_legal_policy {
-        left: 180px;
+        left: 120px;
     }
 
     .container_legal_policy img.back_arrow {
