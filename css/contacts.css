@@ -2,6 +2,7 @@ body {
     margin: 0;
     background-color: #F6F7F8;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .contacts_list {
@@ -9,7 +10,7 @@ body {
     padding: 32px 24px;
     left: 232px;
     width: 400px;
-    height: calc(100vh - 179px);
+    height: calc(100vh - 192px);
     background-color: #FFFFFF;
     padding-top: 160px;
     overflow: auto;
@@ -410,7 +411,7 @@ body {
 }
 
 .image_container_edit {
-    height: 120px;
+    height: 105px;
     width: 120px;
     border-radius: 50%;
     display: flex;

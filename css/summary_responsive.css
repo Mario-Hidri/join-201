@@ -148,12 +148,17 @@
 }
 
 @media(max-width:320px) {
+    body {
+        overflow-y: hidden;
+
+    }
+
     .summary_content_rows {
         width: 48px;
         height: 60px;
     }
 
-    .first_row{
+    .first_row {
         gap: 8px;
     }
 

@@ -13,7 +13,8 @@
     position: absolute;
     top: 311px;
     left: 328px;
-    width: 1014px;
+    max-width: 1014px;
+    width: 55%;
 }
 
 .container_legal_policy h1 {
@@ -55,7 +56,25 @@
     background-size: cover;
     height: auto;
     vertical-align: middle;
-    position: fixed;
-    top: 225px;
-    left: 1307px;
+    position: relative;
+    top: -40px;
+    left: 95%;
+}
+
+@media(max-width:950px) {
+    .container_legal_policy {
+        left: 244px;
+    }
+
+}
+
+@media(max-width:630px) {
+    .container_legal_policy {
+        left: 180px;
+    }
+
+    .container_legal_policy img.back_arrow {
+        left: 100%;
+        top: -10px;
+    }
 }
