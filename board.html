@@ -20,9 +20,9 @@
 <body onload="initBoardSite(); initContactForaddTask()">
 
     <header class="spaceBetween" w3-include-html="./assets/templates/header.html"></header>
-
+    <div class="sideMenuResponsive"  w3-include-html="./assets/templates/side_menu.html"></div>
     <div class="flexbox">
-        <div w3-include-html="./assets/templates/side_menu.html"></div>
+        <div class="content-wrapper-board">
         <div class="right-side backgroudColor">
             <div class="headerBoard header">
                 <h1>Board</h1>
@@ -33,7 +33,9 @@
                         <img src="./assets/img/board_img/search (1).png" alt="Image" class="searchbarimage">
                     </div>
                     <button class="searchbarbutton" onclick="addTaskOnToDo()">
-                        Add Task
+                        <span class="searchbuttonText">
+                            Add Task
+                        </span>
                         <img class="plusbutton" src="./assets/img/board_img/add.png" alt="Button Image" class="buttonimage">
                     </button>
                 </div>
@@ -68,9 +70,9 @@
                     <div id="done" class="dragArea" ondrop="moveTo(id='done')" ondragover="allowDrop(event)"></div>
                 </div>
             </div>
-
-        
+        </div>
     </div>
+    
 
     <div class="d-noneAddTask taskOnBoardSite" id="addTaskOnBoardSite">
    
