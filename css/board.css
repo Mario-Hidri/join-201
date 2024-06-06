@@ -1,3 +1,7 @@
+
+
+
+
 .header {
     display: flex;
     align-items: center;
@@ -448,7 +452,7 @@ display:none;
         gap: 20px;
         overflow: scroll;
         scrollbar-width: none;
-        height: 320px;
+        height: auto;
         padding-right: 35%;
     }
 
@@ -478,4 +482,108 @@ display:none;
     }
 
 
+}
+
+@media(max-width:800px) {
+    .content-wrapper-board {
+        position: absolute;
+        width: 100%;
+        height: 70%;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    .sideMenuResponsive {
+        height: 0px;
+    }
+    .sticky-footer {
+        margin-top: auto;
+        background-color: #f8f9fa; /* Beispielhintergrundfarbe */
+        padding: 20px; /* Beispielpadding */
+        text-align: center; /* Zentrierter Text */
+    }
+
+    html, body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Container, der den Hauptinhalt und den Footer enthält */
+    .content-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .logo_mobile {
+        display: flex;
+        position: absolute;
+        height: 80px;
+        width: 80px;
+        left: 30px;
+        top: -88vh;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+    }
+    .nav {
+        top: 75vh;
+    }
+}
+
+@media(max-width:540px) {
+    .searchbuttonText {
+        display: none;
+    }
+    .searchbarbutton {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 5px 13px;
+        border-radius: 10px;
+        border: 1px solid #A8A8A8;
+        background-color: #ffffff;
+        cursor: pointer;
+        color: white;
+        background: #2A3647;
+        position: absolute;
+        top: 75px;
+        left: 270px;
+    }
+    .searchbarinput {
+        min-width: 270px;
+    }
+}
+
+@media (max-width:399px) {
+    .footer_links_mobile {
+
+        white-space: nowrap;
+    }
+    .link {
+        padding: 0px 5px;
+    }
+    .mobile_links {
+
+        padding: 3px;
+    }
+
+    .footer_links_mobile {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+    .header {
+        padding: 0px 0px 0px 20px;
+    }
+    .searchbarbutton {
+        left: 250px;
+    }
+    .canbanBoard {
+        padding: 0 10px;
+    }
 }
