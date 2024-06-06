@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="./css/contacts.css">
     <link rel="stylesheet" href="./css/side_menu.css">
     <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./css/contacts_responsive.css">
     <link rel="icon" href="./assets/img/favIcon.png" type="image/x-icon">
     <script src="./javascript/includeHTML.js"></script>
     <script src="./javascript/board.js"></script>
@@ -21,7 +20,10 @@
 
 
 <body onload="init()">
-    <header class="spaceBetween spaceBetweenMobile" w3-include-html="./assets/templates/header.html"></header>
+    <div class="headercontainer">
+        <header class="spaceBetween spaceBetweenMobile" w3-include-html="./assets/templates/header.html"></header>
+
+    </div>
 
     <nav class="sideMenu" w3-include-html="./assets/templates/side_menu.html"></nav>
 
