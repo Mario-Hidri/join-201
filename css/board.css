@@ -2,6 +2,7 @@
 
 
 
+
 .header {
     display: flex;
     align-items: center;
@@ -488,7 +489,7 @@ display:none;
     .content-wrapper-board {
         position: absolute;
         width: 100%;
-        height: 70%;
+        height: 83%;
         overflow: scroll;
         overflow-x: hidden;
     }
@@ -522,14 +523,14 @@ display:none;
         height: 80px;
         width: 80px;
         left: 30px;
-        top: -87vh;
+        top: -92vh;
     }
     .header {
         display: flex;
         justify-content: space-between;
     }
     .nav {
-        top: 78vh;
+        top: 75vh;
     }
 }
 
@@ -586,15 +587,13 @@ display:none;
     .canbanBoard {
         padding: 0 10px;
     }
-}
 
-@media(max-width:500px) {
     .logo_mobile {
         display: flex;
         position: absolute;
         height: 55px;
         width: 55px;
         left: 30px;
-        top: -86vh;
+        top: -90vh;
     }
 }

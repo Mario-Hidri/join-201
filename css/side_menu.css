@@ -1,3 +1,4 @@
+
 * {
     padding: 0;
     margin: 0;
@@ -19,12 +20,9 @@ nav {
     position: fixed;
     width: 232px;
     height: 100vh;
-<<<<<<< HEAD
-=======
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
->>>>>>> b9f9a7027edff4a432173919848eb38a57d1e3ae
 }
 
 .center-x {
@@ -160,7 +158,7 @@ footer {
         justify-content: space-around;
         height: 80px;
         width: 100vw;
-        top: 75vh;
+        top: 83vh;
         z-index: 1999;
     }
 

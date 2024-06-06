@@ -1,3 +1,4 @@
+
 @media(max-width:1350px) {
     .summary_greet_user {
         display: none;
@@ -136,32 +137,20 @@
         flex-direction: column;
         overflow-y: hidden  !important;
     }
+    .logo_mobile {
+        display: flex;
+        position: absolute;
+        height: 80px;
+        width: 80px;
+        left: 30px;
+        top: -92vh;
+    }
 }
 
 @media (max-width:400px) {
     .summary_content {
         width: 310px;
     }
-<<<<<<< HEAD
-}
-
-@media(max-width:320px) {
-    body {
-        overflow-y: hidden;
-
-    }
-
-    .summary_content_rows {
-        width: 48px;
-        height: 60px;
-    }
-
-    .first_row {
-        gap: 8px;
-    }
-
-=======
->>>>>>> b9f9a7027edff4a432173919848eb38a57d1e3ae
     .summary_content_row_2 {
         width: 310px;
     }
@@ -179,7 +168,7 @@
         height: 55px;
         width: 55px;
         left: 30px;
-        top: -86vh;
+        top: -90vh;
     }
 }
 
