@@ -522,14 +522,14 @@ display:none;
         height: 80px;
         width: 80px;
         left: 30px;
-        top: -88vh;
+        top: -87vh;
     }
     .header {
         display: flex;
         justify-content: space-between;
     }
     .nav {
-        top: 75vh;
+        top: 78vh;
     }
 }
 
@@ -585,5 +585,16 @@ display:none;
     }
     .canbanBoard {
         padding: 0 10px;
+    }
+}
+
+@media(max-width:500px) {
+    .logo_mobile {
+        display: flex;
+        position: absolute;
+        height: 55px;
+        width: 55px;
+        left: 30px;
+        top: -86vh;
     }
 }
