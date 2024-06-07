@@ -57,6 +57,7 @@ body {
     justify-content: center;
     gap: 8px;
     background-color: white;
+    cursor: pointer;
 }
 
 .priorityImage {
@@ -113,18 +114,18 @@ body {
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     height: 120px;
-    width: 440px;
+    width: 448px;
     /* background-color: #fff; */
     padding: 18px 16px 18px 16px;
 }
 
 .textarea {
-    width: 90%;
-    height: 100%;
+    /* width: 90%; */
+    /* height: 100%; */
     border: none;
     background-color: #fff;
-    border-radius: 8px;
-    margin-left: 8px;
+    /* border-radius: 8px; */
+    /* margin-left: 8px; */
 }
 
 .input {
@@ -222,7 +223,7 @@ select:focus-visible {
     padding-top: 20px;
 }
 
-@media(max-width:956px) {
+@media(max-width:1350px) {
     .verticalLine {
         display: none;
     }
@@ -231,16 +232,44 @@ select:focus-visible {
         flex-direction: column;
         gap: 0px;
         align-items: center;
+        margin: 0;
     }
 
     .positionButton {
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 21px;
+        margin: 0;
     }
 
     .header {
         justify-content: center;
     }
 
+}
+
+@media(max-width:800px) {
+    .positionInputFields {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+        gap: 16px;
+        position: absolute;
+        width: 396px;
+        height: 930px;
+        left: calc(50% - 396px/2);
+        top: 224px;
+    }
+
+    .header {
+        position: absolute;
+
+    }
+
+    
+    .positionButton{
+        position: fixed;
+    }
 }
