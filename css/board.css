@@ -1,15 +1,12 @@
-
-
-
-
-
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 232px;
+    height: 60px;
     padding: 0px 45px 0px 55px;
+    margin-bottom: 30px;
 }
+
 
 .canbanBoard {
     box-sizing: border-box;
@@ -20,8 +17,8 @@
     overflow: auto;
 }
 
-.d-none{
-display:none;
+.d-none {
+    display: none;
 }
 
 .dragArea {
@@ -76,11 +73,25 @@ display:none;
 }
 
 @keyframes wobble {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(-5deg); }
-    50% { transform: rotate(0deg); }
-    75% { transform: rotate(5deg); }
-    100% { transform: rotate(0deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 .categorySmallTask {
@@ -141,6 +152,7 @@ display:none;
         transform: translateX(100%);
         opacity: 0;
     }
+
     to {
         transform: translateX(0);
         opacity: 1;
@@ -152,6 +164,7 @@ display:none;
         transform: translateX(0);
         opacity: 1;
     }
+
     to {
         transform: translateX(100%);
         opacity: 0;
@@ -183,31 +196,41 @@ display:none;
     color: #2A3647;
     background-color: white;
     border: 8px;
-    font-weight: 700px;
+    font-weight: 700;
     font-size: 21px;
     padding: 16px;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid #2A3647;
+    width: 110px;
+    height: 56px;
 }
 
-.whiteButton:hover{
-    color:  rgb(43,171,226);
-    border: 1px solid rgb(43,171,226);
-
+.whiteButton:hover {
+    color: rgb(43, 171, 226);
+    border: 1px solid rgb(43, 171, 226);
+    cursor: pointer;
 }
 
+.whiteButton:hover img{
+    content: url('../assets/img/contacts_img/Vector\ \(1\).svg');
+
+}
 .createButton {
     background-color: #2A3647;
     color: #FFFFFF;
-    border: 8px;
-    font-weight: 700px;
+    /* border: 8px; */
+    font-weight: 700;
     font-size: 21px;
     padding: 16px;
-    border-radius: 8px;
+    border-radius: 10px;
+    width: 183px;
+    height: 56px;
+    border: none;
 }
 
-.createButton:hover{
-    background-color: rgb(43,171,226);
+.createButton:hover {
+    background-color: rgb(43, 171, 226);
+    cursor: pointer;
 }
 
 .iconOnBigTask {
@@ -507,26 +530,32 @@ display:none;
     .sideMenuResponsive {
         height: 0px;
     }
+
     .sticky-footer {
         margin-top: auto;
-        background-color: #f8f9fa; /* Beispielhintergrundfarbe */
-        padding: 20px; /* Beispielpadding */
-        text-align: center; /* Zentrierter Text */
+        background-color: #f8f9fa;
+        /* Beispielhintergrundfarbe */
+        padding: 20px;
+        /* Beispielpadding */
+        text-align: center;
+        /* Zentrierter Text */
     }
 
-    html, body {
+    html,
+    body {
         height: 100%;
         margin: 0;
         display: flex;
         flex-direction: column;
     }
-    
+
     /* Container, der den Hauptinhalt und den Footer enthält */
     .content-wrapper {
         flex: 1;
         display: flex;
         flex-direction: column;
     }
+
     .logo_mobile {
         display: flex;
         position: absolute;
@@ -535,10 +564,12 @@ display:none;
         left: 30px;
         top: -92vh;
     }
+
     .header {
         display: flex;
         justify-content: space-between;
     }
+
     .nav {
         top: 75vh;
     }
@@ -548,6 +579,7 @@ display:none;
     .searchbuttonText {
         display: none;
     }
+
     .searchbarbutton {
         display: flex;
         align-items: center;
@@ -563,6 +595,7 @@ display:none;
         top: 75px;
         left: 270px;
     }
+
     .searchbarinput {
         min-width: 270px;
     }
@@ -573,9 +606,11 @@ display:none;
 
         white-space: nowrap;
     }
+
     .link {
         padding: 0px 5px;
     }
+
     .mobile_links {
 
         padding: 3px;
@@ -588,12 +623,15 @@ display:none;
         justify-content: center;
         gap: 10px;
     }
+
     .header {
         padding: 0px 0px 0px 20px;
     }
+
     .searchbarbutton {
         left: 250px;
     }
+
     .canbanBoard {
         padding: 0 10px;
     }
