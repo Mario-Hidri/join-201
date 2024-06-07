@@ -5,7 +5,7 @@ body {
     background-color: #F6F7F8;
 }
 
-.join_key_metrics {
+.joinKeyMetrics {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,19 +15,19 @@ body {
     left: 328px;
 }
 
-.join_key_metrics h1 {
+.joinKeyMetrics h1 {
     font-size: 61px;
     font-weight: 700;
     line-height: 73.2px;
 }
 
-.join_key_metrics p {
+.joinKeyMetrics p {
     font-size: 27px;
     font-weight: 400;
     line-height: 32.4px;
 }
 
-.join_key_metrics_seperator {
+.joinKeyMetricsSeperator {
     width: 3px;
     height: 59px;
     background-color: #29ABE2;
@@ -35,7 +35,7 @@ body {
     margin-right: 18px;
 }
 
-.join_key_metrics_seperator_none{
+.joinKeyMetricsSeperatorNone{
     display: none;
     width: 102px;
     height: 3px;
@@ -44,7 +44,7 @@ body {
     margin-right: 18px;
 }
 
-.summary_content {
+.summaryContent {
     display: flex;
     flex-direction: column;
     width: 560px;
@@ -55,20 +55,20 @@ body {
     gap: 10px;
 }
 
-.summary_content h1 {
+.summaryContent h1 {
     font-size: 64px;
     font-weight: 600;
     margin-block: 0px;
 }
 
-.summary_content p {
+.summaryContent p {
     font-size: 20px;
     font-weight: 400;
     margin-block: 0px;
     color: #2A3647;
 }
 
-.summary_content_img {
+.summaryContentImg {
     background-color: rgb(42, 54, 71);
     height: 69px;
     width: 69px;
@@ -78,7 +78,7 @@ body {
     align-items: center;
 }
 
-.summary_content_img_1 {
+.summaryContentImg1 {
     background-color: rgb(42, 54, 71);
     height: 69px;
     width: 69px;
@@ -90,12 +90,12 @@ body {
     object-fit: scale-down;
 }
 
-.summary_content_rows:hover:not(:active) .summary_content_img_1 {
+.summaryContentRows:hover:not(:active) .summaryContentImg1 {
     background-color: #FFFFFF;
     content: url('../assets/img/summary_user_img/hover.png');
 }
 
-.summary_content_img_2 {
+.summaryContentImg2 {
     background-color: rgb(42, 54, 71);
     height: 69px;
     width: 69px;
@@ -107,24 +107,24 @@ body {
     object-fit: scale-down;
 }
 
-.summary_content_rows:hover:not(:active) .summary_content_img_2 {
+.summaryContentRows:hover:not(:active) .summaryContentImg2 {
     background-color: #FFFFFF;
     content: url('../assets/img/summary_user_img/Vector\ \(1\).png');
 }
 
-.summary_content_img img {
+.summaryContentImg img {
     max-width: 100%;
     max-height: 100%;
 }
 
-.summary_content_info {
+.summaryContentInfo {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.summary_content_rows {
+.summaryContentRows {
     position: relative;
     background-color: #FFFFFF;
     width: 264px;
@@ -142,7 +142,7 @@ body {
     /* Default text color */
 }
 
-.summary_content_rows:hover:not(:active) {
+.summaryContentRows:hover:not(:active) {
     background-color: #2A3647;
     color: #FFFFFF;
     cursor: pointer;
@@ -150,24 +150,24 @@ body {
     transform: scale(1.04) translate(-3px, -3px);
 }
 
-.summary_content_rows:hover:not(:active) p {
+.summaryContentRows:hover:not(:active) p {
     color: #FFFFFF;
 }
 
-.summary_content_rows_left:hover:not(:active) {
+.summaryContentRowsLeft:hover:not(:active) {
     background-color: #2A3647;
     cursor: pointer;
     box-shadow: 0px 0px 4px 0px #0000001A;
     transform: scale(1.04) translate(3px, -3px);
 }
 
-.first_row {
+.firstRow {
     display: flex;
     flex-direction: row;
     gap: 18px;
 }
 
-.summary_content_info_seperator {
+.summaryContentInfoSeperator {
     width: 2px;
     height: 102.02px;
     background-color: #D1D1D1;
@@ -175,7 +175,7 @@ body {
     margin-right: 18px;
 }
 
-.summary_content_row_2 {
+.summaryContentRow2 {
     background-color: #FFFFFF;
     display: flex;
     justify-content: center;
@@ -190,26 +190,26 @@ body {
     color: #000000;
 }
 
-.summary_content_row_2:hover:not(:active) {
+.summaryContentRow2:hover:not(:active) {
     transform: scale(1.03) translate(3px, 3px);
     background-color: #2A3647;
     box-shadow: rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
 
-.summary_content_row_2:hover .summary_content_info p {
+.summaryContentRow2:hover .summaryContentInfo p {
     color: #FFFFFF;
 }
 
-.summary_content_row_2:hover .summary_content_info {
+.summaryContentRow2:hover .summaryContentInfo {
     color: #FFFFFF;
 }
 
-.summary_content_row_2:hover .summary_content_info h3 {
+.summaryContentRow2:hover .summaryContentInfo h3 {
     color: #FFFFFF;
 }
 
-.summary_content_img_second_row {
+.summaryContentImgSecondRow {
     background-color: #FF3D00;
     height: 69px;
     width: 69px;
@@ -219,21 +219,21 @@ body {
     align-items: center;
 }
 
-.summary_content_row_2_left {
+.summaryContentRow2Left  {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 18px;
 }
 
-.summary_content_row_3 {
+.summaryContentRow3  {
     display: flex;
     justify-content: space-between;
     gap: 13px;
     padding-bottom: 30px;
 }
 
-.summary_content_rows_3 {
+.summaryContentRows3  {
     background-color: #FFFFFF;
     width: 168px;
     display: flex;
@@ -291,7 +291,7 @@ body {
     cursor: pointer;
 }
 
-.summary_greet_user {
+.summaryGreetUser {
     width: 385px;
     height: 136px;
     display: flex;
@@ -302,7 +302,7 @@ body {
     gap: 3px;
 }
 
-.summary_greet_user h1 {
+.summaryGreetUser h1 {
     margin-block: 0px;
     font-size: 47px;
     font-weight: 500;
@@ -310,7 +310,7 @@ body {
     line-height: 56.4px;
 }
 
-.summary_greet_user h2 {
+.summaryGreetUser h2 {
     margin-block: 0px;
     font-size: 64px;
     font-weight: 700;
@@ -318,7 +318,7 @@ body {
     line-height: 76.8px;
 }
 
-.summary_content_info h3 {
+.summaryContentInfo h3 {
     margin-block: 0px;
     font-weight: 700;
     font-size: 21px;
@@ -326,39 +326,39 @@ body {
     color: #2A3647;
 }
 
-.summary_content_rows:active {
+.summaryContentRows:active {
     transform: scale(0.95);
     box-shadow: rgba(0, 0, 0, 0.92) 0px 13px 14px -8px;
     cursor: pointer;
 }
 
-.summary_content_rows:active p,
-.summary_content_rows:active .summary_content_img_1,
-.summary_content_rows:active .summary_content_img_2 {
+.summaryContentRows:active p,
+.summaryContentRows:active .summaryContentImg1,
+.summaryContentRows:active .summaryContentImg2 {
     color: #000000;
     cursor: pointer;
 }
 
-.summary_content_row_2:active {
+.summaryContentRow2:active {
     transform: scale(0.95);
     box-shadow: rgba(0, 0, 0, 0.92) 0px 13px 14px -8px;
     cursor: pointer;
 }
 
-.summary_content_row_2:active .summary_content_info p,
-.summary_content_row_2:active .summary_content_info,
-.summary_content_row_2:active .summary_content_info h3 {
+.summaryContentRow2:active .summaryContentInfo p,
+.summaryContentRow2:active .summaryContentInfo,
+.summaryContentRow2:active .summaryContentInfo h3 {
     color: #000000;
     cursor: pointer;
 }
 
-.summary_content_row_2:active {
+.summaryContentRow2:active {
     transform: scale(0.95);
     box-shadow: rgba(0, 0, 0, 0.92) 0px 13px 14px -8px;
     cursor: pointer;
 }
 
-.welcome-screen {
+.welcomeScreen {
     display: none;
     position: fixed;
     top: 0;
@@ -374,7 +374,7 @@ body {
 
 /* Add this to summary.css */
 @media (max-width: 1350px) {
-    .welcome-screen {
+    .welcomeScreen {
         display: none;
         position: fixed;
         top: 0;
@@ -388,12 +388,12 @@ body {
         z-index: 1000;
     }
 
-    .welcome-screen.active {
+    .welcomeScreenActive {
         display: flex;
         animation: fadeIn 0.5s forwards, fadeOut 1s 2.5s forwards;
     }
 
-    .welcome-message {
+    .welcomeMessage {
         font-size: 3em; /* Adjust size as needed */
         margin: 0;
         padding: 20px; /* Add padding for better visibility */
@@ -409,12 +409,12 @@ body {
 
     /* Ensure the text remains centered and scales appropriately on smaller screens */
     @media (max-width: 800px) {
-        .welcome-message {
+        .welcomeMessage {
             font-size: 2em; /* Adjust size as needed for smaller screens */
             padding: 10px;
         }
 
-        .welcome-screen {
+        .welcomeScreen {
             display: none;
             position: fixed;
             top: 0;

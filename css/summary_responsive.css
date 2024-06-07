@@ -1,47 +1,46 @@
-
 @media(max-width:1350px) {
-    .summary_greet_user {
+    .summaryGreetUser {
         display: none;
     }
 }
 
 @media(max-width:952px) {
-    .join_key_metrics {
+    .joinKeyMetrics {
         display: block;
     }
 
-    .join_key_metrics_seperator {
+    .joinKeyMetricsSeperator {
         display: none;
     }
 
-    .join_key_metrics_seperator_none {
+    .joinKeyMetricsSeperatorNone {
         display: block;
     }
 }
 
 @media(max-width:900px) {
-    .summary_content {
+    .summaryContent {
         left: 280px;
         width: 530px;
     }
 }
 
 @media(max-width:825px) {
-    .summary_content {
+    .summaryContent {
         width: 530px;
         left: 248px;
     }
 }
 
 @media (max-width: 800px) {
-    .join_key_metrics {
+    .joinKeyMetrics {
         display: block;
         top: 25%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
 
-    .summary_content {
+    .summaryContent {
         top: 55%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -49,69 +48,69 @@
 }
 
 @media (max-width: 600px) {
-    .summary_content {
+    .summaryContent {
         top: 55%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 400px;
     }
-    .summary_content_rows {
+    .summaryContentRows {
         padding: 0px;
     }
-    .summary_content_row_2 {
+    .summaryContentRow2 {
         gap: 0px;
     }
 }
 
 @media (max-width: 520px) {
-    .join_key_metrics h1 {
+    .joinKeyMetrics h1 {
         font-size: 52px;
     }
-    .join_key_metrics p {
+    .joinKeyMetrics p {
         font-size: 26px;
     }
 }
 
 @media (max-width: 800px) {
-    .join_key_metrics h1 {
+    .joinKeyMetrics h1 {
         font-size: 47px;
     }
-    .join_key_metrics p {
+    .joinKeyMetrics p {
         font-size: 20px;
     }
-    .summary_content_img_1 {
+    .summaryContentImg1 {
         width: 40px;
         height: 40px;
     }
-    .summary_content_img_2 {
+    .summaryContentImg2 {
         width: 40px;
         height: 40px;
     }
-    .summary_content h1 {
+    .summaryContent h1 {
         font-size: 40px;
     }
-    .summary_content p {
+    .summaryContent p {
         font-size: 14px;
     }
-    .summary_content_img_second_row {
+    .summaryContentImgSecondRow {
         width: 40px;
         height: 40px;
     }
     
 
-    .summary_content {
+    .summaryContent {
         top: 65%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 400px;
     }
-    .summary_content_rows {
+    .summaryContentRows {
         padding: 0px;
     }
-    .summary_content_row_2 {
+    .summaryContentRow2 {
         gap: 0px;
     }
-    .join_key_metrics {
+    .joinKeyMetrics {
         display: block;
         top: 25%;
         left: 50%;
@@ -124,7 +123,7 @@
         flex-direction: column;
         overflow-y: hidden  !important;
     }
-    .logo_mobile {
+    .logoMobile {
         display: flex;
         position: absolute;
         height: 80px;
@@ -135,21 +134,21 @@
 }
 
 @media (max-width:420px) {
-    .summary_content {
+    .summaryContent {
         width: 310px;
     }
-    .summary_content_row_2 {
+    .summaryContentRow2 {
         width: 310px;
     }
 
-    .join_key_metrics h1 {
+    .joinKeyMetrics h1 {
         font-size: 37px;
     }
-    .join_key_metrics p {
+    .joinKeyMetrics p {
         font-size: 14px;
     }
 
-    .logo_mobile {
+    .logoMobile {
         display: flex;
         position: absolute;
         height: 55px;
@@ -158,52 +157,53 @@
         top: -90vh;
     }
 
-    .summary_content_rows {
+    .summaryContentRows {
         padding: 0px;
         height: 110px;
         width: 186px;
     }
 
-    .summary_content_rows_3 {
+    .summaryContentRows3 {
         width: 116px;
         height: 116px;
         padding: 0px;
     }
 
-    .summary_content_row_2 { 
+    .summaryContentRow2 { 
         padding: 0px;
     }
 }
 
 @media (max-width:399px) {
-    .footer_links_mobile {
+    .footerLinksMobile {
 
         white-space: nowrap;
     }
     .link {
         padding: 0px 5px;
     }
-    .mobile_links {
+    .mobileLinks {
 
         padding: 3px;
     }
 
-    .footer_links_mobile {
+    .footerLinksMobile {
         display: flex;
         align-items: center;
         flex-direction: row;
         justify-content: center;
         gap: 10px;
     }
-    .summary_content_img_second_row {
+    .summaryContentImgSecondRow {
         width: 35px;
         height: 35px;
         margin-left: 5px;
     }
-    .summary_content_row_2 {
+    .summaryContentRow2 {
         width: 275px;
     }
-    .summary_content {
+    .summaryContent {
         width: 275px;
     }
 }
+
