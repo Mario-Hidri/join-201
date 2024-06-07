@@ -174,7 +174,7 @@ function filterContact(i, search, name, contactSelect) {
 
 function loadSelectedContact(i,name) {
     document.getElementById('addContact').innerHTML += `
-    <div class="contact" id="contact${i}" onclick="addContactToTask(${i})">${name}<img class="checkboxAddContact" src="./assets/img/checkboxDone.png" alt=""></div>
+    <div class="contact" id="contact${i}" onclick="addContactToTask(${i})">${name}<img class="checkboxSelectedContact" src="./assets/img/checkboxDone.svg" alt=""></div>
      `;
     document.getElementById(`contact${i}`).classList.add('activContact');
 }

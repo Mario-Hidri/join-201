@@ -19,6 +19,11 @@ background-color: #D1D1D1;
      margin:10px;
 }
 
+.flexboxWithGap{
+    display: flex;
+    gap:8px;
+}
+
 .lowPriority{
     background-color: #7AE229 !important;
 }
@@ -46,6 +51,12 @@ background-color: #D1D1D1;
 .priorityImage{
     width: 20px;
     height: 14.5px; 
+}
+
+.centery{
+    display:flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .spaceBetweenSubtaskAndIcons {
@@ -159,6 +170,10 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
     border-radius: 8px;
 }
 
+.checkboxSelectedContact{
+    height: 18px;
+}
+
 .d-none{
     display:none;
 }
@@ -183,8 +198,6 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
     color: white;
     font-weight: 400;
 }
-
- 
 
 @media(max-width:956px){
 .verticalLine{

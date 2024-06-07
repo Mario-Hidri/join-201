@@ -190,6 +190,12 @@ display:none;
     border: 1px solid #2A3647;
 }
 
+.whiteButton:hover{
+    color:  rgb(43,171,226);
+    border: 1px solid rgb(43,171,226);
+
+}
+
 .createButton {
     background-color: #2A3647;
     color: #FFFFFF;
@@ -198,6 +204,10 @@ display:none;
     font-size: 21px;
     padding: 16px;
     border-radius: 8px;
+}
+
+.createButton:hover{
+    background-color: rgb(43,171,226);
 }
 
 .iconOnBigTask {
