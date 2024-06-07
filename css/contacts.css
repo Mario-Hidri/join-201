@@ -533,3 +533,85 @@ button p {
     opacity: 0; 
 }
 
+@media (max-width: 1240px) {
+    .sliding_div{
+        width: 100px;
+        left: 720px;
+    }
+
+    .display_edit_contact {
+        gap: 0px;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 1070px) {
+    .slogan{
+        display: none;
+    }
+
+    .sliding_div{
+        width: 100px;
+        top: 150px;
+        left: 720px;
+    }
+
+    .display_edit_contact {
+        gap: 0px;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 877px) {
+    .backgroudn_color_top_list {
+        width: auto;
+    }
+    .contacts_list {
+        padding: 32px 8px;
+        padding-top: 160px;
+    }
+    .sliding_div {
+        left: 675px;
+    }
+}
+
+@media (max-width: 816px) {
+    .contacts_list button {
+        left: 248px;
+    }
+    .alphabetical_order {
+        padding: 17px 15px;
+    }   
+    .contacts_list {
+        width: 370px;
+    }
+    .sliding_div {
+        left: 655px;
+    }
+}
+
+@media (max-width: 800px) {
+    .contacts_list {
+        scrollbar-width: none;
+        left: 0px;
+    }
+    .contacts_list button {
+        left: 12px;
+        top: 104px;
+    }
+    .spaceBetween {
+        position: sticky !important;
+        z-index: 1000 !important;
+    }
+    .sliding_div {
+        left: 425px;
+    }
+    .nav {
+        top: 82vh !important;
+    }
+    .logo_mobile {
+        top: -91vh;
+    }
+}
+
+
