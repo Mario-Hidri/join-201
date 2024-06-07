@@ -372,7 +372,6 @@ body {
     z-index: 1000;
 }
 
-/* Add this to summary.css */
 @media (max-width: 1350px) {
     .welcomeScreen {
         display: none;
@@ -394,23 +393,22 @@ body {
     }
 
     .welcomeMessage {
-        font-size: 3em; /* Adjust size as needed */
+        font-size: 3em; 
         margin: 0;
-        padding: 20px; /* Add padding for better visibility */
+        padding: 20px; 
     }
 
     .username {
-        color: #29ABE2; /* Adjust color as needed */
+        color: #29ABE2; 
     }
 
     .hidden {
         display: none;
     }
 
-    /* Ensure the text remains centered and scales appropriately on smaller screens */
     @media (max-width: 800px) {
         .welcomeMessage {
-            font-size: 2em; /* Adjust size as needed for smaller screens */
+            font-size: 2em; 
             padding: 10px;
         }
 
