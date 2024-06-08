@@ -385,25 +385,28 @@ body {
         align-items: center;
         text-align: center;
         z-index: 1000;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
     }
-
-    .welcomeScreenActive {
+    
+    .welcomeScreen.active {
         display: flex;
-        animation: fadeIn 0.5s forwards, fadeOut 1s 2.5s forwards;
+        opacity: 1;
     }
-
+    
+    .welcomeScreen.hidden {
+        opacity: 0;
+    }
+    
     .welcomeMessage {
         font-size: 3em; 
         margin: 0;
         padding: 20px; 
+        color: black;
     }
-
+    
     .username {
         color: #29ABE2; 
-    }
-
-    .hidden {
-        display: none;
     }
 
     @media (max-width: 800px) {

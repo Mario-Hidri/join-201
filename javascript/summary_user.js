@@ -6,6 +6,7 @@ async function start() {
     await loadTasksFromFirebase();
     loadTaskNumbers();
     loadNearestDeadline();
+    showWelcomeScreen(); // Verschieben Sie diese Funktion hierher, um sicherzustellen, dass sie nach dem Laden des Inhalts aufgerufen wird.
 }
 
 const urlLogInData = "https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/LogInData.json";
@@ -134,7 +135,7 @@ document.addEventListener('click', (event) => {
 function loadTaskNumbers() {
     setTaskCount('allTasks', tasks.length);
     setTaskCount('allTasksInBoard', tasks.length);
-    setTaskCount('NumberDoneTasks', tasks.filter(task => task.board === "done").length);
+    setTaskCount('numberDoneTasks', tasks.filter(task => task.board === "done").length);
     setTaskCount('numberProgressTasks', tasks.filter(task => task.board === "inProgress").length);
     setTaskCount('numberFeedbackTasks', tasks.filter(task => task.board === "awaitFeedback").length);
     setTaskCount('numberUrgentTasks', tasks.filter(task => task.priority === "urgent").length);
@@ -145,14 +146,14 @@ function setTaskCount(elementId, count) {
     if (element) {
         element.innerHTML = count;
     } else {
-        console.error(`Element with ID ${elementId} not found`);
+        console.error(`Element mit ID ${elementId} nicht gefunden`);
     }
 }
 
 function loadNearestDeadline() {
     const urgentTasks = tasks.filter(task => task.priority === "urgent");
     if (urgentTasks.length === 0) {
-        console.error('No urgent tasks found');
+        console.error('Keine dringenden Aufgaben gefunden');
         return;
     }
     let nearestDate = urgentTasks.map(task => new Date(task.date)).sort((a, b) => a - b)[0];
@@ -162,7 +163,7 @@ function loadNearestDeadline() {
     if (nearestDeadlineElement) {
         nearestDeadlineElement.textContent = nearestDeadlineString;
     } else {
-        console.error('Element for nearest deadline not found');
+        console.error('Element für die nächste Frist nicht gefunden');
     }
 }
 
@@ -179,8 +180,8 @@ async function showWelcomeScreen() {
 
         if (window.innerWidth <= 1350 && hasShownWelcome === 'false') {
             console.log('Displaying welcome screen');
-            const welcomeScreen = document.getElementById('welcome-screen');
-            const summaryContent = document.querySelector('.right-side');
+            const welcomeScreen = document.getElementById('welcomeScreen');
+            const summaryContent = document.querySelector('.rightSide');
             summaryContent.style.visibility = 'hidden'; // Temporarily hide the summary content
 
             welcomeScreen.classList.add('active');
@@ -188,12 +189,13 @@ async function showWelcomeScreen() {
             setTimeout(() => {
                 console.log('Hiding welcome screen');
                 welcomeScreen.classList.remove('active');
+                welcomeScreen.classList.add('hidden');
                 summaryContent.style.visibility = 'visible'; // Show the summary content
             }, 3500); // 2.5s visible + 1s fade out
 
             localStorage.setItem('hasShownWelcome', 'true');
         } else {
-            document.querySelector('.right-side').style.visibility = 'visible';
+            document.querySelector('.rightSide').style.visibility = 'visible';
         }
     } catch (error) {
         console.error('Error in showWelcomeScreen:', error);
@@ -201,6 +203,5 @@ async function showWelcomeScreen() {
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    showWelcomeScreen();
+    start();
 });
-

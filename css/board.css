@@ -565,18 +565,15 @@
         top: -87vh;
     }
 
-    .header {
-        display: flex;
-        justify-content: space-between;
+    .headerBoard {
+        display: flex !important;
+        justify-content: space-between !important;
+        position: unset !important;
+        padding-bottom: 20px;
+        padding-top: 20px;
     }
-<<<<<<< HEAD
     .navcontainer {
         top: 75vh !important;
-=======
-
-    .nav {
-        top: 75vh;
->>>>>>> 5ae6800e7e7d8b8f27d0c061ddd653716edfa7e6
     }
 }
 
@@ -597,7 +594,7 @@
         color: white;
         background: #2A3647;
         position: absolute;
-        top: 75px;
+        top: 25px;
         left: 270px;
     }
 

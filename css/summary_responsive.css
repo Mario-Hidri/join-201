@@ -49,9 +49,9 @@
 
 @media (max-width: 600px) {
     .summaryContent {
-        top: 55%;
+        top: 64%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%) scale(0.7);
         width: 400px;
     }
     .summaryContentRows {
@@ -98,13 +98,8 @@
     }
     
 
-<<<<<<< HEAD
-    .summary_content {
-        top: 64%;
-=======
     .summaryContent {
-        top: 65%;
->>>>>>> 5ae6800e7e7d8b8f27d0c061ddd653716edfa7e6
+        top: 64%;
         left: 50%;
         transform: translate(-50%, -50%) scale(0.7);
         width: 400px;
@@ -209,6 +204,8 @@
     }
     .summaryContent {
         width: 275px;
+        transform: translate(-50%, -50%) scale(0.9);
+        top: 72%;
     }
 }
 
