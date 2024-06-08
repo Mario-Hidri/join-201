@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/board.css">
     <link rel="stylesheet" href="./css/addTask.css">
+    <link rel="stylesheet" href="./css/contacts.css">
     <link rel="icon" href="./assets/img/favIcon.png" type="image/x-icon">
     <script src="./javascript/includeHTML.js"></script>
     <script src="./javascript/board.js"></script>
@@ -128,7 +129,7 @@
                                     <p>Clear</p>
                                     <img src="./assets/img/contacts_img/close.svg" alt="">
                                 </button>
-                                <button type="submit" class="createButton centery"> <span> Create Task</span> <img
+                                <button onclick="addTask()" type="submit" class="createButton centery"> <span> Create Task</span> <img
                                         src="./assets/img/hook.svg" alt=""></button>
                             </div>
                         </div>
@@ -137,5 +138,13 @@
 
         </div>
     </div>
+
+    <section>
+        <div id="tempDivTask" class="tempDivTask hidden">
+            <h1>Task added to Board</h1>
+            <img src="./assets/img/board_img/bordi.svg" alt="">
+        </div>
+
+    </section>
 
 </html>

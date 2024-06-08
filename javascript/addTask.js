@@ -241,3 +241,24 @@ function removeContactFilter() {
     `;
     document.getElementById('addContact').classList.add('d-none');
 }
+
+function addTask() {
+    showTempDivTask();
+  }
+
+  function showTempDivTask() {
+    let tempDivTask = document.getElementById('tempDivTask');
+    tempDivTask.classList.remove('hidden');
+
+    tempDivTask.classList.add('show-temp');
+
+    setTimeout(function () {
+        tempDivTask.classList.remove('show-temp');
+        tempDivTask.classList.add('hide-temp');
+
+        setTimeout(function () {
+            tempDivTask.classList.remove('hide-temp');
+            tempDivTask.classList.add('hidden'); 
+        }, 500); 
+    }, 2000); 
+}

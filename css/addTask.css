@@ -152,9 +152,6 @@ select:focus-visible {
     width: 388px;
     height: 24px;
     border: none;
-    /* background-color: #fff; */
-    /* border-radius: 8px; */
-    /* margin-left: 8px; */
 }
 
 .taskIcon {
@@ -174,7 +171,6 @@ select:focus-visible {
     align-items: center;
     justify-content: space-between;
     padding: 8px 8px;
-
 }
 
 #addContact {
@@ -223,6 +219,40 @@ select:focus-visible {
     padding-top: 20px;
 }
 
+.tempDivTask {
+    position: absolute;
+    top: 90%;
+    right: -100%;
+    transform: translate(-50%, -90%);
+    background-color: #2A3647;
+    width: 326px;
+    height: 74px;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    display: flex;
+    animation-duration: 0.5s;
+    opacity: 0;
+    gap: 8px;
+}
+
+.show-temp {
+    animation-name: slideIn;
+    animation-fill-mode: forwards;
+    opacity: 1;
+}
+
+.hide-temp {
+    animation-name: slideOut;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+.hidden {
+    display: none;
+}
+
 @media(max-width:1350px) {
     .verticalLine {
         display: none;
@@ -245,7 +275,6 @@ select:focus-visible {
     .header {
         justify-content: center;
     }
-
 }
 
 @media(max-width:800px) {
@@ -272,13 +301,12 @@ select:focus-visible {
 
     }
 
-
     .positionButton {
         position: fixed;
         left: 190px;
     }
 
-    .BackgroudnColorTopList1{
+    .BackgroudnColorTopList1 {
         background-color: #D1D1D1;
         height: 106px;
         width: 100vw;
