@@ -100,9 +100,9 @@
     
 
     .summary_content {
-        top: 65%;
+        top: 64%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%) scale(0.7);
         width: 400px;
     }
     .summary_content_rows {
@@ -130,7 +130,7 @@
         height: 80px;
         width: 80px;
         left: 30px;
-        top: -92vh;
+        top: -87vh;
     }
 }
 
@@ -155,7 +155,7 @@
         height: 55px;
         width: 55px;
         left: 30px;
-        top: -90vh;
+        top: -86vh;
     }
 
     .summary_content_rows {

@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
-    <link rel="stylesheet" href="./css/board.css">
     <link rel="stylesheet" href="./css/contacts.css">
     <link rel="stylesheet" href="./css/side_menu.css">
     <link rel="stylesheet" href="./css/header.css">
@@ -20,12 +19,12 @@
 
 
 <body onload="init()">
-    <div class="headercontainer">
-        <header class="spaceBetween spaceBetweenMobile" w3-include-html="./assets/templates/header.html"></header>
-
-    </div>
+    <header class="spaceBetween spaceBetweenMobile" w3-include-html="./assets/templates/header.html"></header>
 
     <div class="sideMenu" w3-include-html="./assets/templates/side_menu.html"></div>
+
+    
+    <div class="contentWrapperContactPage">
 
     <section class="contacts_list">
         <div class="backgroudn_color_top_list">
@@ -325,12 +324,8 @@
         </div>
     </section>
 
-    <section>
-        <div id="tempDiv" class="tempDiv hidden">
-            <h1>Contact succesfully created</h1>
-        </div>
 
-    </section>
+</div>
 
 </body>
 

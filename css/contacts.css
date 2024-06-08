@@ -5,6 +5,11 @@ body {
     overflow-y: hidden;
 }
 
+.spaceBetween {
+    display: flex;
+    align-items: center;
+}
+
 .contacts_list {
     position: fixed;
     padding: 32px 24px;
@@ -495,19 +500,29 @@ button p {
 }
 
 @keyframes slideIn {
-    0% { right: -100%; }
-    100% { right: 10%; }
+    0% {
+        right: -100%;
+    }
+
+    100% {
+        right: 10%;
+    }
 }
 
 @keyframes slideOut {
-    0% { right: 50%; }
-    100% { right: -100%; }
+    0% {
+        right: 50%;
+    }
+
+    100% {
+        right: -100%;
+    }
 }
 
 .tempDiv {
     position: absolute;
     top: 90%;
-    right: -100%; 
+    right: -100%;
     transform: translate(-50%, -50%);
     background-color: #2A3647;
     width: 326px;
@@ -524,17 +539,17 @@ button p {
 .show-temp {
     animation-name: slideIn;
     animation-fill-mode: forwards;
-    opacity: 1; 
+    opacity: 1;
 }
 
 .hide-temp {
     animation-name: slideOut;
     animation-fill-mode: forwards;
-    opacity: 0; 
+    opacity: 0;
 }
 
 @media (max-width: 1240px) {
-    .sliding_div{
+    .sliding_div {
         width: 100px;
         left: 720px;
     }
@@ -546,11 +561,11 @@ button p {
 }
 
 @media (max-width: 1070px) {
-    .slogan{
+    .slogan {
         display: none;
     }
 
-    .sliding_div{
+    .sliding_div {
         width: 100px;
         top: 150px;
         left: 720px;
@@ -566,10 +581,12 @@ button p {
     .backgroudn_color_top_list {
         width: auto;
     }
+
     .contacts_list {
         padding: 32px 8px;
         padding-top: 160px;
     }
+
     .sliding_div {
         left: 675px;
     }
@@ -579,12 +596,15 @@ button p {
     .contacts_list button {
         left: 248px;
     }
+
     .alphabetical_order {
         padding: 17px 15px;
-    }   
+    }
+
     .contacts_list {
         width: 370px;
     }
+
     .sliding_div {
         left: 655px;
     }
@@ -594,24 +614,41 @@ button p {
     .contacts_list {
         scrollbar-width: none;
         left: 0px;
+        height: calc(83vh - 192px);
+        overflow-x: hidden;
     }
+
     .contacts_list button {
         left: 12px;
         top: 104px;
     }
+
     .spaceBetween {
         position: sticky !important;
         z-index: 1000 !important;
     }
+
     .sliding_div {
         left: 425px;
     }
-    .nav {
-        top: 82vh !important;
+
+    .navcontainer {
+        top: 75vh !important;
     }
+
     .logo_mobile {
-        top: -91vh;
+        top: -87vh !important;
     }
+
+    .contentWrapperContactPage {
+
+
+    }
+
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+    }
+    
 }
-
-
