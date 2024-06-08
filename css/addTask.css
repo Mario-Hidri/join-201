@@ -249,6 +249,10 @@ select:focus-visible {
 }
 
 @media(max-width:800px) {
+    body {
+        overflow-x: scroll;
+    }
+
     .positionInputFields {
         display: flex;
         flex-direction: column;
@@ -268,8 +272,19 @@ select:focus-visible {
 
     }
 
-    
-    .positionButton{
+
+    .positionButton {
         position: fixed;
+        left: 190px;
+    }
+
+    .BackgroudnColorTopList1{
+        background-color: #D1D1D1;
+        height: 106px;
+        width: 100vw;
+        position: fixed;
+        top: 78vh;
+        left: 0px;
+        z-index: 1;
     }
 }
