@@ -1,42 +1,53 @@
-.column{
-    display:flex;
+body {
+    max-width: 1440px;
+    max-height: 1024px;
+}
+
+.column {
+    display: flex;
     flex-direction: column;
 }
 
-.verticalLine{
-width: 1px;
-height:250px;
-background-color: #D1D1D1;
+.verticalLine {
+    width: 1px;
+    height: 424px;
+    background-color: #D1D1D1;
 }
 
-.positionInputFields{
-    display:flex;
-    justify-content: center;
-    gap:30px;
-}
-
-.distanceBetweenIput{
-     margin:10px;
-}
-
-.flexboxWithGap{
+.positionInputFields {
     display: flex;
-    gap:8px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    margin-left: 55px;
 }
 
-.lowPriority{
+.distanceBetweenIput {
+    margin: 10px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    /* margin-top: -6px; */
+}
+
+.flexboxWithGap {
+    display: flex;
+    gap: 8px;
+}
+
+.lowPriority {
     background-color: #7AE229 !important;
 }
 
-.mediumPriority{
+.mediumPriority {
     background-color: #FFA800 !important;
 }
 
-.urgentPriority{
+.urgentPriority {
     background-color: #FF3D00 !important;
 }
 
-.prioButton{
+.prioButton {
     width: 84px;
     height: 32px;
     border: 0px;
@@ -46,15 +57,16 @@ background-color: #D1D1D1;
     justify-content: center;
     gap: 8px;
     background-color: white;
+    cursor: pointer;
 }
 
-.priorityImage{
+.priorityImage {
     width: 20px;
-    height: 14.5px; 
+    height: 14.5px;
 }
 
-.centery{
-    display:flex;
+.centery {
+    display: flex;
     align-items: center;
     gap: 5px;
 }
@@ -65,117 +77,121 @@ background-color: #D1D1D1;
     margin: 0 8px;
 }
 
-.positionButton{
-display: flex;
-justify-content: space-between;
-align-items: flex-end;
-margin: 40px 48px;
+.positionButton {
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    margin: 10px 40px;
+    max-width: calc(1440px - 232px);
+    gap: 440px;
 }
 
-.subtaskIcon{
+.subtaskIcon {
     height: 10px;
 }
 
-.fake-input{
+.fake-input {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border: 1px solid #D1D1D1;
-    border-radius: 8px;
-    height: 24px;
-    width: 300px;
+    border-radius: 10px;
+    width: 440px;
     background-color: white;
+    padding: 12px 21px 12px 21px;
 }
 
-.relative{
-position:relative;
+.relative {
+    position: relative;
 }
 
-.absolute{
-position:absolute;
-width: 100%;
+.absolute {
+    position: absolute;
+    width: 100%;
 }
 
-.fake-textarea{
+.fake-textarea {
     border: 1px solid #D1D1D1;
-    border-radius: 8px;
+    border-radius: 10px;
     height: 120px;
-    width: 300px;
-    background-color: #fff;
+    width: 448px;
+    /* background-color: #fff; */
+    padding: 18px 16px 18px 16px;
 }
 
-.textarea{
-    width: 90%;
-    height: 100%;
+.textarea {
+    /* width: 90%; */
+    /* height: 100%; */
     border: none;
     background-color: #fff;
-    border-radius: 8px;
-    margin-left: 8px;
+    /* border-radius: 8px; */
+    /* margin-left: 8px; */
 }
 
-.input{
+.input {
     border: 1px solid #D1D1D1;
-    border-radius: 8px;
-    height: 24px;
-    width: 300px;
+    border-radius: 10px;
+    height: 48px;
+    /* width: 440px; */
+    padding: 12px 16px 12px 16px;
 }
 
-input:focus-visible, textarea:focus-visible, select:focus-visible {
-    outline: none; 
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: none;
 }
 
-.colorRed{
+.colorRed {
     color: red;
 }
 
 .fake-input input {
-    width: 98%;
-    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 388px;
+    height: 24px;
     border: none;
-    background-color: #fff;
-    border-radius: 8px;
-    margin-left: 8px;
-    }
- 
-.taskIcon{
+}
+
+.taskIcon {
     height: 20px;
 }
 
-#description{
+#description {
     resize: none;
 }
 
-.checkboxAddContact{
+.checkboxAddContact {
     height: 24px;
 }
 
-.contact{
+.contact {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 8px 8px;
-   
 }
 
-#addContact{
+#addContact {
     background-color: #fff;
     border-radius: 8px;
-    max-height:240px ;
+    max-height: 240px;
     overflow-y: scroll;
     scrollbar-width: none;
 }
 
-.activContact{
+.activContact {
     background-color: #293647;
     border-radius: 8px;
 }
 
-.checkboxSelectedContact{
+.checkboxSelectedContact {
     height: 18px;
 }
 
-.d-none{
-    display:none;
+.d-none {
+    display: none;
 }
 
 .image_container {
@@ -188,8 +204,8 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
     justify-content: center;
 }
 
-#addContactIcon{
-    display:flex;
+#addContactIcon {
+    display: flex;
 }
 
 .initials1,
@@ -199,25 +215,104 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
     font-weight: 400;
 }
 
-@media(max-width:956px){
-.verticalLine{
+.priorityScaleSection {
+    padding-top: 20px;
+}
+
+.tempDivTask {
+    position: absolute;
+    top: 90%;
+    right: -100%;
+    transform: translate(-50%, -90%);
+    background-color: #2A3647;
+    width: 326px;
+    height: 74px;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    display: flex;
+    animation-duration: 0.5s;
+    opacity: 0;
+    gap: 8px;
+}
+
+.show-temp {
+    animation-name: slideIn;
+    animation-fill-mode: forwards;
+    opacity: 1;
+}
+
+.hide-temp {
+    animation-name: slideOut;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+.hidden {
     display: none;
 }
 
-.positionInputFields{
-flex-direction: column;
-gap: 0px;
-align-items: center;
+@media(max-width:1350px) {
+    .verticalLine {
+        display: none;
+    }
+
+    .positionInputFields {
+        flex-direction: column;
+        gap: 0px;
+        align-items: center;
+        margin: 0;
+    }
+
+    .positionButton {
+        flex-direction: column;
+        align-items: center;
+        gap: 21px;
+        margin: 0;
+    }
+
+    .header {
+        justify-content: center;
+    }
 }
 
-.positionButton{
-    flex-direction: column; 
-    align-items: center;
-    gap:10px;
-}
+@media(max-width:800px) {
+    body {
+        overflow-x: scroll;
+    }
 
-.header{
-    justify-content: center;
-}
+    .positionInputFields {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+        gap: 16px;
+        position: absolute;
+        width: 396px;
+        height: 930px;
+        left: calc(50% - 396px/2);
+        top: 224px;
+    }
 
+    .header {
+        position: absolute;
+
+    }
+
+    .positionButton {
+        position: fixed;
+        left: 190px;
+    }
+
+    .BackgroudnColorTopList1 {
+        background-color: #D1D1D1;
+        height: 106px;
+        width: 100vw;
+        position: fixed;
+        top: 78vh;
+        left: 0px;
+        z-index: 1;
+    }
 }
