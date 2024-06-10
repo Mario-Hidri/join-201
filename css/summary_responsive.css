@@ -209,3 +209,21 @@
     }
 }
 
+@media (min-height: 968px) and  (max-width: 800px) {
+    .navcontainer {
+        top: 82vh !important;
+    }
+    .logo_mobile {
+        top: -91vh !important;
+    }
+}
+
+@media (min-height: 1452px) and  (max-width: 800px) {
+    .navcontainer {
+        top: 88vh !important;
+    }
+    .logo_mobile {
+        top: -94vh !important;
+    }
+}
+

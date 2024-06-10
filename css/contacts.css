@@ -640,15 +640,93 @@ button p {
         top: -87vh !important;
     }
 
-    .contentWrapperContactPage {
-
-
-    }
-
     body,
     html {
         height: 100%;
         margin: 0;
     }
-    
+
+    .sideMenu {
+        height: 0px;
+    }
+
+}
+
+@media (max-width: 620px) {
+    .sliding_div {
+        display: none;
+        left: 30px;
+        position: relative;
+        height: 60vh;
+        width: 84vw;
+    }
+
+    .contacts_list {
+        width: 100vw;
+        padding-top: 0px;
+        height: 70vh;
+    }
+
+    .seperator_order_contacts {
+        width: 100vw;
+    }
+
+    .inside_the_button img {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+    }
+    .inside_the_button h2 {
+        display: none;
+    }
+    .contacts_list button {
+        width: unset;
+        height: unset;
+        padding: 12px;
+        border-radius: 50%;
+        left: 450px;
+        top: 570px;
+    }
+
+    .display_edit_contact {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        flex-direction: row;
+    }
+    .image_container_edit {
+        height: 105px;
+        border-radius: 50%;
+        position: relative;
+    }
+    .display_edit_and_delete_buttons {
+        display: none;
+    }
+    .display_edit_contact_name h1 {
+        font-size: 36px;
+    }
+    .initials3, .initials4 {
+        font-size: 27px;
+        margin: 0px;
+    }
+}
+
+@media (min-height: 968px) and (max-width: 800px) {
+    .navcontainer {
+        top: 82vh !important;
+    }
+
+    .logo_mobile {
+        top: -91vh !important;
+    }
+}
+
+@media (min-height: 1452px) and (max-width: 800px) {
+    .navcontainer {
+        top: 88vh !important;
+    }
+
+    .logo_mobile {
+        top: -94vh !important;
+    }
 }

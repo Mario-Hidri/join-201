@@ -167,6 +167,7 @@ function renderContacts() {
         let containerId = 'contacts_container_' + initial;
         insertContactIntoContainer(containerId, contact, i);
     }
+    addContactEventListeners();
 }
 
 /**
@@ -352,5 +353,23 @@ function showTempDiv() {
     }, 2000); 
 }
 
-window.onload = init;
+function handleContactClick(contact, index) {
+    if (window.innerWidth <= 620) {
+        document.querySelector('.contacts_list').style.display = 'none';
+        document.querySelector('.sliding_div').style.display = 'block';
+    }
+    populateEditDisplay(contact, index);
+}
+
+function addContactEventListeners() {
+    const contactCards = document.querySelectorAll('.contact_card');
+    contactCards.forEach((card, index) => {
+        card.addEventListener('click', () => handleContactClick(allContacts[index], index));
+    });
+}
+
+window.onload = function() {
+    init();
+    addContactEventListeners();
+};
 
