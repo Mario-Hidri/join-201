@@ -698,6 +698,8 @@ button p {
         height: 105px;
         border-radius: 50%;
         position: relative;
+        height: 80px;
+        width: 80px;
     }
     .display_edit_and_delete_buttons {
         display: none;
