@@ -72,9 +72,11 @@ function addSubTask() {
         "subtask": document.getElementById('subtask').value,
         "done": false
     };
+    if( document.getElementById('subtask').value.length>0){ 
     subtasks.push(subtask);
     loadSubtasks();
     document.getElementById('subtask').value = '';
+}
 }
 
 function loadSubtasks() {
@@ -264,3 +266,12 @@ function removeContactFilter() {
         }, 500); 
     }, 2000); 
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("subtask").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            addSubTask();  
+        }
+    });
+});
