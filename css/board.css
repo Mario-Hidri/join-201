@@ -15,6 +15,7 @@
     padding: 0 64px;
     gap: 26px;
     overflow: auto;
+    padding-top: 20px;
 }
 
 .d-none {

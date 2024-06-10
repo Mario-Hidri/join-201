@@ -1,19 +1,3 @@
-async function start() {
-    includeHTML();
-    await loadLogInData();
-    loadActiveUser();
-    loadActiveUserInitials();
-    await loadTasksFromFirebase();
-    loadTaskNumbers();
-    loadNearestDeadline();
-    showWelcomeScreen();
-}
-
-const urlLogInData = "https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/LogInData.json";
-const logInName = [];
-const activeKey = [];
-const guestData = ["Guest"];
-
 async function loadLogInData() {
     try {
         const response = await fetch(urlLogInData);
@@ -116,45 +100,18 @@ function openLogIn() {
     }, 2000);
 }
 
-
-
-function loadTaskNumbers() {
-    setTaskCount('allTasks', tasks.length);
-    setTaskCount('allTasksInBoard', tasks.length);
-    setTaskCount('numberDoneTasks', tasks.filter(task => task.board === "done").length);
-    setTaskCount('numberProgressTasks', tasks.filter(task => task.board === "inProgress").length);
-    setTaskCount('numberFeedbackTasks', tasks.filter(task => task.board === "awaitFeedback").length);
-    setTaskCount('numberUrgentTasks', tasks.filter(task => task.priority === "urgent").length);
+function openSubMenu() {
+    document.getElementById('submenucontainer').classList.remove('display-none');
 }
 
-function setTaskCount(elementId, count) {
-    const element = document.getElementById(elementId);
-    if (element) {
-        element.innerHTML = count;
-    } else {
-        console.error(`Element mit ID ${elementId} nicht gefunden`);
-    }
+function closeSubmenu() {
+    document.getElementById('submenucontainer').classList.add('display-none');
 }
 
-function loadNearestDeadline() {
-    const urgentTasks = tasks.filter(task => task.priority === "urgent");
-    if (urgentTasks.length === 0) {
-        console.error('Keine dringenden Aufgaben gefunden');
-        return;
+document.addEventListener('click', (event) => {
+    const submenu = document.getElementById('submenucontainer');
+    const userDiv = document.querySelector('.user');
+    if (!submenu.contains(event.target) && !userDiv.contains(event.target)) {
+        closeSubmenu();
     }
-    let nearestDate = urgentTasks.map(task => new Date(task.date)).sort((a, b) => a - b)[0];
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const nearestDeadlineString = nearestDate.toLocaleDateString('en-US', options);
-    const nearestDeadlineElement = document.getElementById('nearestDeadline');
-    if (nearestDeadlineElement) {
-        nearestDeadlineElement.textContent = nearestDeadlineString;
-    } else {
-        console.error('Element für die nächste Frist nicht gefunden');
-    }
-}
-
-
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    start();
 });

@@ -20,7 +20,10 @@ async function addTask() {
     let task = assignTask(title, description, date, category);
     tasks.push(task);
     await saveTasksInFirebase();
-    window.location.href = 'board.html';
+    await showTempDivTask();
+    setTimeout(function () {
+        window.location.href = 'board.html';
+    }, 3000);
 }
 
 function assignTask(title, description, date, category) {
@@ -242,11 +245,9 @@ function removeContactFilter() {
     document.getElementById('addContact').classList.add('d-none');
 }
 
-function addTask() {
-    showTempDivTask();
-  }
 
-  function showTempDivTask() {
+
+  async function showTempDivTask() {
     let tempDivTask = document.getElementById('tempDivTask');
     tempDivTask.classList.remove('hidden');
 
