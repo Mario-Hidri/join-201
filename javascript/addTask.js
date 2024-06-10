@@ -64,6 +64,7 @@ async function loadTasksFromFirebase() {
     if (tasks == null) {
         tasks = [];
     }
+    loadTasks();
 }
 
 function addSubTask() {

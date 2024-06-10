@@ -5,7 +5,6 @@ async function initBoardSite() {
   await includeHTML();
   loadActiveUserInitials();
   await loadTasksFromFirebase();
-  loadTasks();
 }
 
 function startDragging(id) {
@@ -29,11 +28,22 @@ function filter() {
 }
 
 function loadTasks(filter) {
+
+  const toDo = document.getElementById('toDo');
+  const inProgress = document.getElementById('inProgress');
+  const awaitFeedback = document.getElementById('awaitFeedback');
+  const done = document.getElementById('done');
+
+  if (!toDo || !inProgress || !awaitFeedback || !done) {
+    return;
+  }
+
   removeAllTask();
+  
   for (let i = 0; i < tasks.length; i++) {
-    let title = tasks[i]["title"] || ''; // Default-Wert setzen, falls title undefined ist
+    let title = tasks[i]["title"] || ''; 
     title = title.toLowerCase();
-    let description = tasks[i]["description"] || ''; // Default-Wert setzen, falls description undefined ist
+    let description = tasks[i]["description"] || ''; 
     description = description.toLowerCase();
     if (!filter || title.includes(filter) || description.includes(filter)) {
       loadTask(i);
@@ -44,10 +54,15 @@ function loadTasks(filter) {
 
 
 function removeAllTask() {
-  document.getElementById('toDo').innerHTML = '';
-  document.getElementById('inProgress').innerHTML = '';
-  document.getElementById('awaitFeedback').innerHTML = '';
-  document.getElementById('done').innerHTML = '';
+  const toDo = document.getElementById('toDo');
+  const inProgress = document.getElementById('inProgress');
+  const awaitFeedback = document.getElementById('awaitFeedback');
+  const done = document.getElementById('done');
+
+  if (toDo) toDo.innerHTML = '';
+  if (inProgress) inProgress.innerHTML = '';
+  if (awaitFeedback) awaitFeedback.innerHTML = '';
+  if (done) done.innerHTML = '';
 }
 
 function loadTask(i) {
@@ -57,31 +72,55 @@ function loadTask(i) {
   let description = task["description"];
   let category = task["category"];
   let priority = task["priority"];
-  let subtask = task["subtask"] || []; // Default-Wert setzen, falls subtask undefined ist
+  let subtask = task["subtask"] || [];
   let subtaskCount = subtask.length;
   let subtaskCountDone = (subtask.filter(t => t['done'] == true)).length;
-  let subtaskDoneInPercent =  ((subtaskCountDone / subtaskCount) * 100); // Vermeidung der Division durch 0
+  let subtaskDoneInPercent = ((subtaskCountDone / subtaskCount) * 100);
   document.getElementById(`${board}`).innerHTML += loadTaskHTML(i, title, description, category, subtaskCount, subtaskCountDone, subtaskDoneInPercent, priority);
-  removeProgressBarIfNoSubtask(i,subtaskCount);
-  loadAuthority(i,task);
+  removeProgressBarIfNoSubtask(i, subtaskCount);
+  loadAuthority(i, task);
 }
 
-function  removeProgressBarIfNoSubtask(i,subtaskCount){
-  if(subtaskCount == 0){
+function loadTaskHTML(i, title, description, category, subtaskCount, subtaskCountDone, subtaskDoneInPercent, priority) {
+  const { width: categoryWidth, height: categoryHeight } = getCategorySize(category);
+  const { width: priorityWidth, height: priorityHeight } = getPrioritySize(priority);
+  return `
+    <div onclick="openTaskDialog(${i})" draggable="true" ondragstart="startDragging(${i})" class="card">
+        <img class="categorySmallTask" src="./assets/img/${category}" alt="" style="width: ${categoryWidth}; height: ${categoryHeight};">
+        <h3>${title}</h3>
+        <p class="openTaskParagraph">${description}</p>
+        <div id="subtasks${i}">
+        <div id="progressbar">
+            <div style="width:${subtaskDoneInPercent}%"></div>
+        </div>
+        <div class="subtaskText">${subtaskCountDone}/${subtaskCount} Subtasks</div>
+        </div>
+        <div class="ContactsAndPriorityContainer">
+            <div class="authorityIcon" id="authorityIcon${i}"></div> 
+            <img class="priorityImgOnBigTask" src="./assets/img/${priority}Priority.png" alt="" style="width: ${priorityWidth}; height: ${priorityHeight};">
+        </div>
+    </div>
+  `;
+}
+
+function removeProgressBarIfNoSubtask(i, subtaskCount) {
+  if (subtaskCount == 0) {
     document.getElementById(`subtasks${i}`).classList.add('d-none');
   }
 }
 
-function loadAuthority(i, task){
+function loadAuthority(i, task) {
   let authority = task["authorityForTask"] || [];
   for (let j = 0; j < authority.length; j++) {
-      const contact = authority[j];
-      const lastNameInitial = contact.split(' ')[1]?.charAt(0) || '';
-      document.getElementById(`authorityIcon${i}`).innerHTML += loadAuthorityHTML(contact,lastNameInitial);
+    const contact = authority[j];
+    const lastNameInitial = contact.split(' ')[1]?.charAt(0) || '';
+    if (!document.getElementById(`authorityIcon${i}`).innerHTML.includes(contact)) {
+      document.getElementById(`authorityIcon${i}`).innerHTML += loadAuthorityHTML(contact, lastNameInitial);
+    }
   }
 }
 
-function loadAuthorityHTML(contact,lastNameInitial){
+function loadAuthorityHTML(contact, lastNameInitial) {
   return `
   <div class="authorityImageContainer" style="background-color: blue;">
   <span class="initials1">${contact.charAt(0)}</span>
@@ -91,53 +130,28 @@ function loadAuthorityHTML(contact,lastNameInitial){
 }
 
 function getCategorySize(category) {
-  switch(category) {
-      case "technicalTask.png":
-          return { width: '144px', height: '27px' };
-      case "userStory.png":
-          return { width: '113px', height: '27px' };
-      // Weitere Kategorien hier hinzufügen
-      default:
-          return { width: '144px', height: '27px' }; // Default-Größe
+  switch (category) {
+    case "technicalTask.png":
+      return { width: '144px', height: '27px' };
+    case "userStory.png":
+      return { width: '113px', height: '27px' };
+    default:
+      return { width: '144px', height: '27px' };
   }
 }
 
 function getPrioritySize(priority) {
-  switch(priority) {
-      case 'urgent':
-          return { width: '17px', height: '12px' };
-      case 'medium':
-          return { width: '17px', height: '6.7px' };
-      case 'low':
-          return { width: '17px', height: '12px' };
-      default:
-          return { width: '17px', height: '12px' }; // Default-Größe
+  switch (priority) {
+    case 'urgent':
+      return { width: '17px', height: '12px' };
+    case 'medium':
+      return { width: '17px', height: '6.7px' };
+    case 'low':
+      return { width: '17px', height: '12px' };
+    default:
+      return { width: '17px', height: '12px' };
   }
 }
-
-function loadTaskHTML(i, title, description, category, subtaskCount, subtaskCountDone, subtaskDoneInPercent, priority) {
-    const { width: categoryWidth, height: categoryHeight } = getCategorySize(category);
-    const { width: priorityWidth, height: priorityHeight } = getPrioritySize(priority);
-    return `
-    <div onclick="openTaskDialog(${i})" draggable="true" ondragstart="startDragging(${i})" class="card">
-        <img class="categorySmallTask" src="./assets/img/${category}" alt="" style="width: ${categoryWidth}; height: ${categoryHeight};">
-        <h3>${title}</h3>
-        <p class="openTaskParagraph">${description}</p>
-        <div id="subtasks${i}">
-        <div  id="progressbar">
-            <div style="width:${subtaskDoneInPercent}%"></div>
-        </div>
-        <div class="subtaskText">${subtaskCountDone}/${subtaskCount}  Subtasks</div>
-        </div>
-        <div class="ContactsAndPriorityContainer">
-            <div class="authorityIcon" id="authorityIcon${i}"></div> 
-            <img class="priorityImgOnBigTask" src="./assets/img/${priority}Priority.png" alt="" style="width: ${priorityWidth}; height: ${priorityHeight};">
-        </div>
-    </div>
-    `;
-}
-
-
 
 function loadPlaceholderForSectionWithNoTask() {
   loadPlaceholderForToDoSectionIfNoTask();
@@ -146,28 +160,28 @@ function loadPlaceholderForSectionWithNoTask() {
   loadPlaceholderForDoneSectionIfNoTask();
 }
 
-function loadPlaceholderForToDoSectionIfNoTask(){
+function loadPlaceholderForToDoSectionIfNoTask() {
   let toDoTask = tasks.filter(element => element['board'] == 'toDo');
   if (toDoTask.length == 0) {
     document.getElementById('toDo').innerHTML = loadNoTaskPlaceholderHTML(' to Do');
   }
 }
 
-function loadPlaceholderForInProgressSectionIfNoTask(){
+function loadPlaceholderForInProgressSectionIfNoTask() {
   let inProgressTask = tasks.filter(element => element['board'] == 'inProgress');
   if (inProgressTask.length == 0) {
     document.getElementById('inProgress').innerHTML = loadNoTaskPlaceholderHTML(' in Progress');
   }
 }
 
-function loadPlaceholderForAwaitFeedbackSectionIfNoTask(){
+function loadPlaceholderForAwaitFeedbackSectionIfNoTask() {
   let awaitFeedbackTask = tasks.filter(element => element['board'] == 'awaitFeedback');
   if (awaitFeedbackTask.length == 0) {
     document.getElementById('awaitFeedback').innerHTML = loadNoTaskPlaceholderHTML(' await Feedback');
   }
 }
 
-function loadPlaceholderForDoneSectionIfNoTask(){
+function loadPlaceholderForDoneSectionIfNoTask() {
   let doneTask = tasks.filter(element => element['board'] == 'done');
   if (doneTask.length == 0) {
     document.getElementById('done').innerHTML = loadNoTaskPlaceholderHTML(' Done');
@@ -177,9 +191,8 @@ function loadPlaceholderForDoneSectionIfNoTask(){
 function loadNoTaskPlaceholderHTML(section) {
   return `<div class="noTask">
         <span>  No tasks ${section}  </span>
-          </div>`
+          </div>`;
 }
-
 
 function addTaskOnToDo() {
   document.getElementById('addTaskOnBoardSite').innerHTML = `
@@ -277,13 +290,14 @@ function loadContactsOnBigTask(taskNumber, task) {
   for (let j = 0; j < authority.length; j++) {
     const contact = authority[j];
     const lastNameInitial = contact.split(' ')[1]?.charAt(0) || '';
-    document.getElementById(`contactAtBigTask`).innerHTML +=  loadContactOnBigTaskHTML(contact, lastNameInitial);
-
+    if (!document.getElementById(`contactAtBigTask`).innerHTML.includes(contact)) {
+      document.getElementById(`contactAtBigTask`).innerHTML += loadContactOnBigTaskHTML(contact, lastNameInitial);
+    }
   }
 }
 
-function loadContactOnBigTaskHTML(contact, lastNameInitial){
- return  `
+function loadContactOnBigTaskHTML(contact, lastNameInitial) {
+  return `
     <div class="verticalCenter">
     <div class="image_container" style="background-color: blue;">
     <span class="initials1">${contact.charAt(0)}</span>
@@ -295,8 +309,8 @@ function loadContactOnBigTaskHTML(contact, lastNameInitial){
 }
 
 function loadSubtasksOnBigTask(taskNumber, task) {
-  let subtasks = task["subtask"] || []; // Default-Wert setzen, falls subtask undefined ist
-  document.getElementById('loadSubtasksOnBigTask').innerHTML = ''; // Sicherstellen, dass das Element leer ist, bevor Subtasks hinzugefügt werden
+  let subtasks = task["subtask"] || []; 
+  document.getElementById('loadSubtasksOnBigTask').innerHTML = ''; 
   for (let j = 0; j < subtasks.length; j++) {
     let subtask = subtasks[j];
     let checkbox = assignCheckbox(subtask);
@@ -353,8 +367,8 @@ function editTask(i) {
   let task = tasks[i];
   let title = task['title'];
   let description = task['description'];
-  let date = task['date']; 
-  document.getElementById('containerOpenTaskInBoardSize').innerHTML =  loadEditTaskHTML(i,title,description,date);
+  let date = task['date'];
+  document.getElementById('containerOpenTaskInBoardSize').innerHTML = loadEditTaskHTML(i, title, description, date);
   loadPriority(i, task);
   subtasks = task['subtask'] || [];
   loadSubtasks();
@@ -362,7 +376,7 @@ function editTask(i) {
   removeAddContactSection();
 }
 
-function loadEditTaskHTML(i,title,description,date){
+function loadEditTaskHTML(i, title, description, date) {
   return `
   <img class="exitButtonBigTask" onclick="closeTask()" src="./assets/img/crossIcon.png" alt="">
   <form onsubmit="changeTask(${i}); return false">
@@ -411,7 +425,7 @@ function loadEditTaskHTML(i,title,description,date){
   `;
 }
 
-function assignAuthority(){
+function assignAuthority(task) {
   let authority = task['authorityForTask'] || [];
   for (let i = 0; i < authority.length; i++) {
     const person = authority[i];
@@ -465,7 +479,7 @@ function changeTask(i) {
   reset();
   closeTask();
 }
-// Beschreibe diese Funktion hier:
+
 function reset() {
   subtasks = [];
   for (let i = 0; i < allContacts.length; i++) {
