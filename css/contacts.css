@@ -793,6 +793,14 @@ button p {
     }
 }
 
+@media (max-width: 619px) {
+    .contacts_list button {
+        left: 290px;
+        top: 130px;
+        position: relative;
+    }
+}
+
 @media (max-width: 620px) {
     #slidingDiv, #slidingPage {
         scale: 0.41;
@@ -803,15 +811,17 @@ button p {
 
 @media (max-width: 580px) {
     .contacts_list button {
-        left: 465px;
-        top: 750px;
+        left: 190px;
+        top: 130px;
+        position: relative;
     }
 }
 
 @media (max-width: 530px) {
     .contacts_list button {
-        left: 430px;
-        top: 750px;
+        left: 150px;
+        top: 130px;
+        position: relative;
     }
     #slidingDiv, #slidingPage {
         scale: 0.45;
@@ -911,8 +921,9 @@ button p {
 
 @media (max-width: 490px) {
     .contacts_list button {
-        left: 390px;
-        top: 750px;
+        left: 120px;
+        top: 130px;
+        position: relative;
     }
 
 
@@ -1026,6 +1037,123 @@ button p {
         position: relative;
         top: -79px;
         left: 245px;
+    }
+}
+
+@media (max-width:420px) {
+    #slidingDiv, #slidingPage {
+        scale: 0.44;
+        left: -1%;
+        top: 7%;
+        width: 755px;
+        height: 150vh;
+    }
+    .contact_content_left {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 30px;
+        background-color: #2A3647;
+        width: 209px;
+        height: 151vh;
+        padding: 0 48px;
+        position: relative;
+        border-radius: 27px;
+        position: relative;
+    }
+    .contact_content_left img {
+        height: 121.97px;
+        width: 100.03px;
+        position: relative;
+        top: 200px;
+    }
+    .contact_content_left h1 {
+        font-size: 61px;
+        font-weight: 700;
+        line-height: 73.2px;
+        color: white;
+        position: relative;
+        /* top: 20px; */
+        top: 200px;
+    }
+    .contact_content_left p {
+        font-size: 27px;
+        font-weight: 400;
+        line-height: 32.4px;
+        color: white;
+        position: relative;
+        /* top: 20px; */
+        top: 200px;
+    }
+    .center_image {
+        position: absolute;
+        top: 27%;
+        left: 36%;
+        transform: translate(-25%, -80%);
+        background-color: #D1D1D1;
+        height: 120px;
+        width: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 3px solid #F6F7F8;
+        border-radius: 70px;
+    }
+    .flex_container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 20px;
+        position: absolute;
+        top: 350px;
+        left: -388px;
+    }
+    .input_1 {
+        min-width: 370px;
+        border-radius: 10px;
+        border: 1px solid #D1D1D1;
+        padding: 12px 21px;
+        line-height: 75px;
+        font-size: 20px; 
+    }
+    .cancel_button, .add_button {
+        display: flex;
+        width: 190px;
+        height: 80px;
+        padding: 16px;
+        border-radius: 10px;
+        cursor: pointer;
+        gap: 15px;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 24px;
+        border: 2px solid;
+    }
+    button p {
+        font-size: 28px;
+        font-weight: 400;
+        line-height: 25.2px;
+    }
+    button img {
+        width: 48.28px;
+        height: 28.25px;
+    }
+}
+
+@media (max-width: 380px) {
+    #slidingDiv, #slidingPage {
+        scale: 0.4;
+        left: -10%;
+    }
+}
+
+@media (max-width: 350px) {
+    #slidingDiv, #slidingPage {
+        scale: 0.4;
+        left: -19%;
     }
 }
 
