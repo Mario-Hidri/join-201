@@ -596,6 +596,7 @@ button p {
 @media (max-width: 877px) {
     .backgroudn_color_top_list {
         width: auto;
+        height: 1px;
     }
 
     .contacts_list {
@@ -630,7 +631,7 @@ button p {
     .contacts_list {
         scrollbar-width: none;
         left: 0px;
-        height: 50vh;
+        height: 62vh;
         overflow-x: hidden;
     }
 
@@ -716,7 +717,7 @@ button p {
     .contacts_list {
         width: 98vw;
         padding-top: 0px;
-        height: 70vh;
+        height: 78vh;
     }
 
     .seperator_order_contacts {
@@ -739,7 +740,7 @@ button p {
         padding: 12px;
         border-radius: 50%;
         left: 510px;
-        top: 570px;
+        top: 750px;
     }
 
     .display_edit_contact {
@@ -803,14 +804,14 @@ button p {
 @media (max-width: 580px) {
     .contacts_list button {
         left: 465px;
-        top: 570px;
+        top: 750px;
     }
 }
 
 @media (max-width: 530px) {
     .contacts_list button {
         left: 430px;
-        top: 570px;
+        top: 750px;
     }
     #slidingDiv, #slidingPage {
         scale: 0.45;
@@ -911,7 +912,7 @@ button p {
 @media (max-width: 490px) {
     .contacts_list button {
         left: 390px;
-        top: 570px;
+        top: 750px;
     }
 
 
@@ -919,16 +920,14 @@ button p {
 
 @media (max-width: 450px) {
     .contacts_list button {
-        left: 350px;
-        top: 570px;
+        left: 90px;
+        top: 130px;
+        position: relative;
     }
 }
 
 @media (max-width: 410px) {
-    .contacts_list button {
-        left: 310px;
-        top: 570px;
-    }
+    
     #slidingDiv, #slidingPage {
         scale: 0.4;
         left: -15%;
@@ -938,10 +937,17 @@ button p {
    
 }
 
-@media (max-width: 370px) {
+@media (max-width: 385px) {
     .contacts_list button {
-        left: 276px;
-        top: 570px;
+        left: 70px;
+        top: 130px;
+    }
+}
+
+@media (max-width: 360px) {
+    .contacts_list button {
+        left: 50px;
+        top: 130px;
     }
 }
 
@@ -952,17 +958,14 @@ button p {
         top: 24%;
         width: 755px;
     }
+    .contacts_list button {
+        left: 35px;
+        top: 130px;
+    }
 }
 
 @media (max-width: 335px) {
-    .contacts_list button {
-        width: unset;
-        height: unset;
-        padding: 8px;
-        border-radius: 50%;
-        left: 270px;
-        top: 125px;
-    }
+    
 
     .inside_the_button img {
         width: 24px;
