@@ -111,8 +111,8 @@ function removeProgressBarIfNoSubtask(i, subtaskCount) {
 
 function loadAuthority(i, task) {
   let authority = task["authorityForTask"] || [];
-  
-  for (let j = 0; j < authority.length; j++) {
+  let maxContact = loadMaxContact(authority);
+  for (let j = 0; j <  maxContact; j++) {
     const contact = authority[j];
      let name = contact['name'];
      let color =contact['color'];
@@ -122,6 +122,16 @@ function loadAuthority(i, task) {
     }
   }
 }
+
+function loadMaxContact(authority){
+  if(authority.length>5){
+    let maxContact = 5;
+    return maxContact;
+  }else{
+    return authority.length;
+  }
+}
+
 
 function loadAuthorityHTML(name, lastNameInitial,color) {
   return `

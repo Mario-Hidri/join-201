@@ -232,7 +232,7 @@ function removeAddContactSection() {
 }
 
 function loadIconForContacts(contact, lastNameInitial,color) {
-    return ` <div class="image_container" style="background-color: ${color};">
+    return ` <div class="imageContainer" style="background-color: ${color};">
     <span class="initials1">${contact.name.charAt(0)}</span>
     <span class="initials2">${lastNameInitial}</span>
 </div>
