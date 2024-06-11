@@ -167,7 +167,6 @@ function renderContacts() {
         let containerId = 'contacts_container_' + initial;
         insertContactIntoContainer(containerId, contact, i);
     }
-    addContactEventListeners();
 }
 
 /**
@@ -193,9 +192,27 @@ function clearContactsContainers() {
 function insertContactIntoContainer(containerId, contact, index) {
     let container = document.getElementById(containerId);
     if (container) {
-        container.innerHTML += generateContactHTML(contact, index, contact.color);
+        let contactHTML = generateContactHTML(contact, index, contact.color);
+        contactHTML = contactHTML.replace('<div', `<div onclick="handleContactClick(allContacts[${index}], ${index})"`);
+        container.innerHTML += contactHTML;
     }
 }
+
+function generateContactHTML(contact, index, color) {
+    return `
+        <div class="contact_card" id="contact${index}" style="background-color:${color}">
+            <div class="image_container" style="background-color:${color}">
+                <div class="initials">${contact.name.charAt(0)}</div>
+            </div>
+            <div class="contact_info">
+                <h1>${contact.name}</h1>
+                <p>${contact.email}</p>
+                <p>${contact.phone}</p>
+            </div>
+        </div>
+    `;
+}
+
 
 /**
  * Shows the edit form for a contact.
@@ -361,15 +378,9 @@ function handleContactClick(contact, index) {
     populateEditDisplay(contact, index);
 }
 
-function addContactEventListeners() {
-    const contactCards = document.querySelectorAll('.contact_card');
-    contactCards.forEach((card, index) => {
-        card.addEventListener('click', () => handleContactClick(allContacts[index], index));
-    });
-}
-
 window.onload = function() {
     init();
-    addContactEventListeners();
 };
+
+
 

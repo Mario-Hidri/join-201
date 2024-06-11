@@ -684,7 +684,7 @@ button p {
         height: unset;
         padding: 12px;
         border-radius: 50%;
-        left: 450px;
+        left: 510px;
         top: 570px;
     }
 
@@ -713,6 +713,67 @@ button p {
     }
 }
 
+@media (max-width: 580px) {
+    .contacts_list button {
+        left: 465px;
+        top: 570px;
+    }
+}
+
+@media (max-width: 530px) {
+    .contacts_list button {
+        left: 430px;
+        top: 570px;
+    }
+
+}
+
+@media (max-width: 490px) {
+    .contacts_list button {
+        left: 390px;
+        top: 570px;
+    }
+
+
+}
+
+@media (max-width: 450px) {
+    .contacts_list button {
+        left: 350px;
+        top: 570px;
+    }
+}
+
+@media (max-width: 410px) {
+    .contacts_list button {
+        left: 310px;
+        top: 570px;
+    }
+}
+
+@media (max-width: 370px) {
+    .contacts_list button {
+        left: 270px;
+        top: 570px;
+    }
+}
+
+@media (max-width: 335px) {
+    .contacts_list button {
+        width: unset;
+        height: unset;
+        padding: 8px;
+        border-radius: 50%;
+        left: 270px;
+        top: 125px;
+    }
+    .inside_the_button img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+    }
+}
+
 @media (min-height: 968px) and (max-width: 800px) {
     .navcontainer {
         top: 82vh !important;
@@ -732,3 +793,22 @@ button p {
         top: -94vh !important;
     }
 }
+
+@media (max-width: 400px) {
+    .link {
+        padding: 0px 1px !important;
+    }
+    .mobile_links {
+        padding: 0px !important;
+    }
+    .contacts_list {
+        padding: 32px 1px;
+    }
+    .contact_card {
+        padding: 15px 7px;
+    }
+    .contact_card h1 {
+        font-size: 20px;
+    }
+}
+
