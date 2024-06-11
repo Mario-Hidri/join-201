@@ -183,6 +183,7 @@ select:focus-visible {
 .activContact {
     background-color: #293647;
     border-radius: 8px;
+    color: white;
 }
 
 .checkboxSelectedContact {
