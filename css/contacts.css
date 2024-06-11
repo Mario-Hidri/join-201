@@ -552,6 +552,13 @@ button p {
     opacity: 0;
 }
 
+@media (max-width: 1360px) {
+    #slidingDiv, #slidingPage {
+        left: 4%;
+        scale: 0.8;
+    }
+}
+
 @media (max-width: 1240px) {
     .sliding_div {
         width: 100px;
@@ -562,6 +569,7 @@ button p {
         gap: 0px;
         flex-direction: column;
     }
+   
 }
 
 @media (max-width: 1070px) {
@@ -578,6 +586,10 @@ button p {
     .display_edit_contact {
         gap: 0px;
         flex-direction: column;
+    }
+    #slidingDiv, #slidingPage {
+        left: -205px;
+        scale: 0.65;
     }
 }
 
@@ -618,7 +630,7 @@ button p {
     .contacts_list {
         scrollbar-width: none;
         left: 0px;
-        height: calc(83vh - 192px);
+        height: 50vh;
         overflow-x: hidden;
     }
 
@@ -654,9 +666,48 @@ button p {
         height: 0px;
     }
 
+    #slidingDiv,
+    #slidingPage {
+        scale: 0.6;
+        left: 19%;
+        top: 36%;
+        transform: translate(-50%, -50%) !important;
+    }
+
+    .add_contact_input_fields {
+        position: absolute;
+        top: 137px;
+        left: 710px;
+        gap: 32px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width: 760px) {
+    #slidingDiv, #slidingPage {
+        scale: 0.5;
+        left: 6%;
+        top: 36%;
+    }
+}
+
+@media (max-width: 660px) {
+    #slidingDiv, #slidingPage {
+        scale: 0.5;
+        left: 1%;
+        top: 31%;
+    }
 }
 
 @media (max-width: 620px) {
+    #slidingDiv, #slidingPage {
+        scale: 0.47;
+        left: -2%;
+        top: 26%;
+    }
     .sliding_div {
         display: none;
         left: 29px;
@@ -667,7 +718,7 @@ button p {
     }
 
     .contacts_list {
-        width: 100vw;
+        width: 98vw;
         padding-top: 0px;
         height: 70vh;
     }
@@ -681,9 +732,11 @@ button p {
         height: 32px;
         object-fit: contain;
     }
+
     .inside_the_button h2 {
         display: none;
     }
+
     .contacts_list button {
         width: unset;
         height: unset;
@@ -700,6 +753,7 @@ button p {
         flex-direction: row;
         margin-left: -10px;
     }
+
     .image_container_edit {
         height: 105px;
         border-radius: 50%;
@@ -707,16 +761,21 @@ button p {
         height: 80px;
         width: 80px;
     }
+
     .display_edit_and_delete_buttons {
         display: none;
     }
+
     .display_edit_contact_name h1 {
         font-size: 36px;
     }
-    .initials3, .initials4 {
+
+    .initials3,
+    .initials4 {
         font-size: 27px;
         margin: 0px;
     }
+
     .slogan {
         display: none;
         position: relative;
@@ -727,11 +786,21 @@ button p {
         justify-content: center;
         width: 52vw;
     }
+
     .slogan_seperator {
         display: none;
     }
+
     .slogan p {
         margin-left: 5px;
+    }
+}
+
+@media (max-width: 620px) {
+    #slidingDiv, #slidingPage {
+        scale: 0.41;
+        left: -16%;
+        top: 26%;
     }
 }
 
@@ -746,6 +815,99 @@ button p {
     .contacts_list button {
         left: 430px;
         top: 570px;
+    }
+    #slidingDiv, #slidingPage {
+        scale: 0.45;
+        left: -5%;
+        top: 24%;
+        width: 755px;
+    }
+    .close_button {
+        position: absolute;
+        top: 32px;
+        right: 25px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        border-radius: 50%;
+        transition: background-color 0.1s;
+    }
+    .contact_content_left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 12px;
+        background-color: #2A3647;
+        width: 209px;
+        height: 592px;
+        padding: 0 48px;
+        position: relative;
+        border-radius: 27px;
+    }
+    .add_contact_input_fields {
+        position: absolute;
+        top: 137px;
+        left: 710px;
+        gap: 32px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .flex_container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 20px;
+        position: absolute;
+        top: 54px;
+        left: -388px;
+    }
+    .center_image {
+        position: absolute;
+        top: 29%;
+        left: 36%;
+        transform: translate(-25%, -80%);
+        background-color: #D1D1D1;
+        height: 120px;
+        width: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 3px solid #F6F7F8;
+        border-radius: 70px;
+    }
+    .input_1 {
+        min-width: 380px;
+        border-radius: 10px;
+        border: 1px solid #D1D1D1;
+        padding: 12px 21px;
+        line-height: 40px;
+        font-size: 20px;
+    }
+    .input_with_img .input_img {
+        position: absolute;
+        right: 10px;
+        top: 51%;
+        transform: translateY(-50%);
+        height: 32px;
+        width: auto;
+    }
+    .form_buttons {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 30px;
+    }
+    button p {
+        font-size: 21px;
+        font-weight: 400;
+        line-height: 19.2px;
+    }
+    .close_button img {
+        width: 30.15px;
+        height: 23.15px;
     }
 
 }
@@ -771,12 +933,28 @@ button p {
         left: 310px;
         top: 570px;
     }
+    #slidingDiv, #slidingPage {
+        scale: 0.4;
+        left: -15%;
+        top: 24%;
+        width: 755px;
+    }
+   
 }
 
 @media (max-width: 370px) {
     .contacts_list button {
         left: 276px;
         top: 570px;
+    }
+}
+
+@media (max-width: 350px) {
+    #slidingDiv, #slidingPage {
+        scale: 0.4;
+        left: -21%;
+        top: 24%;
+        width: 755px;
     }
 }
 
@@ -789,6 +967,7 @@ button p {
         left: 270px;
         top: 125px;
     }
+
     .inside_the_button img {
         width: 24px;
         height: 24px;
@@ -820,17 +999,51 @@ button p {
     .link {
         padding: 0px 1px !important;
     }
+
     .mobile_links {
         padding: 0px !important;
     }
+
     .contacts_list {
         padding: 32px 1px;
     }
+
     .contact_card {
         padding: 15px 7px;
     }
+
     .contact_card h1 {
         font-size: 20px;
+    }
+
+    .sliding_div {
+        display: none;
+        left: 29px;
+        top: 35px;
+        position: relative;
+        height: 50vh;
+        width: 84vw;
+    }
+
+    .slogan p {
+        font-size: 20px;
+        line-height: 32.4px;
+        font-weight: 400;
+        white-space: nowrap;
+    }
+
+    .slogan h1 {
+        font-size: 47px;
+        line-height: 73.2px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    #slogan.showSlogan #arrow {
+        display: inline-block;
+        position: relative;
+        top: -79px;
+        left: 245px;
     }
 }
 
@@ -838,9 +1051,11 @@ button p {
 /* Standardmäßig verbergen */
 #arrow {
     display: none;
-    width: 24px; /* Beispielgröße, passe dies nach Bedarf an */
+    width: 24px;
+    /* Beispielgröße, passe dies nach Bedarf an */
     height: auto;
-    margin-left: 10px; /* Abstand zwischen Text und Pfeil */
+    margin-left: 10px;
+    /* Abstand zwischen Text und Pfeil */
 }
 
 /* Sichtbar nach Ausführen der Funktion */
@@ -867,8 +1082,8 @@ button p {
     #arrow {
         display: none;
     }
+
     .showSlogan #arrow {
         display: inline-block;
     }
 }
-

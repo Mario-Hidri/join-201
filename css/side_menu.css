@@ -130,7 +130,7 @@ footer {
         justify-content: center;
         align-items: center;
         border-radius: 15px;
-        padding: 8px;
+        padding: 8px !important;
         width: auto;
     }
 
@@ -168,6 +168,10 @@ footer {
         align-items: center;
         flex-direction: row;
         justify-content: space-evenly;
+    }
+
+    .link {
+        font-size: 12px;
     }
 
     .center-y {
