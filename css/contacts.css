@@ -5,6 +5,10 @@ body {
     overflow-y: hidden;
 }
 
+.showSlogan {
+    display: flex !important;
+}
+
 .spaceBetween {
     display: flex;
     align-items: center;
@@ -655,9 +659,10 @@ button p {
 @media (max-width: 620px) {
     .sliding_div {
         display: none;
-        left: 30px;
+        left: 29px;
+        top: 75px;
         position: relative;
-        height: 60vh;
+        height: 50vh;
         width: 84vw;
     }
 
@@ -691,8 +696,9 @@ button p {
     .display_edit_contact {
         display: flex;
         align-items: center;
-        gap: 50px;
+        gap: 35px;
         flex-direction: row;
+        margin-left: -10px;
     }
     .image_container_edit {
         height: 105px;
@@ -710,6 +716,22 @@ button p {
     .initials3, .initials4 {
         font-size: 27px;
         margin: 0px;
+    }
+    .slogan {
+        display: none;
+        position: relative;
+        flex-direction: column;
+        top: 25px;
+        left: 20px;
+        align-items: flex-start;
+        justify-content: center;
+        width: 52vw;
+    }
+    .slogan_seperator {
+        display: none;
+    }
+    .slogan p {
+        margin-left: 5px;
     }
 }
 
@@ -753,7 +775,7 @@ button p {
 
 @media (max-width: 370px) {
     .contacts_list button {
-        left: 270px;
+        left: 276px;
         top: 570px;
     }
 }
@@ -809,6 +831,44 @@ button p {
     }
     .contact_card h1 {
         font-size: 20px;
+    }
+}
+
+
+/* Standardmäßig verbergen */
+#arrow {
+    display: none;
+    width: 24px; /* Beispielgröße, passe dies nach Bedarf an */
+    height: auto;
+    margin-left: 10px; /* Abstand zwischen Text und Pfeil */
+}
+
+/* Sichtbar nach Ausführen der Funktion */
+#slogan.showSlogan #arrow {
+    display: inline-block;
+}
+
+/* Sichtbar bei über 1070px */
+@media (min-width: 1070px) {
+    #arrow {
+        display: inline-block;
+    }
+}
+
+/* Verstecken bei einer Breite zwischen 1070px und 620px */
+@media (max-width: 1070px) {
+    #arrow {
+        display: none;
+    }
+}
+
+/* Sichtbar bei über 620px, nur nach dem Klick */
+@media (max-width: 620px) {
+    #arrow {
+        display: none;
+    }
+    .showSlogan #arrow {
+        display: inline-block;
     }
 }
 

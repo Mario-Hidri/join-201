@@ -374,8 +374,17 @@ function handleContactClick(contact, index) {
     if (window.innerWidth <= 620) {
         document.querySelector('.contacts_list').style.display = 'none';
         document.querySelector('.sliding_div').style.display = 'block';
+        document.getElementById('slogan').classList.add('showSlogan');
     }
     populateEditDisplay(contact, index);
+}
+
+function hideContactDetails() {
+    if (window.innerWidth <= 620) {
+        document.querySelector('.contacts_list').style.display = 'block';
+        document.querySelector('.sliding_div').style.display = 'none';
+        document.getElementById('slogan').classList.remove('showSlogan');
+    }
 }
 
 window.onload = function() {
