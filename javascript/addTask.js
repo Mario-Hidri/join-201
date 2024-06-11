@@ -209,7 +209,12 @@ function addPersonToTask() {
     for (let i = 0; i < allContacts.length; i++) {
         if (allContacts[i]['contactSelect'] == true) {
             let name = allContacts[i]['name'];
-            authorityForTask.push(name);
+            let color = allContacts[i]['color']|| 'blue';
+            let contact = {
+                'name': name,
+                'color':color
+            }
+            authorityForTask.push(contact);
         }
     }
 }
@@ -218,15 +223,16 @@ function removeAddContactSection() {
     for (let i = 0; i < allContacts.length; i++) {
         if (allContacts[i]['contactSelect'] == true) {
             let contact = allContacts[i];
+            let color = contact['color'] || 'blue';
             const lastNameInitial = contact.name.split(' ')[1]?.charAt(0) || '';
-            document.getElementById('addContactIcon').innerHTML += loadIconForContacts(contact, lastNameInitial);
+            document.getElementById('addContactIcon').innerHTML += loadIconForContacts(contact, lastNameInitial,color);
         }
     }
     removeContactFilter();
 }
 
-function loadIconForContacts(contact, lastNameInitial) {
-    return ` <div class="image_container" style="background-color: blue;">
+function loadIconForContacts(contact, lastNameInitial,color) {
+    return ` <div class="image_container" style="background-color: ${color};">
     <span class="initials1">${contact.name.charAt(0)}</span>
     <span class="initials2">${lastNameInitial}</span>
 </div>

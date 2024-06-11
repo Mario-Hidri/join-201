@@ -111,19 +111,22 @@ function removeProgressBarIfNoSubtask(i, subtaskCount) {
 
 function loadAuthority(i, task) {
   let authority = task["authorityForTask"] || [];
+  
   for (let j = 0; j < authority.length; j++) {
     const contact = authority[j];
-    const lastNameInitial = contact.split(' ')[1]?.charAt(0) || '';
-    if (!document.getElementById(`authorityIcon${i}`).innerHTML.includes(contact)) {
-      document.getElementById(`authorityIcon${i}`).innerHTML += loadAuthorityHTML(contact, lastNameInitial);
+     let name = contact['name'];
+     let color =contact['color'];
+    const lastNameInitial = name.split(' ')[1]?.charAt(0) || '';
+    if (!document.getElementById(`authorityIcon${i}`).innerHTML.includes(name)) {
+      document.getElementById(`authorityIcon${i}`).innerHTML += loadAuthorityHTML(name, lastNameInitial,color);
     }
   }
 }
 
-function loadAuthorityHTML(contact, lastNameInitial) {
+function loadAuthorityHTML(name, lastNameInitial,color) {
   return `
-  <div class="authorityImageContainer" style="background-color: blue;">
-  <span class="initials1">${contact.charAt(0)}</span>
+  <div class="authorityImageContainer" style="background-color: ${color};">
+  <span class="initials1">${name.charAt(0)}</span>
   <span class="initials2">${lastNameInitial}</span>
   </div>
   `;
@@ -236,12 +239,12 @@ function openTaskDialog(i) {
   let priority = task["priority"];
   document.getElementById('containerOpenTaskInBoardSize').innerHTML = loadTaskDialogHTML(title, description, date, category, priority, i);
   loadSubtasksOnBigTask(i, task);
+  loadContactsOnBigTask(i, task);
   const taskContainer = document.getElementById('openTaskOnBoardSite');
   taskContainer.classList.remove('d-noneAddTask');
   const containerOpenTaskInBoardSize = document.getElementById('containerOpenTaskInBoardSize');
-  containerOpenTaskInBoardSize.classList.remove('slide-out');
   containerOpenTaskInBoardSize.classList.add('slide-in');
-  loadContactsOnBigTask(i, task);
+   
 }
 
 function loadTaskDialogHTML(title, description, date, category, priority, i) {
@@ -288,18 +291,19 @@ function loadContactsOnBigTask(taskNumber, task) {
   let authority = task["authorityForTask"] || [];
   document.getElementById('contactAtBigTask').innerHTML = '';
   for (let j = 0; j < authority.length; j++) {
-    const contact = authority[j];
-    const lastNameInitial = contact.split(' ')[1]?.charAt(0) || '';
-    if (!document.getElementById(`contactAtBigTask`).innerHTML.includes(contact)) {
-      document.getElementById(`contactAtBigTask`).innerHTML += loadContactOnBigTaskHTML(contact, lastNameInitial);
+    const name = authority[j]['name'];
+    const color = authority[j]['color'];
+    const lastNameInitial = name.split(' ')[1]?.charAt(0) || '';
+    if (!document.getElementById(`contactAtBigTask`).innerHTML.includes(name)) {
+      document.getElementById(`contactAtBigTask`).innerHTML += loadContactOnBigTaskHTML(name, lastNameInitial,color);
     }
   }
 }
 
-function loadContactOnBigTaskHTML(contact, lastNameInitial) {
+function loadContactOnBigTaskHTML(contact, lastNameInitial,color) {
   return `
     <div class="verticalCenter">
-    <div class="image_container" style="background-color: blue;">
+    <div class="image_container" style="background-color: ${color};">
     <span class="initials1">${contact.charAt(0)}</span>
     <span class="initials2">${lastNameInitial}</span>
     </div>
