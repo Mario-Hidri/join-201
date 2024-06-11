@@ -717,7 +717,7 @@ button p {
     .contacts_list {
         width: 98vw;
         padding-top: 0px;
-        height: 78vh;
+        height: 70vh;
     }
 
     .seperator_order_contacts {
@@ -1173,12 +1173,7 @@ button p {
     display: inline-block;
 }
 
-/* Sichtbar bei über 1070px */
-@media (min-width: 1070px) {
-    #arrow {
-        display: inline-block;
-    }
-}
+
 
 /* Verstecken bei einer Breite zwischen 1070px und 620px */
 @media (max-width: 1070px) {
