@@ -648,13 +648,9 @@ button p {
         left: 425px;
     }
 
-    .navcontainer {
-        top: 75vh !important;
-    }
+   
 
-    .logo_mobile {
-        top: -87vh !important;
-    }
+   
 
     body,
     html {
@@ -975,25 +971,8 @@ button p {
     }
 }
 
-@media (min-height: 968px) and (max-width: 800px) {
-    .navcontainer {
-        top: 82vh !important;
-    }
 
-    .logo_mobile {
-        top: -91vh !important;
-    }
-}
 
-@media (min-height: 1452px) and (max-width: 800px) {
-    .navcontainer {
-        top: 88vh !important;
-    }
-
-    .logo_mobile {
-        top: -94vh !important;
-    }
-}
 
 @media (max-width: 400px) {
     .link {

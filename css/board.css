@@ -557,14 +557,7 @@
         flex-direction: column;
     }
 
-    .logo_mobile {
-        display: flex;
-        position: absolute;
-        height: 80px;
-        width: 80px;
-        left: 30px;
-        top: -87vh;
-    }
+  
 
     .headerBoard {
         display: flex !important;
@@ -573,9 +566,7 @@
         padding-bottom: 20px;
         padding-top: 20px;
     }
-    .navcontainer {
-        top: 75vh !important;
-    }
+    
 }
 
 @media(max-width:540px) {
@@ -639,14 +630,7 @@
         padding: 0 10px;
     }
 
-    .logo_mobile {
-        display: flex;
-        position: absolute;
-        height: 55px;
-        width: 55px;
-        left: 30px;
-        top: -86vh;
-    }
+  
 }
 
 @media (min-width:1440px) {
@@ -661,20 +645,3 @@
     }
 }
 
-@media (min-height: 968px) and  (max-width: 800px) {
-    .navcontainer {
-        top: 82vh !important;
-    }
-    .logo_mobile {
-        top: -91vh !important;
-    }
-}
-
-@media (min-height: 1452px) and  (max-width: 800px) {
-    .navcontainer {
-        top: 88vh !important;
-    }
-    .logo_mobile {
-        top: -94vh !important;
-    }
-}
