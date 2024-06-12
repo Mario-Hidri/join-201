@@ -23,6 +23,7 @@ body {
     background-color: #FFFFFF;
     padding-top: 160px;
     overflow: auto;
+    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -123,7 +124,7 @@ body {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 #slidingDiv.show,
@@ -319,12 +320,11 @@ body {
 
 .image_container {
     position: relative;
-    width: 42px;
-    height: 42px;
     margin-right: 35px;
-    border-radius: 35px;
+    border-radius: 50%;
     border: 2px, solid;
     border-color: white;
+    padding: 30px;
 }
 
 .image_container img {
@@ -420,8 +420,7 @@ body {
 }
 
 .image_container_edit {
-    height: 105px;
-    width: 120px;
+    padding: 45px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -552,6 +551,35 @@ button p {
     opacity: 0;
 }
 
+.menu-container {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px 20px 0px 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    top: 80%;
+    left: 75%;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu-item img {
+    margin-right: 10px;
+}
+
+.menu-item:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+
 @media (max-width: 1360px) {
     #slidingDiv, #slidingPage {
         left: 4%;
@@ -566,8 +594,9 @@ button p {
     }
 
     .display_edit_contact {
-        gap: 0px;
+        gap: 10px;
         flex-direction: column;
+        align-items: baseline;
     }
    
 }
@@ -752,11 +781,8 @@ button p {
     }
 
     .image_container_edit {
-        height: 105px;
         border-radius: 50%;
         position: relative;
-        height: 80px;
-        width: 80px;
     }
 
     .display_edit_and_delete_buttons {
@@ -1148,6 +1174,12 @@ button p {
         scale: 0.4;
         left: -10%;
     }
+    #menueditcontact {
+        left: 80% !important;
+    }
+    .menu-container {
+        left: 65%;
+    }
 }
 
 @media (max-width: 350px) {
@@ -1168,6 +1200,10 @@ button p {
     /* Abstand zwischen Text und Pfeil */
 }
 
+#menueditcontact {
+    display: none !important;
+}
+
 /* Sichtbar nach Ausführen der Funktion */
 #slogan.showSlogan #arrow {
     display: inline-block;
@@ -1180,6 +1216,9 @@ button p {
     #arrow {
         display: none;
     }
+    #menueditcontact {
+        display: none !important;
+    }
 }
 
 /* Sichtbar bei über 620px, nur nach dem Klick */
@@ -1187,8 +1226,33 @@ button p {
     #arrow {
         display: none;
     }
+    #menueditcontact {
+        display: none;
+    }
 
     .showSlogan #arrow {
-        display: inline-block;
+        display: inline-block !important;
+    }
+    #menueditcontact {
+        display: inline-block !important;
+        position: relative;
+        left: 90%;
+        margin-top: auto;
+        height: 56px;
+        width: 56px;
+        top: -50px;
+    }
+    .edit_informations {
+        padding-top: 20px;
+        flex-direction: column;
+        display: flex;
+        gap: 14px;
+        height: 42vh;
+    }
+}
+
+@media (min-height: 1210px) {
+    .contacts_list {
+        height: 82vh;
     }
 }

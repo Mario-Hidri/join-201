@@ -400,5 +400,28 @@ window.onload = function() {
     init();
 };
 
+function toggleMenu(event) {
+    event.stopPropagation();
+    const menuContainer = document.getElementById('menuContainer');
+
+
+    // Toggle visibility
+    if (menuContainer.classList.contains('hidden')) {
+        menuContainer.classList.remove('hidden');
+    } else {
+        menuContainer.classList.add('hidden');
+    }
+
+    // Add event listener to close menu when clicking outside
+    document.addEventListener('click', closeMenuOnClickOutside);
+}
+
+function closeMenuOnClickOutside(event) {
+    const menuContainer = document.getElementById('menuContainer');
+    if (!menuContainer.contains(event.target) && !event.target.matches('#menueditcontact')) {
+        menuContainer.classList.add('hidden');
+        document.removeEventListener('click', closeMenuOnClickOutside);
+    }
+}
 
 
