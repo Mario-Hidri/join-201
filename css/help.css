@@ -1,4 +1,4 @@
-.space_Between_Header {
+.spaceBetween {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -72,6 +72,9 @@
     .container_legal_policy {
         left: 170px;
     }
+    header{
+        left: 0!important;
+    }
 }
 
 @media(max-width:630px) {
@@ -82,5 +85,11 @@
     .container_legal_policy img.back_arrow {
         left: 100%;
         top: -10px;
+    }
+}
+
+@media(max-width:430px) {
+    .container_legal_policy {
+        left: 60px;
     }
 }
