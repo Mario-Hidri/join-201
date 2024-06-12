@@ -116,7 +116,7 @@ body {
     border-radius: 10px;
     height: 120px;
     width: 448px;
-    background-color: #fff; 
+    background-color: #fff;
     padding: 18px 16px 18px 16px;
 }
 
@@ -212,13 +212,13 @@ select:focus-visible {
     align-items: center;
 }
 
-.closeEditTask{
+.closeEditTask {
     display: flex;
     width: 100%;
     justify-content: end;
 }
 
-.row{
+.row {
     display: flex;
     flex-direction: row;
 }
@@ -320,21 +320,23 @@ select:focus-visible {
         align-items: center;
         padding: 0px;
         gap: 16px;
-        position: absolute;
-        width: 396px;
-        height: 930px;
-        left: calc(50% - 396px/2);
-        top: 224px;
+        position: relative;
+        width: 100vw;
+        height: 120vh;
+        top: -115px;
     }
 
     .header {
-        position: absolute;
-
+        position: relative;
+        width: 100vw;
+        left: 0px;
+        padding: 0px;
+        justify-content: center !important;
     }
 
     .positionButton {
-        position: fixed;
-        left: 190px;
+        position: relative;
+        left: auto;
     }
 
     .BackgroudnColorTopList1 {
@@ -342,8 +344,42 @@ select:focus-visible {
         height: 106px;
         width: 100vw;
         position: fixed;
-        top: 78vh;
         left: 0px;
+        bottom: 80px;
         z-index: 1;
+    }
+}
+
+@media(max-width:530px) {
+    .fake-input {
+        width: 345px;
+    }
+
+    .fake-textarea {
+        width: 355px;
+    }
+
+    .textarea {
+        width: 350px;
+    }
+
+    .input {
+        width: 390px;
+    }
+
+    .relative {
+        position: relative;
+        left: 0px;
+        top: -10px;
+        height: 100px;
+        width: 390px;
+    }
+
+    #addContactIcon {
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        width: 382px;
+        top: -100px;
     }
 }
