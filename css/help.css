@@ -11,7 +11,7 @@
     width: auto;
     height: auto;
     position: absolute;
-    top: 311px;
+    top: 180px;
     left: 328px;
     max-width: 1014px;
     width: 55%;
@@ -72,8 +72,9 @@
     .container_legal_policy {
         left: 170px;
     }
-    header{
-        left: 0!important;
+
+    header {
+        left: 0 !important;
     }
 }
 
