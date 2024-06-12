@@ -101,7 +101,16 @@ async function init() {
     renderContacts();
     await includeHTML();
     loadActiveUserInitials();
+    loadActiveLinkContact();
+
 }
+
+function loadActiveLinkContact() {
+    document.getElementById('summarySite').classList.remove('active-link');
+    document.getElementById('addTaskSite').classList.remove('active-link');
+    document.getElementById('boardSite').classList.remove('active-link');
+    document.getElementById('contactSite').classList.add('active-link');
+  }
 
 /**
  * Deletes a contact from the list.

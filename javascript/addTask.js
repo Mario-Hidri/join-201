@@ -9,6 +9,14 @@ async function initAddTaskSite() {
     await includeHTML();
     loadTasksFromFirebase();
     loadActiveUserInitials();
+    loadActiveLinkAddTask();
+}
+
+function loadActiveLinkAddTask() {
+    document.getElementById('summarySite').classList.remove('active-link');
+    document.getElementById('addTaskSite').classList.add('active-link');
+    document.getElementById('boardSite').classList.remove('active-link');
+    document.getElementById('contactSite').classList.remove('active-link');
 }
 
 async function addTask() {
@@ -202,7 +210,6 @@ function addContactToTask(i) {
         allContacts[i]['contactSelect'] = true;
         showContacts();
     }
-
 }
 
 function addPersonToTask() {

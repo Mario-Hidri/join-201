@@ -5,6 +5,15 @@ async function initBoardSite() {
   await includeHTML();
   loadActiveUserInitials();
   await loadTasksFromFirebase();
+  loadActiveLinkBoard();
+
+}
+
+function loadActiveLinkBoard() {
+  document.getElementById('summarySite').classList.remove('active-link');
+  document.getElementById('addTaskSite').classList.remove('active-link');
+  document.getElementById('boardSite').classList.add('active-link');
+  document.getElementById('contactSite').classList.remove('active-link');
 }
 
 function startDragging(id) {
