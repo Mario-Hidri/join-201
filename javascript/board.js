@@ -392,7 +392,8 @@ function editTask(i) {
 
 function loadEditTaskHTML(i, title, description, date) {
   return `
-  <img class="exitButtonBigTask" onclick="closeTask()" src="./assets/img/crossIcon.png" alt="">
+  <div class="editContainer">
+  <div class="closeEditTask"><img class="exitButtonBigTask" onclick="closeTask()" src="./assets/img/crossIcon.png" alt=""></div>
   <form onsubmit="changeTask(${i}); return false">
     <label for="title">Title<span class="colorRed">*</span></label>
       <div class="fake-input">
@@ -436,6 +437,7 @@ function loadEditTaskHTML(i, title, description, date) {
           
              <button type="submit" class="createButton">OK</button> 
 </form> 
+</div>
   `;
 }
 
@@ -463,7 +465,7 @@ function loadPriority(i, task) {
 
 function loadPriorityUrgentHTML() {
   return `
-  <div class="distanceBetweenIput">
+  <div class="distanceBetweenIput row">
                             <button type="button" onclick="changePrioToUrgent()" class="urgentPriority prioButton">
                                 <span>Urgent</span>
                                 <img id="urgent" class="priorityImage" src="./assets/img/activeUrgentPriority.png"

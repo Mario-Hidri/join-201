@@ -205,6 +205,24 @@ select:focus-visible {
     justify-content: center;
 }
 
+.editContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.closeEditTask{
+    display: flex;
+    width: 100%;
+    justify-content: end;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
 .image_container {
     width: 42px;
     height: 42px;
