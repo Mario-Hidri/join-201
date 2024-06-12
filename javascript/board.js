@@ -442,9 +442,9 @@ function loadEditTaskHTML(i, title, description, date) {
 function assignAuthority(task) {
   let authority = task['authorityForTask'] || [];
   for (let i = 0; i < authority.length; i++) {
-    const person = authority[i];
+    const name = authority[i]['name'];
     for (let j = 0; j < allContacts.length; j++) {
-      if (person == allContacts[j]['name']) {
+      if (name == allContacts[j]['name']) {
         allContacts[j]['contactSelect'] = true;
       }
     }
