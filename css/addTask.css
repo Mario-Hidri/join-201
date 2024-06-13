@@ -4,6 +4,10 @@ body {
     overflow: auto !important;
 }
 
+.BackgroudnColorTopList1Responsive {
+    display: none;
+}
+
 .column {
     display: flex;
     flex-direction: column;
@@ -304,7 +308,7 @@ select:focus-visible {
     }
 
     .header {
-        justify-content: center;
+        justify-content: center !important;
     }
 }
 
@@ -322,8 +326,8 @@ select:focus-visible {
         gap: 16px;
         position: relative;
         width: 100vw;
-        height: 120vh;
-        top: -115px;
+        padding-bottom: 75px;
+        margin-bottom: 0px;
     }
 
     .header {
@@ -340,13 +344,15 @@ select:focus-visible {
     }
 
     .BackgroudnColorTopList1 {
-        background-color: #D1D1D1;
+        display: none;
+    }
+    .BackgroudnColorTopList1Responsive {
         height: 106px;
         width: 100vw;
-        position: fixed;
-        left: 0px;
-        bottom: 80px;
         z-index: 1;
+        display: flex !important;
+        justify-content: center;
+        margin-top: 20px;
     }
 }
 
@@ -381,5 +387,23 @@ select:focus-visible {
         position: relative;
         width: 382px;
         top: -100px;
+    }
+}
+
+@media (max-width:420px) {
+    button img {
+        width: 18.28px !important;
+        height: 18.25px !important;
+    }
+    button p {
+        font-size: 21px !important;
+        font-weight: 400 !important;
+        line-height: 19.2px !important;
+    }
+    .whiteButton {
+        display: none !important;
+    }
+    .centery {
+        justify-content: center;
     }
 }
