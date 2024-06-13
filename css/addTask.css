@@ -4,6 +4,7 @@ body {
     overflow: auto !important;
 }
 
+
 .BackgroudnColorTopList1Responsive {
     display: none;
 }
@@ -405,5 +406,69 @@ select:focus-visible {
     }
     .centery {
         justify-content: center;
+    }
+    .header {
+        padding: 0px !important;
+    }
+    .mobile_links {
+        padding: 8px 20px 8px 20px !important;
+    }
+    .fake-input input {
+        width: 297px;
+    }
+    .positionInputFields {
+        align-items: center;
+    }
+    .fake-input {
+        width: 300px;
+    }
+    .textarea {
+        width: 300px;
+    }
+    .fake-textarea {
+        width: 300px;
+    }
+    .relative {
+        width: 335px;
+    }
+    .user {
+        margin-right: 10px;
+    }
+    #addContactIcon {
+        width: 300px;
+    }
+    .input {
+        width: 335px;
+    }
+    .fake-textarea {
+        width: 301px;
+    }
+}
+
+@media (max-width:360px) {
+    .mobile_links {
+        padding: 8px 15px 8px 15px !important;
+    }
+    .fake-input {
+        width: 270px;
+        padding: 12px 10px 12px 10px;
+    }
+    .textarea {
+        width: 260px;
+    }
+    .fake-textarea {
+        width: 249px;
+    }
+    .relative {
+        width: 292px;
+    }
+    #addContactIcon {
+        width: 292px;
+    }
+    .input {
+        width: 283px;
+    }
+    .fake-input {
+        width: 260px;
     }
 }

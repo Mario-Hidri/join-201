@@ -540,6 +540,19 @@
         overflow-x: hidden;
     }
 
+    .containeraddTaskInBoardSize {
+        width: 82%;
+        height: 92%;
+        background-color: #FFFFFF;
+        padding: 30px;
+        border-radius: 8px;
+        overflow-x: scroll;
+        scrollbar-width: none;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
     .sideMenuResponsive {
         height: 0px;
     }
@@ -577,8 +590,9 @@
         display: flex !important;
         justify-content: space-between !important;
         position: unset !important;
-        padding-bottom: 20px;
-        padding-top: 20px;
+        padding-bottom: 20px !important;
+        padding-top: 20px !important;
+        padding-left: 60px !important;
     }
     
 }
@@ -606,6 +620,14 @@
 
     .searchbarinput {
         min-width: 270px;
+    }
+}
+
+@media (max-width:420px) {
+    .headerBoard {
+        padding-bottom: 20px !important;
+        padding-top: 20px !important;
+        padding-left: 5px !important;
     }
 }
 
@@ -642,7 +664,7 @@
     }
 
     .header {
-        padding: 15px 20px 15px 30px;
+        padding: 15px 20px 15px 4px !important;
     }
 
     .searchbarbutton {
@@ -652,6 +674,8 @@
     .canbanBoard {
         padding: 0 10px;
     }
+
+    
 
   
 }
