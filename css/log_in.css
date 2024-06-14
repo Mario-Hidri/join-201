@@ -372,7 +372,7 @@ body {
 .privacy-links-container {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 13px;
 }
 
 .privacy-links-container div {
@@ -423,7 +423,6 @@ body {
 
 @media (max-width:1024px) {
     .log-in-window {
-        margin-top: 80px;
         width: 340px;
         height: 320px;
     }
@@ -444,6 +443,31 @@ body {
         transform: translate(-50%, -50%);
         margin-top: 0px;
         margin-right: 0px;
+    }
+
+    @keyframes logo-animation {
+        from {
+            width: 100px;
+            height: 120px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -167px;
+            margin-left: -137px;
+            z-index: 999;
+            src: "./assets/img/log_in_img/logosmallanimation.png";
+        }
+
+        to {
+            position: absolute;
+            top: 80px;
+            left: 77px;
+            width: 84px;
+            height: 98px;
+            margin-top: 0px;
+            margin-left: 0px;
+            src: "./assets/img/log_in_img/Capa 1.svg";
+        }
     }
 }
 
@@ -509,6 +533,31 @@ body {
         width: 77%;
         justify-content: center;
     }
+
+    @keyframes logo-animation {
+        from {
+            width: 100px;
+            height: 120px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -167px;
+            margin-left: -137px;
+            z-index: 999;
+            src: "./assets/img/log_in_img/logosmallanimation.png";
+        }
+
+        to {
+            position: absolute;
+            top: 35px;
+            left: 45px;
+            width: 84px;
+            height: 98px;
+            margin-top: 0px;
+            margin-left: 0px;
+            src: "./assets/img/log_in_img/Capa 1.svg";
+        }
+    }
 }
 
 @media (max-width:500px) {
@@ -540,6 +589,7 @@ body {
         top: 88%;
         width: 77%;
         justify-content: center;
+        margin-top: 5px;
     }
 
     @keyframes logo-animation {

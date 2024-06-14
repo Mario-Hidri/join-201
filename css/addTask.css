@@ -444,7 +444,7 @@ select:focus-visible {
 
 @media (max-width:360px) {
     .mobile_links {
-        padding: 8px 15px 8px 15px !important;
+        padding: 8px 11px 8px 11px !important;
     }
     .fake-input {
         width: 270px;

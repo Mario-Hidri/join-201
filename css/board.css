@@ -144,17 +144,17 @@
     width: 525px;
     background-color: #FFFFFF;
     padding: 48px 40px 48px 40px;
-    border-radius: 8px;
+    border-radius: 30px;
     overflow-x: scroll;
     scrollbar-width: none;
     gap: 24px;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    height: 70%;
+    height: 65vh;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
-    width: 75%;
+    width: 700px;
 }
 
 @keyframes slideIn {
@@ -547,6 +547,10 @@
         height: 75%;
         overflow: scroll;
         overflow-x: hidden;
+    }
+    .containerOpenTaskInBoardSize {
+        width: 65%;
+        height: 50%;
     }
 
     .containeraddTaskInBoardSize {
