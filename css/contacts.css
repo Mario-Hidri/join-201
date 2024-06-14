@@ -47,7 +47,7 @@ body {
     justify-content: center;
     align-items: center;
     left: 275px;
-    top: 106px;
+    top: 104px;
     padding: 12px 0;
     border-radius: 10px;
     border: 1px;
@@ -649,6 +649,8 @@ button p {
 
     .contacts_list {
         width: 370px;
+        padding-top: 60px;
+        padding-bottom: 127px;
     }
 
     .sliding_div {
@@ -1015,12 +1017,9 @@ button p {
 
 
 @media (max-width: 400px) {
-    .link {
-        padding: 0px 1px !important;
-    }
 
-    .mobile_links {
-        padding: 0px !important;
+    .image_container {
+        margin-right: 20px;
     }
 
     .contacts_list {
@@ -1252,6 +1251,12 @@ button p {
 
 @media (min-height: 1210px) {
     .contacts_list {
-        height: 82vh;
+        height: 87vh;
+    }
+}
+
+@media (min-height: 2010px) {
+    .contacts_list {
+        height: 91vh;
     }
 }

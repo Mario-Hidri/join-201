@@ -7,6 +7,14 @@
     margin-bottom: 30px;
 }
 
+.headerBoard {
+    display: flex !important;
+    justify-content: space-between !important;
+    position: unset !important;
+    padding-bottom: 20px !important;
+    padding-top: 20px !important;
+    padding-left: 60px !important;
+}
 
 .canbanBoard {
     box-sizing: border-box;
@@ -494,6 +502,7 @@
 
     .fourth-size {
         width: 100%;
+        padding-bottom: 10px;
     }
 
     .card {
@@ -644,10 +653,6 @@
     .footer_links_mobile {
 
         white-space: nowrap;
-    }
-
-    .link {
-        padding: 0px 5px;
     }
 
     .mobile_links {

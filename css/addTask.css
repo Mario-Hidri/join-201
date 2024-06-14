@@ -410,9 +410,6 @@ select:focus-visible {
     .header {
         padding: 0px !important;
     }
-    .mobile_links {
-        padding: 8px 20px 8px 20px !important;
-    }
     .fake-input input {
         width: 297px;
     }

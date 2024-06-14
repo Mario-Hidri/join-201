@@ -2,6 +2,7 @@
  * Default list of contacts.
  * @type {Array<Object>}
  */
+
 let defaultContacts = [{name:"Alice Adams",email:"alice.adams@example.com",phone:"555-123-4567",color:"#FF6F61",contactSelect:false},{name:"Bob Baker",email:"bob.baker@example.com",phone:"555-234-5678",color:"#6B8E23",contactSelect:false},{name:"Charlie Carter",email:"charlie.carter@example.com",phone:"555-345-6789",color:"#4682B4",contactSelect:false},{name:"David Davis",email:"david.davis@example.com",phone:"555-456-7890",color:"#DA70D6",contactSelect:false},{name:"Emily Evans",email:"emily.evans@example.com",phone:"555-567-8901",color:"#FF6347",contactSelect:false},{name:"Fiona Fisher",email:"fiona.fisher@example.com",phone:"555-678-9012",color:"#40E0D0",contactSelect:false},{name:"George Green",email:"george.green@example.com",phone:"555-789-0123",color:"#FFD700",contactSelect:false},{name:"Hannah Harris",email:"hannah.harris@example.com",phone:"555-890-1234",color:"#FFA07A",contactSelect:false},{name:"Ian Irving",email:"ian.irving@example.com",phone:"555-901-2345",color:"#7FFFD4",contactSelect:false},{name:"Jackie Jackson",email:"jackie.jackson@example.com",phone:"555-012-3456",color:"#BA55D3",contactSelect:false},{name:"Kevin King",email:"kevin.king@example.com",phone:"555-123-4568",color:"#6495ED",contactSelect:false},{name:"Laura Lee",email:"laura.lee@example.com",phone:"555-234-5679",color:"#8A2BE2",contactSelect:false},{name:"Michael Moore",email:"michael.moore@example.com",phone:"555-345-6780",color:"#FF4500",contactSelect:false},{name:"Nancy Nelson",email:"nancy.nelson@example.com",phone:"555-456-7891",color:"#00CED1",contactSelect:false},{name:"Oliver Owens",email:"oliver.owens@example.com",phone:"555-567-8902",color:"#B0E0E6",contactSelect:false},{name:"Paul Peterson",email:"paul.peterson@example.com",phone:"555-678-9013",color:"#20B2AA",contactSelect:false},{name:"Quincy Quinn",email:"quincy.quinn@example.com",phone:"555-789-0124",color:"#FF69B4",contactSelect:false},{name:"Rachel Rogers",email:"rachel.rogers@example.com",phone:"555-890-1235",color:"#DC143C",contactSelect:false},{name:"Steve Smith",email:"steve.smith@example.com",phone:"555-901-2346",color:"#00FF7F",contactSelect:false},{name:"Tracy Thompson",email:"tracy.thompson@example.com",phone:"555-012-3457",color:"#8B4513",contactSelect:false},{name:"Uma Underwood",email:"uma.underwood@example.com",phone:"555-123-4569",color:"#7FFF00",contactSelect:false},{name:"Victor Vance",email:"victor.vance@example.com",phone:"555-234-5680",color:"#FF1493",contactSelect:false},{name:"Wendy White",email:"wendy.white@example.com",phone:"555-345-6781",color:"#1E90FF",contactSelect:false},{name:"Xander Xiong",email:"xander.xiong@example.com",phone:"555-456-7892",color:"#4B0082",contactSelect:false},{name:"Yara Young",email:"yara.young@example.com",phone:"555-567-8903",color:"#8FBC8F",contactSelect:false},{name:"Zachary Zimmerman",email:"zachary.zimmerman@example.com",phone:"555-678-9014",color:"#ADFF2F",contactSelect:false}];
 
 let allContacts = [];
@@ -422,6 +423,18 @@ function closeMenuOnClickOutside(event) {
         menuContainer.classList.add('hidden');
         document.removeEventListener('click', closeMenuOnClickOutside);
     }
+}
+
+function deleteContactResponsive(currentEditIndex) {
+    let position = currentEditIndex;
+    allContacts.splice(position, 1);
+
+    saveContactsToLocalStorage();
+    renderContacts();
+    hideElement('editContactDisplay');
+    resetSelectedIndexes();
+    hideContactDetails();
+
 }
 
 

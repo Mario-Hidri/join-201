@@ -20,7 +20,7 @@ nav {
     background-color: rgb(42, 54, 71);
     position: fixed;
     width: 232px;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -185,5 +185,38 @@ footer {
 
     .center-x {
         display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .logo_mobile {
+        display: flex !important;
+        position: fixed !important;
+        height: 48px !important;
+        width: 48px !important;
+        left: 30px !important;
+        top: 23px !important;
+    }
+    .user {
+        height: 48px !important;
+        width: 48px !important;
+    }
+    .footer_links_mobile {
+        display: flex !important;
+        align-items: center !important;
+        flex-direction: row !important;
+        justify-content: space-evenly !important;
+    }
+    .mobile_links {
+        gap: 20px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        border-radius: 15px  !important;
+        padding: 8px !important;
+        width: auto !important;
+    }
+    .link {
+        padding: 0px 5px !important
     }
 }
