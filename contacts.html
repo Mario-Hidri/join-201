@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="./css/side_menu.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="icon" href="./assets/img/favIcon.png" type="image/x-icon">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="./javascript/includeHTML.js"></script>
     <script src="./javascript/board.js"></script>
-    <script src="./javascript/add_contact.js"></script>
+    <script src="./javascript/add_contact.js" defer></script>
     <script src="./javascript/generatedHTML_add_contact.js"></script>
     <script src="./javascript/welcomeScreen.js"></script>
     <script src="./javascript/loadLogInData.js"></script>
-
 </head>
 
 
@@ -239,7 +240,8 @@
                 <a id="edit_contact_email" href="emailto:xx">emailto@example.de</a>
                 <h4>Phone</h4>
                 <p id="edit_contact_phone">+0011223344</p>
-                <img id="menueditcontact" src="./assets/img/contacts_img/Menu Contact options.png" alt="Menubutton" onclick="toggleMenu(event)">
+                <img id="menueditcontact" src="./assets/img/contacts_img/Menu Contact options.png" alt="Menubutton"
+                    onclick="toggleMenu(event)">
 
             </div>
 
