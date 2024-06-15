@@ -7,6 +7,12 @@
     margin-bottom: 30px;
 }
 
+.subtasksContactsFlexContainer {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
 .headerBoard {
     display: flex !important;
     justify-content: space-between !important;
@@ -430,7 +436,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-left: 16px;
+
 }
 
 .spanTextBigTask {
@@ -451,7 +457,6 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    margin-left: 16px;
 }
 
 .buttonsBigTaskContainer {
@@ -552,6 +557,9 @@
         width: 65%;
         height: 50%;
     }
+    .titleOnBigTask {
+        font-size: 50px;
+    }
 
     .containeraddTaskInBoardSize {
         width: 82%;
@@ -615,6 +623,10 @@
         display: none;
     }
 
+    .titleOnBigTask {
+        font-size: 42px;
+    }
+
     .searchbarbutton {
         display: flex;
         align-items: center;
@@ -650,6 +662,9 @@
     }
     .noTask {
         width: 90vw;
+    }
+    .titleOnBigTask {
+        font-size: 36px;
     }
 }
 

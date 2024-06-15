@@ -351,7 +351,7 @@ function assignCheckbox(subtask){
 
 function loadSubtaskOnBigTaskHTML(taskNumber, subtaskNumber, subtask, checkbox) {
   return `
-<div><img id="subtask${subtaskNumber}" onclick="changeCheckbox(${taskNumber},${subtaskNumber})" class="iconOnBigTask" src="${checkbox}" alt="">${subtask["subtask"]}</div>
+<div class="subtasksContactsFlexContainer"><img id="subtask${subtaskNumber}" onclick="changeCheckbox(${taskNumber},${subtaskNumber})" class="iconOnBigTask" src="${checkbox}" alt="">${subtask["subtask"]}</div>
 `;
 }
 
