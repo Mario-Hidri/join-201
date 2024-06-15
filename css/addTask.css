@@ -4,6 +4,22 @@ body {
     overflow: auto !important;
 }
 
+.addTaskBoardSite {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.addTaskBoardSite h1 {
+    position: relative;
+    right: 46px;
+}
+
+.addTaskBoardSite img {
+    position: relative;
+    left: 59px;
+}
 
 .BackgroudnColorTopList1Responsive {
     display: none;
@@ -32,8 +48,13 @@ body {
     margin: 10px;
     gap: 10px;
     display: flex;
+}
+
+.rightInput {
+    display: flex;
     flex-direction: column;
-    /* margin-top: -6px; */
+    gap: 10px;
+
 }
 
 .flexboxWithGap {
@@ -74,6 +95,7 @@ body {
 .centery {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 5px;
 }
 

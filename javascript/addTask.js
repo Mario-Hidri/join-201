@@ -280,11 +280,3 @@ function removeContactFilter() {
     }, 2000); 
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("subtask").addEventListener("keypress", function(event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            addSubTask();  
-        }
-    });
-});

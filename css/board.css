@@ -7,6 +7,23 @@
     margin-bottom: 30px;
 }
 
+.editContainerResponsive {
+    width: 80% !important;
+}
+
+.createButtonEdit {
+    background-color: #2A3647;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 21px;
+    padding: 16px;
+    border-radius: 10px;
+    width: 183px;
+    height: 56px;
+    border: none;
+    margin-top: 20px;
+}
+
 .subtasksContactsFlexContainer {
     display: flex;
     gap: 10px;
@@ -136,11 +153,11 @@
 }
 
 .containeraddTaskInBoardSize {
-    width: 70%;
-    height: 75%;
+    width: 700px;
+    height: 65vh;
     background-color: #FFFFFF;
     padding: 30px;
-    border-radius: 8px;
+    border-radius: 30px;
     overflow-x: scroll;
     scrollbar-width: none;
 }
@@ -562,7 +579,7 @@
     }
 
     .containeraddTaskInBoardSize {
-        width: 82%;
+        width: 93%;
         height: 92%;
         background-color: #FFFFFF;
         padding: 30px;

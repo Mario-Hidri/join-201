@@ -392,6 +392,7 @@ function editTask(i) {
   let description = task['description'];
   let date = task['date'];
   document.getElementById('containerOpenTaskInBoardSize').innerHTML = loadEditTaskHTML(i, title, description, date);
+  document.getElementById('containerOpenTaskInBoardSize').classList.add('editContainerResponsive');
   loadPriority(i, task);
   subtasks = task['subtask'] || [];
   loadSubtasks();
@@ -444,7 +445,7 @@ function loadEditTaskHTML(i, title, description, date) {
                             </div>
 
           
-             <button type="submit" class="createButton">OK</button> 
+             <button type="submit" class="createButtonEdit">OK</button> 
 </form> 
 </div>
   `;
