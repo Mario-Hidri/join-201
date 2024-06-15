@@ -216,37 +216,42 @@ function loadNoTaskPlaceholderHTML(section) {
           </div>`;
 }
 
-function addTaskOnToDo() {
+async function addTaskOnToDo() {
   document.getElementById('addTaskOnBoardSite').innerHTML = `
   <div class="containeraddTaskInBoardSize" w3-include-html="./assets/templates/addTask.html"></div>
   `;
-  includeHTML();
   document.getElementById('addTaskOnBoardSite').classList.remove('d-noneAddTask');
   board = "toDo";
+  await includeHTML();
+  loadActiveUserInitials();
 }
 
-function addTaskOnInProgress() {
+ async function addTaskOnInProgress() {
   document.getElementById('addTaskOnBoardSite').innerHTML = `
   <div class="containeraddTaskInBoardSize" w3-include-html="./assets/templates/addTask.html"></div>
   `;
-  includeHTML();
   document.getElementById('addTaskOnBoardSite').classList.remove('d-noneAddTask');
-  board = "inProgress";
+   board = "inProgress";
+   await includeHTML();
+   loadActiveUserInitials();
 }
 
-function addTaskOnAwaitFeedback() {
+async function addTaskOnAwaitFeedback() {
   document.getElementById('addTaskOnBoardSite').innerHTML = `
   <div class="containeraddTaskInBoardSize" w3-include-html="./assets/templates/addTask.html"></div>
   `;
-  includeHTML();
   document.getElementById('addTaskOnBoardSite').classList.remove('d-noneAddTask');
   board = "awaitFeedback";
+  await includeHTML();
+  loadActiveUserInitials();
 }
 
-function removeAddTaskDialog() {
+async function removeAddTaskDialog() {
   document.getElementById('addTaskOnBoardSite').classList.add('d-noneAddTask');
   document.getElementById('addTaskOnBoardSite').innerHTML = '';
   reset();
+  await includeHTML();
+  loadActiveUserInitials();
 }
 
 function openTaskDialog(i) {

@@ -4,6 +4,10 @@ body {
     overflow: auto !important;
 }
 
+.not-clickable {
+    pointer-events: none;
+}
+
 .addTaskBoardSite {
     display: flex;
     align-items: center;
