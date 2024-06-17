@@ -11,12 +11,14 @@
     <link rel="icon" href="./assets/img/favIcon.png" type="image/x-icon">
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="./javascript/firebaseConfig.js"></script>
     <script src="./javascript/includeHTML.js"></script>
     <script src="./javascript/board.js"></script>
     <script src="./javascript/add_contact.js" defer></script>
     <script src="./javascript/generatedHTML_add_contact.js"></script>
     <script src="./javascript/welcomeScreen.js"></script>
     <script src="./javascript/loadLogInData.js"></script>
+    <script src="./javascript/addTask.js"></script>
 </head>
 
 
@@ -27,7 +29,6 @@
 
 
     <div class="contentWrapperContactPage">
-
         <section class="contacts_list">
             <div class="backgroudn_color_top_list">
                 <button onclick="showElement('slidingPage')" id="showPageButton">
@@ -37,175 +38,13 @@
                     </div>
                 </button>
             </div>
-
-            <div class="alphabetical_order">
-                <h1>A</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-
-
-            <div class="contact_single" id="contacts_container_A"></div>
-
-            <div class="alphabetical_order">
-                <h1>B</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-
-
-            <div id="contacts_container_B"></div>
-
-            <div class="alphabetical_order">
-                <h1>C</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_C"></div>
-
-            <div class="alphabetical_order">
-                <h1>D</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_D"></div>
-
-            <div class="alphabetical_order">
-                <h1>E</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_E"></div>
-
-            <div class="alphabetical_order">
-                <h1>F</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_F"></div>
-
-            <div class="alphabetical_order">
-                <h1>G</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_G"></div>
-
-            <div class="alphabetical_order">
-                <h1>H</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_H"></div>
-
-            <div class="alphabetical_order">
-                <h1>I</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_I"></div>
-
-            <div class="alphabetical_order">
-                <h1>J</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_J"></div>
-
-            <div class="alphabetical_order">
-                <h1>K</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_K"></div>
-
-            <div class="alphabetical_order">
-                <h1>L</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_L"></div>
-
-            <div class="alphabetical_order">
-                <h1>M</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_M"></div>
-
-            <div class="alphabetical_order">
-                <h1>N</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_N"></div>
-
-            <div class="alphabetical_order">
-                <h1>O</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_O"></div>
-
-            <div class="alphabetical_order">
-                <h1>P</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_P"></div>
-
-            <div class="alphabetical_order">
-                <h1>Q</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_Q"></div>
-
-            <div class="alphabetical_order">
-                <h1>R</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_R"></div>
-
-            <div class="alphabetical_order">
-                <h1>S</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_S"></div>
-
-            <div class="alphabetical_order">
-                <h1>T</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_T"></div>
-
-            <div class="alphabetical_order">
-                <h1>U</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_U"></div>
-
-            <div class="alphabetical_order">
-                <h1>V</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_V"></div>
-
-            <div class="alphabetical_order">
-                <h1>W</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_W"></div>
-
-            <div class="alphabetical_order">
-                <h1>X</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_X"></div>
-
-            <div class="alphabetical_order">
-                <h1>Y</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_Y"></div>
-
-            <div class="alphabetical_order">
-                <h1>Z</h1>
-            </div>
-            <div class="seperator_order_contacts"></div>
-            <div id="contacts_container_Z"></div>
-
         </section>
 
         <section id="slogan" class="slogan">
             <h1>Contacts</h1>
             <div class="slogan_seperator"></div>
             <p>Better with a team</p>
-            <img id="arrow" src="./assets/img/contacts_img/arrow-left-line.png" alt="Pfeil" class="hidden"
-                onclick="hideContactDetails()">
+            <img id="arrow" src="./assets/img/contacts_img/arrow-left-line.png" alt="Pfeil" class="hidden" onclick="hideContactDetails()">
         </section>
 
 
@@ -222,7 +61,7 @@
                             <img src="./assets/img/contacts_img/edit.svg" alt="">
                             <p>Edit</p>
                         </button>
-                        <button onclick="deleteContact(currentEditIndex)">
+                        <button onclick="deleteContactFromFirebase(currentEditIndex)">
                             <img src="./assets/img/contacts_img/delete.svg" alt="">
                             <p>delete</p>
                         </button>
@@ -280,7 +119,7 @@
                         <img src="./assets/img/log_in_img/mail.svg" alt="Image" class="input_img">
                     </div>
                     <div class="input_with_img">
-                        <input id="edit_contact_phone_input" name="phone" placeholder="Phone" class="input_1" type="tel"
+                        <input id="edit_contact_phone_input" name="phone" placeholder="Phone" class="input_1" type="number"
                             required>
                         <img src="./assets/img/contacts_img/call.svg" alt="Phone Icon" class="input_img">
                     </div>
@@ -323,7 +162,7 @@
                         <img src="./assets/img/log_in_img/mail.svg" alt="Bild" class="input_img">
                     </div>
                     <div class="input_with_img">
-                        <input id="add_contact_phone" name="phone" placeholder="Phone" class="input_1" type="tel"
+                        <input id="add_contact_phone" name="phone" placeholder="Phone" class="input_1" type="number"
                             required>
                         <img src="./assets/img/contacts_img/call.svg" alt="Phone Icon" class="input_img">
                     </div>

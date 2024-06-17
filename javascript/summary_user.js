@@ -138,20 +138,32 @@ function setTaskCount(elementId, count) {
 
 function loadNearestDeadline() {
     const urgentTasks = tasks.filter(task => task.priority === "urgent");
+    const nearestDeadlineElement = document.getElementById('nearestDeadline');
+    const deadlineTextElement = document.getElementById('deadlineText');
+    const noDeadlineElement = document.getElementById('noDeadline');
+
     if (urgentTasks.length === 0) {
-        console.error('Keine dringenden Aufgaben gefunden');
+        nearestDeadlineElement.style.display = 'none';
+        deadlineTextElement.style.display = 'none';
+        noDeadlineElement.style.display = 'block';
         return;
     }
+
+    nearestDeadlineElement.style.display = 'block';
+    deadlineTextElement.style.display = 'block';
+    noDeadlineElement.style.display = 'none';
+
     let nearestDate = urgentTasks.map(task => new Date(task.date)).sort((a, b) => a - b)[0];
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const nearestDeadlineString = nearestDate.toLocaleDateString('en-US', options);
-    const nearestDeadlineElement = document.getElementById('nearestDeadline');
+
     if (nearestDeadlineElement) {
         nearestDeadlineElement.textContent = nearestDeadlineString;
     } else {
         console.error('Element für die nächste Frist nicht gefunden');
     }
 }
+
 
 
 

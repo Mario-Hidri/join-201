@@ -4,8 +4,17 @@ body {
     overflow: auto !important;
 }
 
+#assignContact {
+    pointer-events: none;
+}
+
 .not-clickable {
     pointer-events: none;
+}
+
+.spanWithFlex {
+    display: flex;
+    align-items: center;
 }
 
 .addTaskBoardSite {
@@ -140,7 +149,10 @@ body {
 .absolute {
     position: absolute;
     width: 100%;
+    z-index: 999;  /* Stellen Sie sicher, dass die Liste über anderen Elementen liegt */
+    background-color: white; /* Stellen Sie sicher, dass der Hintergrund weiß ist */
 }
+
 
 .fake-textarea {
     border: 1px solid #D1D1D1;
@@ -201,14 +213,18 @@ select:focus-visible {
     align-items: center;
     justify-content: space-between;
     padding: 8px 8px;
+    margin: 2px 0;  /* Fügen Sie eine kleine Margin hinzu, um Überlappungen zu vermeiden */
+    box-sizing: border-box;
+    cursor: pointer;  /* Fügen Sie einen Cursor hinzu, um anzuzeigen, dass die Elemente klickbar sind */
 }
+
 
 #addContact {
     background-color: #fff;
     border-radius: 8px;
     max-height: 240px;
-    overflow-y: scroll;
-    scrollbar-width: none;
+    overflow-y: auto;  /* Stellen Sie sicher, dass der Überlauf scrollbar ist */
+    scrollbar-width: thin;  /* Stellen Sie sicher, dass die Scrollbalken dünn sind und das Layout nicht beeinträchtigen */
 }
 
 .activContact {
@@ -282,10 +298,10 @@ select:focus-visible {
 }
 
 .tempDivTask {
-    position: absolute;
-    top: 90%;
-    right: -100%;
-    transform: translate(-50%, -90%);
+    position: fixed; /* Ändern Sie die Position auf fixed, damit es relativ zum Viewport ist */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #2A3647;
     width: 326px;
     height: 74px;
@@ -297,6 +313,7 @@ select:focus-visible {
     animation-duration: 0.5s;
     opacity: 0;
     gap: 8px;
+    z-index: 1000; /* Stellen Sie sicher, dass es über anderen Elementen liegt */
 }
 
 .show-temp {

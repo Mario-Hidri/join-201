@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="./css/addTask.css">
     <link rel="stylesheet" href="./css/contacts.css">
     <link rel="icon" href="./assets/img/favIcon.png" type="image/x-icon">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="./javascript/firebaseConfig.js"></script>
     <script src="./javascript/includeHTML.js"></script>
     <script src="./javascript/board.js"></script>
     <script src="./javascript/addTask.js"></script>
@@ -19,7 +22,7 @@
 
 </head>
 
-<body onload="initAddTaskSite(); initContactForaddTask()">
+<body onload="initAddTaskSite()">
     <header class="spaceBetween" w3-include-html="./assets/templates/header.html"></header>
     <div class="flexbox">
         <div class="sideMenu" w3-include-html="./assets/templates/side_menu.html"></div>
@@ -49,15 +52,15 @@
                             <div class="column distanceBetweenIput">
                                 <label for="assignContact">Assigned to</label>
                                 <div class="fake-input">
-                                    <input id="assignContact" onclick="showContacts()" oninput="showContacts()"
+                                    <input id="assignContact" onclick="showContacts(event)" oninput="showContacts()"
                                         placeholder="Select contacts to assign" type="text">
                                     <div id="contactSection" class="flexbox">
-                                        <img onclick="showContacts()" class="taskIcon"
+                                        <img onclick="showContacts(event)" class="taskIcon"
                                             src="./assets/img/removeExtensionIcon.png" alt="">
                                     </div>
                                 </div>
                                 <div class="relative">
-                                    <div class="absolute" id="addContact">
+                                    <div class="absolute d-none" id="addContact">
 
                                     </div>
                                 </div>
@@ -74,11 +77,11 @@
                             <div class="column distanceBetweenIput">
                                 <label for="date">Due date<span class="colorRed">*</span></label>
                                 <div class="fake-input">
-                                    <input required id="date" type="date">
+                                    <input required id="date" type="date" min="">
                                 </div>
                             </div>
                             <div class="distanceBetweenIput priorityScaleSection">
-                                <span>Prio</span>
+                                <span class="spanWithFlex">Prio</span>
                                 <div>
                                     <button type="button" onclick="changePrioToUrgent()"
                                         class="distanceSmall prioButton">
