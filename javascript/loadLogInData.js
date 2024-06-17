@@ -96,7 +96,7 @@ async function deleteActiveUser() {
 function openLogIn() {
     deleteActiveUser();
     setTimeout(() => {
-        window.location.href = '/log_in.html';
+        window.location.href = './log_in.html';
     }, 2000);
 }
 

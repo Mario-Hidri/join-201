@@ -191,20 +191,12 @@ function showContacts(event) {
     if (isHidden) {
         addContactSection();
         addContactElement.classList.remove('d-none');
-        document.getElementById('addContact').innerHTML = '';
-        let search = document.getElementById('assignContact').value;
-        search = search.toLowerCase();
-        let sortedContacts = [...allContacts].sort((a, b) => a.name.localeCompare(b.name)); // Kontakte sortieren
-        for (let i = 0; i < sortedContacts.length; i++) {
-            const contact = sortedContacts[i];
-            let name = contact['name'];
-            let contactSelect = contact['contactSelect'];
-            filterContact(i, search, name, contactSelect);
-        }
+        updateContactList();
     } else {
         removeContactFilter();
     }
 }
+
 
 function filterContact(i, search, name, contactSelect) {
     if (name.toLowerCase().includes(search)) {
@@ -234,7 +226,20 @@ function addContactToTask(event, i) {
     event.stopPropagation(); // Stop the event from propagating to the document
     const contactSelect = allContacts[i]['contactSelect'];
     allContacts[i]['contactSelect'] = !contactSelect;
-    showContacts(); // Refresh the list without closing it
+    updateContactList();
+}
+
+function updateContactList() {
+    document.getElementById('addContact').innerHTML = '';
+    let search = document.getElementById('assignContact').value;
+    search = search.toLowerCase();
+    let sortedContacts = [...allContacts].sort((a, b) => a.name.localeCompare(b.name)); // Kontakte sortieren
+    for (let i = 0; i < sortedContacts.length; i++) {
+        const contact = sortedContacts[i];
+        let name = contact['name'];
+        let contactSelect = contact['contactSelect'];
+        filterContact(i, search, name, contactSelect);
+    }
 }
 
 function addPersonToTask() {
