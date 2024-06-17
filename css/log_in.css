@@ -1,6 +1,7 @@
 body {
     margin: auto;
     background: #F6F7F8;
+    font-family: 'Inter';
 }
 
 ::-webkit-scrollbar {

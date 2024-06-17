@@ -1,7 +1,4 @@
 const loginUrl = "https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/.json";
-const url = "https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/LogInData";
-
-const activeUser = {};
 
 async function checkLogIn(event) {
     event.preventDefault();
@@ -29,12 +26,15 @@ async function fetchUserData() {
 }
 
 function findUser(data, email, password) {
-    let users = Object.entries(data);
-
-    for (let [key, userDataArray] of users) {
-        for (let userData of userDataArray) {
-            if (userData.email === email && userData.password === password) {
-                return [key, userData];
+    for (let key in data) {
+        if (data.hasOwnProperty(key)) {
+            let userDataArray = data[key];
+            if (Array.isArray(userDataArray)) {
+                for (let userData of userDataArray) {
+                    if (userData.email === email && userData.password === password) {
+                        return [key, userData];
+                    }
+                }
             }
         }
     }
@@ -48,7 +48,7 @@ async function handleSuccessfulLogin(userEntry) {
     const activeUser = { key: userKey, data: { name: userName } };
     localStorage.setItem('activeUser', JSON.stringify(activeUser));
     localStorage.setItem('hasShownWelcome', 'false');  // Ensure to reset this flag on successful login
-    window.location.href = '/summary_user.html';
+    window.location.href = './summary_user.html';
 }
 
 async function saveActiveUserInFirebase(name) {
@@ -67,17 +67,12 @@ async function saveActiveUserInFirebase(name) {
     }
 }
 
-function saveLogInDataInFirebase() {
-    // Code zum Speichern der Anmeldedaten in Firebase
-}
-
 function guestLogIn() {
     const guestUser = { key: "guest", data: { name: "Guest" } };
     localStorage.setItem('activeUser', JSON.stringify(guestUser));
     localStorage.setItem('hasShownWelcome', 'false');  // Ensure to reset this flag on guest login
     window.location.href = './summary_user.html';
 }
-
 
 function passwordError(passwordField) {
     if (!passwordField.parentNode.querySelector('.error-message')) {

@@ -22,11 +22,11 @@ async function loadLogInData() {
 }
 
 function openLegalNotice() {
-    window.open('/legal_notice.html', '_blank');
+    window.open('./legal_notice.html', '_blank');
 }
 
 function openPrivacyPolice() {
-    window.open('/privay_policy.html', '_blank');
+    window.open('./privay_policy.html', '_blank');
 }
 
 async function loadActiveUser() {

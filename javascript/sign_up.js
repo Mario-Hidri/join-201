@@ -332,8 +332,10 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener("DOMContentLoaded", () => {
     const privacyPolicyLink = document.getElementById("privacyPolicyLink");
     const legalNoticeLink = document.getElementById("legalNoticeLink");
+    const privacyPolicyLinkSignUp = document.getElementById("privacyLinkSignUp");
     const overlay = document.getElementById("overlay");
-    const privacyPolicyPopup = document.getElementById("privacyPolicyPopup");
+    const privacyPolicyPopup = document.getElementById("privacyPolicyPopup"); // Hier korrigiert
+
     const legalNoticePopup = document.getElementById("legalNoticePopup");
 
     const showPopup = (popup) => {
@@ -347,6 +349,11 @@ document.addEventListener("DOMContentLoaded", () => {
         legalNoticePopup.style.display = "none";
     };
 
+    privacyPolicyLinkSignUp.addEventListener("click", (event) => {
+        event.preventDefault();
+        showPopup(privacyPolicyPopup);
+    });
+
     privacyPolicyLink.addEventListener("click", (event) => {
         event.preventDefault();
         showPopup(privacyPolicyPopup);
@@ -359,3 +366,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     overlay.addEventListener("click", hidePopups);
 });
+

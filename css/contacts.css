@@ -3,10 +3,15 @@ body {
     background-color: #F6F7F8;
     overflow-x: hidden;
     overflow-y: hidden;
+    font-family: 'Inter';
 }
 
 .showSlogan {
     display: flex !important;
+}
+
+.cursor {
+    cursor: pointer;
 }
 
 .spaceBetween {
@@ -581,7 +586,9 @@ button p {
 
 
 @media (max-width: 1360px) {
-    #slidingDiv, #slidingPage {
+
+    #slidingDiv,
+    #slidingPage {
         transform: translate(-50%, -50%) scale(0.8) !important;
     }
 }
@@ -597,7 +604,7 @@ button p {
         flex-direction: column;
         align-items: baseline;
     }
-   
+
 }
 
 @media (max-width: 1070px) {
@@ -615,7 +622,9 @@ button p {
         gap: 0px;
         flex-direction: column;
     }
-    #slidingDiv, #slidingPage {
+
+    #slidingDiv,
+    #slidingPage {
         transform: translate(-50%, -50%) scale(0.7) !important;
     }
 }
@@ -625,12 +634,15 @@ button p {
         padding: 32px 10px;
         padding-top: 160px;
     }
+
     .contacts_list button {
         left: 244px;
     }
+
     .backgroudn_color_top_list {
         width: 408px;
     }
+
     .sliding_div {
         left: 675px;
     }
@@ -641,6 +653,7 @@ button p {
         width: auto;
         height: 1px;
     }
+
     .contacts_list {
         width: 370px;
         padding-bottom: 127px;
@@ -650,13 +663,16 @@ button p {
         padding: 32px 8px;
         padding-top: 160px;
     }
+
     .sliding_div {
         left: 625px;
     }
 }
 
 @media (max-width: 877px) {
-    #slidingDiv, #slidingPage {
+
+    #slidingDiv,
+    #slidingPage {
         transform: translate(-50%, -50%) scale(0.65) !important;
     }
 }
@@ -723,6 +739,7 @@ button p {
         height: 88vh !important;
         width: 182vw !important;
     }
+
     .contact_content_left {
         display: flex;
         flex-direction: column;
@@ -737,6 +754,7 @@ button p {
         left: 50%;
         transform: translate(-50%, -50%) !important;
     }
+
     .center_image {
         position: absolute;
         top: 52%;
@@ -751,6 +769,7 @@ button p {
         border: 3px solid #F6F7F8;
         border-radius: 70px;
     }
+
     .flex_container {
         display: flex;
         flex-direction: column;
@@ -763,13 +782,13 @@ button p {
 }
 
 @media (max-width: 650px) {
-.contact_content_left {
-    width: 151vw;
-}
+    .contact_content_left {
+        width: 151vw;
+    }
 }
 
 @media (max-width: 620px) {
-    
+
     .sliding_div {
         display: none;
         left: 29px;
@@ -876,6 +895,7 @@ button p {
     .contact_content_left {
         width: 146vw;
     }
+
     .flex_container {
         display: flex;
         flex-direction: column;
@@ -921,7 +941,7 @@ button p {
 }
 
 @media (max-width: 350px) {
-  
+
     .contacts_list button {
         left: 35px;
         top: 130px;
@@ -929,7 +949,7 @@ button p {
 }
 
 @media (max-width: 335px) {
-    
+
 
     .inside_the_button img {
         width: 24px;
@@ -946,9 +966,11 @@ button p {
     .flex_container {
         transform: translate(-220%, 150%) scale(1.5);
     }
+
     .contact_content_left {
         width: 141vw;
     }
+
     .input_1 {
         min-width: 310px;
     }
@@ -1004,10 +1026,11 @@ button p {
 
 
 @media (max-width: 380px) {
-  
+
     #menueditcontact {
         left: 80% !important;
     }
+
     .menu-container {
         left: 65%;
     }
@@ -1015,15 +1038,17 @@ button p {
 
 
 @media (max-width: 350px) {
-.input_1 {
-    min-width: 285px;
-}
-.flex_container {
-    transform: translate(-234%, 150%) scale(1.5);
-}
-.contact_content_left {
-    width: 136vw;
-}
+    .input_1 {
+        min-width: 285px;
+    }
+
+    .flex_container {
+        transform: translate(-234%, 150%) scale(1.5);
+    }
+
+    .contact_content_left {
+        width: 136vw;
+    }
 }
 
 /* Standardmäßig verbergen */
@@ -1052,6 +1077,7 @@ button p {
     #arrow {
         display: none;
     }
+
     #menueditcontact {
         display: none !important;
     }
@@ -1062,6 +1088,7 @@ button p {
     #arrow {
         display: none;
     }
+
     #menueditcontact {
         display: none;
     }
@@ -1069,6 +1096,7 @@ button p {
     .showSlogan #arrow {
         display: inline-block !important;
     }
+
     #menueditcontact {
         display: inline-block !important;
         position: fixed;
@@ -1077,6 +1105,7 @@ button p {
         width: 56px;
         bottom: 80px;
     }
+
     .edit_informations {
         padding-top: 20px;
         flex-direction: column;

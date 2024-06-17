@@ -89,12 +89,12 @@ function renderContacts() {
     allContacts.sort((a, b) => a.name.localeCompare(b.name));
 
     // Group contacts by their starting letter
-    allContacts.forEach(contact => {
+    allContacts.forEach((contact, index) => {
         let initial = contact.name.charAt(0).toUpperCase();
         if (!contactsByLetter[initial]) {
             contactsByLetter[initial] = [];
         }
-        contactsByLetter[initial].push(contact);
+        contactsByLetter[initial].push({ contact, index });
     });
 
     // Render contacts by their starting letter
@@ -103,7 +103,7 @@ function renderContacts() {
             let containerId = 'contacts_container_' + letter;
             renderLetterSection(letter, containerId);
 
-            contactsByLetter[letter].forEach((contact, index) => {
+            contactsByLetter[letter].forEach(({ contact, index }) => {
                 insertContactIntoContainer(containerId, contact, index);
             });
         }
@@ -136,7 +136,7 @@ function insertContactIntoContainer(containerId, contact, index) {
     let container = document.getElementById(containerId);
     if (container) {
         let contactHTML = generateContactHTML(contact, index, contact.color);
-        contactHTML = contactHTML.replace('<div', `<div onclick="handleContactClick(allContacts[${index}], ${index})"`);
+        contactHTML = contactHTML.replace('<div', `<div onclick="handleContactClick(${index})"`);
         container.innerHTML += contactHTML;
     }
 }
@@ -265,12 +265,13 @@ function showTempDiv() {
     }, 2000); 
 }
 
-function handleContactClick(contact, index) {
+function handleContactClick(index) {
     if (window.innerWidth <= 620) {
         document.querySelector('.contacts_list').style.display = 'none';
         document.querySelector('.sliding_div').style.display = 'block';
         document.getElementById('slogan').classList.add('showSlogan');
     }
+    let contact = allContacts[index];
     populateEditDisplay(contact, index);
 }
 

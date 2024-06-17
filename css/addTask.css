@@ -2,6 +2,7 @@ body {
     max-width: 1440px;
     max-height: 1024px;
     overflow: auto !important;
+    font-family: 'Inter';
 }
 
 #assignContact {
