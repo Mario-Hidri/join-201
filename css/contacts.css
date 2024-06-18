@@ -372,7 +372,7 @@ body {
     display: flex;
     position: absolute;
     top: 206px;
-    left: 743px;
+    left: 690px;
     align-items: center;
 }
 
@@ -401,7 +401,7 @@ body {
     width: 580px;
     height: 364px;
     top: 311px;
-    left: 750px;
+    left: 690px;
 }
 
 .display_edit_contact {
@@ -584,6 +584,39 @@ button p {
     border-radius: 5px;
 }
 
+.tempDiv {
+    position: fixed;
+    /* Change this to fixed to make it relative to the viewport */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #2A3647;
+    width: 326px;
+    height: 74px;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    display: flex;
+    animation-duration: 0.5s;
+    opacity: 0;
+    gap: 8px;
+    z-index: 1000;
+    /* Ensure it is above other elements */
+}
+
+.show-temp {
+    animation-name: slideIn;
+    animation-fill-mode: forwards;
+    opacity: 1;
+}
+
+.hide-temp {
+    animation-name: slideOut;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
 
 @media (max-width: 1360px) {
 
@@ -607,15 +640,19 @@ button p {
 
 }
 
-@media (max-width: 1070px) {
+@media (max-width: 1090px) {
     .slogan {
         display: none;
     }
+}
+
+@media (max-width: 1070px) {
+
 
     .sliding_div {
         width: 100px;
         top: 150px;
-        left: 720px;
+        left: 690px;
     }
 
     .display_edit_contact {
@@ -629,22 +666,40 @@ button p {
     }
 }
 
-@media (max-width: 900px) {
-    .contacts_list {
-        padding: 32px 10px;
-        padding-top: 160px;
+@media (max-width: 915px) {
+    .sliding_div {
+        width: 100px;
+        top: 150px;
+        left: 640px;
     }
 
     .contacts_list button {
-        left: 244px;
+        background-color: #2A3647;
+        width: 352px;
+        height: 56px;
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: 251px;
     }
 
     .backgroudn_color_top_list {
-        width: 408px;
+        background-color: white;
+        height: 164px;
+        width: 398px;
     }
 
-    .sliding_div {
-        left: 675px;
+    .contacts_list {
+        position: fixed;
+        padding: 32px 1px;
+        left: 232px;
+        width: 400px;
+        height: calc(100vh - 192px);
+        background-color: #FFFFFF;
+        padding-top: 160px;
+        overflow: auto;
+        overflow-x: hidden;
     }
 }
 
@@ -674,6 +729,18 @@ button p {
     #slidingDiv,
     #slidingPage {
         transform: translate(-50%, -50%) scale(0.65) !important;
+    }
+}
+
+@media (max-width: 848px) {
+    .edit_informations a {
+        text-decoration: none;
+        color: #29ABE2;
+        font-size: 13px;
+    }
+    .display_edit_contact_name h1 {
+        margin: 0;
+        font-size: 45px;
     }
 }
 
@@ -1133,9 +1200,12 @@ button p {
         top: 59%;
         scale: 1.36;
     }
-    #slidingDiv, #slidingPage {
+
+    #slidingDiv,
+    #slidingPage {
         height: 91vh !important;
     }
+
     .center_image {
         position: absolute;
         top: 51%;
@@ -1167,11 +1237,14 @@ button p {
         left: 50%;
         transform: translate(-50%, -50%) !important;
     }
-    #slidingDiv, #slidingPage {
+
+    #slidingDiv,
+    #slidingPage {
         transform: translate(-50%, -50%) scale(0.55) !important;
         height: 104vh !important;
         width: 165vw !important;
     }
+
     .center_image {
         position: absolute;
         top: 46%;
@@ -1186,6 +1259,7 @@ button p {
         border: 3px solid #F6F7F8;
         border-radius: 70px;
     }
+
     .flex_container {
         display: flex;
         flex-direction: column;

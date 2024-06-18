@@ -54,12 +54,16 @@ function addContact() {
     saveContactsToFirebase();
     renderContacts();
 
-    let newContactIndex = allContacts.length - 1;
-    populateEditDisplay(contact, newContactIndex);
+    // Check screen width and only populate edit display if width is less than 620px
+    if (window.innerWidth > 620) {
+        let newContactIndex = allContacts.length - 1;
+        populateEditDisplay(contact, newContactIndex);
+    }
 
-    showTempDiv();
+    showTempDivContact(); // Call this function to show the temporary div
     hideElement('slidingPage');
 }
+
 
 function resetSelectedIndexes() {
     lastSelectedContactIndex = null;
@@ -252,21 +256,21 @@ function hideEditing() {
     document.getElementById('editContactForm').classList.add('hidden');
 }
 
-function showTempDiv() {
-    let tempDiv = document.getElementById('tempDiv');
-    tempDiv.classList.remove('hidden');
+function showTempDivContact() {
+    let tempDivContact = document.getElementById('tempDivContact');
+    tempDivContact.classList.remove('hidden');
 
-    tempDiv.classList.add('show-temp');
+    tempDivContact.classList.add('show-temp');
 
     setTimeout(function () {
-        tempDiv.classList.remove('show-temp');
-        tempDiv.classList.add('hide-temp');
+        tempDivContact.classList.remove('show-temp');
+        tempDivContact.classList.add('hide-temp');
 
         setTimeout(function () {
-            tempDiv.classList.remove('hide-temp');
-            tempDiv.classList.add('hidden'); 
-        }, 500); 
-    }, 2000); 
+            tempDivContact.classList.remove('hide-temp');
+            tempDivContact.classList.add('hidden'); 
+        }, 500);
+    }, 1500);
 }
 
 function handleContactClick(index) {
