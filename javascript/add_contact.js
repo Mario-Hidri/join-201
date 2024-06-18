@@ -206,7 +206,11 @@ function populateEditDisplay(contact, index) {
         hideEditDisplay();
     } else {
         updateEditDisplay(contact);
-        showEditDisplay();
+        if (window.innerWidth > 620) {
+            showEditDisplay();
+        } else {
+            document.querySelector('#editContactDisplay').classList.remove('hidden');
+        }
         lastSelectedContactIndex = index;
         currentEditIndex = index;
         setColorfulDivBackgroundColor(index);
@@ -266,20 +270,23 @@ function showTempDiv() {
 }
 
 function handleContactClick(index) {
-    if (window.innerWidth <= 620) {
-        document.querySelector('.contacts_list').style.display = 'none';
-        document.querySelector('.sliding_div').style.display = 'block';
-        document.getElementById('slogan').classList.add('showSlogan');
-    }
     let contact = allContacts[index];
     populateEditDisplay(contact, index);
+
+    if (window.innerWidth <= 620) {
+        document.querySelector('.contacts_list').style.display = 'none';
+        document.querySelector('#editContactDisplay').classList.remove('hidden');
+        document.querySelector('#slogan').classList.add('showSlogan');
+        document.querySelector('#arrow').classList.add('show');
+    }
 }
 
 function hideContactDetails() {
     if (window.innerWidth <= 620) {
         document.querySelector('.contacts_list').style.display = 'block';
-        document.querySelector('.sliding_div').style.display = 'none';
-        document.getElementById('slogan').classList.remove('showSlogan');
+        document.querySelector('#editContactDisplay').classList.add('hidden');
+        document.querySelector('#slogan').classList.remove('showSlogan');
+        document.querySelector('#arrow').classList.remove('show');
     }
 }
 

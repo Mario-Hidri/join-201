@@ -737,7 +737,9 @@ button p {
         justify-content: center;
         align-items: center;
         height: 88vh !important;
-        width: 182vw !important;
+        width: 164vw !important;
+        left: 0px;
+        top: 0px;
     }
 
     .contact_content_left {
@@ -776,8 +778,8 @@ button p {
         justify-content: center;
         padding-top: 20px;
         position: absolute;
-        top: 100px;
-        transform: translate(-190%, 150%) scale(1.5);
+        top: 57%;
+        scale: 1.5;
     }
 }
 
@@ -790,7 +792,6 @@ button p {
 @media (max-width: 620px) {
 
     .sliding_div {
-        display: none;
         left: 29px;
         top: 75px;
         position: relative;
@@ -902,8 +903,6 @@ button p {
         justify-content: center;
         padding-top: 20px;
         position: absolute;
-        top: 100px;
-        transform: translate(-185%, 150%) scale(1.5);
     }
 }
 
@@ -963,10 +962,6 @@ button p {
 
 @media (max-width: 400px) {
 
-    .flex_container {
-        transform: translate(-220%, 150%) scale(1.5);
-    }
-
     .contact_content_left {
         width: 141vw;
     }
@@ -992,7 +987,6 @@ button p {
     }
 
     .sliding_div {
-        display: none;
         left: 29px;
         top: 35px;
         position: relative;
@@ -1040,10 +1034,6 @@ button p {
 @media (max-width: 350px) {
     .input_1 {
         min-width: 285px;
-    }
-
-    .flex_container {
-        transform: translate(-234%, 150%) scale(1.5);
     }
 
     .contact_content_left {
@@ -1124,5 +1114,127 @@ button p {
 @media (min-height: 2010px) {
     .contacts_list {
         height: 93vh;
+    }
+}
+
+@media (min-height: 1319px) and (max-width:800px) {
+    .flex_container {
+        top: 60%;
+    }
+}
+
+@media (min-height: 968px) and (max-width:800px) {
+    .flex_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 20px;
+        position: absolute;
+        top: 59%;
+        scale: 1.36;
+    }
+    #slidingDiv, #slidingPage {
+        height: 91vh !important;
+    }
+    .center_image {
+        position: absolute;
+        top: 51%;
+        left: 49%;
+        transform: translate(-25%, -80%);
+        background-color: #D1D1D1;
+        height: 100px;
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 3px solid #F6F7F8;
+        border-radius: 70px;
+    }
+}
+
+@media (max-height: 769px) and (max-width:800px) {
+    .contact_content_left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        background-color: #2A3647;
+        width: 153vw;
+        height: 57vh;
+        border-radius: 27px 27px 0px 0px;
+        position: fixed;
+        top: 17%;
+        left: 50%;
+        transform: translate(-50%, -50%) !important;
+    }
+    #slidingDiv, #slidingPage {
+        transform: translate(-50%, -50%) scale(0.55) !important;
+        height: 104vh !important;
+        width: 165vw !important;
+    }
+    .center_image {
+        position: absolute;
+        top: 46%;
+        left: 49%;
+        transform: translate(-25%, -80%);
+        background-color: #D1D1D1;
+        height: 70px;
+        width: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 3px solid #F6F7F8;
+        border-radius: 70px;
+    }
+    .flex_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 20px;
+        position: absolute;
+        top: 64%;
+        scale: 1.0;
+    }
+}
+
+@media (max-height: 769px) and (max-width:720px) {
+    .contact_content_left {
+        width: 152vw;
+    }
+}
+
+@media (max-height: 769px) and (max-width:630px) {
+    .contact_content_left {
+        width: 151vw;
+    }
+}
+
+@media (max-height: 769px) and (max-width:570px) {
+    .contact_content_left {
+        width: 148vw;
+    }
+}
+
+@media (max-height: 769px) and (max-width:500px) {
+    .contact_content_left {
+        width: 146vw;
+    }
+}
+
+@media (max-height: 769px) and (max-width:440px) {
+    .contact_content_left {
+        width: 144vw;
+    }
+}
+
+@media (max-height: 769px) and (max-width:380px) {
+    .contact_content_left {
+        width: 140vw;
+    }
+}
+
+@media (max-height: 769px) and (max-width:330px) {
+    .contact_content_left {
+        width: 135vw;
     }
 }
