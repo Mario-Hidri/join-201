@@ -50,8 +50,18 @@ async function loadActiveUser() {
     if (activeUser) {
         const userKey = activeUser.key;
         if (userKey === "guest") {
-            document.getElementById('activeUser').innerHTML = "Guest";
-            document.getElementById('userInitials').innerHTML = "G";
+            const activeUserElement = document.getElementById('activeUser');
+            const userInitialsElement = document.getElementById('userInitials');
+            if (activeUserElement) {
+                activeUserElement.innerHTML = "Guest";
+            } else {
+                console.error('Element with ID activeUser not found');
+            }
+            if (userInitialsElement) {
+                userInitialsElement.innerHTML = "G";
+            } else {
+                console.error('Element with ID userInitials not found');
+            }
             return;
         }
         try {
@@ -65,8 +75,18 @@ async function loadActiveUser() {
                 return;
             }
             const name = userData.name;
-            document.getElementById('activeUser').innerHTML = name;
-            document.getElementById('userInitials').innerHTML = getInitials(name);
+            const activeUserElement = document.getElementById('activeUser');
+            const userInitialsElement = document.getElementById('userInitials');
+            if (activeUserElement) {
+                activeUserElement.innerHTML = name;
+            } else {
+                console.error('Element with ID activeUser not found');
+            }
+            if (userInitialsElement) {
+                userInitialsElement.innerHTML = getInitials(name);
+            } else {
+                console.error('Element with ID userInitials not found');
+            }
         } catch (error) {
             console.error('Error loading active user from Firebase:', error);
         }
@@ -78,7 +98,12 @@ async function loadActiveUser() {
 function loadActiveUserInitials() {
     const activeUser = JSON.parse(localStorage.getItem('activeUser'));
     if (activeUser && typeof activeUser.data.name === 'string') {
-        document.getElementById('userInitials').innerHTML = getInitials(activeUser.data.name);
+        const userInitialsElement = document.getElementById('userInitials');
+        if (userInitialsElement) {
+            userInitialsElement.innerHTML = getInitials(activeUser.data.name);
+        } else {
+            console.error('Element with ID userInitials not found');
+        }
     } else {
         console.error('No active user found in localStorage or name is not a string');
     }
@@ -116,8 +141,6 @@ function openLogIn() {
     }, 2000);
 }
 
-
-
 function loadTaskNumbers() {
     setTaskCount('allTasks', tasks.length);
     setTaskCount('allTasksInBoard', tasks.length);
@@ -143,15 +166,15 @@ function loadNearestDeadline() {
     const noDeadlineElement = document.getElementById('noDeadline');
 
     if (urgentTasks.length === 0) {
-        nearestDeadlineElement.style.display = 'none';
-        deadlineTextElement.style.display = 'none';
-        noDeadlineElement.style.display = 'block';
+        if (nearestDeadlineElement) nearestDeadlineElement.style.display = 'none';
+        if (deadlineTextElement) deadlineTextElement.style.display = 'none';
+        if (noDeadlineElement) noDeadlineElement.style.display = 'block';
         return;
     }
 
-    nearestDeadlineElement.style.display = 'block';
-    deadlineTextElement.style.display = 'block';
-    noDeadlineElement.style.display = 'none';
+    if (nearestDeadlineElement) nearestDeadlineElement.style.display = 'block';
+    if (deadlineTextElement) deadlineTextElement.style.display = 'block';
+    if (noDeadlineElement) noDeadlineElement.style.display = 'none';
 
     let nearestDate = urgentTasks.map(task => new Date(task.date)).sort((a, b) => a - b)[0];
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -163,9 +186,6 @@ function loadNearestDeadline() {
         console.error('Element für die nächste Frist nicht gefunden');
     }
 }
-
-
-
 
 document.addEventListener('DOMContentLoaded', (event) => {
     start();
