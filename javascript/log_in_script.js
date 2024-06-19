@@ -125,25 +125,46 @@ document.addEventListener("DOMContentLoaded", () => {
     const legalNoticePopup = document.getElementById("legalNoticePopup");
 
     const showPopup = (popup) => {
-        overlay.style.display = "block";
-        popup.style.display = "block";
+        if (overlay && popup) {
+            overlay.style.display = "block";
+            popup.style.display = "block";
+        } else {
+            console.error('Overlay or popup element not found');
+        }
     };
 
     const hidePopups = () => {
-        overlay.style.display = "none";
-        privacyPolicyPopup.style.display = "none";
-        legalNoticePopup.style.display = "none";
+        if (overlay && privacyPolicyPopup && legalNoticePopup) {
+            overlay.style.display = "none";
+            privacyPolicyPopup.style.display = "none";
+            legalNoticePopup.style.display = "none";
+        } else {
+            console.error('Overlay or popup elements not found');
+        }
     };
 
-    privacyPolicyLink.addEventListener("click", (event) => {
-        event.preventDefault();
-        showPopup(privacyPolicyPopup);
-    });
+    if (privacyPolicyLink) {
+        privacyPolicyLink.addEventListener("click", (event) => {
+            event.preventDefault();
+            showPopup(privacyPolicyPopup);
+        });
+    } else {
+        console.error('Element with ID privacyPolicyLink not found');
+    }
 
-    legalNoticeLink.addEventListener("click", (event) => {
-        event.preventDefault();
-        showPopup(legalNoticePopup);
-    });
+    if (legalNoticeLink) {
+        legalNoticeLink.addEventListener("click", (event) => {
+            event.preventDefault();
+            showPopup(legalNoticePopup);
+        });
+    } else {
+        console.error('Element with ID legalNoticeLink not found');
+    }
 
-    overlay.addEventListener("click", hidePopups);
+    if (overlay) {
+        overlay.addEventListener("click", hidePopups);
+    } else {
+        console.error('Element mit ID overlay not found');
+    }
 });
+

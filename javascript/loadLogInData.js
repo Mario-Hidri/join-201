@@ -34,8 +34,18 @@ async function loadActiveUser() {
     if (activeUser) {
         const userKey = activeUser.key;
         if (userKey === "guest") {
-            document.getElementById('activeUser').innerHTML = "Guest";
-            document.getElementById('userInitials').innerHTML = "G";
+            const activeUserElement = document.getElementById('activeUser');
+            const userInitialsElement = document.getElementById('userInitials');
+            if (activeUserElement) {
+                activeUserElement.innerHTML = "Guest";
+            } else {
+                console.error('Element with ID activeUser not found');
+            }
+            if (userInitialsElement) {
+                userInitialsElement.innerHTML = "G";
+            } else {
+                console.error('Element with ID userInitials not found');
+            }
             return;
         }
         try {
@@ -49,8 +59,18 @@ async function loadActiveUser() {
                 return;
             }
             const name = userData.name;
-            document.getElementById('activeUser').innerHTML = name;
-            document.getElementById('userInitials').innerHTML = getInitials(name);
+            const activeUserElement = document.getElementById('activeUser');
+            const userInitialsElement = document.getElementById('userInitials');
+            if (activeUserElement) {
+                activeUserElement.innerHTML = name;
+            } else {
+                console.error('Element with ID activeUser not found');
+            }
+            if (userInitialsElement) {
+                userInitialsElement.innerHTML = getInitials(name);
+            } else {
+                console.error('Element with ID userInitials not found');
+            }
         } catch (error) {
             console.error('Error loading active user from Firebase:', error);
         }
@@ -58,6 +78,7 @@ async function loadActiveUser() {
         console.error('No active user found in localStorage');
     }
 }
+
 
 function loadActiveUserInitials() {
     const activeUser = JSON.parse(localStorage.getItem('activeUser'));
@@ -111,6 +132,14 @@ function closeSubmenu() {
 document.addEventListener('click', (event) => {
     const submenu = document.getElementById('submenucontainer');
     const userDiv = document.querySelector('.user');
+    if (!submenu) {
+        console.error('Element with ID submenucontainer not found');
+        return;
+    }
+    if (!userDiv) {
+        console.error('Element with class user not found');
+        return;
+    }
     if (!submenu.contains(event.target) && !userDiv.contains(event.target)) {
         closeSubmenu();
     }

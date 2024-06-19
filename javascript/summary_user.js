@@ -1,5 +1,9 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+    start();
+});
+
 async function start() {
-    includeHTML();
+    await includeHTML();
     await loadLogInData();
     loadActiveUser();
     loadActiveUserInitials();
@@ -187,6 +191,4 @@ function loadNearestDeadline() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    start();
-});
+
