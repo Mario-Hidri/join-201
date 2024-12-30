@@ -51,18 +51,18 @@
                 <div class="fourth-size">
                     <div class="taskHeader">
                         <p class="toDoText">To do</p>
-                        <a href="./add_task.html">
+                        <span onclick="addTaskOnToDo()">
                             <img class="icon" src="./assets/img/addTask.png" alt="">
-                        </a>
+                        </span>
                     </div>
                     <div id="toDo" class="dragArea" ondrop="moveTo(id='toDo')" ondragover="allowDrop(event)"></div>
                 </div>
                 <div class="fourth-size">
                     <div class="taskHeader">
                         <p class="inProgressText">In Progress</p>
-                        <a href="./add_task.html">
+                        <span onclick="addTaskOnInProgress()">
                             <img class="icon" src="./assets/img/addTask.png" alt="">
-                        </a>
+                        </span>
                     </div>
                     <div id="inProgress" class="dragArea" ondrop="moveTo(id='inProgress')"
                         ondragover="allowDrop(event)"></div>
@@ -70,9 +70,9 @@
                 <div class="fourth-size">
                     <div class="taskHeader">
                         <p class="awaitFeedback">Await Feedback</p>
-                        <a href="./add_task.html">
+                        <span onclick="addTaskOnAwaitFeedback()">
                             <img class="icon" src="./assets/img/addTask.png" alt="">
-                        </a>
+                        </span>
                     </div>
                     <div id="awaitFeedback" class="dragArea" ondrop="moveTo(id='awaitFeedback')"
                         ondragover="allowDrop(event)"></div>
@@ -95,5 +95,13 @@
     </div>
 
 </div>
+
+<section>
+    <div id="tempDivTask" class="tempDivTask hidden">
+        <h1>Task added to Board</h1>
+        <img src="./assets/img/board_img/bordi.svg" alt="">
+    </div>
+
+</section>
 </body>
 </html>

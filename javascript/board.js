@@ -37,7 +37,6 @@ function filter() {
 }
 
 function loadTasks(filter) {
-
   const toDo = document.getElementById('toDo');
   const inProgress = document.getElementById('inProgress');
   const awaitFeedback = document.getElementById('awaitFeedback');
@@ -60,7 +59,6 @@ function loadTasks(filter) {
   }
   loadPlaceholderForSectionWithNoTask();
 }
-
 
 function removeAllTask() {
   const toDo = document.getElementById('toDo');
@@ -236,7 +234,6 @@ function openTaskDialog(i) {
   taskContainer.classList.remove('d-noneAddTask');
   const containerOpenTaskInBoardSize = document.getElementById('containerOpenTaskInBoardSize');
   containerOpenTaskInBoardSize.classList.add('slide-in');
-   
 }
 
 function loadContactsOnBigTask(taskNumber, task) {

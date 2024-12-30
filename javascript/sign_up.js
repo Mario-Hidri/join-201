@@ -1,6 +1,6 @@
 let signUpDataJson = [];
 
-const url = "https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/";
+const url = "https://join-5d8da-default-rtdb.europe-west1.firebasedatabase.app/login";
 
 async function getSignUpData() {
     let email = document.getElementById('inputEmailSignUp').value;
