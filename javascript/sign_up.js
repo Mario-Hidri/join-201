@@ -1,14 +1,13 @@
 let signUpDataJson = [];
 
-const url = "https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/";
+const usersUrl = "https://join-backend-2c8c7-default-rtdb.europe-west1.firebasedatabase.app/users";
 
 async function getSignUpData() {
     let email = document.getElementById('inputEmailSignUp').value;
     let password = document.getElementById('secondPasswordSignUp').value;
     let signUpName = document.getElementById('inputNameSignUp').value;
     let signUpData = signUpDataTemplate(email, password, signUpName);
-    signUpDataJson.push(signUpData);
-    saveSignUpDataInFirebase();
+    await saveSignUpDataInFirebase(signUpData);
 }
 
 function signUpDataTemplate(email, password, signUpName) {
@@ -19,13 +18,13 @@ function signUpDataTemplate(email, password, signUpName) {
     };
 }
 
-async function saveSignUpDataInFirebase() {
-    await fetch(url + '.json', {
+async function saveSignUpDataInFirebase(signUpData) {
+    await fetch(usersUrl + '.json', {
         method: "POST",
-        header: {
+        headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(signUpDataJson)
+        body: JSON.stringify(signUpData)
     });
 }
 
@@ -94,15 +93,17 @@ async function loadDataToFirebaseAndCheckPasswords(event) {
     let password2Input = document.getElementById('secondPasswordSignUp');
     checkNameInputTemplate(nameInput);
     checkEmailInputTemplate(emailInput);
-    let password1 = password1Input.value;
-    let password2 = password2Input.value;
-    if (password1 === "" && password2 === "") {
+    checkPasswordInputTemplate(password1Input, password2Input);
+
+    if (password1Input.value.length === 0) {
         password1Template(password1Input);
-        password2Template(password2Input);
-    } else if (password1 !== password2) {
+        return;
+    } else if (password2Input.value.length === 0) {
+        password2Template(password1Input, password2Input);
+        return;
+    } else if (password1Input.value !== password2Input.value) {
         passwordMismatchTemplate(password1Input, password2Input);
-    } else if (password1 === password2 && document.getElementById('errorMessageMismatchSignUp')) {
-        removeErrorMessages(password1Input, password2Input);
+        return;
     } else if (!document.getElementById('errorMessageMismatchSignUp')) {
         await getSignUpData();
         finalSubmit(signUpContainer);
@@ -141,66 +142,70 @@ function passwordMismatchTemplate(password1Input, password2Input) {
 
 function password1Template(password1Input) {
     if (!password1Input.parentNode.querySelector('.error-message')) {
-        let errorMessage = document.createElement('div');
-        errorMessage.textContent = 'Bitte Feld ausfüllen';
-        errorMessage.classList.add('error-message');
-        errorMessage.id = 'errorMessagePassword1SignUp';
-        password1Input.parentNode.appendChild(errorMessage);
+        let password1ErrorMessage = document.createElement('div');
+        password1ErrorMessage.textContent = 'Ups! your password is to short and must be at least 6 characters long';
+        password1ErrorMessage.classList.add('error-message');
+        password1ErrorMessage.id = 'errorMessageShortPasswordSignUp';
+        password1Input.parentNode.appendChild(password1ErrorMessage);
     }
     password1Input.classList.add('error-border');
     return;
 }
 
-function password2Template(password2Input) {
-    if (!password2Input.parentNode.querySelector('.error-message')) {
-        let errorMessage = document.createElement('div');
-        errorMessage.textContent = 'Bitte Feld ausfüllen';
-        errorMessage.classList.add('error-message');
-        errorMessage.id = 'errorMessagePassword2SignUp';
-        password2Input.parentNode.appendChild(errorMessage);
+function password2Template(password1Input, password2Input) {
+    if (password1Input.value.length > 0) {
+        let password2ErrorMessage = document.createElement('div');
+        password2ErrorMessage.textContent = 'Ups! your password dont match';
+        password2ErrorMessage.classList.add('error-message');
+        password2ErrorMessage.id = 'errorMessageMismatchSignUp';
+        password2Input.parentNode.appendChild(password2ErrorMessage);
+        password1Input.classList.add('error-border');
+        password2Input.classList.add('error-border');
+        return;
+    } else if (password1Input.value.length == 0) {
+        password1Template(password1Input);
+        return;
     }
-    password2Input.classList.add('error-border');
-    return; 
 }
 
-function checkEmailInputTemplate(emailInput) {
-    if (emailInput.value.trim() === '') {
-        if (!emailInput.parentNode.querySelector('.error-message')) {
-            let errorMessage = document.createElement('div');
-            errorMessage.textContent = 'Bitte Email-Adresse eingeben!';
-            errorMessage.classList.add('error-message');
-            errorMessage.id = 'errorMessageEmailSignUp';
-            emailInput.parentNode.appendChild(errorMessage);
-        }
-        emailInput.classList.add('error-border');
-        return;
-    }
-    if (!emailInput.value.includes('@')) {
-        let errorMessage = emailInput.parentNode.querySelector('.error-message');
+function checkPasswordInputTemplate(password1Input, password2Input) {
+    let errorMessage = password1Input.parentNode.querySelector('.error-message');
+    if (password1Input.value.length >= 6) {
         if (errorMessage) {
-            errorMessage.textContent = 'Bitte @-Zeichen beachten!';
-        } else {
-            errorMessage = document.createElement('div');
-            errorMessage.textContent = 'Bitte @-Zeichen beachten!';
-            errorMessage.classList.add('error-message');
-            errorMessage.id = 'errorMessageEmailSignUp';
-            emailInput.parentNode.appendChild(errorMessage);
+            errorMessage.remove();
         }
-        emailInput.classList.add('error-border');
+        password1Input.classList.remove('error-border');
+    } else if (password1Input.value.length < 6) {
+        if (!errorMessage) {
+            errorMessage = document.createElement('div');
+            errorMessage.textContent = 'Ups! your password is to short and must be at least 6 characters long';
+            errorMessage.classList.add('error-message');
+            errorMessage.id = 'errorMessageShortPasswordSignUp';
+            password1Input.parentNode.appendChild(errorMessage);
+        }
+        password1Input.classList.add('error-border');
         return;
     }
-    let errorMessage = emailInput.parentNode.querySelector('.error-message');
-    if (errorMessage) {
-        errorMessage.remove();
+    if (password1Input.value == password2Input.value) {
+        if (document.getElementById('errorMessageMismatchSignUp')) {
+            removeErrorMessages(password1Input, password2Input);
+        }
     }
-    emailInput.classList.remove('error-border');
 }
 
 function checkNameInputTemplate(nameInput) {
-    if (nameInput.value.trim() === '') {
-        if (!nameInput.parentNode.querySelector('.error-message')) {
-            let nameErrorMessage = document.createElement('div');
-            nameErrorMessage.textContent = 'Bitte Name eingeben !';
+    let nameErrorMessage = nameInput.parentNode.querySelector('.error-message');
+    if (nameInput.value.length > 0) {
+        if (nameErrorMessage) {
+            nameErrorMessage.remove();
+        }
+        nameInput.classList.remove('error-border');
+    } else if (nameInput.value.length == 0) {
+        if (nameErrorMessage) {
+            nameErrorMessage.textContent = 'Please insert your Name!';
+        } else {
+            nameErrorMessage = document.createElement('div');
+            nameErrorMessage.textContent = 'Please insert your Name!';
             nameErrorMessage.classList.add('error-message');
             nameErrorMessage.id = 'errorMessageNameSignUp';
             nameInput.parentNode.appendChild(nameErrorMessage);
@@ -219,123 +224,49 @@ function removeErrorMessageOnNameInput() {
         restoreErrorMessageOnNameInput(input, errorMessage);
         input.classList.add('error-border');
     }
-    if (input.value.length > 0) {
-        input.classList.remove('error-border');
-    }
 }
 
 function restoreErrorMessageOnNameInput(input, errorMessage) {
-    if (input.value.length <= 0 && !errorMessage) {
+    input.classList.add('error-border');
+    if (!errorMessage) {
         errorMessage = document.createElement('div');
-        errorMessage.textContent = 'Bitte Name eingeben';
+        errorMessage.textContent = 'Please insert your Name!';
         errorMessage.classList.add('error-message');
         errorMessage.id = 'errorMessageNameSignUp';
-        let inputContainer = document.querySelector('.input-container');
-        inputContainer.appendChild(errorMessage);
+        input.parentNode.appendChild(errorMessage);
     }
 }
 
-function removeErrorMessageOnEmailInput() {
-    let input = document.getElementById('inputEmailSignUp');
-    let errorMessage = document.getElementById('errorMessageEmailSignUp')
-    if (input.value.length > 0 && errorMessage) {
-        errorMessage.remove();
-    } else {
-        restoreErrorMessageOnEmailInput(input, errorMessage, input.parentNode);
-        input.classList.add('error-border');
-    }
-    if (input.value.length > 0) {
-        input.classList.remove('error-border');
-    }
-}
-
-function restoreErrorMessageOnEmailInput(input, errorMessage, container) {
-    if (input.value.length <= 0 && !errorMessage) {
-        errorMessage = document.createElement('div');
-        errorMessage.textContent = 'Bitte Email-Adresse eingeben !';
-        errorMessage.classList.add('error-message');
-        errorMessage.id = 'errorMessageEmailSignUp';
-        let inputContainer = document.querySelector('.input-container');
-        container.appendChild(errorMessage);
-    }
-}
-
-function removeErrorMessageOnPassword1Input() {
-    let input = document.getElementById('firstPasswordSignUp');
-    let errorMessage = document.getElementById('errorMessagePassword1SignUp')
-    if (input.value.length > 0 && errorMessage) {
-        errorMessage.remove();
-    } else {
-        restoreErrorMessageOnPassword1Input(input, errorMessage, input.parentNode);
-        input.classList.add('error-border');
-    }
-    if (input.value.length > 0) {
-        input.classList.remove('error-border');
-    }
-}
-
-function restoreErrorMessageOnPassword1Input(input, errorMessage, container) {
-    if (input.value.length <= 0 && !errorMessage) {
-        errorMessage = document.createElement('div');
-        errorMessage.textContent = 'Bitte Feld ausfüllen !';
-        errorMessage.classList.add('error-message');
-        errorMessage.id = 'errorMessagePassword1SignUp';
-        let inputContainer = document.querySelector('.input-container');
-        container.appendChild(errorMessage);
-    }
-}
-
-function removeErrorMessageOnPassword2Input() {
-    let input = document.getElementById('secondPasswordSignUp');
-    let errorMessage = document.getElementById('errorMessagePassword2SignUp')
-    if (input.value.length > 0 && errorMessage) {
-        errorMessage.remove();
-    } else {
-        restoreErrorMessageOnPassword2Input(input, errorMessage, input.parentNode);
-        input.classList.add('error-border');
-    }
-    if (input.value.length > 0) {
-        input.classList.remove('error-border');
-    }
-}
-
-function restoreErrorMessageOnPassword2Input(input, errorMessage) {
-    if (input.value.length <= 0 && errorMessage) {
-        if (errorMessage.textContent !== 'Bitte Feld ausfüllen !') {
+function checkEmailInputTemplate(emailInput) {
+    let errorMessage = emailInput.parentNode.querySelector('.error-message');
+    if (emailInput.value.length > 0 && emailInput.value.includes('@')) {
+        if (errorMessage) {
             errorMessage.remove();
         }
-        if (!input.parentNode.querySelector('.error-message')) {
+        emailInput.classList.remove('error-border');
+        return;
+    }
+    if (!emailInput.value.includes('@')) {
+        let errorMessage = emailInput.parentNode.querySelector('.error-message');
+        if (errorMessage) {
+            errorMessage.textContent = 'Bitte @-Zeichen beachten!';
+        } else {
             errorMessage = document.createElement('div');
-            errorMessage.textContent = 'Bitte Feld ausfüllen !';
+            errorMessage.textContent = 'Bitte @-Zeichen beachten!';
             errorMessage.classList.add('error-message');
-            errorMessage.id = 'errorMessagePassword2SignUp';
-            let inputContainer = input.parentNode;
-            inputContainer.appendChild(errorMessage);
+            errorMessage.id = 'errorMessageEmailSignUp';
+            emailInput.parentNode.appendChild(errorMessage);
         }
-    } else {
-        if (errorMessage && errorMessage.textContent === 'Bitte Feld ausfüllen !') {
-            errorMessage.remove();
-        }
+        emailInput.classList.add('error-border');
+        return;
     }
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-    const checkbox = document.getElementById('privacyCheckbox');
-    const button = document.getElementById('submit');
-    button.disabled = !checkbox.checked;
-    // Event listener for checkbox state change
-    checkbox.addEventListener('change', function () {
-        button.disabled = !this.checked;
-    });
-});
 
 document.addEventListener("DOMContentLoaded", () => {
     const privacyPolicyLink = document.getElementById("privacyPolicyLink");
     const legalNoticeLink = document.getElementById("legalNoticeLink");
-    const privacyPolicyLinkSignUp = document.getElementById("privacyLinkSignUp");
     const overlay = document.getElementById("overlay");
-    const privacyPolicyPopup = document.getElementById("privacyPolicyPopup"); // Hier korrigiert
-
+    const privacyPolicyPopup = document.getElementById("privacyPolicyPopup");
     const legalNoticePopup = document.getElementById("legalNoticePopup");
 
     const showPopup = (popup) => {
@@ -349,11 +280,6 @@ document.addEventListener("DOMContentLoaded", () => {
         legalNoticePopup.style.display = "none";
     };
 
-    privacyPolicyLinkSignUp.addEventListener("click", (event) => {
-        event.preventDefault();
-        showPopup(privacyPolicyPopup);
-    });
-
     privacyPolicyLink.addEventListener("click", (event) => {
         event.preventDefault();
         showPopup(privacyPolicyPopup);
@@ -366,4 +292,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
     overlay.addEventListener("click", hidePopups);
 });
-

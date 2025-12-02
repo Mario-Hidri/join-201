@@ -1,8 +1,6 @@
-// Firebase configuration
 const firebaseConfig = {
-    databaseURL: "https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/"
+    databaseURL: "https://join-backend-2c8c7-default-rtdb.europe-west1.firebasedatabase.app/"
 };
 
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();

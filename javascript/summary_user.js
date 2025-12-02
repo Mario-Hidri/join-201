@@ -9,7 +9,7 @@ async function start() {
     showWelcomeScreen();
 }
 
-const urlLogInData = "https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/LogInData.json";
+const urlLogInData = "https://join-backend-2c8c7-default-rtdb.europe-west1.firebasedatabase.app/LogInData.json";
 const logInName = [];
 const activeKey = [];
 const guestData = ["Guest"];
@@ -22,14 +22,10 @@ async function loadLogInData() {
         }
         const data = await response.json();
         for (const key in data) {
-            const userArray = data[key];
-            if (Array.isArray(userArray) && userArray.length > 0) {
-                userArray.forEach(user => {
-                    if (user.name) {
-                        logInName.push(user.name);
-                        activeKey.push(key);
-                    }
-                });
+            const user = data[key];
+            if (user && user.name) {
+                logInName.push(user.name);
+                activeKey.push(key);
             }
         }
     } catch (error) {
@@ -65,7 +61,7 @@ async function loadActiveUser() {
             return;
         }
         try {
-            const response = await fetch(`https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/LogInData/${userKey}.json`);
+            const response = await fetch(`https://join-backend-2c8c7-default-rtdb.europe-west1.firebasedatabase.app/LogInData/${userKey}.json`);
             if (!response.ok) {
                 throw new Error('Network response was not ok ' + response.statusText);
             }
@@ -122,7 +118,7 @@ async function deleteActiveUser() {
             localStorage.removeItem('activeUser');
             return;
         }
-        const deleteResponse = await fetch(`https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/LogInData/${userKey}.json`, {
+        const deleteResponse = await fetch(`https://join-backend-2c8c7-default-rtdb.europe-west1.firebasedatabase.app/LogInData/${userKey}.json`, {
             method: 'DELETE'
         });
         if (!deleteResponse.ok) {

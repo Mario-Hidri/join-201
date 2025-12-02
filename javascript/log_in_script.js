@@ -1,4 +1,4 @@
-const loginUrl = "https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/.json";
+const loginUrl = "https://join-backend-2c8c7-default-rtdb.europe-west1.firebasedatabase.app/users.json";
 
 async function checkLogIn(event) {
     event.preventDefault();
@@ -7,10 +7,10 @@ async function checkLogIn(event) {
 
     try {
         let data = await fetchUserData();
-        let userEntry = findUser(data, email, password);
+        let userData = findUser(data, email, password);
 
-        if (userEntry) {
-            handleSuccessfulLogin(userEntry);
+        if (userData) {
+            handleSuccessfulLogin(userData);
         } else {
             passwordError(document.getElementById('passwordLogIn'));
         }
@@ -26,34 +26,28 @@ async function fetchUserData() {
 }
 
 function findUser(data, email, password) {
-    for (let key in data) {
-        if (data.hasOwnProperty(key)) {
-            let userDataArray = data[key];
-            if (Array.isArray(userDataArray)) {
-                for (let userData of userDataArray) {
-                    if (userData.email === email && userData.password === password) {
-                        return [key, userData];
-                    }
-                }
-            }
+    if (!data) return null;
+    for (const key in data) {
+        const userData = data[key];
+        if (userData && userData.email === email && userData.password === password) {
+            return userData;
         }
     }
     return null;
 }
 
-async function handleSuccessfulLogin(userEntry) {
-    const [key, userData] = userEntry;
+async function handleSuccessfulLogin(userData) {
     const userName = userData.name;
     const userKey = await saveActiveUserInFirebase(userName);
     const activeUser = { key: userKey, data: { name: userName } };
     localStorage.setItem('activeUser', JSON.stringify(activeUser));
-    localStorage.setItem('hasShownWelcome', 'false');  // Ensure to reset this flag on successful login
+    localStorage.setItem('hasShownWelcome', 'false');
     window.location.href = './summary_user.html';
 }
 
 async function saveActiveUserInFirebase(name) {
     try {
-        const response = await fetch('https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/LogInData.json', {
+        const response = await fetch('https://join-backend-2c8c7-default-rtdb.europe-west1.firebasedatabase.app/LogInData.json', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -70,7 +64,7 @@ async function saveActiveUserInFirebase(name) {
 function guestLogIn() {
     const guestUser = { key: "guest", data: { name: "Guest" } };
     localStorage.setItem('activeUser', JSON.stringify(guestUser));
-    localStorage.setItem('hasShownWelcome', 'false');  // Ensure to reset this flag on guest login
+    localStorage.setItem('hasShownWelcome', 'false');
     window.location.href = './summary_user.html';
 }
 
