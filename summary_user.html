@@ -26,8 +26,8 @@
 <body onload="start()">
     <header class="spaceBetween spaceBetweenMobile" w3-include-html="./assets/templates/header.html"></header>
 
-
     <div class="sideMenu" w3-include-html="./assets/templates/side_menu.html"></div>
+
     <div class="rightSide">
 
         <section class="join360KeyMetricsAtAGlance">
@@ -42,22 +42,21 @@
         <section class="summaryContent">
             <div class="firstRow">
                 <div class="summaryContentRows imageHover summaryContentRowsLeft">
-                    <div class="summaryContentImg1">
-                    </div>
+                    <div class="summaryContentImg1"></div>
                     <div class="summaryContentInfo">
                         <h1 id="allTasks"></h1>
                         <p>To-Do</p>
                     </div>
                 </div>
                 <div class="summaryContentRows">
-                    <div class="summaryContentImg2">
-                    </div>
+                    <div class="summaryContentImg2"></div>
                     <div class="summaryContentInfo">
                         <h1 id="numberDoneTasks">1</h1>
                         <p>Done</p>
                     </div>
                 </div>
             </div>
+
             <div class="summaryContentRow2">
                 <div class="summaryContentRow2Left">
                     <div class="summaryContentImgSecondRow">
@@ -94,26 +93,21 @@
             </div>
         </section>
 
+        <!-- Dynamische Begrüßung -->
         <section class="summaryGreetUser">
-            <h1>Good Morning,</h1>
+            <h1 id="greetingText">Good Morning,</h1>
             <h2 id="activeUser"></h2>
         </section>
     </div>
 
-
-    <!-- Ensure this section in summaryUser.html -->
+    <!-- Welcome-Screen mit dynamischer Begrüßung -->
     <div id="welcomeScreen" class="welcomeScreen">
         <h1 class="welcomeMessage">
-            Good Morning, <span id="username" class="username"></span>
+            <span id="welcomeGreeting">Good Morning,</span>
+            <span id="username" class="username"></span>
         </h1>
     </div>
 
-
-
-
 </body>
-
-</html>
-
 
 </html>
