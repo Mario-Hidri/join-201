@@ -1,4 +1,9 @@
+document.addEventListener("DOMContentLoaded", (event) => {
+  start();
+});
+
 async function start() {
+<<<<<<< HEAD
     includeHTML();
     await loadLogInData();
     loadActiveUser();
@@ -31,13 +36,22 @@ async function loadLogInData() {
     } catch (error) {
         console.error('There has been a problem with your fetch operation:', error);
     }
+=======
+  await includeHTML();
+  showWelcomeScreen();
+  loadActiveUserInitials();
+  await loadTasksFromFirebase();
+  loadTaskNumbers();
+  loadNearestDeadline();
+>>>>>>> 341301359b3698bf27a02cb9c135bb0d347e578d
 }
 
 function openLegalNotice() {
-    window.open('/legal_notice.html', '_blank');
+  window.open("/legal_notice.html", "_blank");
 }
 
 function openPrivacyPolice() {
+<<<<<<< HEAD
     window.open('/privay_policy.html', '_blank');
 }
 
@@ -89,23 +103,29 @@ async function loadActiveUser() {
     } else {
         console.error('No active user found in localStorage');
     }
+=======
+  window.open("/privay_policy.html", "_blank");
+>>>>>>> 341301359b3698bf27a02cb9c135bb0d347e578d
 }
 
 function loadActiveUserInitials() {
-    const activeUser = JSON.parse(localStorage.getItem('activeUser'));
-    if (activeUser && typeof activeUser.data.name === 'string') {
-        const userInitialsElement = document.getElementById('userInitials');
-        if (userInitialsElement) {
-            userInitialsElement.innerHTML = getInitials(activeUser.data.name);
-        } else {
-            console.error('Element with ID userInitials not found');
-        }
+  const activeUser = JSON.parse(localStorage.getItem("activeUser"));
+  if (activeUser && typeof activeUser.data.name === "string") {
+    const userInitialsElement = document.getElementById("userInitials");
+    if (userInitialsElement) {
+      userInitialsElement.innerHTML = getInitials(activeUser.data.name);
     } else {
-        console.error('No active user found in localStorage or name is not a string');
+      console.error("Element with ID userInitials not found");
     }
+  } else {
+    console.error(
+      "No active user found in localStorage or name is not a string"
+    );
+  }
 }
 
 function getInitials(name) {
+<<<<<<< HEAD
     return name.split(' ').map(word => word.charAt(0)).join('');
 }
 
@@ -128,61 +148,65 @@ async function deleteActiveUser() {
     } catch (error) {
         console.error('Error deleting user data:', error);
     }
+=======
+  return name
+    .split(" ")
+    .map((word) => word.charAt(0))
+    .join("");
+>>>>>>> 341301359b3698bf27a02cb9c135bb0d347e578d
 }
 
 function openLogIn() {
-    deleteActiveUser();
-    setTimeout(() => {
-        window.location.href = '/log_in.html';
-    }, 2000);
+  window.location.href = "/log_in.html";
 }
 
 function loadTaskNumbers() {
-    setTaskCount('allTasks', tasks.length);
-    setTaskCount('allTasksInBoard', tasks.length);
-    setTaskCount('numberDoneTasks', tasks.filter(task => task.board === "done").length);
-    setTaskCount('numberProgressTasks', tasks.filter(task => task.board === "inProgress").length);
-    setTaskCount('numberFeedbackTasks', tasks.filter(task => task.board === "awaitFeedback").length);
-    setTaskCount('numberUrgentTasks', tasks.filter(task => task.priority === "urgent").length);
+  setTaskCount("allTasks", tasks.length);
+  setTaskCount("allTasksInBoard", tasks.length);
+  setTaskCount("numberDoneTasks",tasks.filter((task) => task.board === "done").length);
+  setTaskCount("numberProgressTasks",tasks.filter((task) => task.board === "inProgress").length);
+  setTaskCount("numberFeedbackTasks",tasks.filter((task) => task.board === "awaitFeedback").length );
+  setTaskCount("numberUrgentTasks",tasks.filter((task) => task.priority === "urgent").length);
 }
 
 function setTaskCount(elementId, count) {
-    const element = document.getElementById(elementId);
-    if (element) {
-        element.innerHTML = count;
-    } else {
-        console.error(`Element mit ID ${elementId} nicht gefunden`);
-    }
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.innerHTML = count;
+  } else {
+    console.error(`Element mit ID ${elementId} nicht gefunden`);
+  }
 }
 
 function loadNearestDeadline() {
-    const urgentTasks = tasks.filter(task => task.priority === "urgent");
-    const nearestDeadlineElement = document.getElementById('nearestDeadline');
-    const deadlineTextElement = document.getElementById('deadlineText');
-    const noDeadlineElement = document.getElementById('noDeadline');
+  const urgentTasks = tasks.filter((task) => task.priority === "urgent");
+  const nearestDeadlineElement = document.getElementById("nearestDeadline");
+  const deadlineTextElement = document.getElementById("deadlineText");
+  const noDeadlineElement = document.getElementById("noDeadline");
 
-    if (urgentTasks.length === 0) {
-        if (nearestDeadlineElement) nearestDeadlineElement.style.display = 'none';
-        if (deadlineTextElement) deadlineTextElement.style.display = 'none';
-        if (noDeadlineElement) noDeadlineElement.style.display = 'block';
-        return;
-    }
+  if (urgentTasks.length === 0) {
+    if (nearestDeadlineElement) nearestDeadlineElement.style.display = "none";
+    if (deadlineTextElement) deadlineTextElement.style.display = "none";
+    if (noDeadlineElement) noDeadlineElement.style.display = "block";
+    return;
+  }
 
-    if (nearestDeadlineElement) nearestDeadlineElement.style.display = 'block';
-    if (deadlineTextElement) deadlineTextElement.style.display = 'block';
-    if (noDeadlineElement) noDeadlineElement.style.display = 'none';
+  if (nearestDeadlineElement) nearestDeadlineElement.style.display = "block";
+  if (deadlineTextElement) deadlineTextElement.style.display = "block";
+  if (noDeadlineElement) noDeadlineElement.style.display = "none";
 
-    let nearestDate = urgentTasks.map(task => new Date(task.date)).sort((a, b) => a - b)[0];
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const nearestDeadlineString = nearestDate.toLocaleDateString('en-US', options);
+  let nearestDate = urgentTasks
+    .map((task) => new Date(task.date))
+    .sort((a, b) => a - b)[0];
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const nearestDeadlineString = nearestDate.toLocaleDateString(
+    "en-US",
+    options
+  );
 
-    if (nearestDeadlineElement) {
-        nearestDeadlineElement.textContent = nearestDeadlineString;
-    } else {
-        console.error('Element für die nächste Frist nicht gefunden');
-    }
+  if (nearestDeadlineElement) {
+    nearestDeadlineElement.textContent = nearestDeadlineString;
+  } else {
+    console.error("Element für die nächste Frist nicht gefunden");
+  }
 }
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    start();
-});

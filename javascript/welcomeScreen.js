@@ -30,6 +30,7 @@ async function showWelcomeScreen() {
             if (summaryContent) {
                 summaryContent.style.visibility = 'visible';
             }
+            document.getElementById('activeUser').innerHTML=` <span class=""username>${userName}</span>`;
         }
     } catch (error) {
         // Error handling can be improved by displaying a user-friendly message in the UI or taking appropriate action

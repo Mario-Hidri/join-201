@@ -1,27 +1,34 @@
 let lastSelectedContactIndex = null;
 let currentEditIndex = -1;
-
-function saveContactsToFirebase() {
-    database.ref('contacts').set(allContacts);
+//
+async function saveContactsToFirebase() {
+    await fetch('https://join-5d8da-default-rtdb.europe-west1.firebasedatabase.app/contacts/.json', {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(allContacts),
+      });
 }
-
-function loadContactsFromFirebase() {
-    database.ref('contacts').once('value').then((snapshot) => {
-        if (snapshot.exists()) {
-            allContacts = snapshot.val();
-        } else {
-            saveContactsToFirebase();
-        }
+//
+async function loadContactsFromFirebase() {
+    let response = await fetch('https://join-5d8da-default-rtdb.europe-west1.firebasedatabase.app/contacts/.json');
+    allContacts = await response.json();
+    if (allContacts == null) {
+        allContacts = [];
+    }
         renderContacts();
-    });
+   
 }
 
-function initContactForaddTask() {
-    loadContactsFromFirebase((contacts) => {
-        allContacts = contacts;
-    });
+async function initContactForaddTask() {
+    let response = await fetch('https://join-5d8da-default-rtdb.europe-west1.firebasedatabase.app/contacts/.json');
+    allContacts = await response.json();
+    if (allContacts == null) {
+        allContacts = [];
+    }
 }
-
+//
 function deleteContactFromFirebase(currentEditIndex) {
     allContacts.splice(currentEditIndex, 1);
     saveContactsToFirebase();
@@ -29,21 +36,23 @@ function deleteContactFromFirebase(currentEditIndex) {
     hideElement('editContactDisplay');
     resetSelectedIndexes();
 }
-
+ //
 async function init() {
-    await loadContactsFromFirebase();
     await includeHTML();
     loadActiveUserInitials();
     loadActiveLinkContactPage();
+    await loadContactsFromFirebase();
+     
+    
 }
-
+//
 function loadActiveLinkContactPage() {
     document.getElementById('summarySite').classList.remove('active-link');
     document.getElementById('addTaskSite').classList.remove('active-link');
     document.getElementById('boardSite').classList.remove('active-link');
     document.getElementById('contactSite').classList.add('active-link');
 }
-
+//
 function addContact() {
     let name = document.getElementById('add_contact_name').value;
     let email = document.getElementById('add_contact_email').value;
@@ -52,7 +61,7 @@ function addContact() {
 
     addContactToArray(contact);
     saveContactsToFirebase();
-    renderContacts();
+    window.location.href = "contacts.html";
 
     // Check screen width and only populate edit display if width is less than 620px
     if (window.innerWidth > 620) {
@@ -69,7 +78,7 @@ function resetSelectedIndexes() {
     lastSelectedContactIndex = null;
     currentEditIndex = -1;
 }
-
+//
 function createContact(name, email, phone, color) {
     return {
         name: name,
@@ -80,11 +89,11 @@ function createContact(name, email, phone, color) {
         color: color
     };
 }
-
+//
 function addContactToArray(contact) {
     allContacts.push(contact);
 }
-
+//
 function renderContacts() {
     clearContactsContainers();
     const contactsByLetter = {};
@@ -113,7 +122,7 @@ function renderContacts() {
         }
     }
 }
-
+//
 function renderLetterSection(letter, containerId) {
     let contactsList = document.querySelector('.contacts_list');
     if (contactsList) {
@@ -127,7 +136,7 @@ function renderLetterSection(letter, containerId) {
         contactsList.innerHTML += letterSection;
     }
 }
-
+//
 function clearContactsContainers() {
     const contactsList = document.querySelector('.contacts_list');
     if (contactsList) {
@@ -135,7 +144,7 @@ function clearContactsContainers() {
         elements.forEach(element => element.remove());
     }
 }
-
+//
 function insertContactIntoContainer(containerId, contact, index) {
     let container = document.getElementById(containerId);
     if (container) {
@@ -144,7 +153,7 @@ function insertContactIntoContainer(containerId, contact, index) {
         container.innerHTML += contactHTML;
     }
 }
-
+//
 function generateContactHTML(contact, index, color) {
     return `
         <div class="contact_card" id="contact${index}">
@@ -332,13 +341,13 @@ function deleteContactResponsive(currentEditIndex) {
     hideContactDetails();
 }
 
-// New functions added
+//  ... rest of the code remains the same
 function showElement(elementId) {
     let element = document.getElementById(elementId);
     element.classList.remove('hidden');
     element.classList.add('show');
 }
-
+//
 function hideElement(elementId) {
     let element = document.getElementById(elementId);
     element.classList.remove('show');

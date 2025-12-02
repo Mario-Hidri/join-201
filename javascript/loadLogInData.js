@@ -34,8 +34,18 @@ async function loadActiveUser() {
     if (activeUser) {
         const userKey = activeUser.key;
         if (userKey === "guest") {
-            document.getElementById('activeUser').innerHTML = "Guest";
-            document.getElementById('userInitials').innerHTML = "G";
+            const activeUserElement = document.getElementById('activeUser');
+            const userInitialsElement = document.getElementById('userInitials');
+            if (activeUserElement) {
+                activeUserElement.innerHTML = "Guest";
+            } else {
+                console.error('Element with ID activeUser not found');
+            }
+            if (userInitialsElement) {
+                userInitialsElement.innerHTML = "G";
+            } else {
+                console.error('Element with ID userInitials not found');
+            }
             return;
         }
         try {
@@ -49,8 +59,18 @@ async function loadActiveUser() {
                 return;
             }
             const name = userData.name;
-            document.getElementById('activeUser').innerHTML = name;
-            document.getElementById('userInitials').innerHTML = getInitials(name);
+            const activeUserElement = document.getElementById('activeUser');
+            const userInitialsElement = document.getElementById('userInitials');
+            if (activeUserElement) {
+                activeUserElement.innerHTML = name;
+            } else {
+                console.error('Element with ID activeUser not found');
+            }
+            if (userInitialsElement) {
+                userInitialsElement.innerHTML = getInitials(name);
+            } else {
+                console.error('Element with ID userInitials not found');
+            }
         } catch (error) {
             console.error('Error loading active user from Firebase:', error);
         }
@@ -58,6 +78,7 @@ async function loadActiveUser() {
         console.error('No active user found in localStorage');
     }
 }
+
 
 function loadActiveUserInitials() {
     const activeUser = JSON.parse(localStorage.getItem('activeUser'));
@@ -72,32 +93,8 @@ function getInitials(name) {
     return name.split(' ').map(word => word.charAt(0)).join('');
 }
 
-async function deleteActiveUser() {
-    try {
-        const activeUser = JSON.parse(localStorage.getItem('activeUser'));
-        if (!activeUser) throw new Error('No active user found in localStorage');
-        const userKey = activeUser.key;
-        if (userKey === "guest") {
-            localStorage.removeItem('activeUser');
-            return;
-        }
-        const deleteResponse = await fetch(`https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/LogInData/${userKey}.json`, {
-            method: 'DELETE'
-        });
-        if (!deleteResponse.ok) {
-            throw new Error('Failed to delete user data');
-        }
-        localStorage.removeItem('activeUser');
-    } catch (error) {
-        console.error('Error deleting user data:', error);
-    }
-}
-
 function openLogIn() {
-    deleteActiveUser();
-    setTimeout(() => {
-        window.location.href = './log_in.html';
-    }, 2000);
+    window.location.href = './log_in.html';
 }
 
 function openSubMenu() {
@@ -111,6 +108,14 @@ function closeSubmenu() {
 document.addEventListener('click', (event) => {
     const submenu = document.getElementById('submenucontainer');
     const userDiv = document.querySelector('.user');
+    if (!submenu) {
+        console.error('Element with ID submenucontainer not found');
+        return;
+    }
+    if (!userDiv) {
+        console.error('Element with class user not found');
+        return;
+    }
     if (!submenu.contains(event.target) && !userDiv.contains(event.target)) {
         closeSubmenu();
     }

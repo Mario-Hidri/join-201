@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const loginUrl = "https://join-backend-2c8c7-default-rtdb.europe-west1.firebasedatabase.app/users.json";
+=======
+const loginUrl = "https://join-5d8da-default-rtdb.europe-west1.firebasedatabase.app/login.json";
+>>>>>>> 341301359b3698bf27a02cb9c135bb0d347e578d
 
 async function checkLogIn(event) {
     event.preventDefault();
@@ -38,13 +42,13 @@ function findUser(data, email, password) {
 
 async function handleSuccessfulLogin(userData) {
     const userName = userData.name;
-    const userKey = await saveActiveUserInFirebase(userName);
-    const activeUser = { key: userKey, data: { name: userName } };
+    const activeUser = { key: key, data: { name: userName } };
     localStorage.setItem('activeUser', JSON.stringify(activeUser));
     localStorage.setItem('hasShownWelcome', 'false');
     window.location.href = './summary_user.html';
 }
 
+<<<<<<< HEAD
 async function saveActiveUserInFirebase(name) {
     try {
         const response = await fetch('https://join-backend-2c8c7-default-rtdb.europe-west1.firebasedatabase.app/LogInData.json', {
@@ -61,6 +65,8 @@ async function saveActiveUserInFirebase(name) {
     }
 }
 
+=======
+>>>>>>> 341301359b3698bf27a02cb9c135bb0d347e578d
 function guestLogIn() {
     const guestUser = { key: "guest", data: { name: "Guest" } };
     localStorage.setItem('activeUser', JSON.stringify(guestUser));
@@ -119,25 +125,46 @@ document.addEventListener("DOMContentLoaded", () => {
     const legalNoticePopup = document.getElementById("legalNoticePopup");
 
     const showPopup = (popup) => {
-        overlay.style.display = "block";
-        popup.style.display = "block";
+        if (overlay && popup) {
+            overlay.style.display = "block";
+            popup.style.display = "block";
+        } else {
+            console.error('Overlay or popup element not found');
+        }
     };
 
     const hidePopups = () => {
-        overlay.style.display = "none";
-        privacyPolicyPopup.style.display = "none";
-        legalNoticePopup.style.display = "none";
+        if (overlay && privacyPolicyPopup && legalNoticePopup) {
+            overlay.style.display = "none";
+            privacyPolicyPopup.style.display = "none";
+            legalNoticePopup.style.display = "none";
+        } else {
+            console.error('Overlay or popup elements not found');
+        }
     };
 
-    privacyPolicyLink.addEventListener("click", (event) => {
-        event.preventDefault();
-        showPopup(privacyPolicyPopup);
-    });
+    if (privacyPolicyLink) {
+        privacyPolicyLink.addEventListener("click", (event) => {
+            event.preventDefault();
+            showPopup(privacyPolicyPopup);
+        });
+    } else {
+        console.error('Element with ID privacyPolicyLink not found');
+    }
 
-    legalNoticeLink.addEventListener("click", (event) => {
-        event.preventDefault();
-        showPopup(legalNoticePopup);
-    });
+    if (legalNoticeLink) {
+        legalNoticeLink.addEventListener("click", (event) => {
+            event.preventDefault();
+            showPopup(legalNoticePopup);
+        });
+    } else {
+        console.error('Element with ID legalNoticeLink not found');
+    }
 
-    overlay.addEventListener("click", hidePopups);
+    if (overlay) {
+        overlay.addEventListener("click", hidePopups);
+    } else {
+        console.error('Element mit ID overlay not found');
+    }
 });
+
