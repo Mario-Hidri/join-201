@@ -15,69 +15,107 @@
     <div class="log-in-header">
         <img class="logo" src="./assets/img/log_in_img/Capa 1.svg" alt="">
     </div>
-    </div>
-
 
     <div class="log-in-window">
         <a class="arrow-to-log-in-page" href="./log_in.html">
             <img src="./assets/img/sign_up_img/arrow-left-line.svg" alt="">
         </a>
-        <div class="login-text">
-            <p>
-                Sign up
-            </p>
-            <div class="separator">
 
-            </div>
+        <div class="login-text">
+            <p>Sign up</p>
+            <div class="separator"></div>
         </div>
 
         <div class="login-input-container">
-            <form id="signupForm" onsubmit="checkLogIn()" action="" class="flex-container">
+            <!-- WICHTIG: richtiges onsubmit -->
+            <form id="signupForm" onsubmit="loadDataToFirebaseAndCheckPasswords(event)" class="flex-container">
                 <div class="input-container">
                     <div class="input-with-img">
-                        <input onkeyup="removeErrorMessageOnNameInput()" id="inputNameSignUp" placeholder="Name" class="input1" required type="text">
+                        <input
+                            id="inputNameSignUp"
+                            placeholder="Name"
+                            class="input1"
+                            required
+                            type="text"
+                            onkeyup="removeErrorMessageOnNameInput()"
+                            oninput="updateSignUpButtonState()"
+                        >
                         <img src="./assets/img/sign_up_img/person.svg" alt="Bild" class="input-img">
                     </div>
                 </div>
-                
 
-                <div id="" class="input-container">
+                <div class="input-container">
                     <div class="input-with-img">
-                        <input onkeyup="removeErrorMessageOnEmailInput()" id="inputEmailSignUp" required type="email" placeholder="Email" class="input1" type="text">
+                        <input
+                            id="inputEmailSignUp"
+                            required
+                            type="email"
+                            placeholder="Email"
+                            class="input1"
+                            onkeyup="removeErrorMessageOnEmailInput()"
+                            oninput="updateSignUpButtonState()"
+                        >
                         <img src="./assets/img/log_in_img/mail.svg" alt="Bild" class="input-img">
                     </div>
                 </div>
-                
+
                 <div class="input-container">
                     <div class="input-with-img">
-                        <input onkeyup="changeFirstPasswordImgSignUp(); removeErrorMessageOnPassword1Input();" id="firstPasswordSignUp" type="password" required placeholder="Password" class="input1" type="text">
-                        <img onclick="firstPasswordSignUpVisible()" id="firstPasswordLogInImg" src="./assets/img/log_in_img/lock.svg" alt="Bild" class="input-img">
+                        <input
+                            id="firstPasswordSignUp"
+                            type="password"
+                            required
+                            placeholder="Password"
+                            class="input1"
+                            onkeyup="changeFirstPasswordImgSignUp(); removeErrorMessageOnPassword1Input();"
+                            oninput="updateSignUpButtonState()"
+                        >
+                        <img onclick="firstPasswordSignUpVisible()" id="firstPasswordLogInImg"
+                             src="./assets/img/log_in_img/lock.svg" alt="Bild" class="input-img">
                     </div>
                 </div>
-                
+
                 <div class="input-container">
                     <div class="input-with-img">
-                        <input onkeyup="changesecondPasswordImgSignUp(); removeErrorMessageOnPassword2Input(); " id="secondPasswordSignUp" type="password" required placeholder="Confirm Password" class="input1" type="text">
-                        <img onclick="secondPasswordSignUpVisible()" id="secondPasswordSignUpImg" src="./assets/img/log_in_img/lock.svg" alt="Bild" class="input-img">
+                        <input
+                            id="secondPasswordSignUp"
+                            type="password"
+                            required
+                            placeholder="Confirm Password"
+                            class="input1"
+                            onkeyup="changesecondPasswordImgSignUp(); removeErrorMessageOnPassword2Input();"
+                            oninput="updateSignUpButtonState()"
+                        >
+                        <img onclick="secondPasswordSignUpVisible()" id="secondPasswordSignUpImg"
+                             src="./assets/img/log_in_img/lock.svg" alt="Bild" class="input-img">
                     </div>
                 </div>
-                
 
-        </div>
+                <div class="remember-checkbox-container">
+                    <label class="container">
+                        <span class="remember-checkbox-text">I accept the </span>
+                        <a id="privacyLinkSignUp" class="privacy-sign-up" href="">Privacy policy</a>
+                        <!-- WICHTIG: id + onchange -->
+                        <input
+                            type="checkbox"
+                            id="privacyCheckbox"
+                            onchange="updateSignUpButtonState()"
+                        >
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
 
-        <div class="remember-checkbox-container">
-            <label class="container">
-                <span class="remember-checkbox-text">I accept the </span>
-                <a id="privacyLinkSignUp" class="privacy-sign-up" href="">Privacy policy</a>
-                <input type="checkbox" id="privacyCheckbox">
-                <span class="checkmark"></span>
-            </label>
-        </div>
-
-        <div class="log-in-container">
-            <button id="submit" onclick="loadDataToFirebaseAndCheckPasswords(event)" class="log-in-button" disabled>
-                Sign up
-            </button>
+                <div class="log-in-container">
+                    <!-- WICHTIG: type="submit", id="submit", kein onclick mehr -->
+                    <button
+                        id="submit"
+                        type="submit"
+                        class="log-in-button"
+                        disabled
+                    >
+                        Sign up
+                    </button>
+                </div>
             </form>
         </div>
     </div>
@@ -96,9 +134,7 @@
     </div>
 
     <div class="sign-up-container display-none" id="signUpContainer">
-        <span>
-            You Signed Up successfully
-        </span>
+        <span>You Signed Up successfully</span>
     </div>
 
     <div id="overlay" class="overlay"></div>

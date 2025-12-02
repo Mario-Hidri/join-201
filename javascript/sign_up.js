@@ -261,3 +261,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
     overlay.addEventListener("click", hidePopups);
 });
+
+function removeErrorMessageOnNameInput() {
+    const error = document.getElementById('errorName');
+    if (error) error.remove();
+}
+
+function removeErrorMessageOnEmailInput() {
+    const error = document.getElementById('errorEmail');
+    if (error) error.remove();
+}
+
+function removeErrorMessageOnPassword1Input() {
+    const error = document.getElementById('errorPassword1');
+    if (error) error.remove();
+}
+
+function removeErrorMessageOnPassword2Input() {
+    const error = document.getElementById('errorPassword2');
+    if (error) error.remove();
+}
+
+function updateSignUpButtonState() {
+    const nameInput = document.getElementById('inputNameSignUp');
+    const emailInput = document.getElementById('inputEmailSignUp');
+    const pw1Input = document.getElementById('firstPasswordSignUp');
+    const pw2Input = document.getElementById('secondPasswordSignUp');
+    const termsCheckbox = document.getElementById('privacyCheckbox');
+    const signUpButton = document.getElementById('submit');
+
+    if (!nameInput || !emailInput || !pw1Input || !pw2Input || !termsCheckbox || !signUpButton) {
+        return;
+    }
+
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const pw1 = pw1Input.value;
+    const pw2 = pw2Input.value;
+
+    const allFilled = name && email && pw1 && pw2;
+    const passwordsMatch = pw1 === pw2 && pw1.length >= 6;
+    const termsAccepted = termsCheckbox.checked;
+
+    if (allFilled && passwordsMatch && termsAccepted) {
+        signUpButton.disabled = false;
+        signUpButton.classList.remove('disabledButton');
+    } else {
+        signUpButton.disabled = true;
+        signUpButton.classList.add('disabledButton');
+    }
+}
