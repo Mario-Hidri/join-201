@@ -1,10 +1,6 @@
 let signUpDataJson = [];
 
-<<<<<<< HEAD
 const usersUrl = "https://join-backend-2c8c7-default-rtdb.europe-west1.firebasedatabase.app/users";
-=======
-const url = "https://join-5d8da-default-rtdb.europe-west1.firebasedatabase.app/login";
->>>>>>> 341301359b3698bf27a02cb9c135bb0d347e578d
 
 async function getSignUpData() {
     let email = document.getElementById('inputEmailSignUp').value;

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 const loginUrl = "https://join-backend-2c8c7-default-rtdb.europe-west1.firebasedatabase.app/users.json";
-=======
-const loginUrl = "https://join-5d8da-default-rtdb.europe-west1.firebasedatabase.app/login.json";
->>>>>>> 341301359b3698bf27a02cb9c135bb0d347e578d
 
 async function checkLogIn(event) {
     event.preventDefault();
@@ -48,7 +44,6 @@ async function handleSuccessfulLogin(userData) {
     window.location.href = './summary_user.html';
 }
 
-<<<<<<< HEAD
 async function saveActiveUserInFirebase(name) {
     try {
         const response = await fetch('https://join-backend-2c8c7-default-rtdb.europe-west1.firebasedatabase.app/LogInData.json', {
@@ -65,8 +60,6 @@ async function saveActiveUserInFirebase(name) {
     }
 }
 
-=======
->>>>>>> 341301359b3698bf27a02cb9c135bb0d347e578d
 function guestLogIn() {
     const guestUser = { key: "guest", data: { name: "Guest" } };
     localStorage.setItem('activeUser', JSON.stringify(guestUser));
