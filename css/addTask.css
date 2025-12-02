@@ -333,6 +333,16 @@ select:focus-visible {
     display: none;
 }
 
+:root {
+    --font-main: 'Inter', sans-serif;
+}
+
+body,
+.right-side,
+.right-side * {
+    font-family: var(--font-main) !important;
+}
+
 @media(max-width:1350px) {
     .verticalLine {
         display: none;
