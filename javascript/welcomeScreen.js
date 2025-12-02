@@ -2,7 +2,7 @@ async function showWelcomeScreen() {
     try {
         const activeUser = JSON.parse(localStorage.getItem('activeUser'));
         const hasShownWelcome = localStorage.getItem('hasShownWelcome');
-        let userName = activeUser && activeUser.data.name ? activeUser.data.name : "Guest";
+        let userName = activeUser && activeUser.data && activeUser.data.name ? activeUser.data.name : "Guest";
 
         const usernameElement = document.getElementById('username');
         if (usernameElement) {
@@ -13,15 +13,15 @@ async function showWelcomeScreen() {
             const welcomeScreen = document.getElementById('welcomeScreen');
             const summaryContent = document.querySelector('.rightSide');
             if (welcomeScreen && summaryContent) {
-                summaryContent.style.visibility = 'hidden'; // Temporarily hide the summary content
+                summaryContent.style.visibility = 'hidden';
 
                 welcomeScreen.classList.add('active');
 
                 setTimeout(() => {
                     welcomeScreen.classList.remove('active');
                     welcomeScreen.classList.add('hidden');
-                    summaryContent.style.visibility = 'visible'; // Show the summary content
-                }, 3500); // 2.5s visible + 1s fade out
+                    summaryContent.style.visibility = 'visible';
+                }, 3500);
 
                 localStorage.setItem('hasShownWelcome', 'true');
             }
@@ -30,9 +30,12 @@ async function showWelcomeScreen() {
             if (summaryContent) {
                 summaryContent.style.visibility = 'visible';
             }
-            document.getElementById('activeUser').innerHTML=` <span class=""username>${userName}</span>`;
+            const activeUserElement = document.getElementById('activeUser');
+            if (activeUserElement) {
+                activeUserElement.textContent = userName;
+            }
         }
     } catch (error) {
-        // Error handling can be improved by displaying a user-friendly message in the UI or taking appropriate action
+        console.error('Error in showWelcomeScreen:', error);
     }
 }

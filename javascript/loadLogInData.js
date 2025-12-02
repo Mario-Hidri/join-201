@@ -38,18 +38,14 @@ async function loadActiveUser() {
             const userInitialsElement = document.getElementById('userInitials');
             if (activeUserElement) {
                 activeUserElement.innerHTML = "Guest";
-            } else {
-                console.error('Element with ID activeUser not found');
             }
             if (userInitialsElement) {
                 userInitialsElement.innerHTML = "G";
-            } else {
-                console.error('Element with ID userInitials not found');
             }
             return;
         }
         try {
-            const response = await fetch(`https://join-projekt-default-rtdb.europe-west1.firebasedatabase.app/LogInData/${userKey}.json`);
+            const response = await fetch(`https://join-backend-2c8c7-default-rtdb.europe-west1.firebasedatabase.app/LogInData/${userKey}.json`);
             if (!response.ok) {
                 throw new Error('Network response was not ok ' + response.statusText);
             }
@@ -63,13 +59,9 @@ async function loadActiveUser() {
             const userInitialsElement = document.getElementById('userInitials');
             if (activeUserElement) {
                 activeUserElement.innerHTML = name;
-            } else {
-                console.error('Element with ID activeUser not found');
             }
             if (userInitialsElement) {
                 userInitialsElement.innerHTML = getInitials(name);
-            } else {
-                console.error('Element with ID userInitials not found');
             }
         } catch (error) {
             console.error('Error loading active user from Firebase:', error);
@@ -78,7 +70,6 @@ async function loadActiveUser() {
         console.error('No active user found in localStorage');
     }
 }
-
 
 function loadActiveUserInitials() {
     const activeUser = JSON.parse(localStorage.getItem('activeUser'));
@@ -108,14 +99,7 @@ function closeSubmenu() {
 document.addEventListener('click', (event) => {
     const submenu = document.getElementById('submenucontainer');
     const userDiv = document.querySelector('.user');
-    if (!submenu) {
-        console.error('Element with ID submenucontainer not found');
-        return;
-    }
-    if (!userDiv) {
-        console.error('Element with class user not found');
-        return;
-    }
+    if (!submenu || !userDiv) return;
     if (!submenu.contains(event.target) && !userDiv.contains(event.target)) {
         closeSubmenu();
     }

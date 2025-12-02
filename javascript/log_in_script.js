@@ -38,7 +38,8 @@ function findUser(data, email, password) {
 
 async function handleSuccessfulLogin(userData) {
     const userName = userData.name;
-    const activeUser = { key: key, data: { name: userName } };
+    const userKey = await saveActiveUserInFirebase(userName);
+    const activeUser = { key: userKey, data: { name: userName } };
     localStorage.setItem('activeUser', JSON.stringify(activeUser));
     localStorage.setItem('hasShownWelcome', 'false');
     window.location.href = './summary_user.html';
@@ -118,46 +119,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const legalNoticePopup = document.getElementById("legalNoticePopup");
 
     const showPopup = (popup) => {
-        if (overlay && popup) {
-            overlay.style.display = "block";
-            popup.style.display = "block";
-        } else {
-            console.error('Overlay or popup element not found');
-        }
+        overlay.style.display = "block";
+        popup.style.display = "block";
     };
 
     const hidePopups = () => {
-        if (overlay && privacyPolicyPopup && legalNoticePopup) {
-            overlay.style.display = "none";
-            privacyPolicyPopup.style.display = "none";
-            legalNoticePopup.style.display = "none";
-        } else {
-            console.error('Overlay or popup elements not found');
-        }
+        overlay.style.display = "none";
+        privacyPolicyPopup.style.display = "none";
+        legalNoticePopup.style.display = "none";
     };
 
-    if (privacyPolicyLink) {
-        privacyPolicyLink.addEventListener("click", (event) => {
-            event.preventDefault();
-            showPopup(privacyPolicyPopup);
-        });
-    } else {
-        console.error('Element with ID privacyPolicyLink not found');
-    }
+    privacyPolicyLink.addEventListener("click", (event) => {
+        event.preventDefault();
+        showPopup(privacyPolicyPopup);
+    });
 
-    if (legalNoticeLink) {
-        legalNoticeLink.addEventListener("click", (event) => {
-            event.preventDefault();
-            showPopup(legalNoticePopup);
-        });
-    } else {
-        console.error('Element with ID legalNoticeLink not found');
-    }
+    legalNoticeLink.addEventListener("click", (event) => {
+        event.preventDefault();
+        showPopup(legalNoticePopup);
+    });
 
-    if (overlay) {
-        overlay.addEventListener("click", hidePopups);
-    } else {
-        console.error('Element mit ID overlay not found');
-    }
+    overlay.addEventListener("click", hidePopups);
 });
-

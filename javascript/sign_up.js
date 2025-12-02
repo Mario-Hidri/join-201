@@ -1,5 +1,3 @@
-let signUpDataJson = [];
-
 const usersUrl = "https://join-backend-2c8c7-default-rtdb.europe-west1.firebasedatabase.app/users";
 
 async function getSignUpData() {
@@ -12,9 +10,9 @@ async function getSignUpData() {
 
 function signUpDataTemplate(email, password, signUpName) {
     return {
-        "email": email,
-        "password": password,
-        "name": signUpName,
+        email: email,
+        password: password,
+        name: signUpName,
     };
 }
 
@@ -77,10 +75,10 @@ function secondPasswordSignUpVisible() {
 function passwordVisibleTemplate(x, image) {
     if (x.type === "password") {
         x.type = "text";
-        image.src = "./assets/img/log_in_img/visibility.svg"
+        image.src = "./assets/img/log_in_img/visibility.svg";
     } else {
         x.type = "password";
-        image.src = "./assets/img/log_in_img/visibility_off.svg"
+        image.src = "./assets/img/log_in_img/visibility_off.svg";
     }
 }
 
@@ -137,7 +135,6 @@ function passwordMismatchTemplate(password1Input, password2Input) {
     }
     password1Input.classList.add('error-border');
     password2Input.classList.add('error-border');
-    return;
 }
 
 function password1Template(password1Input) {
@@ -149,7 +146,6 @@ function password1Template(password1Input) {
         password1Input.parentNode.appendChild(password1ErrorMessage);
     }
     password1Input.classList.add('error-border');
-    return;
 }
 
 function password2Template(password1Input, password2Input) {
@@ -161,10 +157,8 @@ function password2Template(password1Input, password2Input) {
         password2Input.parentNode.appendChild(password2ErrorMessage);
         password1Input.classList.add('error-border');
         password2Input.classList.add('error-border');
-        return;
-    } else if (password1Input.value.length == 0) {
+    } else if (password1Input.value.length === 0) {
         password1Template(password1Input);
-        return;
     }
 }
 
@@ -186,7 +180,7 @@ function checkPasswordInputTemplate(password1Input, password2Input) {
         password1Input.classList.add('error-border');
         return;
     }
-    if (password1Input.value == password2Input.value) {
+    if (password1Input.value === password2Input.value) {
         if (document.getElementById('errorMessageMismatchSignUp')) {
             removeErrorMessages(password1Input, password2Input);
         }
@@ -200,7 +194,7 @@ function checkNameInputTemplate(nameInput) {
             nameErrorMessage.remove();
         }
         nameInput.classList.remove('error-border');
-    } else if (nameInput.value.length == 0) {
+    } else if (nameInput.value.length === 0) {
         if (nameErrorMessage) {
             nameErrorMessage.textContent = 'Please insert your Name!';
         } else {
@@ -211,29 +205,6 @@ function checkNameInputTemplate(nameInput) {
             nameInput.parentNode.appendChild(nameErrorMessage);
         }
         nameInput.classList.add('error-border');
-        return;
-    }
-}
-
-function removeErrorMessageOnNameInput() {
-    let input = document.getElementById('inputNameSignUp');
-    let errorMessage = document.getElementById('errorMessageNameSignUp')
-    if (input.value.length > 0 && errorMessage) {
-        errorMessage.remove();
-    } else {
-        restoreErrorMessageOnNameInput(input, errorMessage);
-        input.classList.add('error-border');
-    }
-}
-
-function restoreErrorMessageOnNameInput(input, errorMessage) {
-    input.classList.add('error-border');
-    if (!errorMessage) {
-        errorMessage = document.createElement('div');
-        errorMessage.textContent = 'Please insert your Name!';
-        errorMessage.classList.add('error-message');
-        errorMessage.id = 'errorMessageNameSignUp';
-        input.parentNode.appendChild(errorMessage);
     }
 }
 
@@ -247,7 +218,6 @@ function checkEmailInputTemplate(emailInput) {
         return;
     }
     if (!emailInput.value.includes('@')) {
-        let errorMessage = emailInput.parentNode.querySelector('.error-message');
         if (errorMessage) {
             errorMessage.textContent = 'Bitte @-Zeichen beachten!';
         } else {
@@ -258,7 +228,6 @@ function checkEmailInputTemplate(emailInput) {
             emailInput.parentNode.appendChild(errorMessage);
         }
         emailInput.classList.add('error-border');
-        return;
     }
 }
 
